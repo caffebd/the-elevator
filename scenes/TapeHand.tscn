@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca3bo46okbotw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4v36"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlaft"]
+material = SubResource("StandardMaterial3D_n4v36")
+
+[node name="TapeHand" type="Node3D"]
+transform = Transform3D(0.991463, 0.0866036, 0.097472, -0.112285, 0.187091, 0.975904, 0.0662808, -0.978518, 0.195218, -0.0383352, 0.264223, -0.228771)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0384839, 0.000174411, 0.0276897, -0.00196946, 0.00381097, 0.00120351, -0.00946577, -8.38267e-05, 0.112325, 0.0658264, -0.704725, -0.0434258)
+layers = 524288
+mesh = SubResource("BoxMesh_tlaft")

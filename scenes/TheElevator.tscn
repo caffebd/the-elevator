@@ -1,0 +1,1563 @@
+[gd_scene load_steps=109 format=3 uid="uid://dvs0rbii3ex0j"]
+
+[ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="1_7maqf"]
+[ext_resource type="Script" path="res://scripts/OutsideLight.gd" id="1_a552j"]
+[ext_resource type="Script" path="res://scripts/TheElevator.gd" id="1_i8v8u"]
+[ext_resource type="Script" path="res://scripts/Spotlights.gd" id="1_m3e7s"]
+[ext_resource type="Script" path="res://scripts/EyesRoof.gd" id="1_mkqfa"]
+[ext_resource type="PackedScene" uid="uid://dihpoknsgpxhp" path="res://scenes/Box.tscn" id="2_3ssxh"]
+[ext_resource type="PackedScene" uid="uid://dq3ocurr25m0t" path="res://scenes/Driver1.tscn" id="3_o4ric"]
+[ext_resource type="AudioStream" uid="uid://dpmv6mor2k381" path="res://assets/audio/Nearly Die 4.mp3" id="3_oaqmi"]
+[ext_resource type="PackedScene" uid="uid://bk5xahpxg5pa1" path="res://scenes/Keypad.tscn" id="4_3av3v"]
+[ext_resource type="PackedScene" uid="uid://db85bxvootgio" path="res://scenes/tray.tscn" id="5_xg50g"]
+[ext_resource type="Script" path="res://scripts/ElecPanelDoor.gd" id="6_3in0p"]
+[ext_resource type="Texture2D" uid="uid://j6wxb34g4tsw" path="res://assets/UI/driver1_icon.png" id="6_hyeho"]
+[ext_resource type="Script" path="res://scripts/Floor.gd" id="6_jsg5t"]
+[ext_resource type="Script" path="res://scripts/FuseBack.gd" id="8_pqbit"]
+[ext_resource type="Script" path="res://scripts/BrokenWire.gd" id="9_bcu00"]
+[ext_resource type="PackedScene" uid="uid://bwj5pktrcil1y" path="res://scenes/fuse.tscn" id="11_xpn3e"]
+[ext_resource type="PackedScene" uid="uid://bt2eko40rxesl" path="res://scenes/Tape.tscn" id="12_yjs62"]
+[ext_resource type="Script" path="res://scripts/Doors.gd" id="13_nc8eb"]
+[ext_resource type="PackedScene" uid="uid://cw3gt6y1nu1le" path="res://scenes/Note.tscn" id="13_wfgp1"]
+[ext_resource type="PackedScene" uid="uid://b64liks2boy0a" path="res://scenes/Crowbar.tscn" id="14_0a77r"]
+[ext_resource type="AudioStream" uid="uid://dmevn7ts8kg6" path="res://assets/audio/door_open_metal.mp3" id="15_66y0c"]
+[ext_resource type="Script" path="res://scripts/Monster.gd" id="17_h5f21"]
+[ext_resource type="AudioStream" uid="uid://dvt6rlhcnuyve" path="res://assets/audio/buzzing_sound_chase_fade_in.mp3" id="19_ufgoy"]
+[ext_resource type="PackedScene" uid="uid://dyb52g3i6dr8t" path="res://scenes/card.tscn" id="21_o0ioj"]
+[ext_resource type="PackedScene" uid="uid://bpyv7f1m7g5h2" path="res://scenes/Driver2.tscn" id="23_bhgnj"]
+[ext_resource type="AudioStream" uid="uid://cussvjeodrlod" path="res://assets/audio/LargeMonster3_2.wav" id="25_hjsqy"]
+[ext_resource type="Script" path="res://scripts/RoofPanel.gd" id="25_srlth"]
+[ext_resource type="AudioStream" uid="uid://dypjjlrcgdy27" path="res://assets/audio/elevator_moving.mp3" id="28_sexol"]
+[ext_resource type="AudioStream" uid="uid://xkpj2f8pxrh2" path="res://assets/audio/elevator_ding_door.mp3" id="29_uykyc"]
+
+[sub_resource type="Environment" id="Environment_y05qo"]
+ambient_light_source = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui06y"]
+albedo_color = Color(0.686275, 1, 0.698039, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_se0s0"]
+material = SubResource("StandardMaterial3D_ui06y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmlfb"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_2s2nd"]
+material = SubResource("StandardMaterial3D_dmlfb")
+
+[sub_resource type="PrismMesh" id="PrismMesh_m30tj"]
+material = SubResource("StandardMaterial3D_dmlfb")
+
+[sub_resource type="Animation" id="Animation_r4430"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ArmRoof:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.746, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%ArmRoof:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%ArmRoof:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.754, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_gan18"]
+resource_name = "arm_drop"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ArmRoof:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.74616, -0.25, 0, 0.25, 0, -1.74616, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%ArmRoof:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4.39877, -0.25, 0, 0.25, 0, -1.619, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%ArmRoof:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2.75401, -0.25, 0, 0.25, 0, -2.75401, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ixwu"]
+_data = {
+"RESET": SubResource("Animation_r4430"),
+"arm_drop": SubResource("Animation_gan18")
+}
+
+[sub_resource type="Animation" id="Animation_rrepg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Floor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Floor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Floor:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-3.08786, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4goqv"]
+resource_name = "floor_open"
+length = 14.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Floor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 14)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Floor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 14)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Floor:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3.12173, -0.25, 0, 0.25, 0, -7.90134, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 14)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uil5p"]
+_data = {
+"RESET": SubResource("Animation_rrepg"),
+"floor_open": SubResource("Animation_4goqv")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unxyi"]
+size = Vector3(8, 0.09, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwx2v"]
+albedo_color = Color(0.972549, 0.968627, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvif7"]
+material = SubResource("StandardMaterial3D_mwx2v")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yp6ot"]
+size = Vector3(8, 0.09, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_714ch"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x0mlr"]
+material = SubResource("StandardMaterial3D_714ch")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpc2e"]
+size = Vector3(2.535, 0.946, 0.19)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_io4u5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dgo4p"]
+material = SubResource("StandardMaterial3D_io4u5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d22wm"]
+size = Vector3(1.325, 0.946, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nmu3q"]
+material = SubResource("StandardMaterial3D_io4u5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jmx46"]
+size = Vector3(2.145, 0.946, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8nb2e"]
+material = SubResource("StandardMaterial3D_io4u5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8mvr"]
+size = Vector3(2.145, 0.946, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cf8ch"]
+material = SubResource("StandardMaterial3D_io4u5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdjy6"]
+size = Vector3(3.795, 0.946, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fiq08"]
+material = SubResource("StandardMaterial3D_io4u5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chb28"]
+size = Vector3(3.795, 0.946, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3eo0r"]
+material = SubResource("StandardMaterial3D_io4u5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_11tj4"]
+size = Vector3(5.65, 0.946, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w2bwd"]
+material = SubResource("StandardMaterial3D_io4u5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mcgh3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3h88e"]
+albedo_color = Color(1, 0.764706, 0.803922, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_67lme"]
+material = SubResource("StandardMaterial3D_3h88e")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bq2hu"]
+size = Vector3(0.465, 0.93, 0.105)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5epmw"]
+albedo_color = Color(0.886275, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_agdi8"]
+material = SubResource("StandardMaterial3D_5epmw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na5rv"]
+albedo_texture = ExtResource("6_hyeho")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h6rrh"]
+material = SubResource("StandardMaterial3D_na5rv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvnr5"]
+size = Vector3(0.065, 0.285, 0.055)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj60s"]
+albedo_color = Color(0.65098, 1, 0.0313726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0mw5o"]
+material = SubResource("StandardMaterial3D_uj60s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_javff"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ulah0"]
+material = SubResource("StandardMaterial3D_javff")
+
+[sub_resource type="BoxMesh" id="BoxMesh_10afx"]
+material = SubResource("StandardMaterial3D_javff")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7d7b"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_twi17"]
+material = SubResource("StandardMaterial3D_x7d7b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ugv"]
+albedo_color = Color(0, 0.486275, 0.0313726, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ukn1p"]
+material = SubResource("StandardMaterial3D_01ugv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw4kh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u23bu"]
+material = SubResource("StandardMaterial3D_uw4kh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o0qv"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ws6ge"]
+material = SubResource("StandardMaterial3D_7o0qv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkw50"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_77x8t"]
+material = SubResource("StandardMaterial3D_kkw50")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjqcq"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yn6xq"]
+material = SubResource("StandardMaterial3D_sjqcq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_teegx"]
+size = Vector3(0.215, 3.975, 3.505)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odm7n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xbfip"]
+material = SubResource("StandardMaterial3D_odm7n")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4fbm"]
+size = Vector3(0.215, 3.975, 3.505)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6lnq0"]
+material = SubResource("StandardMaterial3D_odm7n")
+
+[sub_resource type="Animation" id="Animation_xxa3c"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.0556, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.756122, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftDoor:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.0556, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftDoor:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftDoor:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.33598, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_s3yv4"]
+resource_name = "door_close"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.056, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.435, -0.25, 0, 0.25, 0, 0.756, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftDoor:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.056, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftDoor:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftDoor:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4.657, -0.25, 0, 0.25, 0, 4.336, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="Animation" id="Animation_klvnb"]
+resource_name = "door_open_a"
+length = 2.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.0556, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 1.8, 2.2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 1.8, 2.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.756122, -0.25, 0, 0.25, 0, 0.435, -0.25, 0, 0.25, 0, 0.756, -0.25, 0, 0.25, 0, 0.435, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 1.8, 2.2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftDoor:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.0556, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 1.8, 2.2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftDoor:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 1.8, 2.2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftDoor:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(4.33598, -0.25, 0, 0.25, 0, 4.657, -0.25, 0, 0.25, 0, 4.336, -0.25, 0, 0.25, 0, 4.657, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5, 1.8, 2.2)
+}
+
+[sub_resource type="Animation" id="Animation_47rfs"]
+resource_name = "door_open_b"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.0556, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.756122, -0.25, 0, 0.25, 0, -0.63714, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftDoor:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.0556, -0.25, 0, 0.25, 0, 1.056, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftDoor:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LeftDoor:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4.33598, -0.25, 0, 0.25, 0, 5.87979, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rhq46"]
+_data = {
+"RESET": SubResource("Animation_xxa3c"),
+"door_close": SubResource("Animation_s3yv4"),
+"door_open_a": SubResource("Animation_klvnb"),
+"door_open_b": SubResource("Animation_47rfs")
+}
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8cqta"]
+material = SubResource("StandardMaterial3D_ui06y")
+
+[sub_resource type="PrismMesh" id="PrismMesh_obwlx"]
+material = SubResource("StandardMaterial3D_dmlfb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ei2sd"]
+size = Vector3(10, 0.355, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qxj7"]
+size = Vector3(1, 0.095, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbctv"]
+albedo_color = Color(0.882353, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eg0gs"]
+material = SubResource("StandardMaterial3D_dbctv")
+
+[sub_resource type="Animation" id="Animation_g0gy5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoofPanel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.022, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RoofPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.003, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RoofPanel:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RoofPanel:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RoofPanel:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RoofPanel:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8snno"]
+resource_name = "fall"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoofPanel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2.022, -0.25, 0, 0.25, 0, -2.022, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RoofPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.003, -0.25, 0, 0.25, 0, 0.0382187, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RoofPanel:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2.317, -0.25, 0, 0.25, 0, -2.317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+
+[sub_resource type="Animation" id="Animation_mfiur"]
+resource_name = "tilt"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoofPanel:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RoofPanel:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RoofPanel:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.36069, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RoofPanel:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2.022, -0.25, 0, 0.25, 0, -2.022, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RoofPanel:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.003, -0.25, 0, 0.25, 0, 2.82405, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RoofPanel:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2.317, -0.25, 0, 0.25, 0, -2.317, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87jt8"]
+_data = {
+"RESET": SubResource("Animation_g0gy5"),
+"fall": SubResource("Animation_8snno"),
+"tilt": SubResource("Animation_mfiur")
+}
+
+[node name="TheElevator" type="Node3D"]
+script = ExtResource("1_i8v8u")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y05qo")
+
+[node name="EyesRoof" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+visible = false
+script = ExtResource("1_mkqfa")
+player = NodePath("../Player")
+
+[node name="RoofLight" type="SpotLight3D" parent="EyesRoof"]
+unique_name_in_owner = true
+transform = Transform3D(-0.44022, -0.754206, 0.487217, 0.367738, -0.646471, -0.668464, 0.819131, -0.115103, 0.56194, -1.38272, 2.11757, -2.05835)
+visible = false
+layers = 524289
+light_energy = 1.8
+shadow_enabled = true
+spot_range = 2.0
+
+[node name="Card" parent="EyesRoof" instance=ExtResource("21_o0ioj")]
+unique_name_in_owner = true
+transform = Transform3D(-0.63776, 0.770235, 0, -0.770235, -0.63776, 0, 0, 0, 1, -1.72, -2, -2.706)
+
+[node name="RoofEyes" type="Node3D" parent="EyesRoof"]
+unique_name_in_owner = true
+visible = false
+
+[node name="RoofEyeLeft" type="SpotLight3D" parent="EyesRoof/RoofEyes"]
+unique_name_in_owner = true
+transform = Transform3D(-0.472367, -0.880047, 0.0488586, 0.0386904, -0.0760827, -0.996351, 0.880552, -0.468753, 0.0699883, -1.83697, 2.77297, -2.3009)
+layers = 524289
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 1.0
+
+[node name="RoofEyeRight" type="SpotLight3D" parent="EyesRoof/RoofEyes"]
+unique_name_in_owner = true
+transform = Transform3D(-0.471199, -0.849959, 0.235672, -0.0509848, -0.2405, -0.969309, 0.880552, -0.468754, 0.0699885, -1.47495, 2.82343, -2.86895)
+layers = 524289
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 1.0
+
+[node name="ArmRoof" type="MeshInstance3D" parent="EyesRoof"]
+unique_name_in_owner = true
+transform = Transform3D(-9.62352e-09, -0.0208115, 0.27403, -2.22258e-10, 0.901137, 0.00632868, -0.220219, -4.25326e-14, -1.19814e-08, -1.746, 4.4, -2.754)
+visible = false
+mesh = SubResource("CapsuleMesh_se0s0")
+skeleton = NodePath("../../Monster")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EyesRoof/ArmRoof"]
+transform = Transform3D(0.0664203, 0.0446153, 0.487821, 0.0121389, -0.314605, 0.0684187, 0.344597, 0.00248281, -0.0964367, 0.278535, -1.10135, 0.148154)
+mesh = SubResource("PrismMesh_2s2nd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="EyesRoof/ArmRoof"]
+transform = Transform3D(0.0976269, -0.0368876, -0.478624, 0.020268, -0.314222, 0.0688744, -0.336696, -0.0296108, -0.134634, -0.32143, -1.10135, 0.148154)
+mesh = SubResource("PrismMesh_m30tj")
+
+[node name="ArmRoofAnim" type="AnimationPlayer" parent="EyesRoof"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_3ixwu")
+}
+
+[node name="ArmGrabRoof" type="AudioStreamPlayer" parent="EyesRoof"]
+unique_name_in_owner = true
+stream = ExtResource("3_oaqmi")
+
+[node name="Spotlights" type="Node3D" parent="."]
+script = ExtResource("1_m3e7s")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Spotlights"]
+transform = Transform3D(0.575408, -0.30869, -0.757375, 0.785427, -0.0496567, 0.61696, -0.228058, -0.949866, 0.21388, 0.436124, 2.78518, -0.473815)
+visible = false
+layers = 524289
+light_energy = 1.5
+shadow_enabled = true
+spot_attenuation = 1.27456
+spot_angle_attenuation = 0.267944
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Spotlights"]
+transform = Transform3D(-0.307807, 0.950664, 0.0386497, -0.00598028, -0.0425542, 0.999076, 0.95143, 0.307291, 0.0187837, -1.92983, 2.82825, -2.13946)
+layers = 524289
+light_energy = 1.5
+shadow_enabled = true
+spot_range = 6.417
+spot_angle = 88.0
+spot_angle_attenuation = 0.392292
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Spotlights"]
+transform = Transform3D(0.713669, -0.697616, 0.0633091, 0.0742083, 0.165166, 0.98347, -0.696541, -0.697174, 0.169643, 0.0160835, 2.94784, -1.99741)
+layers = 524289
+light_energy = 1.5
+shadow_enabled = true
+spot_range = 13.566
+spot_angle = 88.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Spotlights"]
+transform = Transform3D(0.655017, 0.623465, 0.426901, -0.305744, -0.297969, 0.904287, 0.690994, -0.722846, -0.00455437, -0.465006, 2.50975, -1.63605)
+visible = false
+layers = 524289
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Spotlights"]
+transform = Transform3D(-0.140863, 0.909295, 0.391586, -0.556042, -0.399916, 0.728618, 0.819131, -0.115103, 0.56194, -0.465006, 2.50975, -1.53368)
+visible = false
+layers = 524289
+light_energy = 1.5
+shadow_enabled = true
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Spotlights"]
+transform = Transform3D(-0.988068, -0.117636, -0.0994136, -0.147974, 0.904098, 0.400888, 0.0427207, 0.410815, -0.910717, -3.3916, 1.89861, -0.564719)
+visible = false
+layers = 524289
+shadow_enabled = true
+spot_range = 2.0
+
+[node name="RoffUpSpot" type="SpotLight3D" parent="Spotlights"]
+unique_name_in_owner = true
+transform = Transform3D(0.962119, -0.0509858, 0.267821, 0.268714, 0.343268, -0.899978, -0.0460485, 0.937853, 0.343965, -2.1961, 1.26568, -2.25989)
+layers = 524289
+light_energy = 2.96
+shadow_enabled = true
+spot_range = 2.0
+
+[node name="OutsideLight" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.289294, -0.18214, 0.939752, 0.626757, 0.705992, 0.329774, -0.723523, 0.684398, -0.0900817, -3.994, 2.23357, -1.43327)
+layers = 524289
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 1.0
+script = ExtResource("1_a552j")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.08786)
+script = ExtResource("6_jsg5t")
+
+[node name="FloorAnim" type="AnimationPlayer" parent="Floor"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_uil5p")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_unxyi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(7.86298, 0, 0, 0, 0.0739778, 0, 0, 0, 7.81052, 0, 0, 0)
+mesh = SubResource("BoxMesh_rvif7")
+skeleton = NodePath("../..")
+
+[node name="FloorOpens" type="AudioStreamPlayer" parent="Floor"]
+unique_name_in_owner = true
+stream = ExtResource("15_66y0c")
+
+[node name="Ceiling" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204644, 3.03165, 0.00968616)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling"]
+shape = SubResource("BoxShape3D_yp6ot")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(7.86298, 0, 0, 0, 0.0739778, 0, 0, 0, 7.81052, 0, 0, 0)
+mesh = SubResource("BoxMesh_x0mlr")
+skeleton = NodePath("../..")
+
+[node name="Op Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.389, 2.963, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Op Wall"]
+shape = SubResource("BoxShape3D_yp6ot")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Op Wall"]
+transform = Transform3D(7.86298, 0, 0, 0, 0.0739778, 0, 0, 0, 7.81052, 0, 0, 0)
+mesh = SubResource("BoxMesh_x0mlr")
+skeleton = NodePath("../..")
+
+[node name="Keypad" parent="." instance=ExtResource("4_3av3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83162, 1.43931, -3.74118)
+
+[node name="Tray" parent="." instance=ExtResource("5_xg50g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.264951, 0, -4.92825)
+
+[node name="Driver1" parent="Tray/TrayHolder" index="3" instance=ExtResource("3_o4ric")]
+transform = Transform3D(-0.0112571, -0.99979, -0.0171721, 0, 0.0171732, -0.999853, 0.999937, -0.0112554, -0.00019332, -0.201032, 0.789109, 0.584643)
+
+[node name="Crowbar" parent="Tray/TrayHolder" index="4" instance=ExtResource("14_0a77r")]
+unique_name_in_owner = true
+transform = Transform3D(0.0562745, 0, 0.998415, 0, 1, 0, -0.998415, 0, 0.0562745, -0.201942, 0.335779, 0.503783)
+visible = false
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall" type="StaticBody3D" parent="Walls"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8187, 0.489492, -3.72116)
+shape = SubResource("BoxShape3D_mpc2e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall"]
+transform = Transform3D(2.49248, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, -2.7788, 0.476018, -3.77993)
+mesh = SubResource("BoxMesh_dgo4p")
+
+[node name="Wall2" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.530387, 1.00522, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77998, 0.429752, -3.72116)
+shape = SubResource("BoxShape3D_d22wm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall2"]
+transform = Transform3D(2.07723, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, -3.07154, 0.436911, -3.77993)
+mesh = SubResource("BoxMesh_nmu3q")
+
+[node name="Wall3" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13092, 2.4228, -3.76474)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall3"]
+shape = SubResource("BoxShape3D_jmx46")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall3"]
+transform = Transform3D(2.07723, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, 0, 0)
+mesh = SubResource("BoxMesh_8nb2e")
+
+[node name="Wall4" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06665, 2.4228, -3.76474)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall4"]
+shape = SubResource("BoxShape3D_g8mvr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall4"]
+transform = Transform3D(2.07723, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf8ch")
+
+[node name="Wall5" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5366, 1.49018, -3.76474)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall5"]
+shape = SubResource("BoxShape3D_g8mvr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall5"]
+transform = Transform3D(2.07723, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf8ch")
+
+[node name="Wall6" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85713, 2.42912, -3.76474)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall6"]
+shape = SubResource("BoxShape3D_sdjy6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall6"]
+transform = Transform3D(3.82792, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, 0, 0)
+mesh = SubResource("BoxMesh_fiq08")
+
+[node name="Wall9" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8167, 2.42912, 0.978846)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall9"]
+shape = SubResource("BoxShape3D_chb28")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall9"]
+transform = Transform3D(3.82792, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, 0, -0.0949355)
+mesh = SubResource("BoxMesh_3eo0r")
+
+[node name="BackTopWall" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.16141, 2.42912, -1.49945)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/BackTopWall"]
+shape = SubResource("BoxShape3D_11tj4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/BackTopWall"]
+transform = Transform3D(5.73248, 0, 0, 0, 0.981399, 0, 2.84217e-14, 0, 0.266445, 0, 0, -0.0949354)
+mesh = SubResource("BoxMesh_w2bwd")
+
+[node name="Wall10" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00165, 2.42912, 0.978846)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall10"]
+shape = SubResource("BoxShape3D_chb28")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall10"]
+transform = Transform3D(3.82792, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, 0, -0.0949355)
+mesh = SubResource("BoxMesh_3eo0r")
+
+[node name="Wall7" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89606, 1.50719, -3.76474)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall7"]
+shape = SubResource("BoxShape3D_sdjy6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall7"]
+transform = Transform3D(3.82792, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, -0.0110232, 0)
+mesh = SubResource("BoxMesh_fiq08")
+
+[node name="Wall8" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40174, 0.505217, -3.75263)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall8"]
+shape = SubResource("BoxShape3D_sdjy6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall8"]
+transform = Transform3D(3.82792, 0, 0, 0, 0.981399, 0, 0, 0, 0.266445, 0, 0, 0)
+mesh = SubResource("BoxMesh_fiq08")
+
+[node name="BehindElecPanel" type="StaticBody3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26325, 1.17554, -4.40193)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/BehindElecPanel"]
+shape = SubResource("BoxShape3D_mcgh3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/BehindElecPanel"]
+transform = Transform3D(1, 0, 0, 0, 1.62442, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_67lme")
+
+[node name="ElecPanel" type="Node3D" parent="Walls"]
+transform = Transform3D(0.999794, 0, 0.0203142, 0, 1, 0, -0.0203142, 0, 0.999794, -2.55255, 1.46593, -3.65809)
+
+[node name="ElecPanelDoor" type="StaticBody3D" parent="Walls/ElecPanel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.232226, 0, 0)
+collision_layer = 3
+script = ExtResource("6_3in0p")
+
+[node name="PanelCol" type="CollisionShape3D" parent="Walls/ElecPanel/ElecPanelDoor"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_bq2hu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/ElecPanel/ElecPanelDoor"]
+transform = Transform3D(0.463258, 0, 0, 0, 0.931851, 0, 0, 0, 0.0949144, 0, -0.0150849, 0)
+mesh = SubResource("BoxMesh_agdi8")
+
+[node name="Driver1Need" type="MeshInstance3D" parent="Walls/ElecPanel/ElecPanelDoor/MeshInstance3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.0779394, 0, 0, 0, -1.81794e-09, -0.0415895, 0, 0.0415895, -1.81794e-09, -0.364157, 0.421073, 0.520721)
+mesh = SubResource("PlaneMesh_h6rrh")
+
+[node name="InsideElecPanel" type="Node3D" parent="Walls"]
+
+[node name="FuseBack" type="StaticBody3D" parent="Walls/InsideElecPanel" node_paths=PackedStringArray("the_fuse") groups=["fuse"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.294774, 0.4545, -1.02651)
+collision_layer = 2
+script = ExtResource("8_pqbit")
+the_fuse = NodePath("../../../Fuse")
+
+[node name="FuseBackColl" type="CollisionShape3D" parent="Walls/InsideElecPanel/FuseBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91958, 0.986465, -2.86296)
+shape = SubResource("BoxShape3D_tvnr5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/InsideElecPanel/FuseBack"]
+transform = Transform3D(0.0706878, 0, 0, 0, 0.271156, 0, 0, 0, 0.0526801, -1.91958, 0.986465, -2.86296)
+mesh = SubResource("BoxMesh_0mw5o")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls/InsideElecPanel/FuseBack"]
+transform = Transform3D(0.0706878, 0, 0, 0, 0.0404612, 0, 0, 0, 0.0526801, -1.91958, 1.1018, -2.81161)
+mesh = SubResource("BoxMesh_ulah0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls/InsideElecPanel/FuseBack"]
+transform = Transform3D(0.0706878, 0, 0, 0, 0.0404612, 0, 0, 0, 0.0526801, -1.91958, 0.874012, -2.81161)
+mesh = SubResource("BoxMesh_10afx")
+skeleton = NodePath("../..")
+
+[node name="MissingFuse" type="Label3D" parent="Walls/InsideElecPanel/FuseBack"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09575, 1.09418, -2.81524)
+text = "A missing
+fuse"
+font_size = 10
+outline_size = 8
+
+[node name="InsertedFuse" type="Node3D" parent="Walls/InsideElecPanel/FuseBack"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91668, 0.978124, -2.78919)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/InsideElecPanel/FuseBack/InsertedFuse"]
+transform = Transform3D(0.0887483, 0, 0, 0, 0.0887483, 0, 0, 0, 0.0887483, 0, 0, 0)
+layers = 524287
+mesh = SubResource("CylinderMesh_twi17")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls/InsideElecPanel/FuseBack/InsertedFuse"]
+transform = Transform3D(0.0923688, 0, 0, 0, 0.0185239, 0, 0, 0, 0.0923688, 0.000785947, 0.0697137, -0.0006001)
+layers = 524287
+mesh = SubResource("CylinderMesh_ukn1p")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls/InsideElecPanel/FuseBack/InsertedFuse"]
+transform = Transform3D(0.0923688, 0, 0, 0, 0.0185239, 0, 0, 0, 0.0923688, 0.000785947, -0.0741181, -0.0006001)
+layers = 524287
+mesh = SubResource("CylinderMesh_ukn1p")
+
+[node name="BrokenWire" type="StaticBody3D" parent="Walls/InsideElecPanel" node_paths=PackedStringArray("the_tape") groups=["wire"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.491573, 0.238304, -1.02651)
+collision_layer = 2
+script = ExtResource("9_bcu00")
+the_tape = NodePath("../../../Boxes/Box12/Hinge/DoorPanel/Tape")
+
+[node name="FuseBackColl" type="CollisionShape3D" parent="Walls/InsideElecPanel/BrokenWire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91958, 0.986465, -2.86296)
+shape = SubResource("BoxShape3D_tvnr5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/InsideElecPanel/BrokenWire"]
+transform = Transform3D(0.0706878, 0, 0, 0, 0.271156, 0, 0, 0, 0.0526801, -1.91958, 0.986465, -2.86296)
+mesh = SubResource("BoxMesh_u23bu")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls/InsideElecPanel/BrokenWire"]
+transform = Transform3D(0.0228654, 0, 0, 0, 0.0639534, 0, 0, 0, 0.0273037, -1.91958, 1.05884, -2.81161)
+mesh = SubResource("CylinderMesh_ws6ge")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls/InsideElecPanel/BrokenWire"]
+transform = Transform3D(0.0228654, 0, 0, 0, 0.0563855, 0, 0, 0, 0.0273037, -1.91958, 0.911339, -2.81161)
+mesh = SubResource("CylinderMesh_77x8t")
+skeleton = NodePath("../..")
+
+[node name="TapedWire" type="MeshInstance3D" parent="Walls/InsideElecPanel/BrokenWire"]
+unique_name_in_owner = true
+transform = Transform3D(0.0233587, 0, 0, 0, 0.0405947, 0, 0, 0, 0.0278928, -1.91968, 0.982275, -2.81142)
+visible = false
+mesh = SubResource("CylinderMesh_yn6xq")
+skeleton = NodePath("../..")
+
+[node name="BrokenWire" type="Label3D" parent="Walls/InsideElecPanel/BrokenWire"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73603, 0.901362, -2.78822)
+text = "A broken
+wire"
+font_size = 10
+outline_size = 8
+
+[node name="Boxes" type="Node3D" parent="."]
+
+[node name="Box1" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.59557, 1.56125, -2.56624)
+box_number = "1"
+locked = true
+tool_needed = "Driver1"
+swing_neg = true
+
+[node name="Box2" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, -1.48497)
+box_number = "2"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box3" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, -0.385098)
+box_number = "3"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box4" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, 0.683628)
+box_number = "4"
+locked = true
+tool_needed = "Driver2"
+swing_neg = true
+
+[node name="Box5" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52387, 1.56173, 1.75215)
+box_number = "5"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box6" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.422702, 1.56173, 1.75215)
+box_number = "6"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box7" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.661411, 1.56173, 1.75215)
+box_number = "7"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box8" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74185, 1.56173, 1.75215)
+box_number = "8"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box9" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.83514, 1.56173, 1.75215)
+box_number = "9"
+locked = true
+tool_needed = "Driver2"
+swing_neg = true
+
+[node name="Box10" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.89476, 1.56173, 1.75215)
+box_number = "10"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box11" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.59557, 0.524554, -2.56624)
+box_number = "11"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box12" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, -1.48497)
+box_number = "12"
+locked = true
+tool_needed = "Driver2"
+swing_neg = true
+
+[node name="Tape" parent="Boxes/Box12/Hinge/DoorPanel" index="5" instance=ExtResource("12_yjs62")]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -0.262588, 0.360434, -0.0434551)
+
+[node name="Box13" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, -0.385098)
+box_number = "13"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box14" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, 0.683628)
+box_number = "14"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box15" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52387, 0.525886, 1.75215)
+box_number = "15"
+locked = true
+tool_needed = "Driver1"
+swing_neg = true
+
+[node name="Box16" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.422702, 0.525886, 1.75215)
+box_number = "16"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box17" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.661411, 0.525886, 1.75215)
+box_number = "17"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box18" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74185, 0.525886, 1.75215)
+box_number = "18"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Box19" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.83514, 0.525886, 1.75215)
+box_number = "19"
+locked = true
+tool_needed = "Driver2"
+swing_neg = true
+
+[node name="Box20" parent="Boxes" instance=ExtResource("2_3ssxh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.89476, 0.525886, 1.75215)
+box_number = "20"
+locked = true
+tool_needed = "Crowbar"
+swing_neg = true
+
+[node name="Doors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1348, 1.11624, -3.9426)
+script = ExtResource("13_nc8eb")
+
+[node name="RightDoor" type="StaticBody3D" parent="Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0556, 0, 0.756122)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/RightDoor"]
+shape = SubResource("BoxShape3D_teegx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Doors/RightDoor"]
+transform = Transform3D(0.172604, 0, 0, 0, 4.00192, 0, 0, 0, 3.52304, 0, 0, 0)
+mesh = SubResource("BoxMesh_xbfip")
+
+[node name="LeftDoor" type="StaticBody3D" parent="Doors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0556, 0, 4.33598)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doors/LeftDoor"]
+shape = SubResource("BoxShape3D_w4fbm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Doors/LeftDoor"]
+transform = Transform3D(0.172604, 0, 0, 0, 4.00192, 0, 0, 0, 3.52304, 0, 0, 0)
+mesh = SubResource("BoxMesh_6lnq0")
+
+[node name="DoorAnimation" type="AnimationPlayer" parent="Doors"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_rhq46")
+}
+
+[node name="DoorAudio" type="AudioStreamPlayer3D" parent="Doors"]
+unique_name_in_owner = true
+stream = ExtResource("29_uykyc")
+
+[node name="Fuse" parent="." instance=ExtResource("11_xpn3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8872, 1.33851, -2.98026)
+
+[node name="NoteA" parent="." instance=ExtResource("13_wfgp1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82775, 1.13291, 0.486551)
+
+[node name="NoteBody" parent="NoteA" index="0"]
+item_name = "NoteA"
+
+[node name="NoteB" parent="." instance=ExtResource("13_wfgp1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139386, 0.240719, 0.812872)
+
+[node name="NoteBody" parent="NoteB" index="0"]
+item_name = "NoteB"
+
+[node name="Monster" type="Node3D" parent="." node_paths=PackedStringArray("the_player")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.97022, 1.62929, -1.52074)
+script = ExtResource("17_h5f21")
+the_player = NodePath("../Player")
+
+[node name="RightEye" type="SpotLight3D" parent="Monster"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154474, 0.414583, 1.74477)
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+spot_range = 0.5
+spot_angle = 20.0
+
+[node name="LeftEye" type="SpotLight3D" parent="Monster"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.401012, 0.414583, 1.74477)
+light_color = Color(1, 0, 0, 1)
+spot_range = 0.5
+spot_angle = 20.0
+
+[node name="MonsterAudio" type="AudioStreamPlayer3D" parent="Monster"]
+unique_name_in_owner = true
+stream = ExtResource("19_ufgoy")
+
+[node name="MonsterGrab" type="AudioStreamPlayer" parent="Monster"]
+unique_name_in_owner = true
+stream = ExtResource("25_hjsqy")
+
+[node name="Arm" type="MeshInstance3D" parent="Monster"]
+unique_name_in_owner = true
+transform = Transform3D(0.220219, 3.93702e-08, 1.24512e-08, -9.61868e-09, -0.0353407, 0.273892, 1.00035e-08, -0.900684, -0.0107469, -0.064605, -0.380736, -0.882255)
+mesh = SubResource("CapsuleMesh_8cqta")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Monster/Arm"]
+transform = Transform3D(0.0664203, 0.0446153, 0.487821, 0.0121389, -0.314605, 0.0684187, 0.344597, 0.00248281, -0.0964367, 0.278535, -1.10135, 0.148154)
+mesh = SubResource("PrismMesh_obwlx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Monster/Arm"]
+transform = Transform3D(0.0976269, -0.0368876, -0.478624, 0.020268, -0.314222, 0.0688744, -0.336696, -0.0296108, -0.134634, -0.32143, -1.10135, 0.148154)
+mesh = SubResource("PrismMesh_obwlx")
+
+[node name="Driver2" parent="." instance=ExtResource("23_bhgnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04165, 0.446789, 0.94359)
+
+[node name="FallArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.981193, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallArea"]
+shape = SubResource("BoxShape3D_ei2sd")
+
+[node name="RoofPanel" type="StaticBody3D" parent="." groups=["roof_panel"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.022, 3.003, -2.317)
+collision_layer = 2
+script = ExtResource("25_srlth")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoofPanel"]
+shape = SubResource("BoxShape3D_7qxj7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoofPanel"]
+transform = Transform3D(1, 0, 0, 0, 0.0439838, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_eg0gs")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_7maqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0877591, 1.32933, -1.13671)
+
+[node name="RookPanelAdim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_87jt8")
+}
+
+[node name="ElevatorMove" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("28_sexol")
+
+[node name="ElevatorDingDoor" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("29_uykyc")
+
+[connection signal="animation_finished" from="Tray/TrayAnim" to="Tray" method="_on_tray_anim_animation_finished"]
+[connection signal="animation_finished" from="Doors/DoorAnimation" to="Doors" method="_on_door_animation_animation_finished"]
+[connection signal="body_entered" from="FallArea" to="Player" method="_on_fall_area_body_entered"]
+
+[editable path="Tray"]
+[editable path="Boxes/Box12"]
+[editable path="NoteA"]
+[editable path="NoteB"]

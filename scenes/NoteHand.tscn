@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwwapdthyfkoy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qonhg"]
+albedo_color = Color(1, 1, 0.764706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ifujt"]
+material = SubResource("StandardMaterial3D_qonhg")
+
+[node name="NoteHand" type="Node3D"]
+transform = Transform3D(0.709759, 0.359745, 0.605662, -0.70203, 0.290096, 0.650383, 0.0582714, -0.886808, 0.45845, 0, 0.183838, 0.146539)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.192379, 8.14907e-10, 1.46683e-08, -1.11759e-08, 0.0204571, -2.23517e-08, -5.30854e-08, 9.31323e-10, 0.116017, 0.0574666, -0.423636, 0.0950478)
+layers = 524288
+mesh = SubResource("BoxMesh_ifujt")
+skeleton = NodePath("")

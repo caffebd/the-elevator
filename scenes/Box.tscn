@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://dihpoknsgpxhp"]
+
+[ext_resource type="Script" path="res://scripts/Box.gd" id="1_cfqqm"]
+[ext_resource type="Script" path="res://scripts/DoorPanel.gd" id="1_ykgrp"]
+[ext_resource type="Texture2D" uid="uid://j6wxb34g4tsw" path="res://assets/UI/driver1_icon.png" id="3_54qfx"]
+[ext_resource type="Texture2D" uid="uid://b1plicgmm2pdu" path="res://assets/UI/driver2_icon.png" id="3_r7blf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3y446"]
+size = Vector3(1, 1, 0.055)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tm5v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5dkel"]
+material = SubResource("StandardMaterial3D_2tm5v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y276e"]
+albedo_texture = ExtResource("3_54qfx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_748gk"]
+material = SubResource("StandardMaterial3D_y276e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djg1n"]
+albedo_texture = ExtResource("3_r7blf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ow8f3"]
+material = SubResource("StandardMaterial3D_djg1n")
+
+[node name="Box" type="Node3D" node_paths=PackedStringArray("door_panel") groups=["box"]]
+script = ExtResource("1_cfqqm")
+door_panel = NodePath("Hinge/DoorPanel")
+
+[node name="Panel" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel"]
+shape = SubResource("BoxShape3D_3y446")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Panel"]
+transform = Transform3D(1.02856, 0, 0, 0, 1.02856, 0, 0, 0, 0.0533715, 0, 0, 0)
+mesh = SubResource("BoxMesh_5dkel")
+
+[node name="Panel2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.037)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel2"]
+shape = SubResource("BoxShape3D_3y446")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Panel2"]
+transform = Transform3D(1.02856, 0, 0, 0, 1.02856, 0, 0, 0, 0.0533715, 0, 0, 0)
+mesh = SubResource("BoxMesh_5dkel")
+
+[node name="Panel4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00802295, 0, 0.503588)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel4"]
+shape = SubResource("BoxShape3D_3y446")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Panel4"]
+transform = Transform3D(1.02856, 0, 0, 0, 1.02856, 0, 0, 0, 0.0533715, 0, 0, 0)
+mesh = SubResource("BoxMesh_5dkel")
+
+[node name="Panel3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, -0.48728, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel3"]
+shape = SubResource("BoxShape3D_3y446")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Panel3"]
+transform = Transform3D(1.02856, 0, 0, 0, 1.02856, 0, 0, 0, 0.0533715, 0, 0, 0)
+mesh = SubResource("BoxMesh_5dkel")
+
+[node name="Panel5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 0.488893, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel5"]
+shape = SubResource("BoxShape3D_3y446")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Panel5"]
+transform = Transform3D(1.02856, 0, 0, 0, 1.02856, 0, 0, 0, 0.0533715, 0, 0, 0)
+mesh = SubResource("BoxMesh_5dkel")
+
+[node name="Hinge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00703, 0.0859721, 1.06525)
+
+[node name="DoorPanel" type="StaticBody3D" parent="Hinge"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0321978, -0.0906119, -0.527504)
+collision_layer = 2
+script = ExtResource("1_ykgrp")
+
+[node name="DoorCollision" type="CollisionShape3D" parent="Hinge/DoorPanel"]
+shape = SubResource("BoxShape3D_3y446")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hinge/DoorPanel"]
+transform = Transform3D(1.02856, 0, 0, 0, 1.02856, 0, 0, 0, 0.0533715, 0, 0, 0)
+mesh = SubResource("BoxMesh_5dkel")
+
+[node name="BoxLabel" type="Label3D" parent="Hinge/DoorPanel"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.313059, 0.395784, 0.0276146)
+modulate = Color(0.439216, 0.439216, 0.439216, 1)
+outline_modulate = Color(0.811765, 0.811765, 0.811765, 1)
+text = "[1]"
+font_size = 12
+outline_size = 3
+
+[node name="Driver1Need" type="MeshInstance3D" parent="Hinge/DoorPanel"]
+unique_name_in_owner = true
+transform = Transform3D(0.0272208, 0, 0, 0, -1.18986e-09, -0.0272208, 0, 0.0272208, -1.18986e-09, 0.461941, 0.464891, 0.0382783)
+visible = false
+mesh = SubResource("PlaneMesh_748gk")
+
+[node name="Driver2Need" type="MeshInstance3D" parent="Hinge/DoorPanel"]
+unique_name_in_owner = true
+transform = Transform3D(0.027, 0, 0, 0, -1.18021e-09, -0.027, 0, 0.027, -1.18021e-09, 0.462, 0.465, 0.038)
+visible = false
+mesh = SubResource("PlaneMesh_ow8f3")

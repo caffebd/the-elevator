@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyb52g3i6dr8t"]
+
+[ext_resource type="Script" path="res://scripts/Card.gd" id="1_h4uua"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ow82e"]
+size = Vector3(0.17, 0.005, 0.105)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ab0b1"]
+
+[node name="Card" type="Node3D"]
+
+[node name="CardBody" type="StaticBody3D" parent="." groups=["collectible"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_h4uua")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CardBody"]
+shape = SubResource("BoxShape3D_ow82e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.165904, 0, 0, 0, 0.0060753, 0, 0, 0, 0.107588, 0, 0, 0)
+mesh = SubResource("BoxMesh_ab0b1")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0.00392584, 0)
+modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(1, 0, 0, 1)
+text = "3333"
+font_size = 12
+outline_size = 1

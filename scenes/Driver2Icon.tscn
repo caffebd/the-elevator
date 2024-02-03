@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://rfvj57q830g7"]
+
+[ext_resource type="Texture2D" uid="uid://b1plicgmm2pdu" path="res://assets/UI/driver2_icon.png" id="1_8viqg"]
+
+[node name="Driver2Icon" type="ColorRect"]
+custom_minimum_size = Vector2(52, 52)
+offset_right = 52.0
+offset_bottom = 52.0
+color = Color(1, 1, 1, 0.137255)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = 59.0
+offset_bottom = 56.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_8viqg")

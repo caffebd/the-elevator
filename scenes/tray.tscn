@@ -1,0 +1,172 @@
+[gd_scene load_steps=9 format=3 uid="uid://db85bxvootgio"]
+
+[ext_resource type="Script" path="res://scripts/Tray.gd" id="1_6ydki"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2qu5i"]
+size = Vector3(2, 1, 0.285)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rf7u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ac2p0"]
+material = SubResource("StandardMaterial3D_1rf7u")
+
+[sub_resource type="Animation" id="Animation_j0ybc"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrayHolder:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrayHolder:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrayHolder:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_2oqkr"]
+resource_name = "tray_in"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrayHolder:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrayHolder:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrayHolder:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.0875, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+
+[sub_resource type="Animation" id="Animation_b2kf7"]
+resource_name = "tray_out"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrayHolder:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrayHolder:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrayHolder:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.0875, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2bkt"]
+_data = {
+"RESET": SubResource("Animation_j0ybc"),
+"tray_in": SubResource("Animation_2oqkr"),
+"tray_out": SubResource("Animation_b2kf7")
+}
+
+[node name="Tray" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28142, 0, 0)
+script = ExtResource("1_6ydki")
+
+[node name="TrayHolder" type="Node3D" parent="."]
+
+[node name="Back" type="StaticBody3D" parent="TrayHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrayHolder/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240716, 0, 0)
+shape = SubResource("BoxShape3D_2qu5i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TrayHolder/Back"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.298, -0.253309, 0, 0)
+mesh = SubResource("BoxMesh_ac2p0")
+
+[node name="Front" type="StaticBody3D" parent="TrayHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.15759)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrayHolder/Front"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240716, 0, 0)
+shape = SubResource("BoxShape3D_2qu5i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TrayHolder/Front"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.298, -0.253309, 0, 0)
+mesh = SubResource("BoxMesh_ac2p0")
+
+[node name="Bottom" type="StaticBody3D" parent="TrayHolder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.54607, 0.55396)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrayHolder/Bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240716, 0, 0)
+shape = SubResource("BoxShape3D_2qu5i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TrayHolder/Bottom"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.298, -0.253309, 0, 0)
+mesh = SubResource("BoxMesh_ac2p0")
+
+[node name="TrayAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v2bkt")
+}

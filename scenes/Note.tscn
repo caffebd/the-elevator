@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw3gt6y1nu1le"]
+
+[ext_resource type="Script" path="res://scripts/Note.gd" id="1_pu56c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gh8pt"]
+size = Vector3(0.19, 0.03, 0.11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qonhg"]
+albedo_color = Color(1, 1, 0.764706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ifujt"]
+material = SubResource("StandardMaterial3D_qonhg")
+
+[node name="Note" type="Node3D"]
+
+[node name="NoteBody" type="StaticBody3D" parent="." groups=["collectible"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_pu56c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NoteBody"]
+shape = SubResource("BoxShape3D_gh8pt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NoteBody"]
+transform = Transform3D(0.192379, 0, 0, 0, 0.0204571, 0, 0, 0, 0.116017, 0, 0, 0)
+mesh = SubResource("BoxMesh_ifujt")

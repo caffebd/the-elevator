@@ -1,0 +1,295 @@
+[gd_scene load_steps=15 format=3 uid="uid://bk5xahpxg5pa1"]
+
+[ext_resource type="Script" path="res://scripts/Keypad.gd" id="1_1mi7q"]
+[ext_resource type="PackedScene" uid="uid://cg480qs0wdd60" path="res://scenes/CardHand.tscn" id="1_yb60f"]
+[ext_resource type="AudioStream" uid="uid://be0ta6j7h15lx" path="res://assets/audio/scifi_ui_beep_button_01.wav" id="3_j8psm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84uxf"]
+albedo_color = Color(0.898039, 0.976471, 0.862745, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c3xtp"]
+material = SubResource("StandardMaterial3D_84uxf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ejmf2"]
+size = Vector3(0.105, 0.115, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpgre"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2gnlh"]
+material = SubResource("StandardMaterial3D_wpgre")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0g8rr"]
+size = Vector3(0.225, 0.11, 0.38)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8rs6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_shyla"]
+material = SubResource("StandardMaterial3D_t8rs6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jl3a0"]
+size = Vector3(0.28, 0.03, 0.275)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tk1w"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xbftn"]
+material = SubResource("StandardMaterial3D_4tk1w")
+
+[node name="Keypad" type="Node3D"]
+script = ExtResource("1_1mi7q")
+
+[node name="Backpanel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.524126, 0, 0, 0, 1.12949, 0, 0, 0, 0.215405, 0, -0.0232796, 0)
+mesh = SubResource("BoxMesh_c3xtp")
+
+[node name="1" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0924477, -0.0364744, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="1"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "1"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="1"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="1"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="2" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.078227, -0.0317286, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="2"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "2
+"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="2"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="2"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="3" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0890376, 0.105462, 0.106555)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="3"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "3
+"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="3"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="3"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="4" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0779528, 0.103751, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="4"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "4
+"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="4"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="4"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="5" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0899046, 0.259615, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="5"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "5
+"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="5"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="5"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="6" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763793, 0.256924, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="6"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "6
+"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="6"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="6"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="7" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0905978, 0.417039, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="7"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "7
+"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="7"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="7"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="8" type="StaticBody3D" parent="." groups=["number", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0770358, 0.41428, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="8"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "8
+"
+font_size = 200
+
+[node name="NumbColl" type="CollisionShape3D" parent="8"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="8"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="open" type="StaticBody3D" parent="." groups=["open", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0924477, -0.197886, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="open"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0.00354548, 0.0555432)
+text = "<|>"
+font_size = 100
+
+[node name="NumbColl" type="CollisionShape3D" parent="open"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="open"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="close" type="StaticBody3D" parent="." groups=["close", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0824284, -0.197886, 0.105736)
+collision_layer = 2
+collision_mask = 0
+
+[node name="NumLabel" type="Label3D" parent="close"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0.00231475, 0.002966, 0.0554226)
+text = ">|<"
+font_size = 100
+
+[node name="NumbColl" type="CollisionShape3D" parent="close"]
+shape = SubResource("BoxShape3D_ejmf2")
+
+[node name="Number" type="MeshInstance3D" parent="close"]
+transform = Transform3D(0.107453, 0, 0, 0, 0.107453, 0, 0, 0, 0.107453, 0, 0, 0)
+mesh = SubResource("BoxMesh_2gnlh")
+skeleton = NodePath("../..")
+
+[node name="Call" type="StaticBody3D" parent="." groups=["call", "show_hud"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0124336, -0.0465781, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CallLabel" type="Label3D" parent="Call"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0680176, -0.336581, 0.163271)
+text = "CALL"
+font_size = 12
+outline_size = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Call"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0704095, -0.341665, -0.0262242)
+shape = SubResource("BoxShape3D_0g8rr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Call"]
+transform = Transform3D(0.226478, 0, 0, 0, 0.100523, 0, 0, 0, 0.0669347, -0.0668194, -0.339364, 0.125116)
+mesh = SubResource("BoxMesh_shyla")
+
+[node name="CardSlot" type="StaticBody3D" parent="." groups=["card_slot", "show_hud"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CardSlot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.057339, -0.510177, -0.0119657)
+shape = SubResource("BoxShape3D_jl3a0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CardSlot"]
+transform = Transform3D(0.287861, 0, 0, 0, 0.0355184, 0, 0, 0, 0.0585324, -0.056526, -0.511573, 0.0890342)
+mesh = SubResource("BoxMesh_xbftn")
+
+[node name="CardInSlot" parent="CardSlot" instance=ExtResource("1_yb60f")]
+unique_name_in_owner = true
+transform = Transform3D(0.999852, 0.0142354, 0.00968491, -0.0146051, 0.999123, 0.03925, -0.00911767, -0.0393857, 0.999182, -0.0584553, -0.513884, 0.109673)
+visible = false
+
+[node name="MeshInstance3D" parent="CardSlot/CardInSlot" index="0"]
+layers = 524287
+
+[node name="Label3D" parent="CardSlot/CardInSlot" index="1"]
+layers = 524287
+
+[node name="CardReader" type="Label3D" parent="CardSlot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594087, -0.545088, 0.131834)
+visible = false
+text = "Card Reader"
+font_size = 10
+outline_size = 8
+
+[node name="KeyBeep" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_j8psm")
+
+[node name="NumberOutofOrder" type="Label3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33601, 0.404774, 0.349656)
+visible = false
+text = "Number keys are
+not working"
+font_size = 10
+outline_size = 8
+
+[editable path="CardSlot/CardInSlot"]

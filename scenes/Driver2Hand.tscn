@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkefibqxwdgye"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ae42c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ph5hy"]
+material = SubResource("StandardMaterial3D_ae42c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amty2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k1qlh"]
+material = SubResource("StandardMaterial3D_amty2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bf51p"]
+albedo_color = Color(1, 0.647059, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_d1nr7"]
+material = SubResource("StandardMaterial3D_bf51p")
+
+[node name="Driver2Hand" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0989971, 0, 0, 0, 0.289833, 0, 0, 0, 0.0891923, 0, 0, 0)
+layers = 524288
+mesh = SubResource("BoxMesh_ph5hy")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0613165, 0, 0, 0, 0.10577, 0, 0, 0, 0.0616527, 0, 0.208966, 0)
+layers = 524288
+mesh = SubResource("CylinderMesh_k1qlh")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0482329, 0, 0, 0, 0.10577, 0, 0, 0, 0.034282, 0.000558734, 0.311386, -6.74278e-05)
+layers = 524288
+mesh = SubResource("PrismMesh_d1nr7")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.10833e-09, 0, 0.034282, 0, 0.10577, 0, -0.0482329, 0, -1.49851e-09, 0.000597522, 0.311386, -6.74278e-05)
+layers = 524288
+mesh = SubResource("PrismMesh_d1nr7")
+skeleton = NodePath("")

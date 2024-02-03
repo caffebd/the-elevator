@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg480qs0wdd60"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ab0b1"]
+
+[node name="CardHand" type="Node3D"]
+transform = Transform3D(0.767992, 0.132802, -0.626539, -0.63866, 0.232072, -0.733659, 0.0479708, 0.96359, 0.263045, 0.0734782, 0.069428, 0.0517086)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.284466, 0, -2.04891e-08, 5.58794e-09, 0.010417, 0, 0, -2.32831e-10, 0.184475, 0, 0, 0)
+layers = 524288
+mesh = SubResource("BoxMesh_ab0b1")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, -1.11759e-08, -1.49012e-08, 2.23517e-08, -5.96046e-08, 1, 7.45058e-09, -1, 0, 0.000528894, 0.00811127, 0.00153546)
+layers = 524288
+modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(1, 0, 0, 1)
+text = "3333"
+font_size = 20
+outline_size = 1
