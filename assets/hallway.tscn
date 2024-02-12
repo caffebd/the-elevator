@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmt2my16fs6kr"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddlqxr01lxwqr" path="res://assets/imported/hallway.obj" id="1_t1861"]
+
+[node name="hallway" type="Node3D"]
+
+[node name="Hallway" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+mesh = ExtResource("1_t1861")
