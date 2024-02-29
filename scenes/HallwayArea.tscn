@@ -27,6 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4825, 0, 0)
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="hallway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.857735, -1.39317, -1.00626)
+visible = false
 
 [node name="hallway2" parent="." instance=ExtResource("1_hrnkp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152161, 0, 0)
@@ -47,6 +48,24 @@ shape = SubResource("BoxShape3D_ck7aj")
 [node name="hallway4" parent="." instance=ExtResource("1_hrnkp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4052, 0, 0)
 
+[node name="hallway10" parent="." instance=ExtResource("1_hrnkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1188, 0, 0)
+
+[node name="hallway11" parent="." instance=ExtResource("1_hrnkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7385, 0, 0)
+
+[node name="hallway12" parent="." instance=ExtResource("1_hrnkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3677, 0, 0)
+
+[node name="hallway13" parent="." instance=ExtResource("1_hrnkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.989, 0, 0)
+
+[node name="hallway14" parent="." instance=ExtResource("1_hrnkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6166, 0, 0)
+
+[node name="hallway15" parent="." instance=ExtResource("1_hrnkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2487, 0, 0)
+
 [node name="hallway6" parent="." instance=ExtResource("1_hrnkp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6659, 0, 0)
 
@@ -64,5 +83,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0313, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_u0f2k")]
 transform = Transform3D(0.0152536, 0, 0.999884, 0, 1, 0, -0.999884, 0, 0.0152536, 1.77954, -0.284751, -1.00364)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.322858, 0, 0, 0, 3.44415, 0, 0, 0, 2.80658, 33.7506, 0.152469, -1.13958)
+size = Vector3(1, 1.21887, 1)
+
+[node name="Label3D" type="Label3D" parent="CSGBox3D"]
+transform = Transform3D(-0.193806, 0, -0.98104, 0, 1, 0, 0.98104, 0, -0.193806, -0.551353, 0, 0)
+modulate = Color(0, 0.444835, 2.88785e-07, 1)
+text = "STAIRS"
+font_size = 20
+outline_size = 3
 
 [connection signal="body_entered" from="hallway3/Reset" to="." method="_on_reset_body_entered"]
