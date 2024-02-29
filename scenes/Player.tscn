@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ogxy"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_gf72i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -21,7 +21,7 @@ shape = SubResource("CapsuleShape3D_0ogxy")
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65775, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556515, 0)
 cull_mask = 524287
 current = true
 fov = 60.0

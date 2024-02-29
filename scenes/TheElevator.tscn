@@ -1282,148 +1282,168 @@ outline_size = 8
 
 [node name="Boxes" type="Node3D" parent="."]
 
-[node name="Box1" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box1" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.59557, 1.56125, -2.56624)
 box_number = "1"
 locked = true
 tool_needed = "Driver1"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box2" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box2" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, -1.48497)
 box_number = "2"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box3" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box3" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, -0.385098)
 box_number = "3"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box4" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box4" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, 0.683628)
 box_number = "4"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box5" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box5" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52387, 1.56173, 1.75215)
 box_number = "5"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box6" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box6" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.422702, 1.56173, 1.75215)
 box_number = "6"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box7" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box7" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.661411, 1.56173, 1.75215)
 box_number = "7"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box8" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box8" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74185, 1.56173, 1.75215)
 box_number = "8"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box9" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box9" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.83514, 1.56173, 1.75215)
 box_number = "9"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box10" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box10" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.89476, 1.56173, 1.75215)
 box_number = "10"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box11" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box11" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.59557, 0.524554, -2.56624)
 box_number = "11"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box12" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box12" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, -1.48497)
 box_number = "12"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
 [node name="Tape" parent="Boxes/Box12/Hinge/DoorPanel" index="5" instance=ExtResource("12_yjs62")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -0.262588, 0.360434, -0.0434551)
 
-[node name="Box13" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box13" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, -0.385098)
 box_number = "13"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box14" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box14" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, 0.683628)
 box_number = "14"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box15" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box15" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52387, 0.525886, 1.75215)
 box_number = "15"
 locked = true
 tool_needed = "Driver1"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box16" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box16" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.422702, 0.525886, 1.75215)
 box_number = "16"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box17" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box17" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.661411, 0.525886, 1.75215)
 box_number = "17"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box18" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box18" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74185, 0.525886, 1.75215)
 box_number = "18"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box19" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box19" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.83514, 0.525886, 1.75215)
 box_number = "19"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box20" parent="Boxes" instance=ExtResource("2_3ssxh")]
+[node name="Box20" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.89476, 0.525886, 1.75215)
 box_number = "20"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
+door_panel = NodePath("Hinge/DoorPanel")
 
 [node name="Doors" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1348, 1.11624, -3.9426)
