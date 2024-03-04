@@ -5,9 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="2_u0f2k"]
 
 [sub_resource type="Environment" id="Environment_pd40s"]
-fog_enabled = true
-fog_light_color = Color(0.152941, 0, 0.0588235, 1)
-fog_density = 0.1454
+background_mode = 1
+reflected_light_source = 1
+tonemap_mode = 3
+fog_mode = 1
+fog_light_color = Color(0.1485, 0.18, 0.126, 1)
+fog_light_energy = 0.0
+fog_density = 1.0
 volumetric_fog_density = 0.1739
 volumetric_fog_albedo = Color(0.231373, 0.145098, 0.0666667, 1)
 volumetric_fog_emission_energy = 217.18

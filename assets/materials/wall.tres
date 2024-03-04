@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b5gw0xwi7px1f"]
+
+[ext_resource type="Texture2D" uid="uid://bftptxbpbeycm" path="res://assets/textures/hallwayWall/wall_painted_tmgmdbwfw/tmgmdbwfw_2K_Normal.jpg" id="2_grxxr"]
+[ext_resource type="Texture2D" uid="uid://cnrco5ssqc7h1" path="res://assets/textures/hallwayWall/wall_painted_tmgmdbwfw/tmgmdbwfw_2K_Roughness.jpg" id="3_rt4l6"]
+
+[resource]
+albedo_color = Color(0.50128, 0.52, 0.4784, 1)
+roughness_texture = ExtResource("3_rt4l6")
+normal_enabled = true
+normal_scale = -0.65
+normal_texture = ExtResource("2_grxxr")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
