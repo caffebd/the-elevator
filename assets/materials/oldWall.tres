@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dbuscfmjn6uf"]
+
+[ext_resource type="Shader" uid="uid://dwq16jslakfl0" path="res://assets/materials/shaders/old_wall.tres" id="1_lukkb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lukkb")

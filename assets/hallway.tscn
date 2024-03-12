@@ -23,6 +23,7 @@ surface_material_override/3 = ExtResource("3_21bfs")
 surface_material_override/4 = ExtResource("2_xdhoe")
 surface_material_override/5 = ExtResource("3_eboqs")
 surface_material_override/6 = ExtResource("5_kh3pi")
+metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hallway"]
 
