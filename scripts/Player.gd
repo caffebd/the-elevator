@@ -162,6 +162,10 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("to_menu"):
 		_to_menu()
+
+	if Input.is_action_just_pressed("test_arm"):
+		Signals.emit_signal("door_open","a")
+		door_opening_a = true
 	
 func _take_action():
 	var collider = ray.get_collider()

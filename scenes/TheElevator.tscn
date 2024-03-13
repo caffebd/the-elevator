@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dvs0rbii3ex0j"]
+[gd_scene load_steps=113 format=3 uid="uid://dvs0rbii3ex0j"]
 
 [ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="1_7maqf"]
 [ext_resource type="Script" path="res://scripts/OutsideLight.gd" id="1_a552j"]
@@ -27,10 +27,12 @@
 [ext_resource type="PackedScene" uid="uid://bpyv7f1m7g5h2" path="res://scenes/Driver2.tscn" id="23_bhgnj"]
 [ext_resource type="AudioStream" uid="uid://cussvjeodrlod" path="res://assets/audio/LargeMonster3_2.wav" id="25_hjsqy"]
 [ext_resource type="Script" path="res://scripts/RoofPanel.gd" id="25_srlth"]
+[ext_resource type="PackedScene" uid="uid://bmu4cc7pli1ff" path="res://assets/arm.tscn" id="26_snqpp"]
 [ext_resource type="AudioStream" uid="uid://dypjjlrcgdy27" path="res://assets/audio/elevator_moving.mp3" id="28_sexol"]
 [ext_resource type="AudioStream" uid="uid://xkpj2f8pxrh2" path="res://assets/audio/elevator_ding_door.mp3" id="29_uykyc"]
 
 [sub_resource type="Environment" id="Environment_y05qo"]
+background_mode = 1
 ambient_light_source = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui06y"]
@@ -650,6 +652,85 @@ material = SubResource("StandardMaterial3D_ui06y")
 [sub_resource type="PrismMesh" id="PrismMesh_obwlx"]
 material = SubResource("StandardMaterial3D_dmlfb")
 
+[sub_resource type="Animation" id="Animation_xh5nl"]
+resource_name = "arm_enter"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MonsterArm:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.376589, -0.25, 0, 0.25, 0, 0.376589, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%MonsterArm:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.477535, -0.25, 0, 0.25, 0, -0.477535, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%MonsterArm:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2.44556, -0.25, 0, 0.25, 0, 3.63732, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+
+[sub_resource type="Animation" id="Animation_5jnpk"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MonsterArm:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.376589, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%MonsterArm:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.477535, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%MonsterArm:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.44556, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w1cwi"]
+_data = {
+"RESET": SubResource("Animation_5jnpk"),
+"arm_enter": SubResource("Animation_xh5nl")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ei2sd"]
 size = Vector3(10, 0.355, 10)
 
@@ -862,7 +943,6 @@ transform = Transform3D(-0.44022, -0.754206, 0.487217, 0.367738, -0.646471, -0.6
 visible = false
 layers = 524289
 light_energy = 1.8
-shadow_enabled = true
 spot_range = 2.0
 
 [node name="Card" parent="EyesRoof" instance=ExtResource("21_o0ioj")]
@@ -924,7 +1004,6 @@ transform = Transform3D(0.575408, -0.30869, -0.757375, 0.785427, -0.0496567, 0.6
 visible = false
 layers = 524289
 light_energy = 1.5
-shadow_enabled = true
 spot_attenuation = 1.27456
 spot_angle_attenuation = 0.267944
 
@@ -932,7 +1011,6 @@ spot_angle_attenuation = 0.267944
 transform = Transform3D(-0.307807, 0.950664, 0.0386497, -0.00598028, -0.0425542, 0.999076, 0.95143, 0.307291, 0.0187837, -1.92983, 2.82825, -2.13946)
 layers = 524289
 light_energy = 1.5
-shadow_enabled = true
 spot_range = 6.417
 spot_angle = 88.0
 spot_angle_attenuation = 0.392292
@@ -941,7 +1019,6 @@ spot_angle_attenuation = 0.392292
 transform = Transform3D(0.713669, -0.697616, 0.0633091, 0.0742083, 0.165166, 0.98347, -0.696541, -0.697174, 0.169643, 0.0160835, 2.94784, -1.99741)
 layers = 524289
 light_energy = 1.5
-shadow_enabled = true
 spot_range = 13.566
 spot_angle = 88.0
 
@@ -950,20 +1027,17 @@ transform = Transform3D(0.655017, 0.623465, 0.426901, -0.305744, -0.297969, 0.90
 visible = false
 layers = 524289
 light_energy = 1.5
-shadow_enabled = true
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Spotlights"]
 transform = Transform3D(-0.140863, 0.909295, 0.391586, -0.556042, -0.399916, 0.728618, 0.819131, -0.115103, 0.56194, -0.465006, 2.50975, -1.53368)
 visible = false
 layers = 524289
 light_energy = 1.5
-shadow_enabled = true
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="Spotlights"]
 transform = Transform3D(-0.988068, -0.117636, -0.0994136, -0.147974, 0.904098, 0.400888, 0.0427207, 0.410815, -0.910717, -3.3916, 1.89861, -0.564719)
 visible = false
 layers = 524289
-shadow_enabled = true
 spot_range = 2.0
 
 [node name="RoffUpSpot" type="SpotLight3D" parent="Spotlights"]
@@ -971,14 +1045,12 @@ unique_name_in_owner = true
 transform = Transform3D(0.962119, -0.0509858, 0.267821, 0.268714, 0.343268, -0.899978, -0.0460485, 0.937853, 0.343965, -2.1961, 1.26568, -2.25989)
 layers = 524289
 light_energy = 2.96
-shadow_enabled = true
 spot_range = 2.0
 
 [node name="OutsideLight" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.289294, -0.18214, 0.939752, 0.626757, 0.705992, 0.329774, -0.723523, 0.684398, -0.0900817, -3.994, 2.23357, -1.43327)
 layers = 524289
 light_energy = 3.0
-shadow_enabled = true
 spot_range = 1.0
 script = ExtResource("1_a552j")
 
@@ -1023,7 +1095,12 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.389
 shape = SubResource("BoxShape3D_yp6ot")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Op Wall"]
-transform = Transform3D(7.86298, 0, 0, 0, 0.0739778, 0, 0, 0, 7.81052, 0, 0, 0)
+transform = Transform3D(0.317195, 0.00994059, 0, -0.0414949, 0.0759879, 0, 0, 0, 0.30129, -0.958751, 0.00540972, -1.12132)
+mesh = SubResource("BoxMesh_x0mlr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Op Wall"]
+transform = Transform3D(0.292007, 0.0091512, 0, -0.0381997, 0.0699537, 0, 0, 0, 0.277365, -0.947363, 0.00540972, -1.68013)
 mesh = SubResource("BoxMesh_x0mlr")
 skeleton = NodePath("../..")
 
@@ -1511,6 +1588,7 @@ spot_angle = 20.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.401012, 0.414583, 1.74477)
 light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
 spot_range = 0.5
 spot_angle = 20.0
 
@@ -1522,9 +1600,14 @@ stream = ExtResource("19_ufgoy")
 unique_name_in_owner = true
 stream = ExtResource("25_hjsqy")
 
+[node name="MonsterArm" parent="Monster" instance=ExtResource("26_snqpp")]
+unique_name_in_owner = true
+transform = Transform3D(-0.475262, 0, 1.42272, -0.61393, 1.35316, -0.205085, -1.28344, -0.647279, -0.428736, 0.376589, -0.477535, -2.44556)
+
 [node name="Arm" type="MeshInstance3D" parent="Monster"]
 unique_name_in_owner = true
 transform = Transform3D(0.220219, 3.93702e-08, 1.24512e-08, -9.61868e-09, -0.0353407, 0.273892, 1.00035e-08, -0.900684, -0.0107469, -0.064605, -0.380736, -0.882255)
+visible = false
 mesh = SubResource("CapsuleMesh_8cqta")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Monster/Arm"]
@@ -1534,6 +1617,12 @@ mesh = SubResource("PrismMesh_obwlx")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Monster/Arm"]
 transform = Transform3D(0.0976269, -0.0368876, -0.478624, 0.020268, -0.314222, 0.0688744, -0.336696, -0.0296108, -0.134634, -0.32143, -1.10135, 0.148154)
 mesh = SubResource("PrismMesh_obwlx")
+
+[node name="ArmEnteringAnim" type="AnimationPlayer" parent="Monster"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_w1cwi")
+}
 
 [node name="Driver2" parent="." instance=ExtResource("23_bhgnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04165, 0.446789, 0.94359)

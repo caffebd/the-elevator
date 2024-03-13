@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmu4cc7pli1ff"]
+[gd_scene load_steps=3 format=3 uid="uid://bmu4cc7pli1ff"]
 
 [ext_resource type="PackedScene" uid="uid://b2jbag0g0vj45" path="res://assets/imported/arm.glb" id="1_vbru3"]
+[ext_resource type="Script" path="res://scripts/MonsterArm.gd" id="2_itxiv"]
 
 [node name="arm" instance=ExtResource("1_vbru3")]
+script = ExtResource("2_itxiv")
 
 [node name="Skeleton3D" parent="Armature_001" index="0"]
 bones/0/rotation = Quaternion(-0.00275266, 0.707901, 0.0110532, 0.70622)
