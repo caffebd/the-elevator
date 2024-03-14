@@ -9,7 +9,7 @@ const SENSITIVITY:float = 0.0008
 
 var code_check_pos: int = 0
 
-
+@export var attack_marker: Marker3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 2.0

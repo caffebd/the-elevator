@@ -52,15 +52,23 @@ func _monster_at_door():
 	#await tween.finished
 	var arm_wait_timer = Timer.new()
 	add_child(arm_wait_timer)
-	arm_wait_timer.start(5)
+	arm_wait_timer.start(1)
 	await arm_wait_timer.timeout
 	if monster_attacking:
-		%ArmEnteringAnim.play("arm_enter")
-		var yield_timer_arm = Timer.new()
-		add_child(yield_timer_arm)
-		yield_timer_arm.start(2.5)
-		await yield_timer_arm.timeout
-		%MonsterArm.search()
+		#%ArmEnteringAnim.play("arm_enter")
+		var enter_tween = create_tween()
+		enter_tween.tween_property(%MonsterArm, "global_position", Vector3(-3,0.759,-1.497 ), 2.0)
+		await enter_tween.finished
+		#var yield_timer_arm = Timer.new()
+		#add_child(yield_timer_arm)
+		#yield_timer_arm.start(2.5)
+		#await yield_timer_arm.timeout
+		%MonsterArm.search(true)
+		var arm_grab_timer = Timer.new()
+		add_child(arm_grab_timer)
+		arm_grab_timer.start(10.0);
+		await arm_grab_timer.timeout
+		monster_grab()
 		#%MonsterGrab.play()
 		#var arm_tween = create_tween()
 		#arm_tween.tween_property(arm, "position:z", 1.5, 1)
@@ -75,3 +83,14 @@ func _monster_at_door():
 			#await arm_tween_2.finished
 			#Signals.emit_signal("update_call_step",16)
 			#get_tree().change_scene_to_file("res://scenes/Menu.tscn")	
+
+func monster_grab():
+	%MonsterArm.search(false)
+	var yield_timer_arm = Timer.new()
+	add_child(yield_timer_arm)
+	yield_timer_arm.start(6);
+	await yield_timer_arm.timeout	
+	var tween = create_tween()
+	tween.tween_property(%MonsterArm, "global_position", Vector3(0.0,0.759,-1.497 ), 4.0)
+	await tween.finished
+	%MonsterArm.attack_mode = true

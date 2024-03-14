@@ -9,11 +9,15 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ogxy"]
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("attack_marker") groups=["Player"]]
 script = ExtResource("1_gf72i")
+attack_marker = NodePath("AttackMarker")
+
+[node name="AttackMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98068, 0, -2.55766)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_pdoig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -652,78 +652,12 @@ material = SubResource("StandardMaterial3D_ui06y")
 [sub_resource type="PrismMesh" id="PrismMesh_obwlx"]
 material = SubResource("StandardMaterial3D_dmlfb")
 
+[sub_resource type="Animation" id="Animation_5jnpk"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_xh5nl"]
 resource_name = "arm_enter"
 length = 3.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%MonsterArm:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.376589, -0.25, 0, 0.25, 0, 0.376589, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%MonsterArm:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.477535, -0.25, 0, 0.25, 0, -0.477535, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%MonsterArm:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-2.44556, -0.25, 0, 0.25, 0, 3.63732, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3)
-}
-
-[sub_resource type="Animation" id="Animation_5jnpk"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%MonsterArm:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.376589, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%MonsterArm:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.477535, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%MonsterArm:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-2.44556, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1cwi"]
 _data = {
@@ -1600,10 +1534,6 @@ stream = ExtResource("19_ufgoy")
 unique_name_in_owner = true
 stream = ExtResource("25_hjsqy")
 
-[node name="MonsterArm" parent="Monster" instance=ExtResource("26_snqpp")]
-unique_name_in_owner = true
-transform = Transform3D(-0.475262, 0, 1.42272, -0.61393, 1.35316, -0.205085, -1.28344, -0.647279, -0.428736, 0.376589, -0.477535, -2.44556)
-
 [node name="Arm" type="MeshInstance3D" parent="Monster"]
 unique_name_in_owner = true
 transform = Transform3D(0.220219, 3.93702e-08, 1.24512e-08, -9.61868e-09, -0.0353407, 0.273892, 1.00035e-08, -0.900684, -0.0107469, -0.064605, -0.380736, -0.882255)
@@ -1623,6 +1553,11 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_w1cwi")
 }
+
+[node name="MonsterArm" parent="." node_paths=PackedStringArray("player") instance=ExtResource("26_snqpp")]
+unique_name_in_owner = true
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, -4.26102, 0.758638, -1.49692)
+player = NodePath("../Player")
 
 [node name="Driver2" parent="." instance=ExtResource("23_bhgnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04165, 0.446789, 0.94359)
@@ -1645,8 +1580,9 @@ shape = SubResource("BoxShape3D_7qxj7")
 transform = Transform3D(1, 0, 0, 0, 0.0439838, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_eg0gs")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_7maqf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0877591, 1.32933, -1.13671)
+[node name="Player" parent="." node_paths=PackedStringArray("attack_marker") groups=["player"] instance=ExtResource("1_7maqf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06598, 0.918181, -0.253332)
+attack_marker = NodePath("AttackMarker")
 
 [node name="RookPanelAdim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

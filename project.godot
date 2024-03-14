@@ -27,10 +27,6 @@ SaveState="*res://autoload/save_state.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/nv.file_system/plugin.cfg")
-
 [global_group]
 
 Player=""
