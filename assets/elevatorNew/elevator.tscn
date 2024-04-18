@@ -1,16 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://nvwqs4pa4sj6"]
+[gd_scene load_steps=5 format=3 uid="uid://nvwqs4pa4sj6"]
 
 [ext_resource type="PackedScene" uid="uid://cku2qg447xuae" path="res://assets/elevatorNew/elevator.glb" id="1_t1rw0"]
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_km8ht"]
+[ext_resource type="Script" path="res://scripts/elevator.gd" id="2_wncba"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1olt0"]
 albedo_color = Color(0.593134, 0.593134, 0.593133, 1)
 
 [node name="elevator" instance=ExtResource("1_t1rw0")]
+script = ExtResource("2_wncba")
 
 [node name="Cube_070" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_km8ht")
 surface_material_override/1 = SubResource("StandardMaterial3D_1olt0")
+
+[node name="Cube_002" parent="." index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.809, -0.268, 0.948)
+
+[node name="Cube_029" parent="." index="3"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.809, -0.268, -0.948)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3686, 0.82701, -1.902)

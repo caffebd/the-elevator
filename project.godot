@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Elevator"
 config/tags=PackedStringArray("git")
-run/main_scene="res://scenes/TheElevator.tscn"
+run/main_scene="res://assets/hallwayScene2.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
@@ -26,10 +26,6 @@ SaveState="*res://autoload/save_state.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/nv.file_system/plugin.cfg")
 
 [global_group]
 

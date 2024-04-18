@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://gogeylfyuf2"]
+
+[ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="1_g2up3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufekq"]
+
+[sub_resource type="Sky" id="Sky_7iren"]
+sky_material = SubResource("ProceduralSkyMaterial_ufekq")
+
+[sub_resource type="Environment" id="Environment_laxwj"]
+background_mode = 2
+sky = SubResource("Sky_7iren")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikv0p"]
+albedo_color = Color(0.497474, 0.497474, 0.497474, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6okso"]
+material = SubResource("StandardMaterial3D_ikv0p")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phrul"]
+
+[node name="TestScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_laxwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(26.9009, 0, 0, 0, 0.114993, 0, 0, 0, 18.447, 0, 0, 0)
+mesh = SubResource("BoxMesh_6okso")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_phrul")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25542, 2.67215, 6.49234)
+current = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("attack_marker") instance=ExtResource("1_g2up3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29365, 0)
+attack_marker = NodePath("AttackMarker")

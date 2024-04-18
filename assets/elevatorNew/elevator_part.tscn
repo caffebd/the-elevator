@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6krwobwixs8l"]
+[gd_scene load_steps=11 format=3 uid="uid://6krwobwixs8l"]
 
 [ext_resource type="PackedScene" uid="uid://brioq7772l0bl" path="res://assets/elevatorNew/elevatorPart.glb" id="1_8yiox"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_be4vi"]
@@ -7,6 +7,15 @@
 [ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="5_kdjk1"]
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="6_38xpa"]
 [ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall2.tres" id="7_3g0ci"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jh4o8"]
+size = Vector3(4.56, 0.075, 2.42)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rlk0x"]
+size = Vector3(4.59, 2.66, 0.055)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a2ul"]
+size = Vector3(1.025, 2.665, 0.12)
 
 [node name="elevatorPart" instance=ExtResource("1_8yiox")]
 
@@ -55,3 +64,27 @@ light_color = Color(0.824746, 0.919732, 0.852873, 1)
 light_energy = 0.05
 shadow_enabled = true
 omni_range = 5.55737
+
+[node name="Floor" type="StaticBody3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.62034, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" index="0"]
+shape = SubResource("BoxShape3D_jh4o8")
+
+[node name="LongWall" type="StaticBody3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25558)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LongWall" index="0"]
+shape = SubResource("BoxShape3D_rlk0x")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75552, -0.068663, 1.21508)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" index="0"]
+shape = SubResource("BoxShape3D_5a2ul")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74258, -0.068663, 1.21508)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" index="0"]
+shape = SubResource("BoxShape3D_5a2ul")
