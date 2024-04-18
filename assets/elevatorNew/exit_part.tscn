@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbiu0qbb5wcxi"]
+
+[ext_resource type="PackedScene" uid="uid://cdxqgbdfauxgr" path="res://assets/elevatorNew/exitPart.glb" id="1_j8swb"]
+[ext_resource type="Material" uid="uid://c7ut6p0ko7wed" path="res://assets/materials/red_metal.tres" id="2_6d15i"]
+[ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="2_ti50k"]
+[ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="3_cvau6"]
+[ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="4_7cf1x"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/wall.tres" id="5_f4fh2"]
+[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall2.tres" id="6_7wrn3"]
+
+[node name="exitPart" instance=ExtResource("1_j8swb")]
+
+[node name="floor_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ti50k")
+
+[node name="light_003" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_cvau6")
+surface_material_override/1 = ExtResource("4_7cf1x")
+
+[node name="roof" parent="." index="2"]
+surface_material_override/0 = ExtResource("5_f4fh2")
+
+[node name="wall" parent="." index="3"]
+surface_material_override/0 = ExtResource("5_f4fh2")
+surface_material_override/1 = ExtResource("2_6d15i")
+
+[node name="doors_003" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_6d15i")
+
+[node name="wall_005" parent="." index="5"]
+surface_material_override/0 = ExtResource("6_7wrn3")
+
+[node name="wall_007" parent="." index="6"]
+surface_material_override/0 = ExtResource("5_f4fh2")
+surface_material_override/1 = ExtResource("5_f4fh2")
+
+[node name="wall_009" parent="." index="7"]
+surface_material_override/0 = ExtResource("5_f4fh2")
+surface_material_override/1 = ExtResource("5_f4fh2")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12029, 0)
+light_color = Color(0.881269, 0.626416, 0, 1)
+light_energy = 0.18
+shadow_enabled = true
+omni_range = 2.74992
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3146, 0)
+light_color = Color(0.881269, 0.626416, 0, 1)
+light_energy = 0.18
+shadow_enabled = true
+omni_range = 1.0038
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162663, 0)
+light_color = Color(0.824746, 0.919732, 0.852873, 1)
+light_energy = 0.05
+shadow_enabled = true
+omni_range = 5.55737

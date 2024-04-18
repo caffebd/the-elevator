@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjk1n55poyfos"]
+[gd_scene load_steps=11 format=3 uid="uid://cjk1n55poyfos"]
 
 [ext_resource type="PackedScene" uid="uid://bmt2my16fs6kr" path="res://assets/hallway.tscn" id="1_hrnkp"]
 [ext_resource type="Script" path="res://scripts/HallwayArea.gd" id="1_slcnw"]
+[ext_resource type="PackedScene" uid="uid://epi7w15jdewb" path="res://assets/elevator.tscn" id="2_nm6md"]
 [ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="2_u0f2k"]
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="5_fv8ld"]
 
 [sub_resource type="Environment" id="Environment_pd40s"]
 background_mode = 1
-reflected_light_source = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.172833, 0.172833, 0.172833, 1)
 tonemap_mode = 3
 fog_enabled = true
 fog_mode = 1
@@ -21,8 +24,19 @@ volumetric_fog_gi_inject = 1.4
 [sub_resource type="BoxShape3D" id="BoxShape3D_ck7aj"]
 size = Vector3(0.075, 1, 2.89)
 
+[sub_resource type="BoxMesh" id="BoxMesh_j54dp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_io0hd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vyus"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
 [node name="HallwayArea" type="Node3D"]
 script = ExtResource("1_slcnw")
+
+[node name="elevator" parent="." instance=ExtResource("2_nm6md")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 34.5146, 0, -1.03961)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pd40s")
@@ -86,11 +100,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.549, 0, 0)
 [node name="hallway5" parent="." instance=ExtResource("1_hrnkp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0313, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("2_u0f2k")]
+[node name="Player" parent="." node_paths=PackedStringArray("attack_marker") instance=ExtResource("2_u0f2k")]
 transform = Transform3D(0.0152536, 0, 0.999884, 0, 1, 0, -0.999884, 0, 0.0152536, 1.77954, -0.284751, -1.00364)
+attack_marker = NodePath("AttackMarker")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(0.322858, 0, 0, 0, 3.44415, 0, 0, 0, 2.80658, 33.7506, 0.152469, -1.13958)
+visible = false
 size = Vector3(1, 1.21887, 1)
 
 [node name="Label3D" type="Label3D" parent="CSGBox3D"]
@@ -99,5 +115,29 @@ modulate = Color(0, 0.444835, 2.88785e-07, 1)
 text = "STAIRS"
 font_size = 20
 outline_size = 3
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.416039, 0, 0, 0, 3.27637, 0, 0, 0, 3.27637, -5.17877, 0.140934, -0.985045)
+mesh = SubResource("BoxMesh_j54dp")
+surface_material_override/0 = ExtResource("5_fv8ld")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.41715, 0, 0, 0, 0.0219029, 0, 0, 0, 1, 35.7432, 1.01286, -0.990879)
+mesh = SubResource("BoxMesh_io0hd")
+surface_material_override/0 = SubResource("StandardMaterial3D_2vyus")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.7412, -0.102046, -1.01498)
+light_color = Color(0.864675, 0.864675, 0.864675, 1)
+shadow_enabled = true
+shadow_bias = 0.064
+omni_range = 237.666
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1301, 0, -1.32422)
+visible = false
+box_projection = true
+interior = true
+ambient_mode = 0
 
 [connection signal="body_entered" from="hallway3/Reset" to="." method="_on_reset_body_entered"]

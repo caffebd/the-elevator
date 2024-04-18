@@ -31,13 +31,17 @@ metadata/_edit_group_ = true
 shape = SubResource("ConcavePolygonShape3D_jn2np")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Hallway"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631177, -0.0380127)
-light_energy = 0.3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06865, -0.0380127)
+light_energy = 0.274
+light_specular = 0.2
+shadow_enabled = true
 distance_fade_begin = 31.05
-omni_range = 4.35021
+omni_range = 4.205
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Hallway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43305, -0.0380127)
 light_energy = 0.2
+light_specular = 0.2
+shadow_enabled = true
 distance_fade_begin = 31.05
 omni_range = 0.68154

@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmy1bciidmuou"]
+
+[ext_resource type="Shader" path="res://assets/chromaticAbberation.gdshader" id="1_kj7ii"]
+[ext_resource type="PackedScene" uid="uid://cg8e3a4ks1fge" path="res://assets/halway2.tscn" id="2_h6ktf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_erh00"]
+shader = ExtResource("1_kj7ii")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="Environment" id="Environment_5wx5y"]
+background_mode = 1
+ambient_light_source = 1
+tonemap_mode = 3
+glow_intensity = 0.21
+glow_strength = 1.55
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 1.0
+fog_depth_end = 66.5
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_erh00")
+offset_left = -220.0
+offset_top = -104.0
+offset_right = 2240.0
+offset_bottom = 1192.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5wx5y")
+
+[node name="hallway2" parent="." instance=ExtResource("2_h6ktf")]
+
+[node name="hallway3" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0, 0)
+
+[node name="hallway4" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, 0, 0)
+
+[node name="hallway5" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8, 0, 0)
+
+[node name="hallway6" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4, 0, 0)
+
+[node name="hallway7" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 0, 0)
+
+[node name="hallway8" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 0, 0)
+
+[node name="hallway9" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, 0)
+
+[node name="hallway10" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4, 0, 0)
+
+[node name="hallway11" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 0)
+
+[node name="hallway12" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6, 0, 0)
+
+[node name="hallway13" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2, 0, 0)
+
+[node name="hallway14" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8, 0, 0)
+
+[node name="hallway15" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.2, 0, 0)
+
+[node name="hallway16" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6, 0, 0)
+
+[node name="hallway17" parent="." instance=ExtResource("2_h6ktf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 40.052, -0.111, 0)
