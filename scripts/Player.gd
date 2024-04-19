@@ -424,3 +424,14 @@ func initial_box_states():
 
 
 
+
+
+func _on_light_area_area_entered(area: Area3D) -> void:
+	if area.get_parent().has_method("light_trigger"):
+		area.get_parent().light_trigger(true)
+		
+
+
+func _on_light_area_area_exited(area: Area3D) -> void:
+	if area.get_parent().has_method("light_trigger"):
+		area.get_parent().light_trigger(false)

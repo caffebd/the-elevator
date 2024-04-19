@@ -14,3 +14,7 @@ func _process(delta):
 func _on_reset_body_entered(body):
 	if body.is_in_group("Player"):
 		body.global_position.x = %ResetPos.global_position.x
+
+
+
+
