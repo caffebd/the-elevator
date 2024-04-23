@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkgwibqthhbk6"]
 
 [ext_resource type="PackedScene" uid="uid://fjmkuoiv18v8" path="res://assets/imported/hallway.glb" id="1_8p78b"]
-[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/wall.tres" id="2_jkjju"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="2_jkjju"]
 [ext_resource type="Material" uid="uid://c3oala0y185ek" path="res://assets/materials/door.tres" id="3_qw44n"]
-[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall2.tres" id="4_nwg8h"]
+[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall.tres" id="4_nwg8h"]
 [ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="5_pobju"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="6_8b5kw"]
 [ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="7_p8n61"]

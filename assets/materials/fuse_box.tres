@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c0uydiycjdmb6"]
+
+[ext_resource type="Texture2D" uid="uid://dionu4uokwc3l" path="res://assets/textures/metal_sheet_vckieff/vckieff_2K_Normal.jpg" id="1_4t6pp"]
+[ext_resource type="Texture2D" uid="uid://b0ls301vyj10c" path="res://assets/textures/metal_sheet_vckieff/vckieff_2K_Roughness.jpg" id="2_10nbv"]
+
+[resource]
+metallic = 0.26
+roughness_texture = ExtResource("2_10nbv")
+normal_enabled = true
+normal_texture = ExtResource("1_4t6pp")

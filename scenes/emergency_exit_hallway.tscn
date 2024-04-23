@@ -3,10 +3,10 @@
 [ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="1_y55cr"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_rwup3"]
 [ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="3_hu5b7"]
-[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/wall.tres" id="4_m8bng"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="4_m8bng"]
 [ext_resource type="Material" uid="uid://c7ut6p0ko7wed" path="res://assets/materials/red_metal.tres" id="5_wv2uo"]
 [ext_resource type="Script" path="res://scripts/emergency_exit_door.gd" id="6_0umnx"]
-[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall2.tres" id="6_orif3"]
+[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall.tres" id="6_orif3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hllap"]
 

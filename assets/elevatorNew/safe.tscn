@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctlukj8yc6bqt"]
+
+[ext_resource type="PackedScene" uid="uid://dgmchbhx2avxu" path="res://assets/elevatorNew/safe.glb" id="1_p0bnu"]
+[ext_resource type="Material" path="res://assets/materials/safe.tres" id="2_33vgf"]
+
+[node name="safe" instance=ExtResource("1_p0bnu")]
+
+[node name="body" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_33vgf")
+
+[node name="door" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_33vgf")

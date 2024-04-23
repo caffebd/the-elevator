@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bw713rlnd42xs"]
+
+[ext_resource type="PackedScene" uid="uid://u3d72c7h7bkr" path="res://assets/elevatorNew/fuseBox.glb" id="1_huqk3"]
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_6outp"]
+[ext_resource type="Material" uid="uid://bjeovcijlkq5j" path="res://assets/materials/fuse_white.tres" id="4_7xe08"]
+[ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="4_ganwd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0oxs"]
+albedo_color = Color(0.373931, 0.632919, 0.652816, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckf5q"]
+albedo_color = Color(0.999911, 0.454992, 0.390274, 1)
+
+[node name="fuseBox" instance=ExtResource("1_huqk3")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6outp")
+
+[node name="Plane_001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_6outp")
+
+[node name="Cube_031" parent="." index="2"]
+surface_material_override/0 = ExtResource("4_7xe08")
+surface_material_override/1 = SubResource("StandardMaterial3D_k0oxs")
+
+[node name="Cube_027" parent="." index="5"]
+transform = Transform3D(-0.754881, 0, 0.655861, 0, 1, 0, -0.655861, 0, -0.754881, 0.201411, 0.0178301, 0.0480419)
+surface_material_override/0 = ExtResource("2_6outp")
+
+[node name="BezierCurve_016" parent="." index="8"]
+surface_material_override/0 = ExtResource("4_ganwd")
+
+[node name="BezierCurve_017" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ckf5q")

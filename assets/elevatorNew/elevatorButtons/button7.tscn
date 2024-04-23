@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6shh4j4p5aa1"]
+
+[ext_resource type="PackedScene" uid="uid://de02sbxuffjx8" path="res://assets/elevatorNew/button.glb" id="1_6pj1u"]
+[ext_resource type="Shader" uid="uid://bf4vxtgcpjs06" path="res://assets/materials/shaders/buttons/7.tres" id="2_pkw54"]
+[ext_resource type="Material" uid="uid://bpwoijo7kyryk" path="res://assets/materials/button_ring.tres" id="2_ywkh3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8e4xw"]
+render_priority = 0
+shader = ExtResource("2_pkw54")
+shader_parameter/ColorParameter = Color(0.399428, 0.399428, 0.399428, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3tsx"]
+
+[sub_resource type="Animation" id="Animation_abh7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001:surface_material_override/1:shader_parameter/ColorParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.399428, 0.399428, 0.399428, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8n2he"]
+resource_name = "buttonPress"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001:surface_material_override/1:shader_parameter/ColorParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.399428, 0.399428, 0.399428, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.4, 0.4, 0.4, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t666n"]
+_data = {
+"RESET": SubResource("Animation_abh7t"),
+"buttonPress": SubResource("Animation_8n2he")
+}
+
+[node name="button" instance=ExtResource("1_6pj1u")]
+
+[node name="Cylinder_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_ywkh3")
+surface_material_override/1 = SubResource("ShaderMaterial_8e4xw")
+surface_material_override/2 = SubResource("StandardMaterial3D_q3tsx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_t666n")
+}

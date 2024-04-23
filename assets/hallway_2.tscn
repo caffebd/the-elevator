@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://7v185bmguf0k"]
+
+[ext_resource type="PackedScene" uid="uid://wrhbbj3lar00" path="res://assets/elevatorNew/hallway2.glb" id="1_r5cat"]
+[ext_resource type="Material" uid="uid://c3oala0y185ek" path="res://assets/materials/door.tres" id="7_jm45h"]
+
+[node name="hallway2" instance=ExtResource("1_r5cat")]
+
+[node name="door" parent="." index="8"]
+surface_material_override/0 = ExtResource("7_jm45h")
+
+[node name="door_001" parent="." index="9"]
+surface_material_override/0 = ExtResource("7_jm45h")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="10"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716229, 0)
+light_color = Color(0.932671, 0.919864, 0.713045, 1)
+light_energy = 0.1
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 15.0
+distance_fade_shadow = 15.0
+omni_range = 3.71582
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="11"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93538, 0)
+light_color = Color(0.932671, 0.919864, 0.713045, 1)
+light_energy = 0.2
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 15.0
+distance_fade_shadow = 15.0
+omni_range = 1.00343

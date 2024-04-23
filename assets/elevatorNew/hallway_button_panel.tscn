@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://lsdkxs60ecih"]
+
+[ext_resource type="PackedScene" uid="uid://ccwxf3k0wgqex" path="res://assets/elevatorNew/hallwayButtonPanel.glb" id="1_ohdbr"]
+[ext_resource type="Material" uid="uid://ciw25665oi43k" path="res://assets/materials/button_panel.tres" id="2_a1cee"]
+
+[node name="hallwayButtonPanel2" instance=ExtResource("1_ohdbr")]
+
+[node name="hallwayButtonPanel" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_a1cee")

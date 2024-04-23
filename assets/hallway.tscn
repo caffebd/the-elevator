@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://bmt2my16fs6kr"]
 
 [ext_resource type="ArrayMesh" uid="uid://ddlqxr01lxwqr" path="res://assets/imported/hallway.obj" id="1_t1861"]
-[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/wall.tres" id="2_sjq5e"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="2_sjq5e"]
 [ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="2_xdhoe"]
 [ext_resource type="Material" uid="uid://c3oala0y185ek" path="res://assets/materials/door.tres" id="3_21bfs"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="3_eboqs"]
-[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall2.tres" id="4_ci7io"]
+[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall.tres" id="4_ci7io"]
 [ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="5_kh3pi"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jn2np"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dupi3lsm25xgk"]
+
+[ext_resource type="PackedScene" uid="uid://btgqwfto1p2q3" path="res://assets/elevatorNew/exitDoor.glb" id="1_b0hm1"]
+[ext_resource type="Material" uid="uid://c7ut6p0ko7wed" path="res://assets/materials/red_metal.tres" id="2_urk1t"]
+
+[node name="exitDoor" instance=ExtResource("1_b0hm1")]
+
+[node name="doors_008" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_urk1t")

@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=3 uid="uid://wfpngxabb3vf"]
+
+[ext_resource type="Script" path="res://scripts/HallwayArea.gd" id="1_e05xi"]
+[ext_resource type="PackedScene" uid="uid://7v185bmguf0k" path="res://assets/hallway_2.tscn" id="2_dagrd"]
+[ext_resource type="Shader" path="res://assets/chromaticAbberation.gdshader" id="2_ibois"]
+[ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="3_0avo6"]
+[ext_resource type="PackedScene" uid="uid://dgrtvp0jbijme" path="res://assets/elevatorNew/elevator.tscn" id="7_hk2ug"]
+
+[sub_resource type="Environment" id="Environment_5wx5y"]
+background_mode = 1
+ambient_light_source = 2
+reflected_light_source = 1
+tonemap_mode = 3
+ssil_radius = 1.4
+glow_intensity = 0.21
+glow_strength = 1.55
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_density = 6.0
+fog_depth_begin = 0.0
+fog_depth_end = 83.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_erh00"]
+shader = ExtResource("2_ibois")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6awe"]
+size = Vector3(0.075, 1, 2.89)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lmq05"]
+size = Vector3(0.275, 0.735, 1.905)
+
+[node name="MainHallway" type="Node3D"]
+script = ExtResource("1_e05xi")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5wx5y")
+
+[node name="hallway2" parent="." instance=ExtResource("2_dagrd")]
+
+[node name="hallway3" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63592, 0, 0)
+
+[node name="hallway4" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24683, 0, 0)
+
+[node name="hallway5" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8828, 0, 0)
+
+[node name="hallway6" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5105, 0, 0)
+
+[node name="hallway7" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8746, 0, 0)
+
+[node name="hallway8" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26368, 0, 0)
+
+[node name="hallway9" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62776, 0, 0)
+
+[node name="hallway10" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.048, 0, 0)
+
+[node name="hallway11" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6839, 0, 0)
+
+[node name="hallway12" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.2948, 0, 0)
+
+[node name="hallway13" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.9307, 0, 0)
+
+[node name="hallway14" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5375, 0, 0)
+
+[node name="hallway15" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1734, 0, 0)
+
+[node name="hallway16" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7843, 0, 0)
+
+[node name="hallway17" parent="." instance=ExtResource("2_dagrd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4202, 0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_erh00")
+offset_left = -220.0
+offset_top = -104.0
+offset_right = 2240.0
+offset_bottom = 1192.0
+
+[node name="Player" parent="." node_paths=PackedStringArray("attack_marker") instance=ExtResource("3_0avo6")]
+transform = Transform3D(-0.996348, 0, -0.0853822, 0, 1, 0, 0.0853822, 0, -0.996348, 9.36663, -0.467435, -0.529216)
+attack_marker = NodePath("AttackMarker")
+
+[node name="Reset" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4528, -0.636, 0.0586653)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reset"]
+shape = SubResource("BoxShape3D_m6awe")
+
+[node name="ResetPos" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34077, -1.05787, -0.215217)
+
+[node name="ElevatorTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54103, -0.483876, -0.097915)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ElevatorTrigger"]
+shape = SubResource("BoxShape3D_lmq05")
+
+[node name="elevator" parent="." instance=ExtResource("7_hk2ug")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.637, 0, 3.21881)
+
+[connection signal="body_entered" from="Reset" to="." method="_on_reset_body_entered"]
+[connection signal="body_entered" from="ElevatorTrigger" to="elevator" method="_on_elevator_trigger_body_entered"]
+[connection signal="body_exited" from="ElevatorTrigger" to="." method="_on_elevator_trigger_body_exited"]

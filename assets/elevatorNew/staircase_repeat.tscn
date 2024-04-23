@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5kvfh6sadcyi"]
+
+[ext_resource type="PackedScene" uid="uid://bky7innyvrd5x" path="res://assets/elevatorNew/staircaseRepeat.glb" id="1_ow43k"]
+[ext_resource type="Material" uid="uid://ljva6rwrrncc" path="res://assets/materials/stairs.tres" id="2_a2f10"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/wall.tres" id="2_m5xxj"]
+
+[node name="staircaseRepeat" instance=ExtResource("1_ow43k")]
+
+[node name="Cube_008" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_a2f10")
+
+[node name="Cube_009" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_a2f10")
+
+[node name="Cube_012" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_a2f10")
+
+[node name="emergency exit_002" parent="." index="11"]
+surface_material_override/0 = ExtResource("2_m5xxj")
+
+[node name="Cube_011" parent="." index="12"]
+surface_material_override/0 = ExtResource("2_a2f10")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50471, 2.37973)
+light_color = Color(0.881269, 0.626416, 0, 1)
+light_energy = 0.18
+shadow_blur = 4.79
+omni_range = 2.74992
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69902, 2.37973)
+light_color = Color(0.881269, 0.626416, 0, 1)
+light_energy = 0.18
+shadow_blur = 4.79
+omni_range = 1.0038
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22176, 2.37973)
+light_color = Color(0.824746, 0.919732, 0.852873, 1)
+light_energy = 0.05
+shadow_blur = 4.79
+omni_range = 5.55737
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50471, -2.59573)
+light_color = Color(0.881269, 0.626416, 0, 1)
+light_energy = 0.18
+shadow_blur = 4.79
+omni_range = 2.74992
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69902, -2.59573)
+light_color = Color(0.881269, 0.626416, 0, 1)
+light_energy = 0.18
+shadow_blur = 4.79
+omni_range = 1.0038
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22176, -2.59573)
+light_color = Color(0.824746, 0.919732, 0.852873, 1)
+light_energy = 0.05
+shadow_blur = 4.79
+omni_range = 5.55737

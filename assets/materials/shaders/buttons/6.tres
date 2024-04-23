@@ -1,0 +1,79 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://d3ifb6mu3mtow"]
+
+[ext_resource type="Texture2D" uid="uid://nqvrjknhqn8t" path="res://assets/textures/elevatorButtons/6.jpg" id="1_cqf0o"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6rfgo"]
+texture = ExtResource("1_cqf0o")
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_nbmb3"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
+op_type = 5
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_feevm"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+default_value = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_bcctw"]
+constant = Color(0.0189402, 0.0189402, 0.0189402, 1)
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ro54j"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_h1fpx"]
+constant = 1.0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 ColorParameter : source_color = vec4(0.400000, 0.400000, 0.400000, 1.000000);
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// ColorConstant:5
+	vec4 n_out5p0 = vec4(0.018940, 0.018940, 0.018940, 1.000000);
+
+
+// ColorParameter:4
+	vec4 n_out4p0 = ColorParameter;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Mix:3
+	vec4 n_out3p0 = mix(n_out5p0, n_out4p0, n_out2p0);
+
+
+// FloatConstant:7
+	float n_out7p0 = 1.000000;
+
+
+// VectorOp:6
+	vec3 n_out6p0 = vec3(n_out3p0.xyz) * vec3(n_out7p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	EMISSION = n_out6p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_6rfgo")
+nodes/fragment/2/position = Vector2(-500, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeMix_nbmb3")
+nodes/fragment/3/position = Vector2(-60, 180)
+nodes/fragment/4/node = SubResource("VisualShaderNodeColorParameter_feevm")
+nodes/fragment/4/position = Vector2(-340, 120)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorConstant_bcctw")
+nodes/fragment/5/position = Vector2(-200, 60)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_ro54j")
+nodes/fragment/6/position = Vector2(220, 320)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatConstant_h1fpx")
+nodes/fragment/7/position = Vector2(20, 400)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 3, 1, 3, 0, 6, 0, 7, 0, 6, 1, 5, 0, 3, 0, 6, 0, 0, 5, 3, 0, 0, 0)

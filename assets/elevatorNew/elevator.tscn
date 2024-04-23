@@ -1,167 +1,114 @@
-[gd_scene load_steps=5 format=3 uid="uid://nvwqs4pa4sj6"]
+[gd_scene load_steps=7 format=3 uid="uid://dgrtvp0jbijme"]
 
 [ext_resource type="PackedScene" uid="uid://cku2qg447xuae" path="res://assets/elevatorNew/elevator.glb" id="1_t1rw0"]
-[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_km8ht"]
-[ext_resource type="Script" path="res://scripts/elevator.gd" id="2_wncba"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1olt0"]
-albedo_color = Color(0.593134, 0.593134, 0.593133, 1)
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_r01k5"]
+[ext_resource type="Material" uid="uid://domyhl0b3cq4d" path="res://assets/materials/elevator_lines.tres" id="3_8s10s"]
+[ext_resource type="Material" uid="uid://brnwjocutoqia" path="res://assets/materials/elevator_roof.tres" id="3_gxhwt"]
+[ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="3_wh3wc"]
+[ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="4_4f887"]
 
 [node name="elevator" instance=ExtResource("1_t1rw0")]
-script = ExtResource("2_wncba")
 
 [node name="Cube_070" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_km8ht")
-surface_material_override/1 = SubResource("StandardMaterial3D_1olt0")
+surface_material_override/0 = ExtResource("2_r01k5")
 
 [node name="Cube_002" parent="." index="1"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.809, -0.268, 0.948)
+surface_material_override/0 = ExtResource("2_r01k5")
+
+[node name="light_008" parent="." index="2"]
+surface_material_override/0 = ExtResource("3_wh3wc")
+surface_material_override/1 = ExtResource("4_4f887")
 
 [node name="Cube_029" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_r01k5")
+
+[node name="Cube_001" parent="." index="6"]
+surface_material_override/0 = ExtResource("3_8s10s")
+surface_material_override/1 = ExtResource("3_gxhwt")
+
+[node name="Cube_016" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_r01k5")
+
+[node name="Cube_017" parent="." index="8"]
+surface_material_override/0 = ExtResource("2_r01k5")
+
+[node name="Cube_018" parent="." index="9"]
+surface_material_override/0 = ExtResource("2_r01k5")
+
+[node name="Cube_039" parent="." index="10"]
+surface_material_override/0 = ExtResource("2_r01k5")
+surface_material_override/1 = ExtResource("3_8s10s")
+
+[node name="light_009" parent="." index="11"]
+surface_material_override/0 = ExtResource("3_wh3wc")
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="light_010" parent="." index="12"]
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="light_011" parent="." index="13"]
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="light_012" parent="." index="14"]
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="light_013" parent="." index="15"]
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="light_014" parent="." index="16"]
+surface_material_override/0 = ExtResource("3_wh3wc")
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="light_015" parent="." index="17"]
+surface_material_override/0 = ExtResource("3_wh3wc")
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="light_016" parent="." index="18"]
+surface_material_override/1 = ExtResource("4_4f887")
+
+[node name="Cube_032" parent="." index="19"]
+surface_material_override/0 = ExtResource("2_r01k5")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="21"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.809, -0.268, -0.948)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3686, 0.82701, -1.902)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73711, 1.07282, 1.88512)
+light_color = Color(0.932671, 0.919864, 0.713045, 1)
+light_energy = 0.1
 shadow_enabled = true
-omni_range = 3.503
+distance_fade_enabled = true
+distance_fade_begin = 15.0
+distance_fade_shadow = 15.0
+omni_range = 3.38748
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82245, 0.82701, -1.902)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="22"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36891, 1.07282, 1.88512)
+light_color = Color(0.932671, 0.919864, 0.713045, 1)
+light_energy = 0.1
 shadow_enabled = true
-omni_range = 3.503
+distance_fade_enabled = true
+distance_fade_begin = 15.0
+distance_fade_shadow = 15.0
+omni_range = 3.38748
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735339, 0.82701, -1.902)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
+[node name="OmniLight3D5" type="OmniLight3D" parent="." index="23"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734839, 1.07282, -1.90994)
+light_color = Color(0.932671, 0.919864, 0.713045, 1)
+light_energy = 0.1
 shadow_enabled = true
-omni_range = 3.503
+distance_fade_enabled = true
+distance_fade_begin = 15.0
+distance_fade_shadow = 15.0
+omni_range = 3.38748
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3686, 0.82701, -0.0032351)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
+[node name="OmniLight3D6" type="OmniLight3D" parent="." index="24"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35403, 1.07282, -1.92188)
+light_color = Color(0.932671, 0.919864, 0.713045, 1)
+light_energy = 0.1
 shadow_enabled = true
-omni_range = 3.503
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82245, 0.82701, -0.0032351)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 3.503
-
-[node name="OmniLight3D6" type="OmniLight3D" parent="." index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735339, 0.82701, -0.0032351)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 3.503
-
-[node name="OmniLight3D7" type="OmniLight3D" parent="." index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3686, 0.82701, 1.90634)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 3.503
-
-[node name="OmniLight3D8" type="OmniLight3D" parent="." index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82245, 0.82701, 1.90634)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 3.503
-
-[node name="OmniLight3D9" type="OmniLight3D" parent="." index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735339, 0.82701, 1.90634)
-visible = false
-light_color = Color(0.823529, 0.921569, 0.85098, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 3.503
-
-[node name="OmniLight3D10" type="OmniLight3D" parent="." index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3686, 0.955464, -1.902)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D11" type="OmniLight3D" parent="." index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82245, 0.955464, -1.902)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D12" type="OmniLight3D" parent="." index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735339, 0.955464, -1.902)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D13" type="OmniLight3D" parent="." index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3686, 0.955464, -0.0032351)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D14" type="OmniLight3D" parent="." index="20"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82245, 0.955464, -0.0032351)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D15" type="OmniLight3D" parent="." index="21"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735339, 0.955464, -0.0032351)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D16" type="OmniLight3D" parent="." index="22"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3686, 0.955464, 1.90634)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D17" type="OmniLight3D" parent="." index="23"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82245, 0.955464, 1.90634)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
-
-[node name="OmniLight3D18" type="OmniLight3D" parent="." index="24"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735339, 0.955464, 1.90634)
-visible = false
-light_color = Color(0.882353, 0.627451, 0, 1)
-light_energy = 0.082
-shadow_enabled = true
-omni_range = 1.071
+distance_fade_enabled = true
+distance_fade_begin = 15.0
+distance_fade_shadow = 15.0
+omni_range = 3.38748

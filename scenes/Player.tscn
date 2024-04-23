@@ -30,10 +30,9 @@ shape = SubResource("CapsuleShape3D_0ogxy")
 
 [node name="PlayerCam" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.556515, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.402157, 0)
 cull_mask = 524287
 current = true
-fov = 60.0
 far = 1000.0
 
 [node name="PlayerRay" type="RayCast3D" parent="PlayerCam"]

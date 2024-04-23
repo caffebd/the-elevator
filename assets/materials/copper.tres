@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b4pkp6y6yh73w"]
+
+[ext_resource type="Texture2D" uid="uid://b0ls301vyj10c" path="res://assets/textures/metal_sheet_vckieff/vckieff_2K_Roughness.jpg" id="1_ub6uu"]
+
+[resource]
+albedo_color = Color(0.822861, 0.627305, 0.507103, 1)
+metallic = 0.25
+roughness_texture = ExtResource("1_ub6uu")
