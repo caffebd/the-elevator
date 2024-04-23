@@ -22,6 +22,7 @@ const FOV_CHANGE = 1.5
 @onready var ray = %PlayerRay
 @onready var hud = %Hud
 @onready var player_hand = %Hand
+@onready var head = %Head
 
 var door_opening_a: bool = false
 
@@ -44,19 +45,29 @@ var code_collection:Array[String]=[
 ]
 
 
-
-
-
 var call_pos:int = 0
 
 var in_call: bool = false
 
-
-
 var note_a_text = "\n         [?] 8 3 5"
 var note_b_text = "[u][b][i]You[/i][/b][/u] should [u][b][i]have[/i][/b][/u] taken the stairs [u][b][i]my[/i][/b][/u] [u][b][i]friend[/i][/b][/u]"
 
+
 @export var test_mode: bool = false
+
+@export var wobble_head:bool = false
+
+
+#head wobble settings here
+
+const BOB_FREQ = 3.0
+const BOB_AMP = 0.05
+var t_bob = 0.0
+
+var lean_amount = 1.5
+var lean_weight = 0.05
+
+#end head wobble settings
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -129,7 +140,8 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if use_cursor:
 			return
-		rotate_y(-event.relative.x * SENSITIVITY)
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		#rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60)) 
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -361,7 +373,7 @@ func _physics_process(delta):
 				Signals.emit_signal("number_out_of_order", true)
 			
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
 		if direction:
 			#velocity.x = direction.x * speed
@@ -375,8 +387,26 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 
+
+	if wobble_head:
+		if input_dir.x>0:
+			head.rotation.z = lerp_angle(head.rotation.z, deg_to_rad(-lean_amount), lean_weight)
+		elif input_dir.x<0:
+			head.rotation.z = lerp_angle(head.rotation.z, deg_to_rad(lean_amount), lean_weight)
+		else:
+			head.rotation.z = lerp_angle(head.rotation.z, deg_to_rad(0), lean_weight)
+		
+		t_bob += delta * velocity.length() * float(is_on_floor())
+		camera.transform.origin =_headbob(t_bob)
+
 	move_and_slide()
 
+
+func _headbob(time)->Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ/ 2) * BOB_AMP
+	return pos
 
 func _to_menu():
 	get_tree().change_scene_to_file("res://scenes/Menu.tscn")

@@ -46,13 +46,13 @@ func operate_door():
 	if door_open:
 		var tween = create_tween()
 		print (swing_dir)
-		tween.tween_property(hinge, "rotation_degrees:y", swing_dir, 1.5)
+		tween.tween_property(hinge, "rotation_degrees:y", swing_dir, 1.0)
 		await tween.finished
 		door_moving = false
 		#$DoorCollision.disabled = false
 	else:
 		var tween = create_tween()
-		tween.tween_property(hinge, "rotation_degrees:y", 0.0, 1.5)	
+		tween.tween_property(hinge, "rotation_degrees:y", 0.0, 1.0)	
 		await tween.finished
 		door_moving = false
 		#$DoorCollision.disabled = false

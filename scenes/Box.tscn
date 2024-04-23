@@ -25,9 +25,8 @@ albedo_texture = ExtResource("3_r7blf")
 [sub_resource type="PlaneMesh" id="PlaneMesh_ow8f3"]
 material = SubResource("StandardMaterial3D_djg1n")
 
-[node name="Box" type="Node3D" node_paths=PackedStringArray("door_panel") groups=["box"]]
+[node name="Box" type="Node3D" groups=["box"]]
 script = ExtResource("1_cfqqm")
-door_panel = NodePath("Hinge/DoorPanel")
 
 [node name="Panel" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
@@ -85,7 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00703, 0.0859721, 1.06525)
 [node name="DoorPanel" type="StaticBody3D" parent="Hinge"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0321978, -0.0906119, -0.527504)
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1_ykgrp")
 
 [node name="DoorCollision" type="CollisionShape3D" parent="Hinge/DoorPanel"]

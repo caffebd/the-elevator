@@ -8,7 +8,7 @@ extends Node3D
 
 @export var swing_neg: bool = false
 
-@export var door_panel: StaticBody3D
+@onready var door_panel: StaticBody3D = %DoorPanel
 
 var open: bool = false
 

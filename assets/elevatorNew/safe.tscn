@@ -1,12 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctlukj8yc6bqt"]
+[gd_scene load_steps=8 format=3 uid="uid://ctlukj8yc6bqt"]
 
 [ext_resource type="PackedScene" uid="uid://dgmchbhx2avxu" path="res://assets/elevatorNew/safe.glb" id="1_p0bnu"]
-[ext_resource type="Material" path="res://assets/materials/safe.tres" id="2_33vgf"]
+[ext_resource type="Material" uid="uid://ddkyhba7d50a5" path="res://assets/materials/safe.tres" id="2_33vgf"]
+[ext_resource type="Script" path="res://scripts/Box.gd" id="2_d1u8u"]
+[ext_resource type="Script" path="res://scripts/DoorPanel.gd" id="3_x7m4y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxbcg"]
+size = Vector3(0.43, 0.045, 0.435)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jkkq"]
+size = Vector3(0.445, 0.445, 0.03)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03kk1"]
+size = Vector3(0.025, 0.39, 0.38)
 
 [node name="safe" instance=ExtResource("1_p0bnu")]
+script = ExtResource("2_d1u8u")
 
 [node name="body" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_33vgf")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187325, 0.226203, -0.0136279)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="body/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_qxbcg")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="body" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.187325, -0.231969, -0.0136279)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="body/StaticBody3D2" index="0"]
+shape = SubResource("BoxShape3D_qxbcg")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19189, 0, 0.210591)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="body/StaticBody3D3" index="0"]
+shape = SubResource("BoxShape3D_5jkkq")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="body" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19189, 0, -0.234384)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="body/StaticBody3D4" index="0"]
+shape = SubResource("BoxShape3D_5jkkq")
+
 [node name="door" parent="." index="1"]
+unique_name_in_owner = true
 surface_material_override/0 = ExtResource("2_33vgf")
+
+[node name="DoorPanel" type="StaticBody3D" parent="door" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.201065)
+collision_layer = 2
+script = ExtResource("3_x7m4y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door/DoorPanel" index="0"]
+shape = SubResource("BoxShape3D_03kk1")
+
+[node name="BoxLabel" type="Label3D" parent="door" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00285776, 0.14793, 0.0625953)
+modulate = Color(0.439216, 0.439216, 0.439216, 1)
+outline_modulate = Color(0.811765, 0.811765, 0.811765, 1)
+text = "[1]"
+font_size = 12
+outline_size = 3

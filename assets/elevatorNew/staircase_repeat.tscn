@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bky7innyvrd5x" path="res://assets/elevatorNew/staircaseRepeat.glb" id="1_ow43k"]
 [ext_resource type="Material" uid="uid://ljva6rwrrncc" path="res://assets/materials/stairs.tres" id="2_a2f10"]
-[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/wall.tres" id="2_m5xxj"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="2_m5xxj"]
 
 [node name="staircaseRepeat" instance=ExtResource("1_ow43k")]
 

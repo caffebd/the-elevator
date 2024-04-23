@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6krwobwixs8l"]
+[gd_scene load_steps=9 format=3 uid="uid://6krwobwixs8l"]
 
 [ext_resource type="PackedScene" uid="uid://brioq7772l0bl" path="res://assets/elevatorNew/elevatorPart.glb" id="1_8yiox"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_be4vi"]
@@ -7,6 +7,9 @@
 [ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="5_kdjk1"]
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="6_38xpa"]
 [ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall.tres" id="7_3g0ci"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2t6dj"]
+size = Vector3(4.61, 0.11, 1.955)
 
 [node name="elevatorPart" instance=ExtResource("1_8yiox")]
 
@@ -56,3 +59,9 @@ distance_fade_enabled = true
 distance_fade_begin = 15.0
 distance_fade_shadow = 15.0
 omni_range = 1.00343
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.63205, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_2t6dj")

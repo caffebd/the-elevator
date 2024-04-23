@@ -1,11 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://ccky6fld3avk1"]
+[gd_scene load_steps=30 format=3 uid="uid://ccky6fld3avk1"]
 
 [ext_resource type="Script" path="res://scripts/HallwayArea.gd" id="1_70hd2"]
 [ext_resource type="PackedScene" uid="uid://cffgdsansmwm" path="res://assets/elevatorNew/hallway.tscn" id="1_oqa06"]
 [ext_resource type="Shader" path="res://assets/chromaticAbberation.gdshader" id="1_vdys4"]
 [ext_resource type="PackedScene" uid="uid://f5dbi5rm6a2l" path="res://assets/elevatorNew/exit_sign.tscn" id="2_0enyf"]
-[ext_resource type="PackedScene" uid="uid://ctlukj8yc6bqt" path="res://assets/elevatorNew/safe.tscn" id="2_jry6b"]
-[ext_resource type="PackedScene" uid="uid://dupi3lsm25xgk" path="res://assets/elevatorNew/exit_door.tscn" id="2_m11ma"]
 [ext_resource type="PackedScene" uid="uid://dbiu0qbb5wcxi" path="res://assets/elevatorNew/exit_part.tscn" id="2_nftua"]
 [ext_resource type="PackedScene" uid="uid://bt2t5is8752r6" path="res://scenes/emergency_exit_hallway.tscn" id="2_nrqiq"]
 [ext_resource type="PackedScene" uid="uid://bw713rlnd42xs" path="res://assets/elevatorNew/fuse_box.tscn" id="2_u0ixm"]
@@ -39,7 +37,7 @@ fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.0
-fog_density = 6.0
+fog_density = 8.0
 fog_depth_begin = 0.0
 fog_depth_end = 83.0
 
@@ -56,6 +54,7 @@ size = Vector3(0.075, 1, 2.89)
 size = Vector3(0.275, 0.735, 1.905)
 
 [node name="MainHallway" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_70hd2")
 
 [node name="fuseBox" parent="." instance=ExtResource("2_u0ixm")]
@@ -63,9 +62,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.492
 
 [node name="exitSign2" parent="." instance=ExtResource("2_0enyf")]
 transform = Transform3D(-4.09449e-08, 0.93671, 0, -0.93671, -4.09449e-08, 0, 0, 0, 0.93671, -39.0334, 1.02526, 0)
-
-[node name="exitDoor" parent="." instance=ExtResource("2_m11ma")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.1634, -0.461829, 0.55091)
 
 [node name="exitPart" parent="." instance=ExtResource("2_nftua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8596, 0, 0)
@@ -80,10 +76,6 @@ offset_left = -220.0
 offset_top = -104.0
 offset_right = 2240.0
 offset_bottom = 1192.0
-
-[node name="Player" parent="." node_paths=PackedStringArray("attack_marker") instance=ExtResource("6_a8yqa")]
-transform = Transform3D(-0.996348, 0, -0.0853822, 0, 1, 0, 0.0853822, 0, -0.996348, 9.36663, -0.467435, -0.529216)
-attack_marker = NodePath("AttackMarker")
 
 [node name="Reset" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4528, -0.636, 0.0586653)
@@ -163,56 +155,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.638, 0, 0)
 [node name="elevator" parent="." instance=ExtResource("4_8f3o6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.637, 0, 3.0601)
 
-[node name="safes" type="Node3D" parent="."]
-
-[node name="safe" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -0.923916, 5.9912)
-
-[node name="safe2" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -0.923916, 5.9912)
-
-[node name="safe3" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -0.923916, 5.9912)
-
-[node name="safe4" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -0.923916, 5.9912)
-
-[node name="safe5" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -1.36058, 5.9912)
-
-[node name="safe6" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -1.36058, 5.9912)
-
-[node name="safe7" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -1.36058, 5.9912)
-
-[node name="safe8" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -1.36058, 5.9912)
-
-[node name="safe9" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -0.0519519, 5.9912)
-
-[node name="safe10" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -0.0519519, 5.9912)
-
-[node name="safe11" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -0.0519519, 5.9912)
-
-[node name="safe12" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -0.0519519, 5.9912)
-
-[node name="safe13" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -0.488619, 5.9912)
-
-[node name="safe14" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -0.488619, 5.9912)
-
-[node name="safe15" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -0.488619, 5.9912)
-
-[node name="safe16" parent="safes" instance=ExtResource("2_jry6b")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -0.488619, 5.9912)
-
 [node name="elevatorButtons" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61704, -0.342518, 1.56464)
 
@@ -261,6 +203,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, -0.0591901, 0)
 
 [node name="button2" parent="hallwayButtons" instance=ExtResource("27_qqtlc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+
+[node name="Player" parent="." node_paths=PackedStringArray("attack_marker") instance=ExtResource("6_a8yqa")]
+attack_marker = NodePath("AttackMarker")
+wobble_head = true
 
 [connection signal="body_entered" from="Reset" to="." method="_on_reset_body_entered"]
 [connection signal="body_entered" from="ElevatorTrigger" to="elevator" method="_on_elevator_trigger_body_entered"]

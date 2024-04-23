@@ -6,7 +6,7 @@ var door_moving: bool = false
 
 @export var hinge: Node3D
 
-var swing_dir = 180
+var swing_dir = 180.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +17,7 @@ func use_action(tool: String):
 	operate_door()
 
 func operate_door():
+
 	if door_moving:
 		return
 	door_moving = true
@@ -24,6 +25,7 @@ func operate_door():
 	door_open = !door_open
 	#$DoorCollision.disabled = true
 	if door_open:
+		print ("doow open")
 		var tween = create_tween()
 		tween.tween_property(hinge, "rotation_degrees:y", swing_dir, 1.0)
 		await tween.finished

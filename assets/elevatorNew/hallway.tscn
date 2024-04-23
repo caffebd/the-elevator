@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cffgdsansmwm"]
+[gd_scene load_steps=37 format=3 uid="uid://cffgdsansmwm"]
 
 [ext_resource type="PackedScene" uid="uid://svhwpftkaspk" path="res://assets/elevatorNew/hallway.glb" id="1_bdt2w"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_8jhnm"]
@@ -324,6 +324,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tygeq")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdtp3"]
+size = Vector3(5.205, 0.065, 1.91)
+
 [node name="hallway" instance=ExtResource("1_bdt2w")]
 
 [node name="light" parent="." index="0"]
@@ -375,8 +378,8 @@ light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.1
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 15.0
-distance_fade_shadow = 15.0
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
 omni_range = 3.71582
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="." index="12"]
@@ -386,6 +389,12 @@ light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.2
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 15.0
-distance_fade_shadow = 15.0
+distance_fade_begin = 10.0
+distance_fade_shadow = 10.0
 omni_range = 1.00343
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59982, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_qdtp3")
