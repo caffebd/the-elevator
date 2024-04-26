@@ -8,6 +8,7 @@ var doors_moving: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Signals.panel_drop.connect(_trap_door)
 	left_door.position.z = 0.948
 	right_door.position.z = -0.948
 	
@@ -35,6 +36,16 @@ func operate_door(state):
 		doors_moving = false	
 
 
+func _trap_door(state):
+	if state:
+		var tween = create_tween()
+		tween.tween_property(%Cube_032, "position:y", -3.0, 0.5)
+	else:
+		var tween = create_tween()
+		tween.tween_property(%Cube_032, "position:y", -1.584, 0.5)
+
 func _on_elevator_trigger_body_entered(body: Node3D) -> void:
 	if not doors_open:
 		operate_door(true)
+		await get_tree().create_timer(4.0).timeout
+		operate_door(false)

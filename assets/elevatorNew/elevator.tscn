@@ -105,6 +105,7 @@ surface_material_override/1 = ExtResource("4_4f887")
 surface_material_override/1 = ExtResource("4_4f887")
 
 [node name="Cube_032" parent="." index="19"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.822, -1.58416, 0)
 surface_material_override/0 = ExtResource("2_r01k5")
 
@@ -118,7 +119,7 @@ shape = SubResource("BoxShape3D_t0eu8")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73711, 1.07282, 1.88512)
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
-light_energy = 0.1
+light_energy = 0.3
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 15.0
@@ -129,7 +130,7 @@ omni_range = 3.38748
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36891, 1.07282, 1.88512)
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
-light_energy = 0.1
+light_energy = 0.3
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 15.0
@@ -140,7 +141,7 @@ omni_range = 3.38748
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734839, 1.07282, -1.90994)
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
-light_energy = 0.1
+light_energy = 0.3
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 15.0
@@ -151,7 +152,7 @@ omni_range = 3.38748
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35403, 1.07282, -1.92188)
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
-light_energy = 0.1
+light_energy = 0.3
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 15.0
@@ -159,7 +160,7 @@ distance_fade_shadow = 15.0
 omni_range = 3.38748
 
 [node name="safes" type="Node3D" parent="." index="25"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.04818, 0.431743, 4.33858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74688, 0.947912, -3.48136)
 
 [node name="safe" parent="safes" index="0" instance=ExtResource("7_5xy6e")]
 transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -0.923916, 5.9912)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://y833j3arp127"]
+[gd_scene load_steps=16 format=3 uid="uid://b7ay64ixtjswl"]
 
-[ext_resource type="Script" path="res://scripts/MonsterArm.gd" id="1_idtyh"]
+[ext_resource type="Script" path="res://scripts/arm_top.gd" id="1_ixuc0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7vp2"]
 
@@ -458,13 +458,13 @@ _data = {
 height = 1.0
 radius = 2.4
 
-[node name="MonsterArm" type="Node3D"]
+[node name="MonsterTop" type="Node3D"]
 transform = Transform3D(-1.48473, -0.213477, -1.31036e-07, -0.211546, 1.4713, 0.201291, -0.0286471, 0.199242, -1.48643, 0, 0, 0)
-script = ExtResource("1_idtyh")
+script = ExtResource("1_ixuc0")
 
 [node name="armtest" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.999169, -0.0398082, 0.0088073, 0.040274, 0.997309, -0.0612548, -0.00634517, 0.0615586, 0.998083, 0, 0, 0)
+transform = Transform3D(-0.989835, 0.137466, 0.0364927, -0.142026, -0.968971, -0.202293, 0.00755209, -0.205419, 0.978645, -0.00671043, 0.0466712, -0.348187)
 
 [node name="Armature_005" type="Node3D" parent="armtest"]
 unique_name_in_owner = true
@@ -1115,7 +1115,7 @@ target_node = NodePath("../../../../ArmHinge/armTip")
 
 [node name="ArmHinge" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 1.07335e-07, -1.86265e-09, 1.97673e-07, 0.999999, -1.04308e-07, 9.31323e-09, -2.98023e-08, 1, -0.0799304, 1.04616, -1.19738)
+transform = Transform3D(0.98286, 0.119204, -0.140625, 0.119204, 0.170936, 0.978044, 0.140625, -0.978044, 0.153796, 0.128693, -0.232865, -0.335917)
 
 [node name="armTip" type="Node3D" parent="ArmHinge"]
 unique_name_in_owner = true

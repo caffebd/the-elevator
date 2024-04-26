@@ -3,7 +3,10 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
+	#await get_tree().create_timer(1).timeout
+	#Signals.emit_signal("panel_drop", true)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,7 +25,8 @@ func _on_reset_body_entered(body):
 
 func _on_shake_area_body_exited(body: Node3D) -> void:
 	$ElevatorTrigger.monitoring = true
-	%ChaseMusic.play()
+	$ShakeArea.set_deferred("monitoring", false)
+	#%ChaseMusic.play()
 
 
 
@@ -31,3 +35,5 @@ func _on_elevator_trigger_body_entered(body: Node3D) -> void:
 	$SpookSounds/PlaySound5.stop()
 	$SpookSounds/PlaySound3.stop()
 	$SpookSounds/PlaySound4.stop()
+
+	

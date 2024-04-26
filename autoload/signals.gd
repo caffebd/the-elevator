@@ -48,3 +48,6 @@ signal number_out_of_order(state)
 signal tilt_panel()
 
 signal set_crowbar()
+
+signal panel_drop(state)
+signal top_down_arm()

@@ -12,7 +12,9 @@ var grabbing: bool = false
 var follow: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Signals.panel_drop.connect(_trap_door)
 	%SkeletonIK3D.start()
+	global_position.y = -30.0
 	#$AnimationPlayer.play_backwards("searching")
 	#var arm_grab_timer = Timer.new()
 	#add_child(arm_grab_timer)
@@ -30,23 +32,44 @@ func _ready() -> void:
 	#arm_grab_timer_b.start(5.0);
 	#await arm_grab_timer_b.timeout
 	#$AnimationPlayer.play("attack")
-	attack_mode = true
+	attack_mode = false
+	follow = false
 	#grab()
 
 
+func _trap_door(state):
+	if state:
+		var tween = create_tween()
+		tween.tween_property(self, "global_position:y", 0.0, 5)
+		await tween.finished
+		print ("tween done")
+		attack_mode = true
+		follow = true
+	else:
+		attack_mode = false
+		follow = false
+		var tween = create_tween()
+		tween.tween_property(self, "global_position:y", 30.0, 0.5)
+		
+
 func _physics_process(delta: float) -> void:
 	if attack_mode:
-		var direction = %ArmHinge.global_transform.origin.direction_to(player.global_transform.origin)
-		var direction_arm = %Armature_005.global_transform.origin.direction_to(player.global_transform.origin)
+		var direction = %ArmHinge.global_transform.origin.direction_to(player.rotate_marker.global_transform.origin)
+		var direction_arm = %Armature_005.global_transform.origin.direction_to(player.rotate_marker.global_transform.origin)
 		#
 		##.attack_marker
 		%ArmHinge.rotation.y = lerp_angle(%ArmHinge.rotation.y, atan2(direction.x, direction.z), delta * SMOOTH_SPEED)
 		%Armature_005.rotation.y = %ArmHinge.rotation.y + deg_to_rad(180)
+		#+ deg_to_rad(180)
 		#lerp_angle(%Armature_005.rotation.y+0.09, atan2(direction.x, direction.z), delta * SMOOTH_SPEED)
 
 		if not grabbing and follow:
 			%ArmHinge.global_position = lerp(%ArmHinge.global_position, player.attack_marker.global_position, delta * SMOOTH_SPEED)
-
+			
+			%ArmHinge.global_position.x = clamp(%ArmHinge.global_position.x, -6.5, -4.0)
+			%ArmHinge.global_position.y = clamp(%ArmHinge.global_position.y, 1.0,1.7)
+			%ArmHinge.global_position.z = clamp(%ArmHinge.global_position.z, 1.8,3.0)
+			#print (%ArmHinge.global_position)
 			
 		#rotation.y = lerp_angle(rotation.y+0.092, atan2(direction.x, direction.z), delta * SMOOTH_SPEED)
 		#%armTip.rotation.y += 0.2

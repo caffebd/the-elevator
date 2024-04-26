@@ -14,13 +14,11 @@
 height = 1.0
 radius = 15.0
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("attack_marker") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") groups=["Player"]]
 script = ExtResource("1_gf72i")
-attack_marker = NodePath("AttackMarker")
-
-[node name="AttackMarker" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98068, 0, -2.55766)
+attack_marker = NodePath("Head/PlayerCam/AttackMarker")
+rotate_marker = NodePath("RotateMarker")
+lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -28,6 +26,10 @@ mesh = SubResource("CapsuleMesh_pdoig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0ogxy")
+
+[node name="RotateMarker" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149998, 0.45512, -0.326577)
 
 [node name="Head" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -43,6 +45,14 @@ far = 1000.0
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 2
+
+[node name="LungeMarker" type="Marker3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00894654, 0.0529634, -0.785042)
+
+[node name="AttackMarker" type="Marker3D" parent="Head/PlayerCam"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00894654, 0.0529634, -1.94253)
 
 [node name="PlayerInfoLabel" type="Label3D" parent="Head/PlayerCam"]
 unique_name_in_owner = true

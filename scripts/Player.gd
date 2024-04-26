@@ -10,6 +10,8 @@ const SENSITIVITY:float = 0.0008
 var code_check_pos: int = 0
 
 @export var attack_marker: Marker3D
+@export var rotate_marker: Marker3D
+@export var lunge_marker: Marker3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed = 2.0
@@ -503,8 +505,8 @@ func _on_shake_area_body_entered(body: Node3D) -> void:
 
 
 func _on_shake_area_body_exited(body: Node3D) -> void:
-	BOB_FREQ = 10.0
-	BOB_AMP = 0.07
+	BOB_FREQ = 3.0
+	BOB_AMP = 0.05
 
 
 
