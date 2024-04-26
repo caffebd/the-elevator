@@ -2,13 +2,13 @@ extends StaticBody3D
 
 var door_open = false
 
-var hinge: Node3D
+var hinge: MeshInstance3D
 
-var locked: bool = true
+var locked: bool = false
 var tool_needed: String = "Driver1"
 
 
-var swing_dir = -95
+var swing_dir = 95
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,12 +18,14 @@ func _ready():
 
 
 func use_action(tool: String):
+	print (locked)
 	if locked:
 		if not check_locked(tool):
 			return
 	operate_door()
 
 func operate_door():
+	print ("pabeddd")
 	door_open = !door_open
 	%PanelCol.disabled = true
 	if door_open:

@@ -1,15 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c64dxdw7eharp"]
+[gd_scene load_steps=10 format=3 uid="uid://c64dxdw7eharp"]
 
 [ext_resource type="PackedScene" uid="uid://de02sbxuffjx8" path="res://assets/elevatorNew/button.glb" id="1_7tv6j"]
 [ext_resource type="Shader" uid="uid://b2rxysbj3eaoe" path="res://assets/materials/shaders/buttons/5.tres" id="2_iokp4"]
 [ext_resource type="Material" uid="uid://bpwoijo7kyryk" path="res://assets/materials/button_ring.tres" id="2_rcrki"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8e4xw"]
-render_priority = 0
-shader = ExtResource("2_iokp4")
-shader_parameter/ColorParameter = Color(0.399428, 0.399428, 0.399428, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3tsx"]
 
 [sub_resource type="Animation" id="Animation_abh7t"]
 length = 0.001
@@ -48,14 +41,32 @@ _data = {
 "buttonPress": SubResource("Animation_8n2he")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8e4xw"]
+render_priority = 0
+shader = ExtResource("2_iokp4")
+shader_parameter/ColorParameter = Color(0.399428, 0.399428, 0.399428, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3tsx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dgbt1"]
+height = 0.005
+radius = 0.028
+
 [node name="button" instance=ExtResource("1_7tv6j")]
 
-[node name="Cylinder_001" parent="." index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_t666n")
+}
+
+[node name="Cylinder_001" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_rcrki")
 surface_material_override/1 = SubResource("ShaderMaterial_8e4xw")
 surface_material_override/2 = SubResource("StandardMaterial3D_q3tsx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-libraries = {
-"": SubResource("AnimationLibrary_t666n")
-}
+[node name="5" type="StaticBody3D" parent="." index="2" groups=["number", "show_hud"]]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00133371, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="5" index="0"]
+shape = SubResource("CylinderShape3D_dgbt1")

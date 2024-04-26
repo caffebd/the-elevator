@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgrtvp0jbijme"]
+[gd_scene load_steps=17 format=3 uid="uid://dgrtvp0jbijme"]
 
 [ext_resource type="PackedScene" uid="uid://cku2qg447xuae" path="res://assets/elevatorNew/elevator.glb" id="1_t1rw0"]
+[ext_resource type="Script" path="res://scripts/elevator.gd" id="2_dbg1a"]
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_r01k5"]
 [ext_resource type="Material" uid="uid://domyhl0b3cq4d" path="res://assets/materials/elevator_lines.tres" id="3_8s10s"]
 [ext_resource type="Material" uid="uid://brnwjocutoqia" path="res://assets/materials/elevator_roof.tres" id="3_gxhwt"]
 [ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="3_wh3wc"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="4_4f887"]
 [ext_resource type="PackedScene" uid="uid://ctlukj8yc6bqt" path="res://assets/elevatorNew/safe.tscn" id="7_5xy6e"]
+[ext_resource type="AudioStream" uid="uid://xkpj2f8pxrh2" path="res://assets/audio/elevator_ding_door.mp3" id="9_ekif5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p32j7"]
 size = Vector3(0.125, 2.54, 1.78)
@@ -30,11 +32,13 @@ size = Vector3(4.79, 2.935, 0.11)
 size = Vector3(0.03, 2.67, 1.67)
 
 [node name="elevator" instance=ExtResource("1_t1rw0")]
+script = ExtResource("2_dbg1a")
 
 [node name="Cube_070" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_r01k5")
 
 [node name="Cube_002" parent="." index="1"]
+unique_name_in_owner = true
 surface_material_override/0 = ExtResource("2_r01k5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_002" index="0"]
@@ -47,6 +51,7 @@ surface_material_override/0 = ExtResource("3_wh3wc")
 surface_material_override/1 = ExtResource("4_4f887")
 
 [node name="Cube_029" parent="." index="3"]
+unique_name_in_owner = true
 surface_material_override/0 = ExtResource("2_r01k5")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Cube_029" index="0"]
@@ -263,7 +268,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.768949, 0, -2.84433)
 shape = SubResource("BoxShape3D_5xyw6")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="." index="33"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51487, 0, 1.88352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55325, 0, 1.88352)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D8" index="0"]
 shape = SubResource("BoxShape3D_cqsyb")
@@ -273,3 +278,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51487, 0, -1.89363)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D9" index="0"]
 shape = SubResource("BoxShape3D_cqsyb")
+
+[node name="Ding" type="AudioStreamPlayer3D" parent="." index="35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543023, 0, 0)
+stream = ExtResource("9_ekif5")
+volume_db = -10.0

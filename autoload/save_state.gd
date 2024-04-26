@@ -1,7 +1,7 @@
 extends Node
 
-var fuse_inserted: bool = false
-var wire_fixed: bool = false
+var fuse_inserted: bool = true
+var wire_fixed: bool = true
 
 var card_is_in_slot: bool = false
 
@@ -17,7 +17,7 @@ var box_states: Array
 var phase_done : int = 1
 
 var elec_panel_state:Dictionary = {
-	"locked": true,
+	"locked": false,
 	"open": false
 }
 

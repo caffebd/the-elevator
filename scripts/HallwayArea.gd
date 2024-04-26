@@ -18,3 +18,16 @@ func _on_reset_body_entered(body):
 
 
 
+
+
+func _on_shake_area_body_exited(body: Node3D) -> void:
+	$ElevatorTrigger.monitoring = true
+	%ChaseMusic.play()
+
+
+
+func _on_elevator_trigger_body_entered(body: Node3D) -> void:
+	$SpookSounds/PlaySound2.stop()
+	$SpookSounds/PlaySound5.stop()
+	$SpookSounds/PlaySound3.stop()
+	$SpookSounds/PlaySound4.stop()

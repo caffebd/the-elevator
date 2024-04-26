@@ -1,0 +1,52 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxv2grkl8awiv"]
+
+[ext_resource type="PackedScene" uid="uid://cieekv3babfha" path="res://assets/elevatorNew/elevatorButtons/button1.tscn" id="1_pmrln"]
+[ext_resource type="PackedScene" uid="uid://nlffndwhe6hi" path="res://assets/elevatorNew/elevatorButtons/button2.tscn" id="2_ybgwv"]
+[ext_resource type="PackedScene" uid="uid://cwegaudswk1m2" path="res://assets/elevatorNew/elevatorButtons/button3.tscn" id="3_jrpk8"]
+[ext_resource type="PackedScene" uid="uid://c46fgl51x0x6p" path="res://assets/elevatorNew/elevatorButtons/button4.tscn" id="4_xi8n5"]
+[ext_resource type="PackedScene" uid="uid://c64dxdw7eharp" path="res://assets/elevatorNew/elevatorButtons/button5.tscn" id="5_o1byp"]
+[ext_resource type="PackedScene" uid="uid://1lqoh63arycs" path="res://assets/elevatorNew/elevatorButtons/button6.tscn" id="6_la6jm"]
+[ext_resource type="PackedScene" uid="uid://b6shh4j4p5aa1" path="res://assets/elevatorNew/elevatorButtons/button7.tscn" id="7_0j6k2"]
+[ext_resource type="PackedScene" uid="uid://d2eh6hue1s3xp" path="res://assets/elevatorNew/elevatorButtons/button8.tscn" id="8_2vpue"]
+[ext_resource type="PackedScene" uid="uid://ckkc3020b4ttd" path="res://assets/elevatorNew/elevatorButtons/buttonAlarm.tscn" id="9_6cei6"]
+[ext_resource type="PackedScene" uid="uid://bpl1u5s6fj5xf" path="res://assets/elevatorNew/elevatorButtons/buttonClose.tscn" id="10_30w8i"]
+[ext_resource type="PackedScene" uid="uid://b4hte8v7fpq7o" path="res://assets/elevatorNew/elevatorButtons/buttonOpen.tscn" id="11_ccf5f"]
+[ext_resource type="PackedScene" uid="uid://bci101o8cculh" path="res://assets/elevatorNew/elevator_button_panel.tscn" id="12_c1ruc"]
+
+[node name="elevatorButtons" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61704, -0.342518, 1.56464)
+
+[node name="button" parent="." instance=ExtResource("1_pmrln")]
+
+[node name="button2" parent="." instance=ExtResource("2_ybgwv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="." instance=ExtResource("3_jrpk8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="." instance=ExtResource("4_xi8n5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="." instance=ExtResource("5_o1byp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="." instance=ExtResource("6_la6jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="." instance=ExtResource("7_0j6k2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="." instance=ExtResource("8_2vpue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="." instance=ExtResource("9_6cei6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="." instance=ExtResource("10_30w8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="." instance=ExtResource("11_ccf5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="." instance=ExtResource("12_c1ruc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.0307172, 0.0365903)

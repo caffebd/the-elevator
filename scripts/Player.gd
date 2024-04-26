@@ -17,6 +17,8 @@ var speed = 2.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+var constant_wobble:bool = false
+
 #@onready var head = %Head
 @onready var camera = %PlayerCam
 @onready var ray = %PlayerRay
@@ -60,8 +62,11 @@ var note_b_text = "[u][b][i]You[/i][/b][/u] should [u][b][i]have[/i][/b][/u] tak
 
 #head wobble settings here
 
-const BOB_FREQ = 3.0
-const BOB_AMP = 0.05
+#3
+#0.05
+
+var BOB_FREQ = 3.0
+var BOB_AMP = 0.05
 var t_bob = 0.0
 
 var lean_amount = 1.5
@@ -194,20 +199,28 @@ func _take_action():
 				return
 			Signals.emit_signal("key_beep")
 			code_entering(collider.name)
-			number_highlight(collider.get_child(0))
+			var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
+			btn_anim.play("buttonPress")
+			
+			#number_highlight(collider.get_child(0))
 		elif collider.is_in_group("close"):
 			if door_opening_a:
 				door_opening_a = false
-				number_highlight(collider.get_child(0))
+				#number_highlight(collider.get_child(0))
+				var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
+				btn_anim.play("buttonPress")
 				_update_call_step(19)
 				Signals.emit_signal("eyes_glow", false)
 				Signals.emit_signal("door_close")
 				Signals.emit_signal("light_up",3)
 			else:
-				number_highlight(collider.get_child(0))
+				var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
+				btn_anim.play("buttonPress")
 		elif collider.is_in_group("open"):
-			number_highlight(collider.get_child(0))
-			pass
+			#number_highlight(collider.get_child(0))
+			var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
+			btn_anim.play("buttonPress")
+			
 			#Signals.emit_signal("roof_eye_sequence", true)
 		elif collider.is_in_group("card_slot"):
 			if in_hand == "Card" and !SaveState.card_is_in_slot:
@@ -222,7 +235,9 @@ func _take_action():
 				
 		elif collider.is_in_group("call"):
 			if not in_call:
-				number_highlight(collider.get_child(0))
+				#number_highlight(collider.get_child(0))
+				var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
+				btn_anim.play("buttonPress")
 				in_call = true
 				call_pos = -1
 				start_call()
@@ -396,8 +411,22 @@ func _physics_process(delta):
 		else:
 			head.rotation.z = lerp_angle(head.rotation.z, deg_to_rad(0), lean_weight)
 		
-		t_bob += delta * velocity.length() * float(is_on_floor())
+		if not constant_wobble:	
+			t_bob += delta * velocity.length() * float(is_on_floor())
+			camera.transform.origin =_headbob(t_bob)
+
+	if constant_wobble:
+		t_bob += delta * 2.0 * float(is_on_floor())
 		camera.transform.origin =_headbob(t_bob)
+
+	if abs(velocity.z) + abs(velocity.x) > 1:
+		#print ($Footsteps.playing)
+		if not $Footsteps.playing:
+		#print ("walking")
+			$Footsteps.play()
+	else:
+		#print ("not walking")
+		$Footsteps.stop()
 
 	move_and_slide()
 
@@ -465,3 +494,21 @@ func _on_light_area_area_entered(area: Area3D) -> void:
 func _on_light_area_area_exited(area: Area3D) -> void:
 	if area.get_parent().has_method("light_trigger"):
 		area.get_parent().light_trigger(false)
+
+
+func _on_shake_area_body_entered(body: Node3D) -> void:
+	BOB_FREQ = 150.0
+	BOB_AMP = 0.09
+	constant_wobble = true
+
+
+func _on_shake_area_body_exited(body: Node3D) -> void:
+	BOB_FREQ = 10.0
+	BOB_AMP = 0.07
+
+
+
+func _on_elevator_trigger_body_entered(body: Node3D) -> void:
+	BOB_FREQ = 3.0
+	BOB_AMP = 0.05
+	constant_wobble = false

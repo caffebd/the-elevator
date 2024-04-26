@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnptgaqehc7co"]
+
+[ext_resource type="Script" path="res://scripts/sound_area.gd" id="1_k30ms"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4e51d"]
+size = Vector3(0.425, 0.435, 2.18)
+
+[node name="PlaySound" type="AudioStreamPlayer3D"]
+script = ExtResource("1_k30ms")
+
+[node name="SoundTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0793657, -0.0702312, 1.31949)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundTrigger"]
+shape = SubResource("BoxShape3D_4e51d")
+
+[connection signal="body_entered" from="SoundTrigger" to="." method="_on_sound_trigger_body_entered"]
+[connection signal="body_exited" from="SoundTrigger" to="." method="_on_sound_trigger_body_exited"]
