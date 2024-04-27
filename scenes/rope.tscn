@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=3 uid="uid://dim2evhnbmhlj"]
+
+[ext_resource type="Script" path="res://scripts/rope.gd" id="1_sspj5"]
+[ext_resource type="Script" path="res://scripts/card_part.gd" id="2_7uen0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hdfu2"]
+radius = 0.035
+height = 0.135
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72k34"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pa4bi"]
+material = SubResource("StandardMaterial3D_72k34")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8cb2"]
+size = Vector3(0.135, 0.3, 0.055)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yut8j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_75j3m"]
+material = SubResource("StandardMaterial3D_yut8j")
+
+[node name="Rope" type="Node3D"]
+script = ExtResource("1_sspj5")
+
+[node name="TopBody" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18421, 0)
+collision_layer = 128
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopBody"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopBody"]
+transform = Transform3D(0.0678102, 0, 0, 0, 0.0678102, 0, 0, 0, 0.0678102, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="PinJoint3D2" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10696, 0)
+node_a = NodePath("../TopBody")
+node_b = NodePath("../Body1")
+
+[node name="Body1" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01891, 0)
+collision_layer = 128
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body1"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body1"]
+transform = Transform3D(0.0678102, 0, 0, 0, 0.0678102, 0, 0, 0, 0.0678102, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="PinJoint3D3" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95126, 0)
+node_a = NodePath("../Body1")
+node_b = NodePath("../Body2")
+
+[node name="Body2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86854, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body2"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body2"]
+transform = Transform3D(0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="PinJoint3D4" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95126, 0)
+node_a = NodePath("../Body2")
+node_b = NodePath("../Body3")
+
+[node name="Body3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71857, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body3"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body3"]
+transform = Transform3D(0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="PinJoint3D5" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7983, 0)
+node_a = NodePath("../Body3")
+node_b = NodePath("../Body4")
+
+[node name="Body4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58948, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body4"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body4"]
+transform = Transform3D(0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="PinJoint3D6" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65686, 0)
+node_a = NodePath("../Body4")
+node_b = NodePath("../Body5")
+
+[node name="Body5" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4458, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body5"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body5"]
+transform = Transform3D(0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="PinJoint3D7" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51445, 0)
+node_a = NodePath("../Body5")
+node_b = NodePath("../Body6")
+
+[node name="Body6" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29965, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body6"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body6"]
+transform = Transform3D(0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="PinJoint3D8" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36937, 0)
+node_a = NodePath("../Body6")
+node_b = NodePath("../Body7")
+
+[node name="Body7" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15404, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body7"]
+shape = SubResource("CapsuleShape3D_hdfu2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body7"]
+transform = Transform3D(0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0, 0.0669139, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_pa4bi")
+
+[node name="CardPin" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22818, 0)
+node_a = NodePath("../Body7")
+node_b = NodePath("../CardPart")
+
+[node name="CardPart" type="RigidBody3D" parent="." groups=["push_card"]]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.939516, 0)
+collision_layer = 130
+script = ExtResource("2_7uen0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CardPart"]
+shape = SubResource("BoxShape3D_x8cb2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CardPart"]
+transform = Transform3D(0.00340901, -0.131967, 0, 0.253649, 0.00177362, 0, 0, 0, 0.034284, 0, 0, 0)
+mesh = SubResource("BoxMesh_75j3m")

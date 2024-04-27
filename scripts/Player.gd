@@ -23,7 +23,7 @@ var constant_wobble:bool = false
 
 #@onready var head = %Head
 @onready var camera = %PlayerCam
-@onready var ray = %PlayerRay
+@onready var ray: RayCast3D = %PlayerRay
 @onready var hud = %Hud
 @onready var player_hand = %Hand
 @onready var head = %Head
@@ -364,6 +364,17 @@ func _physics_process(delta):
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
 
+	var space_state = get_world_3d().direct_space_state
+	var mousepos = get_viewport().get_mouse_position()
+
+	var origin = camera.project_ray_origin(mousepos)
+	var end = origin + camera.project_ray_normal(mousepos) * 2.0
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+
+	var result = space_state.intersect_ray(query)
+	
+	
+
 	var collider = ray.get_collider()
 	hud.target.modulate = Color(1,1,1,0.2)
 	Signals.emit_signal("need_fuse", false)
@@ -388,6 +399,19 @@ func _physics_process(delta):
 		if collider.is_in_group("number"):
 			if not SaveState.fuse_inserted or not SaveState.wire_fixed:
 				Signals.emit_signal("number_out_of_order", true)
+	
+	if collider != null and collider.is_in_group("push_card"):
+		hud.target.modulate = Color(1,1,1,1)
+		if result and Input.is_action_just_pressed("use"):
+			if collider.can_pick_up:
+				print ("card pciked")
+				hud.add_to_inventory("Card")
+				collider.queue_free()
+			else:
+				collider.apply_central_impulse(-result["normal"])
+				Signals.emit_signal("card_click")
+
+		
 			
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkfgp5xrpg8ll"]
+
+[ext_resource type="PackedScene" uid="uid://u3d72c7h7bkr" path="res://assets/elevatorNew/fuseBox.glb" id="1_0bkum"]
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_8v7vn"]
+[ext_resource type="Material" uid="uid://bjeovcijlkq5j" path="res://assets/materials/fuse_white.tres" id="3_kn0sw"]
+[ext_resource type="Material" uid="uid://b4pkp6y6yh73w" path="res://assets/materials/copper.tres" id="4_ehcxq"]
+[ext_resource type="Material" uid="uid://ljva6rwrrncc" path="res://assets/materials/stairs.tres" id="5_xd6qy"]
+[ext_resource type="Script" path="res://scripts/ElecPanelDoor.gd" id="6_ces8j"]
+[ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="7_gulsy"]
+[ext_resource type="Material" uid="uid://yx3kfmdf4omb" path="res://assets/materials/red_wire.tres" id="8_2s3wo"]
+[ext_resource type="Material" uid="uid://dag1nlv4naafk" path="res://assets/materials/tape.tres" id="9_yfgd1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0oxs"]
+albedo_color = Color(0.373931, 0.632919, 0.652816, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5djd2"]
+size = Vector3(0.395, 0.765, 0.03)
+
+[node name="EmptyBox" instance=ExtResource("1_0bkum")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8v7vn")
+
+[node name="Plane_001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_8v7vn")
+
+[node name="Cube_031" parent="." index="2"]
+visible = false
+surface_material_override/0 = ExtResource("3_kn0sw")
+surface_material_override/1 = SubResource("StandardMaterial3D_k0oxs")
+
+[node name="Cube_026" parent="." index="3"]
+visible = false
+surface_material_override/0 = ExtResource("4_ehcxq")
+
+[node name="Cube_028" parent="." index="4"]
+visible = false
+surface_material_override/0 = ExtResource("5_xd6qy")
+
+[node name="Cube_027" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202304, 0.0178301, 0.0480419)
+surface_material_override/0 = ExtResource("2_8v7vn")
+
+[node name="PanelColBody" type="StaticBody3D" parent="Cube_027" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199471, 0, 0)
+collision_layer = 2
+script = ExtResource("6_ces8j")
+
+[node name="PanelCol" type="CollisionShape3D" parent="Cube_027/PanelColBody" index="0"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_5djd2")
+
+[node name="Cube_006" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0510799, 0.0707387, -1.83443)
+visible = false
+surface_material_override/0 = ExtResource("7_gulsy")
+surface_material_override/1 = ExtResource("4_ehcxq")
+
+[node name="Cube_019" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0.0510799, 0.0707387, -1.83443)
+visible = false
+surface_material_override/0 = ExtResource("4_ehcxq")
+surface_material_override/1 = ExtResource("3_kn0sw")
+
+[node name="BezierCurve_016" parent="." index="8"]
+transform = Transform3D(5.31815e-09, -2.65908e-09, -0.0892238, -0.0892238, 2.65908e-09, -5.31815e-09, 2.65908e-09, 0.0892238, -2.65908e-09, 0.0438118, 0.0784181, -1.81212)
+visible = false
+surface_material_override/0 = ExtResource("7_gulsy")
+
+[node name="BezierCurve_017" parent="." index="9"]
+transform = Transform3D(5.31815e-09, -2.65908e-09, -0.0892238, -0.0892238, 2.65908e-09, -5.31815e-09, 2.65908e-09, 0.0892238, -2.65908e-09, 0.0467761, 0.0772439, -1.80666)
+visible = false
+surface_material_override/0 = ExtResource("8_2s3wo")
+
+[node name="wire fixed" parent="." index="10"]
+transform = Transform3D(0, -5.96046e-08, -1, 1, 0, 5.96046e-08, 5.96046e-08, -1, 0, 0.0413212, 0.245181, -1.80666)
+visible = false
+surface_material_override/0 = ExtResource("9_yfgd1")
+surface_material_override/1 = ExtResource("7_gulsy")
+
+[node name="Cube_025" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0.0510799, 0.0707387, -1.83443)
+visible = false
+surface_material_override/0 = ExtResource("4_ehcxq")
+surface_material_override/1 = ExtResource("3_kn0sw")
+
+[node name="Cube_030" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, 1, 0.0510799, 0.0707387, -1.83443)
+visible = false
+surface_material_override/0 = ExtResource("4_ehcxq")
+surface_material_override/1 = ExtResource("3_kn0sw")
+
+[node name="Cylinder_002" parent="." index="13"]
+transform = Transform3D(0.0130901, 0, 0, 0, 0.0130901, 0, 0, 0, 0.0130901, 0.00447148, 0.413399, -1.83191)
+visible = false

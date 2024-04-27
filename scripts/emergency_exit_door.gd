@@ -17,15 +17,16 @@ func use_action(tool: String):
 	operate_door()
 
 func operate_door():
-
+	print ("doow click")
 	if door_moving:
 		return
 	door_moving = true
-
+	
+	print (door_open)
 	door_open = !door_open
 	#$DoorCollision.disabled = true
 	if door_open:
-		print ("doow open")
+		
 		var tween = create_tween()
 		tween.tween_property(hinge, "rotation_degrees:y", swing_dir, 1.0)
 		await tween.finished

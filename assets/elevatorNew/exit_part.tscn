@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbiu0qbb5wcxi"]
+[gd_scene load_steps=11 format=3 uid="uid://dbiu0qbb5wcxi"]
 
 [ext_resource type="PackedScene" uid="uid://cdxqgbdfauxgr" path="res://assets/elevatorNew/exitPart.glb" id="1_nrpfe"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_bdjie"]
@@ -8,6 +8,12 @@
 [ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="6_vv6ei"]
 [ext_resource type="Material" uid="uid://c7ut6p0ko7wed" path="res://assets/materials/red_metal.tres" id="7_dfw48"]
 [ext_resource type="PackedScene" uid="uid://ciapfc1sdnapk" path="res://assets/elevatorNew/emergency_exit.tscn" id="8_3ab31"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gu6r4"]
+size = Vector3(4.52, 0.025, 1.945)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8km7k"]
+size = Vector3(4.455, 2.305, 0.055)
 
 [node name="exitPart" instance=ExtResource("1_nrpfe")]
 
@@ -65,4 +71,22 @@ distance_fade_shadow = 15.0
 omni_range = 1.00343
 
 [node name="EmergencyExit" parent="." index="13" instance=ExtResource("8_3ab31")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.16953, -0.611603, 0.544412)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.16953, -0.637953, 0.566853)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59921, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_gu6r4")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.03705)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" index="0"]
+shape = SubResource("BoxShape3D_8km7k")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.05896)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" index="0"]
+shape = SubResource("BoxShape3D_8km7k")

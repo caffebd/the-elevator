@@ -262,7 +262,7 @@ mesh = SubResource("BoxMesh_xbftn")
 
 [node name="CardInSlot" parent="CardSlot" instance=ExtResource("1_yb60f")]
 unique_name_in_owner = true
-transform = Transform3D(0.999852, 0.0142354, 0.00968491, -0.0146051, 0.999123, 0.03925, -0.00911767, -0.0393857, 0.999182, -0.0584553, -0.513884, 0.109673)
+transform = Transform3D(0.999852, 0.0142354, 0.00968491, -0.0146051, 0.999123, 0.03925, -0.00911767, -0.0393857, 0.999182, -0.0584553, -0.513884, 0.0853403)
 visible = false
 
 [node name="MeshInstance3D" parent="CardSlot/CardInSlot" index="0"]

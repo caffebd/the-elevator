@@ -36,7 +36,6 @@ surface_material_override/0 = ExtResource("5_uhvg7")
 
 [node name="Cube_027" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201411, 0.0178301, 0.0480419)
-visible = false
 surface_material_override/0 = ExtResource("2_6outp")
 
 [node name="PanelColBody" type="StaticBody3D" parent="Cube_027" index="0"]

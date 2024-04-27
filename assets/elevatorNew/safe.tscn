@@ -59,7 +59,7 @@ shape = SubResource("BoxShape3D_03kk1")
 
 [node name="BoxLabel" type="Label3D" parent="door" index="1"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00285776, 0.14793, 0.0625953)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.018257, 0.14793, 0.0625953)
 modulate = Color(0.439216, 0.439216, 0.439216, 1)
 outline_modulate = Color(0.811765, 0.811765, 0.811765, 1)
 text = "[1]"
