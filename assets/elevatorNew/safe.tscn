@@ -1,9 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctlukj8yc6bqt"]
+[gd_scene load_steps=44 format=3 uid="uid://ctlukj8yc6bqt"]
 
 [ext_resource type="PackedScene" uid="uid://dgmchbhx2avxu" path="res://assets/elevatorNew/safe.glb" id="1_p0bnu"]
 [ext_resource type="Material" uid="uid://ddkyhba7d50a5" path="res://assets/materials/safe.tres" id="2_33vgf"]
 [ext_resource type="Script" path="res://scripts/Box.gd" id="2_d1u8u"]
 [ext_resource type="Script" path="res://scripts/DoorPanel.gd" id="3_x7m4y"]
+[ext_resource type="Texture2D" uid="uid://c3wagpiiv5uuf" path="res://assets/textures/numbers/flatHead.png" id="6_dhnpk"]
+[ext_resource type="Texture2D" uid="uid://b74gigny3y4tr" path="res://assets/textures/numbers/phillipsHead.png" id="7_k1nf5"]
+[ext_resource type="Texture2D" uid="uid://mvtvovukbx6x" path="res://assets/textures/numbers/1.png" id="8_o11sv"]
+[ext_resource type="Texture2D" uid="uid://bo5wrnre5atrx" path="res://assets/textures/numbers/2.png" id="9_b42st"]
+[ext_resource type="Texture2D" uid="uid://cb3e0wvkoje5t" path="res://assets/textures/numbers/3.png" id="10_gflxw"]
+[ext_resource type="Texture2D" uid="uid://bi45uqns1hk8w" path="res://assets/textures/numbers/4.png" id="11_lyn5o"]
+[ext_resource type="Texture2D" uid="uid://cn5vwkq1ykh4a" path="res://assets/textures/numbers/5.png" id="12_qgu3m"]
+[ext_resource type="Texture2D" uid="uid://c1u6wwuj7jnq0" path="res://assets/textures/numbers/6.png" id="13_orjwk"]
+[ext_resource type="Texture2D" uid="uid://hglhw20oo6gn" path="res://assets/textures/numbers/7.png" id="14_srvwf"]
+[ext_resource type="Texture2D" uid="uid://c6avb3i77iss5" path="res://assets/textures/numbers/8.png" id="15_nkvht"]
+[ext_resource type="Texture2D" uid="uid://pi1sdbkx5hqe" path="res://assets/textures/numbers/9.png" id="16_hox22"]
+[ext_resource type="Texture2D" uid="uid://c8k0br7mofqiq" path="res://assets/textures/numbers/10.png" id="17_gf1rd"]
+[ext_resource type="Texture2D" uid="uid://ccmpks6ssyry5" path="res://assets/textures/numbers/11.png" id="18_cdbpb"]
+[ext_resource type="Texture2D" uid="uid://ct21yt620qxcm" path="res://assets/textures/numbers/12.png" id="19_x2shg"]
+[ext_resource type="Texture2D" uid="uid://dj5u28ek8t5tu" path="res://assets/textures/numbers/13.png" id="20_hxw5r"]
+[ext_resource type="Texture2D" uid="uid://5pyol3u5h28u" path="res://assets/textures/numbers/14.png" id="21_q2xh2"]
+[ext_resource type="Texture2D" uid="uid://dh0r3tgccmgyh" path="res://assets/textures/numbers/15.png" id="22_lnlgu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxbcg"]
 size = Vector3(0.43, 0.045, 0.435)
@@ -14,8 +31,83 @@ size = Vector3(0.445, 0.445, 0.03)
 [sub_resource type="BoxShape3D" id="BoxShape3D_03kk1"]
 size = Vector3(0.025, 0.39, 0.38)
 
-[node name="safe" instance=ExtResource("1_p0bnu")]
+[sub_resource type="PlaneMesh" id="PlaneMesh_p4nfq"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jy7pi"]
+transparency = 1
+albedo_texture = ExtResource("6_dhnpk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pd0q4"]
+transparency = 1
+albedo_texture = ExtResource("7_k1nf5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mcoll"]
+size = Vector2(0.26, 0.26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq6tq"]
+transparency = 1
+albedo_texture = ExtResource("8_o11sv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pbqk"]
+transparency = 1
+albedo_texture = ExtResource("9_b42st")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvgcl"]
+transparency = 1
+albedo_texture = ExtResource("10_gflxw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqwb1"]
+transparency = 1
+albedo_texture = ExtResource("11_lyn5o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me8a8"]
+transparency = 1
+albedo_texture = ExtResource("12_qgu3m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6b338"]
+transparency = 1
+albedo_texture = ExtResource("13_orjwk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g56x"]
+transparency = 1
+albedo_texture = ExtResource("14_srvwf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rrf6"]
+transparency = 1
+albedo_texture = ExtResource("15_nkvht")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0dgb"]
+transparency = 1
+albedo_texture = ExtResource("16_hox22")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kffd0"]
+transparency = 1
+albedo_texture = ExtResource("17_gf1rd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lncdq"]
+transparency = 1
+albedo_texture = ExtResource("18_cdbpb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1www"]
+transparency = 1
+albedo_texture = ExtResource("19_x2shg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6att"]
+transparency = 1
+albedo_texture = ExtResource("20_hxw5r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhmuh"]
+transparency = 1
+albedo_texture = ExtResource("21_q2xh2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rew2"]
+transparency = 1
+albedo_texture = ExtResource("22_lnlgu")
+
+[node name="safe" node_paths=PackedStringArray("all_numbers") instance=ExtResource("1_p0bnu")]
 script = ExtResource("2_d1u8u")
+all_numbers = NodePath("Numbers")
 
 [node name="body" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_33vgf")
@@ -65,3 +157,121 @@ outline_modulate = Color(0.811765, 0.811765, 0.811765, 1)
 text = "[1]"
 font_size = 12
 outline_size = 3
+
+[node name="flathead" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, -0.145394, -0.138638)
+visible = false
+mesh = SubResource("PlaneMesh_p4nfq")
+surface_material_override/0 = SubResource("StandardMaterial3D_jy7pi")
+
+[node name="phillipsHead" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, -0.145394, -0.138638)
+visible = false
+mesh = SubResource("PlaneMesh_p4nfq")
+surface_material_override/0 = SubResource("StandardMaterial3D_pd0q4")
+
+[node name="Numbers" type="Node3D" parent="." index="4"]
+
+[node name="1" type="MeshInstance3D" parent="Numbers" index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lq6tq")
+
+[node name="2" type="MeshInstance3D" parent="Numbers" index="1"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1pbqk")
+
+[node name="3" type="MeshInstance3D" parent="Numbers" index="2"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_dvgcl")
+
+[node name="4" type="MeshInstance3D" parent="Numbers" index="3"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_bqwb1")
+
+[node name="5" type="MeshInstance3D" parent="Numbers" index="4"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_me8a8")
+
+[node name="6" type="MeshInstance3D" parent="Numbers" index="5"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6b338")
+
+[node name="7" type="MeshInstance3D" parent="Numbers" index="6"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7g56x")
+
+[node name="8" type="MeshInstance3D" parent="Numbers" index="7"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5rrf6")
+
+[node name="9" type="MeshInstance3D" parent="Numbers" index="8"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_h0dgb")
+
+[node name="10" type="MeshInstance3D" parent="Numbers" index="9"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_kffd0")
+
+[node name="11" type="MeshInstance3D" parent="Numbers" index="10"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lncdq")
+
+[node name="12" type="MeshInstance3D" parent="Numbers" index="11"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_s1www")
+
+[node name="13" type="MeshInstance3D" parent="Numbers" index="12"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_v6att")
+
+[node name="14" type="MeshInstance3D" parent="Numbers" index="13"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_hhmuh")
+
+[node name="15" type="MeshInstance3D" parent="Numbers" index="14"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
+mesh = SubResource("PlaneMesh_mcoll")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rew2")

@@ -2,7 +2,7 @@ extends Node3D
 
 
 
-@export var box_number:String=""
+@export var box_number: String = ""
 @export var locked: bool = false
 @export var tool_needed: String
 
@@ -10,13 +10,18 @@ extends Node3D
 
 @onready var door_panel: StaticBody3D = %DoorPanel
 
+@export var all_numbers: Node3D
+
 var open: bool = false
 
 var driver_mat = preload("res://assets/UI/driver1_icon.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	%BoxLabel.text = "["+box_number+"]"
+	for n in all_numbers.get_children():
+		if n.name == box_number:
+			n.visible = true
+	#%BoxLabel.text = "["+box_number+"]"
 	door_panel.my_number = box_number
 	door_panel.locked = locked
 	door_panel.tool_needed = tool_needed

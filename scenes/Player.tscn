@@ -85,6 +85,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656383, 0)
 cull_mask = 524288
 script = ExtResource("3_pseo8")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129993, 0.195266, -0.786708)
+layers = 524288
+light_color = Color(0.957333, 1, 0.68, 1)
+light_energy = 2.0
+light_cull_mask = 4294443008
+omni_range = 0.915
+
 [node name="Hand" type="Node3D" parent="CanvasLayer/SubViewportContainer/SubViewport/HandCam"]
 unique_name_in_owner = true
 transform = Transform3D(0.931907, -0.362698, 0, 0.331336, 0.851326, 0.406769, -0.147534, -0.37907, 0.913531, 0.358857, -0.469255, -0.8357)

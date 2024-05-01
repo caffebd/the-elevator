@@ -404,7 +404,6 @@ func _physics_process(delta):
 		hud.target.modulate = Color(1,1,1,1)
 		if result and Input.is_action_just_pressed("use"):
 			if collider.can_pick_up:
-				print ("card pciked")
 				hud.add_to_inventory("Card")
 				collider.queue_free()
 			else:

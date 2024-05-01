@@ -23,11 +23,12 @@ func _ready():
 	
 
 func set_tool_image():
+	print (name+"   "+tool_needed)
 	match tool_needed:
 		"Driver1":
-			%Driver1Need.visible=true
+			%flathead.visible=true
 		"Driver2":
-			%Driver2Need.visible=true
+			%phillipsHead.visible=true
 
 func use_action(tool: String):
 	print ("locked is "+str(locked))

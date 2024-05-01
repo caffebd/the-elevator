@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bjeovcijlkq5j" path="res://assets/materials/fuse_white.tres" id="3_kn0sw"]
 [ext_resource type="Material" uid="uid://b4pkp6y6yh73w" path="res://assets/materials/copper.tres" id="4_ehcxq"]
 [ext_resource type="Material" uid="uid://ljva6rwrrncc" path="res://assets/materials/stairs.tres" id="5_xd6qy"]
-[ext_resource type="Script" path="res://scripts/ElecPanelDoor.gd" id="6_ces8j"]
+[ext_resource type="Script" path="res://scripts/tray_door.gd" id="6_0cjes"]
 [ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="7_gulsy"]
 [ext_resource type="Material" uid="uid://yx3kfmdf4omb" path="res://assets/materials/red_wire.tres" id="8_2s3wo"]
 [ext_resource type="Material" uid="uid://dag1nlv4naafk" path="res://assets/materials/tape.tres" id="9_yfgd1"]
@@ -19,9 +19,11 @@ size = Vector3(0.395, 0.765, 0.03)
 [node name="EmptyBox" instance=ExtResource("1_0bkum")]
 
 [node name="Cube" parent="." index="0"]
+transform = Transform3D(1.51148, 0, 0, 0, 1, 0, 0, 0, 1, -0.119007, 0.0178301, -0.00803247)
 surface_material_override/0 = ExtResource("2_8v7vn")
 
 [node name="Plane_001" parent="." index="1"]
+transform = Transform3D(0, -1.5403, 0, 0, 0, -1, 1, 0, 0, -0.092186, 0.0178301, -0.0989486)
 surface_material_override/0 = ExtResource("2_8v7vn")
 
 [node name="Cube_031" parent="." index="2"]
@@ -38,14 +40,14 @@ visible = false
 surface_material_override/0 = ExtResource("5_xd6qy")
 
 [node name="Cube_027" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202304, 0.0178301, 0.0480419)
+transform = Transform3D(1.5448, 0, 0, 0, 1, 0, 0, 0, 1, 0.19144, 0.0178301, 0.0528742)
 surface_material_override/0 = ExtResource("2_8v7vn")
 
 [node name="PanelColBody" type="StaticBody3D" parent="Cube_027" index="0"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199471, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.210503, -0.000290036, -0.0126994)
 collision_layer = 2
-script = ExtResource("6_ces8j")
+script = ExtResource("6_0cjes")
 
 [node name="PanelCol" type="CollisionShape3D" parent="Cube_027/PanelColBody" index="0"]
 unique_name_in_owner = true

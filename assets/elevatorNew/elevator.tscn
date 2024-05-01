@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=3 uid="uid://dgrtvp0jbijme"]
 
-[ext_resource type="PackedScene" uid="uid://cku2qg447xuae" path="res://assets/elevatorNew/elevator.glb" id="1_t1rw0"]
+[ext_resource type="PackedScene" uid="uid://dhmfx6u1dmewx" path="res://assets/elevatorNew/elevator.glb" id="1_t1rw0"]
 [ext_resource type="Script" path="res://scripts/elevator.gd" id="2_dbg1a"]
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_r01k5"]
 [ext_resource type="Material" uid="uid://domyhl0b3cq4d" path="res://assets/materials/elevator_lines.tres" id="3_8s10s"]
 [ext_resource type="Material" uid="uid://brnwjocutoqia" path="res://assets/materials/elevator_roof.tres" id="3_gxhwt"]
 [ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="3_wh3wc"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="4_4f887"]
-[ext_resource type="PackedScene" uid="uid://ctlukj8yc6bqt" path="res://assets/elevatorNew/safe.tscn" id="7_5xy6e"]
+[ext_resource type="PackedScene" uid="uid://ctlukj8yc6bqt" path="res://assets/NewSafe/safe.tscn" id="7_5xy6e"]
 [ext_resource type="AudioStream" uid="uid://xkpj2f8pxrh2" path="res://assets/audio/elevator_ding_door.mp3" id="9_ekif5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p32j7"]
@@ -90,21 +90,18 @@ surface_material_override/1 = ExtResource("4_4f887")
 [node name="light_012" parent="." index="14"]
 surface_material_override/1 = ExtResource("4_4f887")
 
-[node name="light_013" parent="." index="15"]
-surface_material_override/1 = ExtResource("4_4f887")
-
-[node name="light_014" parent="." index="16"]
+[node name="light_014" parent="." index="15"]
 surface_material_override/0 = ExtResource("3_wh3wc")
 surface_material_override/1 = ExtResource("4_4f887")
 
-[node name="light_015" parent="." index="17"]
+[node name="light_015" parent="." index="16"]
 surface_material_override/0 = ExtResource("3_wh3wc")
 surface_material_override/1 = ExtResource("4_4f887")
 
-[node name="light_016" parent="." index="18"]
+[node name="light_016" parent="." index="17"]
 surface_material_override/1 = ExtResource("4_4f887")
 
-[node name="Cube_032" parent="." index="19"]
+[node name="Cube_032" parent="." index="18"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.822, -1.58416, 0)
 surface_material_override/0 = ExtResource("2_r01k5")
@@ -171,74 +168,105 @@ distance_fade_shadow = 15.0
 omni_range = 3.38748
 
 [node name="safes" type="Node3D" parent="." index="26"]
-transform = Transform3D(0.00260059, 0, -0.999997, 0, 1, 0, 0.999997, 0, 0.00260059, 2.91323, 0.557094, 4.27598)
+transform = Transform3D(0.00260059, 0, -0.999997, 0, 1, 0, 0.999997, 0, 0.00260059, 2.643, 0.397, 4.686)
 
-[node name="safe" parent="safes" index="0" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -0.923916, 5.9912)
-box_number = "12"
-
-[node name="safe2" parent="safes" index="1" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -0.923916, 5.9912)
-box_number = "11"
-
-[node name="safe3" parent="safes" index="2" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -0.923916, 5.9912)
-box_number = "10"
-
-[node name="safe4" parent="safes" index="3" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -0.923916, 5.9912)
-box_number = "9"
-
-[node name="safe5" parent="safes" index="4" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -1.36058, 5.9912)
-box_number = "16"
-
-[node name="safe6" parent="safes" index="5" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -1.36058, 5.9912)
-box_number = "15"
-
-[node name="safe7" parent="safes" index="6" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -1.36058, 5.9912)
-box_number = "14"
-
-[node name="safe8" parent="safes" index="7" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -1.36058, 5.9912)
-box_number = "13"
-
-[node name="safe9" parent="safes" index="8" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -0.0519519, 5.9912)
-box_number = "4"
-
-[node name="safe10" parent="safes" index="9" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -0.0519519, 5.9912)
-box_number = "3"
-
-[node name="safe11" parent="safes" index="10" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -0.0519519, 5.9912)
-box_number = "2"
-
-[node name="safe12" parent="safes" index="11" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -0.0519519, 5.9912)
+[node name="safe1" parent="safes" index="0" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.86499e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.86499e-08, -3.80388, -0.0373314, 5.98747)
 box_number = "1"
+locked = true
+all_numbers = NodePath("door/Numbers")
 
-[node name="safe13" parent="safes" index="12" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -5.15695, -0.488619, 5.9912)
-box_number = "8"
+[node name="safe2" parent="safes" index="1" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.91155e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.91155e-08, -4.26391, -0.0367144, 5.97916)
+box_number = "2"
+locked = true
+all_numbers = NodePath("door/Numbers")
 
-[node name="safe14" parent="safes" index="13" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.72026, -0.488619, 5.9912)
-box_number = "7"
+[node name="safe3" parent="safes" index="2" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -4.7253, -0.0365379, 5.98139)
+box_number = "3"
+locked = true
+all_numbers = NodePath("door/Numbers")
 
-[node name="safe15" parent="safes" index="14" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -4.28379, -0.488619, 5.9912)
-box_number = "6"
+[node name="safe4" parent="safes" index="3" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -5.18594, -0.0346649, 5.983)
+box_number = "4"
+locked = true
+all_numbers = NodePath("door/Numbers")
 
-[node name="safe16" parent="safes" index="15" instance=ExtResource("7_5xy6e")]
-transform = Transform3D(-4.15884e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.15884e-08, -3.84711, -0.488619, 5.9912)
+[node name="safe5" parent="safes" index="4" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.9814e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -3.9814e-08, -5.6451, -0.035242, 5.98454)
 box_number = "5"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe6" parent="safes" index="5" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.86499e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.86499e-08, -3.80235, -0.495998, 5.98274)
+box_number = "6"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe7" parent="safes" index="6" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-4.00469e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.00469e-08, -4.26342, -0.489157, 5.97918)
+box_number = "7"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe8" parent="safes" index="7" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-4.09782e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.09782e-08, -4.72544, -0.488619, 5.97781)
+box_number = "8"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe9" parent="safes" index="8" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-4.09782e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.09782e-08, -5.18486, -0.488619, 5.98049)
+box_number = "9"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe10" parent="safes" index="9" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-4.02797e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.02797e-08, -5.64027, -0.489, 5.97937)
+box_number = "10"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe11" parent="safes" index="10" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -3.80148, -0.953034, 5.98158)
+box_number = "11"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe12" parent="safes" index="11" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.9814e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.9814e-08, -4.26336, -0.952027, 5.98422)
+box_number = "12"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe13" parent="safes" index="12" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-4.05125e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.05125e-08, -4.72503, -0.95291, 5.98579)
+box_number = "13"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe14" parent="safes" index="13" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-4.05125e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.05125e-08, -5.18369, -0.951149, 5.98517)
+box_number = "14"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe15" parent="safes" index="14" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-3.81842e-08, 0, 0.95143, 0, 0.951432, 0, -0.95143, 0, -3.81842e-08, -5.64222, -0.951301, 5.98358)
+box_number = "15"
+locked = true
+all_numbers = NodePath("door/Numbers")
+
+[node name="safe8c" parent="safes" index="15" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_5xy6e")]
+transform = Transform3D(-4.14439e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.14439e-08, -3.84711, -1.79223, 5.9912)
+box_number = "13"
+all_numbers = NodePath("door/Numbers")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="27"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.740293, -1.61883, 1.84943)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.740293, -1.63107, 1.84943)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_hcaco")

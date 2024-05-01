@@ -1,14 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bci101o8cculh"]
+[gd_scene load_steps=5 format=3 uid="uid://bci101o8cculh"]
 
 [ext_resource type="PackedScene" uid="uid://c8fjva6amvvmh" path="res://assets/elevatorNew/elevatorButtonPanel.glb" id="1_db4ir"]
+[ext_resource type="Material" uid="uid://dhogo85gbco2b" path="res://assets/materials/red_light.tres" id="2_5t5t4"]
 [ext_resource type="Material" uid="uid://ciw25665oi43k" path="res://assets/materials/button_panel.tres" id="2_soh1g"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ub8sc"]
-albedo_color = Color(0.140447, 0.140447, 0.140447, 1)
-roughness = 0.44
+[ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="4_jjh1o"]
 
 [node name="elevatorButtonPanel2" instance=ExtResource("1_db4ir")]
 
-[node name="elevatorButtonPanel" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_soh1g")
-surface_material_override/1 = SubResource("StandardMaterial3D_ub8sc")
+[node name="Cylinder" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5t5t4")
+surface_material_override/1 = ExtResource("2_soh1g")
+surface_material_override/2 = ExtResource("4_jjh1o")

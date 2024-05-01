@@ -23,7 +23,7 @@ material = SubResource("StandardMaterial3D_bf51p")
 
 [node name="Driver1" type="Node3D"]
 
-[node name="DriverBody" type="StaticBody3D" parent="." groups=["collectible"]]
+[node name="DriverBody" type="StaticBody3D" parent="." groups=["collectible", "show_hud"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_mkxl2")

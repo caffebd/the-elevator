@@ -1,13 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://cinfh5ooeost4"]
+[gd_scene load_steps=7 format=3 uid="uid://cinfh5ooeost4"]
 
 [ext_resource type="PackedScene" uid="uid://rqn6hub5rl40" path="res://assets/elevatorNew/crowbar.glb" id="1_46t0f"]
+[ext_resource type="Script" path="res://scripts/crowbar_main.gd" id="2_4077w"]
 [ext_resource type="Texture2D" uid="uid://4jyrshcjw7m2" path="res://assets/textures/Metal_Treated_shkaaafc/shkaaafc_2K_Roughness.jpg" id="2_v4sn1"]
+[ext_resource type="Script" path="res://scripts/Crowbar.gd" id="3_fd3ol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqrmw"]
 albedo_color = Color(0.471375, 0.471375, 0.471375, 1)
 roughness_texture = ExtResource("2_v4sn1")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gpc7u"]
+size = Vector3(0.125, 0.04, 0.595)
+
 [node name="crowbar" instance=ExtResource("1_46t0f")]
+script = ExtResource("2_4077w")
 
 [node name="crowbar" parent="." index="0"]
+transform = Transform3D(0, 0.00758936, 0, -0.0092312, 0, 0, 0, 0, 0.00753229, -0.122246, 0, 0.00351923)
 surface_material_override/0 = SubResource("StandardMaterial3D_hqrmw")
+
+[node name="CrowbarBody" type="StaticBody3D" parent="." index="1" groups=["collectible", "show_hud"]]
+transform = Transform3D(-0.0189357, 0, 0.999821, 0, 1, 0, -0.999821, 0, -0.0189357, 0, 0, -0.102241)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_fd3ol")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrowbarBody" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0818132, -0.00655061, 0.00247264)
+shape = SubResource("BoxShape3D_gpc7u")
