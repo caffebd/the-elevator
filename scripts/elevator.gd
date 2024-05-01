@@ -3,17 +3,20 @@ extends Node3D
 var doors_open: bool = false
 var doors_moving: bool = false
 
-@onready var left_door: MeshInstance3D = %Cube_029
-@onready var right_door: MeshInstance3D = %Cube_002
+@onready var right_door: MeshInstance3D = %Cube_029
+@onready var left_door: MeshInstance3D = %Cube_002
+
+@onready var main_floor: MeshInstance3D = %Cube_039
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.panel_drop.connect(_trap_door)
-	left_door.position.z = 0.948
-	right_door.position.z = -0.948
+	Signals.floor_open.connect(_floor_open)
+	#left_door.position.z = 0.948
+	#right_door.position.z = -0.948
 	
-	pass
 	#await get_tree().create_timer(4).timeout
+	#Signals.emit_signal("floor_open")
 	#operate_door(true)
 
 
@@ -49,3 +52,9 @@ func _on_elevator_trigger_body_entered(body: Node3D) -> void:
 		operate_door(true)
 		await get_tree().create_timer(4.0).timeout
 		operate_door(false)
+
+
+func _floor_open():
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(main_floor, "position:z", 6.0, 5.0)
+	tween.tween_property($Cube_032, "position:z", 6.0, 5.0)

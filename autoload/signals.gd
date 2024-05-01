@@ -53,3 +53,5 @@ signal panel_drop(state)
 signal top_down_arm()
 
 signal card_click()
+
+

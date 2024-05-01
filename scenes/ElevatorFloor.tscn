@@ -1,0 +1,138 @@
+[gd_scene load_steps=26 format=3 uid="uid://pi3djdqgum0l"]
+
+[ext_resource type="PackedScene" uid="uid://dgrtvp0jbijme" path="res://assets/UpdatedElevator/elevator.tscn" id="1_fto52"]
+[ext_resource type="PackedScene" uid="uid://bw713rlnd42xs" path="res://assets/elevatorNew/fuse_box.tscn" id="2_lpmwh"]
+[ext_resource type="PackedScene" uid="uid://cieekv3babfha" path="res://assets/elevatorNew/elevatorButtons/button1.tscn" id="3_7xanx"]
+[ext_resource type="PackedScene" uid="uid://nlffndwhe6hi" path="res://assets/elevatorNew/elevatorButtons/button2.tscn" id="4_xmdq4"]
+[ext_resource type="PackedScene" uid="uid://cwegaudswk1m2" path="res://assets/elevatorNew/elevatorButtons/button3.tscn" id="5_ugq4q"]
+[ext_resource type="PackedScene" uid="uid://c46fgl51x0x6p" path="res://assets/elevatorNew/elevatorButtons/button4.tscn" id="6_0ie3k"]
+[ext_resource type="PackedScene" uid="uid://c64dxdw7eharp" path="res://assets/elevatorNew/elevatorButtons/button5.tscn" id="7_3a6s7"]
+[ext_resource type="PackedScene" uid="uid://1lqoh63arycs" path="res://assets/elevatorNew/elevatorButtons/button6.tscn" id="8_kb376"]
+[ext_resource type="PackedScene" uid="uid://b6shh4j4p5aa1" path="res://assets/elevatorNew/elevatorButtons/button7.tscn" id="9_6jf1u"]
+[ext_resource type="PackedScene" uid="uid://d2eh6hue1s3xp" path="res://assets/elevatorNew/elevatorButtons/button8.tscn" id="10_044wq"]
+[ext_resource type="PackedScene" uid="uid://ckkc3020b4ttd" path="res://assets/elevatorNew/elevatorButtons/buttonAlarm.tscn" id="11_b4d66"]
+[ext_resource type="PackedScene" uid="uid://bpl1u5s6fj5xf" path="res://assets/elevatorNew/elevatorButtons/buttonClose.tscn" id="12_4gupg"]
+[ext_resource type="PackedScene" uid="uid://b4hte8v7fpq7o" path="res://assets/elevatorNew/elevatorButtons/buttonOpen.tscn" id="13_yf80o"]
+[ext_resource type="PackedScene" uid="uid://bci101o8cculh" path="res://assets/elevatorNew/elevator_button_panel.tscn" id="14_4niuy"]
+[ext_resource type="PackedScene" uid="uid://dkfgp5xrpg8ll" path="res://assets/elevatorNew/empty_box.tscn" id="15_66vf8"]
+[ext_resource type="PackedScene" uid="uid://dq3ocurr25m0t" path="res://scenes/Driver1.tscn" id="16_buat0"]
+[ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="17_uv2x0"]
+[ext_resource type="PackedScene" uid="uid://ddqdfu8rw4wxq" path="res://assets/elevatorNew/elevator_part_w_door.tscn" id="18_mdorr"]
+[ext_resource type="PackedScene" uid="uid://cffgdsansmwm" path="res://assets/elevatorNew/hallway.tscn" id="19_ethsl"]
+[ext_resource type="PackedScene" uid="uid://lsdkxs60ecih" path="res://assets/elevatorNew/hallway_button_panel.tscn" id="19_ppn6c"]
+[ext_resource type="PackedScene" uid="uid://c0sj1iwmqhlvq" path="res://assets/elevatorNew/elevatorButtons/buttonDown.tscn" id="20_504hf"]
+[ext_resource type="PackedScene" uid="uid://bmtsnt6u41a4k" path="res://assets/elevatorNew/elevatorButtons/buttonUp.tscn" id="21_66jp3"]
+[ext_resource type="Script" path="res://scripts/close_door_trigger.gd" id="22_bab10"]
+
+[sub_resource type="Environment" id="Environment_i5xx2"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+tonemap_mode = 3
+glow_intensity = 0.21
+glow_strength = 1.55
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_density = 8.0
+fog_depth_begin = 0.0
+fog_depth_end = 83.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1ehs"]
+size = Vector3(0.18, 1, 1.955)
+
+[node name="ElevatorsFloor" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i5xx2")
+
+[node name="Player" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") instance=ExtResource("17_uv2x0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.74968)
+attack_marker = NodePath("Head/PlayerCam/AttackMarker")
+rotate_marker = NodePath("RotateMarker")
+lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
+
+[node name="elevator1" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="fuseBox" parent="elevator1" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator1"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator1/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator1/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator1/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator1/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator1/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator1/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator1/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator1/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator1/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator1/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator1/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator1/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator1" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator1/EmptyBox" instance=ExtResource("16_buat0")]
+transform = Transform3D(-4.37114e-08, 1.44322e-16, 0.999999, -0.0174523, 0.999842, -7.62865e-10, -0.999849, -0.0174524, -4.37048e-08, 0.00262475, -0.127835, -0.0313307)
+
+[node name="elevatorPart" parent="elevator1" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+knock_count = 3
+
+[node name="hallwayButtons" type="Node3D" parent="elevator1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator1/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator1/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../..")
+
+[node name="button2" parent="elevator1/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator1/CloseDoorTrigger"]
+shape = SubResource("BoxShape3D_i1ehs")
+
+[node name="hallway" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60918, 0, -3.03891)
+
+[node name="hallway2" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62751, 0, -3.03891)
+
+[connection signal="body_entered" from="elevator1/CloseDoorTrigger" to="elevator1/CloseDoorTrigger" method="_on_body_entered"]
+
+[editable path="elevator1/elevatorButtons/button"]

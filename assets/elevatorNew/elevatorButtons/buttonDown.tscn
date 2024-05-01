@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0sj1iwmqhlvq"]
+[gd_scene load_steps=12 format=3 uid="uid://c0sj1iwmqhlvq"]
 
 [ext_resource type="PackedScene" uid="uid://de02sbxuffjx8" path="res://assets/elevatorNew/button.glb" id="1_c3ubn"]
 [ext_resource type="Material" uid="uid://bpwoijo7kyryk" path="res://assets/materials/button_ring.tres" id="2_85k5i"]
+[ext_resource type="Script" path="res://scripts/Hallway_Down_Button.gd" id="2_dwgkm"]
 [ext_resource type="Shader" uid="uid://csak4v7isit0k" path="res://assets/materials/shaders/buttons/down.tres" id="2_logj0"]
+[ext_resource type="Script" path="res://scripts/down_button_body.gd" id="5_xwwju"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8e4xw"]
 render_priority = 0
@@ -48,7 +50,12 @@ _data = {
 "buttonPress": SubResource("Animation_8n2he")
 }
 
-[node name="button" instance=ExtResource("1_c3ubn")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yo8nu"]
+height = 0.01
+radius = 0.03
+
+[node name="HallwayDownButton" instance=ExtResource("1_c3ubn")]
+script = ExtResource("2_dwgkm")
 
 [node name="Cylinder_001" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_85k5i")
@@ -59,3 +66,11 @@ surface_material_override/2 = SubResource("StandardMaterial3D_q3tsx")
 libraries = {
 "": SubResource("AnimationLibrary_t666n")
 }
+
+[node name="DownButtonBody" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+script = ExtResource("5_xwwju")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DownButtonBody" index="0"]
+shape = SubResource("CylinderShape3D_yo8nu")
