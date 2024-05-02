@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://0npkyhjy4kmh"]
+
+[ext_resource type="PackedScene" uid="uid://73n1vf2lo4ia" path="res://assets/elevatorNew/fuse.glb" id="1_lcx6e"]
+[ext_resource type="Material" uid="uid://b4pkp6y6yh73w" path="res://assets/materials/copper.tres" id="2_aijw5"]
+[ext_resource type="Material" uid="uid://bjeovcijlkq5j" path="res://assets/materials/fuse_white.tres" id="3_3ovw0"]
+
+[node name="fuse" instance=ExtResource("1_lcx6e")]
+
+[node name="Cube_047" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_aijw5")
+surface_material_override/1 = ExtResource("3_3ovw0")

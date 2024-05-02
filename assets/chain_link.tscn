@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bahjwtcrxl8ug"]
+
+[ext_resource type="PackedScene" uid="uid://du0gkgbnmnivg" path="res://assets/elevatorNew/chainLink.glb" id="1_r7ogo"]
+[ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="2_1bdm7"]
+
+[node name="chainLink" instance=ExtResource("1_r7ogo")]
+
+[node name="Circle" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_1bdm7")

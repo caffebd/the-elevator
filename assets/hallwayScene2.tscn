@@ -1,9 +1,10 @@
-[gd_scene load_steps=48 format=3 uid="uid://ccky6fld3avk1"]
+[gd_scene load_steps=50 format=3 uid="uid://ccky6fld3avk1"]
 
 [ext_resource type="Script" path="res://scripts/HallwayArea.gd" id="1_70hd2"]
 [ext_resource type="PackedScene" uid="uid://cffgdsansmwm" path="res://assets/elevatorNew/hallway.tscn" id="1_oqa06"]
 [ext_resource type="Shader" path="res://assets/chromaticAbberation.gdshader" id="1_vdys4"]
 [ext_resource type="PackedScene" uid="uid://f5dbi5rm6a2l" path="res://assets/elevatorNew/exit_sign.tscn" id="2_0enyf"]
+[ext_resource type="Shader" path="res://assets/materials/shaders/screenEffect.gdshader" id="2_5k4af"]
 [ext_resource type="PackedScene" uid="uid://dbiu0qbb5wcxi" path="res://assets/elevatorNew/exit_part.tscn" id="2_nftua"]
 [ext_resource type="PackedScene" uid="uid://bw713rlnd42xs" path="res://assets/elevatorNew/fuse_box.tscn" id="2_u0ixm"]
 [ext_resource type="PackedScene" uid="uid://6krwobwixs8l" path="res://assets/elevatorNew/elevator_part.tscn" id="3_x8o7b"]
@@ -42,6 +43,12 @@
 [ext_resource type="PackedScene" uid="uid://dim2evhnbmhlj" path="res://scenes/rope.tscn" id="39_qqgci"]
 [ext_resource type="PackedScene" uid="uid://bpyv7f1m7g5h2" path="res://scenes/Driver2.tscn" id="41_fjnda"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwnmw"]
+shader = ExtResource("2_5k4af")
+shader_parameter/blur_amount = 3.0
+shader_parameter/signal_quality = 0.0
+shader_parameter/bottom_strenth = 3.0
+
 [sub_resource type="Environment" id="Environment_5wx5y"]
 background_mode = 1
 ambient_light_source = 2
@@ -77,6 +84,13 @@ size = Vector3(13.455, 1, 1)
 [node name="MainHallway" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_70hd2")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mwnmw")
+offset_left = -81.0
+offset_top = -81.0
+offset_right = 2112.0
+offset_bottom = 1294.0
 
 [node name="fuseBox" parent="." instance=ExtResource("2_u0ixm")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.49122, -0.172347, 2.76623)

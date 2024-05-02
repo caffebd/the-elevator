@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://1nb7r21viq8a"]
+
+[ext_resource type="PackedScene" uid="uid://birv6lmkmu4m" path="res://assets/elevatorNew/flatHead.glb" id="1_hxwa8"]
+[ext_resource type="Material" uid="uid://yx3kfmdf4omb" path="res://assets/materials/red_wire.tres" id="2_all7j"]
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="3_n2chy"]
+
+[node name="flatHead" instance=ExtResource("1_hxwa8")]
+
+[node name="flat" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_all7j")
+surface_material_override/1 = ExtResource("3_n2chy")

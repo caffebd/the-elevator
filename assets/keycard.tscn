@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://rfj568jqyep1"]
+
+[ext_resource type="PackedScene" uid="uid://be5bbesmj6833" path="res://assets/elevatorNew/keycard.glb" id="1_lmu0w"]
+[ext_resource type="Texture2D" uid="uid://bpobeohxaigf3" path="res://assets/textures/keycard.jpg" id="2_ecps5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuxnp"]
+albedo_texture = ExtResource("2_ecps5")
+
+[node name="keycard" instance=ExtResource("1_lmu0w")]
+
+[node name="keycard" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tuxnp")

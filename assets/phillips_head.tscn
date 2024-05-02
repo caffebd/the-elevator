@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca6g5ab3ia3er"]
+
+[ext_resource type="PackedScene" uid="uid://di6w8et6f7pk8" path="res://assets/elevatorNew/phillipsHead.glb" id="1_0egna"]
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_efloy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7uob"]
+albedo_color = Color(0.575754, 0.761223, 0.809579, 1)
+roughness = 0.48
+normal_enabled = true
+
+[node name="phillipsHead" instance=ExtResource("1_0egna")]
+
+[node name="phillips" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h7uob")
+surface_material_override/1 = ExtResource("2_efloy")

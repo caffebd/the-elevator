@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_r01k5"]
 [ext_resource type="Material" uid="uid://brnwjocutoqia" path="res://assets/materials/elevator_roof.tres" id="3_gxhwt"]
 [ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="3_vpre5"]
-[ext_resource type="Material" path="res://assets/materials/floor_light.tres" id="4_hj4aw"]
+[ext_resource type="Material" uid="uid://ds81ix3yasfar" path="res://assets/materials/floor_light.tres" id="4_hj4aw"]
 [ext_resource type="PackedScene" uid="uid://ctlukj8yc6bqt" path="res://assets/NewSafe/safe.tscn" id="7_hmeek"]
 [ext_resource type="AudioStream" uid="uid://xkpj2f8pxrh2" path="res://assets/audio/elevator_ding_door.mp3" id="9_ekif5"]
 

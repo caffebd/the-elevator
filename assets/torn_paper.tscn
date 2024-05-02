@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dutb5jah6sgwo"]
+
+[ext_resource type="PackedScene" uid="uid://c0lhufbra5jbr" path="res://assets/elevatorNew/tornPaper.glb" id="1_fmrr3"]
+[ext_resource type="Shader" uid="uid://bsv4qiuqd6ccj" path="res://assets/materials/shaders/tornPaper.tres" id="2_qhw20"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwgyy"]
+render_priority = 0
+shader = ExtResource("2_qhw20")
+
+[node name="tornPaper" instance=ExtResource("1_fmrr3")]
+
+[node name="paper" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_fwgyy")
