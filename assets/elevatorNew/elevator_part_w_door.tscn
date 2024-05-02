@@ -123,8 +123,9 @@ light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.1
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 15.0
-distance_fade_shadow = 15.0
+distance_fade_begin = 6.0
+distance_fade_shadow = 4.0
+distance_fade_length = 4.0
 omni_range = 3.71582
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="." index="9"]
@@ -134,8 +135,9 @@ light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.2
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 15.0
-distance_fade_shadow = 15.0
+distance_fade_begin = 6.0
+distance_fade_shadow = 4.0
+distance_fade_length = 4.0
 omni_range = 1.00343
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="10"]

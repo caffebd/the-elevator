@@ -5,8 +5,8 @@
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_r01k5"]
 [ext_resource type="Material" uid="uid://brnwjocutoqia" path="res://assets/materials/elevator_roof.tres" id="3_gxhwt"]
 [ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="3_vpre5"]
-[ext_resource type="Material" uid="uid://ds81ix3yasfar" path="res://assets/materials/floor_light.tres" id="4_hj4aw"]
-[ext_resource type="PackedScene" uid="uid://ctlukj8yc6bqt" path="res://assets/NewSafe/safe.tscn" id="7_hmeek"]
+[ext_resource type="Material" path="res://assets/materials/floor_light.tres" id="4_hj4aw"]
+[ext_resource type="PackedScene" uid="uid://ctlukj8yc6bqt" path="res://assets/elevatorNew/safe.tscn" id="7_hmeek"]
 [ext_resource type="AudioStream" uid="uid://xkpj2f8pxrh2" path="res://assets/audio/elevator_ding_door.mp3" id="9_ekif5"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lsyrn"]
@@ -228,89 +228,89 @@ transform = Transform3D(0.00260059, 0, -0.999997, 0, 1, 0, 0.999997, 0, 0.002600
 transform = Transform3D(-3.86499e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.86499e-08, -3.80388, -0.0373314, 5.98747)
 box_number = "1"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe2" parent="SafesWall" index="1" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.91155e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.91155e-08, -4.26391, -0.0367144, 5.97916)
 box_number = "2"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe3" parent="SafesWall" index="2" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -4.7253, -0.0365379, 5.98139)
 box_number = "3"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe4" parent="SafesWall" index="3" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -5.18594, -0.0346649, 5.983)
 box_number = "4"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe5" parent="SafesWall" index="4" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.9814e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -3.9814e-08, -5.6451, -0.035242, 5.98454)
 box_number = "5"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe6" parent="SafesWall" index="5" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.86499e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.86499e-08, -3.80235, -0.495998, 5.98274)
 box_number = "6"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe7" parent="SafesWall" index="6" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.00469e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.00469e-08, -4.26342, -0.489157, 5.97918)
 box_number = "7"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe8" parent="SafesWall" index="7" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.09782e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.09782e-08, -4.72544, -0.488619, 5.97781)
 box_number = "8"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe9" parent="SafesWall" index="8" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.09782e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.09782e-08, -5.18486, -0.488619, 5.98049)
 box_number = "9"
 locked = true
 tool_needed = "Driver1"
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe10" parent="SafesWall" index="9" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.02797e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.02797e-08, -5.64027, -0.489, 5.97937)
 box_number = "10"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe11" parent="SafesWall" index="10" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -3.80148, -0.953034, 5.98158)
 box_number = "11"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe12" parent="SafesWall" index="11" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.9814e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.9814e-08, -4.26336, -0.952027, 5.98422)
 box_number = "12"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe13" parent="SafesWall" index="12" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.05125e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.05125e-08, -4.72503, -0.95291, 5.98579)
 box_number = "13"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe14" parent="SafesWall" index="13" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.05125e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.05125e-08, -5.18369, -0.951149, 5.98517)
 box_number = "14"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")
 
 [node name="safe15" parent="SafesWall" index="14" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.81842e-08, 0, 0.95143, 0, 0.951432, 0, -0.95143, 0, -3.81842e-08, -5.64222, -0.951301, 5.98358)
 box_number = "15"
 locked = true
-all_numbers = NodePath("door/Numbers")
+all_numbers = NodePath("Numbers")

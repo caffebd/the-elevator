@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://rfj568jqyep1"]
+[gd_scene load_steps=4 format=3 uid="uid://d12lq0bg2fcya"]
 
 [ext_resource type="PackedScene" uid="uid://be5bbesmj6833" path="res://assets/elevatorNew/keycard.glb" id="1_lmu0w"]
 [ext_resource type="Texture2D" uid="uid://bpobeohxaigf3" path="res://assets/textures/keycard.jpg" id="2_ecps5"]

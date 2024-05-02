@@ -54,4 +54,6 @@ signal top_down_arm()
 
 signal card_click()
 
+signal player_warp(location)
 
+signal elevator_floor()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm7y2vrgx02c3"]
+[gd_scene load_steps=3 format=3 uid="uid://7w4y47ml26r"]
 
 [ext_resource type="PackedScene" uid="uid://d2jya06e6rhq3" path="res://assets/elevatorNew/tape.glb" id="1_u3kod"]
 [ext_resource type="Material" uid="uid://dag1nlv4naafk" path="res://assets/materials/tape.tres" id="2_jd1hl"]

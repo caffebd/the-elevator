@@ -1,18 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://co0r7biqeyrcb"]
 
-[ext_resource type="Texture2D" uid="uid://buce4onf1hqii" path="res://assets/UI/fuse_icon.png" id="1_3ok71"]
+[ext_resource type="Texture2D" uid="uid://bxqnc8ey32dco" path="res://assets/UI/inventoryIcons/fuse.png" id="1_jnfba"]
 
 [node name="FuseIcon" type="ColorRect"]
 custom_minimum_size = Vector2(52, 52)
 offset_right = 52.0
 offset_bottom = 52.0
-color = Color(1, 1, 1, 0.137255)
+color = Color(1, 1, 1, 0.607843)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 5.0
-offset_right = 40.0
-offset_bottom = 55.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_3ok71")
+offset_left = 1.0
+offset_right = 130.0
+offset_bottom = 129.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_jnfba")

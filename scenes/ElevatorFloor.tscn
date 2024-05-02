@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://pi3djdqgum0l"]
+[gd_scene load_steps=31 format=3 uid="uid://pi3djdqgum0l"]
 
 [ext_resource type="PackedScene" uid="uid://dgrtvp0jbijme" path="res://assets/UpdatedElevator/elevator.tscn" id="1_fto52"]
+[ext_resource type="Script" path="res://scripts/elevator_floor.gd" id="1_sgj25"]
 [ext_resource type="PackedScene" uid="uid://bw713rlnd42xs" path="res://assets/elevatorNew/fuse_box.tscn" id="2_lpmwh"]
 [ext_resource type="PackedScene" uid="uid://cieekv3babfha" path="res://assets/elevatorNew/elevatorButtons/button1.tscn" id="3_7xanx"]
 [ext_resource type="PackedScene" uid="uid://nlffndwhe6hi" path="res://assets/elevatorNew/elevatorButtons/button2.tscn" id="4_xmdq4"]
@@ -23,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://c0sj1iwmqhlvq" path="res://assets/elevatorNew/elevatorButtons/buttonDown.tscn" id="20_504hf"]
 [ext_resource type="PackedScene" uid="uid://bmtsnt6u41a4k" path="res://assets/elevatorNew/elevatorButtons/buttonUp.tscn" id="21_66jp3"]
 [ext_resource type="Script" path="res://scripts/close_door_trigger.gd" id="22_bab10"]
+[ext_resource type="Script" path="res://scripts/back_in_elevator.gd" id="23_p5dp7"]
+[ext_resource type="Script" path="res://scripts/warp_area.gd" id="25_454bl"]
 
 [sub_resource type="Environment" id="Environment_i5xx2"]
 background_mode = 1
@@ -42,19 +45,27 @@ fog_depth_end = 83.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1ehs"]
 size = Vector3(0.18, 1, 1.955)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jy2wm"]
+size = Vector3(0.185, 0.675, 3.68)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6q38f"]
+size = Vector3(0.505, 0.86, 1.835)
+
 [node name="ElevatorsFloor" type="Node3D"]
+script = ExtResource("1_sgj25")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i5xx2")
 
 [node name="Player" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") instance=ExtResource("17_uv2x0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.74968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6317, 0, -3.19143)
 attack_marker = NodePath("Head/PlayerCam/AttackMarker")
 rotate_marker = NodePath("RotateMarker")
 lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
 
 [node name="elevator1" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+start_elevator_floor = true
 
 [node name="fuseBox" parent="elevator1" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -101,11 +112,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.
 transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
 
 [node name="Driver1" parent="elevator1/EmptyBox" instance=ExtResource("16_buat0")]
-transform = Transform3D(-4.37114e-08, 1.44322e-16, 0.999999, -0.0174523, 0.999842, -7.62865e-10, -0.999849, -0.0174524, -4.37048e-08, 0.00262475, -0.127835, -0.0313307)
 
 [node name="elevatorPart" parent="elevator1" instance=ExtResource("18_mdorr")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
-knock_count = 3
+knock_count = 2
 
 [node name="hallwayButtons" type="Node3D" parent="elevator1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
@@ -120,19 +130,675 @@ linked_elevator = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator1"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator1" node_paths=PackedStringArray("back_inside")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
+
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator1/CloseDoorTrigger"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_i1ehs")
+
+[node name="BackInElevator" type="Area3D" parent="elevator1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator1/BackInElevator"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_jy2wm")
+disabled = true
+
+[node name="elevator2" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.24147, 0, 0)
+
+[node name="fuseBox" parent="elevator2" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator2"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator2/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator2/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator2/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator2/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator2/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator2/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator2/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator2/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator2/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator2/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator2/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator2/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator2" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator2/EmptyBox" instance=ExtResource("16_buat0")]
+
+[node name="elevatorPart" parent="elevator2" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+
+[node name="hallwayButtons" type="Node3D" parent="elevator2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator2/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator2/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../..")
+
+[node name="button2" parent="elevator2/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="elevator1/CloseDoorTrigger"]
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator2/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
+disabled = true
 
-[node name="hallway" parent="." instance=ExtResource("19_ethsl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60918, 0, -3.03891)
+[node name="BackInElevator" type="Area3D" parent="elevator2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator2/BackInElevator"]
+shape = SubResource("BoxShape3D_jy2wm")
+
+[node name="elevator3" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.24538, 0, 0)
+
+[node name="fuseBox" parent="elevator3" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator3"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator3/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator3/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator3/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator3/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator3/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator3/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator3/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator3/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator3/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator3/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator3/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator3/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator3" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator3/EmptyBox" instance=ExtResource("16_buat0")]
+
+[node name="elevatorPart" parent="elevator3" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+knock_count = 4
+
+[node name="hallwayButtons" type="Node3D" parent="elevator3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator3/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator3/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../..")
+
+[node name="button2" parent="elevator3/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator3/CloseDoorTrigger"]
+shape = SubResource("BoxShape3D_i1ehs")
+disabled = true
+
+[node name="BackInElevator" type="Area3D" parent="elevator3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator3/BackInElevator"]
+shape = SubResource("BoxShape3D_jy2wm")
+
+[node name="elevator4" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.4876, 0, 0)
+
+[node name="fuseBox" parent="elevator4" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator4"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator4/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator4/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator4/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator4/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator4/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator4/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator4/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator4/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator4/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator4/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator4/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator4/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator4" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator4/EmptyBox" instance=ExtResource("16_buat0")]
+
+[node name="elevatorPart" parent="elevator4" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+knock_count = 2
+
+[node name="hallwayButtons" type="Node3D" parent="elevator4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator4/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator4/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../..")
+
+[node name="button2" parent="elevator4/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator4/CloseDoorTrigger"]
+shape = SubResource("BoxShape3D_i1ehs")
+disabled = true
+
+[node name="BackInElevator" type="Area3D" parent="elevator4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator4/BackInElevator"]
+shape = SubResource("BoxShape3D_jy2wm")
+
+[node name="elevator5" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.4942, 0, 0)
+
+[node name="fuseBox" parent="elevator5" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator5"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator5/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator5/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator5/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator5/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator5/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator5/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator5/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator5/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator5/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator5/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator5/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator5/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator5" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator5/EmptyBox" instance=ExtResource("16_buat0")]
+
+[node name="elevatorPart" parent="elevator5" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+knock_count = 2
+
+[node name="hallwayButtons" type="Node3D" parent="elevator5"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator5/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator5/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../..")
+
+[node name="button2" parent="elevator5/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator5/CloseDoorTrigger"]
+shape = SubResource("BoxShape3D_i1ehs")
+disabled = true
+
+[node name="BackInElevator" type="Area3D" parent="elevator5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator5/BackInElevator"]
+shape = SubResource("BoxShape3D_jy2wm")
+
+[node name="elevator7" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.3827, 0, 0)
+
+[node name="fuseBox" parent="elevator7" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator7"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator7/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator7/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator7/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator7/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator7/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator7/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator7/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator7/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator7/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator7/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator7/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator7/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator7" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator7/EmptyBox" instance=ExtResource("16_buat0")]
+
+[node name="elevatorPart" parent="elevator7" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+knock_count = 2
+
+[node name="hallwayButtons" type="Node3D" parent="elevator7"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator7/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator7/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../../../elevator5")
+
+[node name="button2" parent="elevator7/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator7/CloseDoorTrigger"]
+shape = SubResource("BoxShape3D_i1ehs")
+disabled = true
+
+[node name="BackInElevator" type="Area3D" parent="elevator7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator7/BackInElevator"]
+shape = SubResource("BoxShape3D_jy2wm")
+
+[node name="elevator6" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7215, 0, 0)
+
+[node name="fuseBox" parent="elevator6" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator6"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator6/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator6/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator6/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator6/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator6/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator6/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator6/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator6/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator6/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator6/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator6/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator6/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator6" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator6/EmptyBox" instance=ExtResource("16_buat0")]
+
+[node name="elevatorPart" parent="elevator6" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+knock_count = 3
+
+[node name="hallwayButtons" type="Node3D" parent="elevator6"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator6/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator6/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../..")
+
+[node name="button2" parent="elevator6/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator6/CloseDoorTrigger"]
+shape = SubResource("BoxShape3D_i1ehs")
+disabled = true
+
+[node name="BackInElevator" type="Area3D" parent="elevator6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator6/BackInElevator"]
+shape = SubResource("BoxShape3D_jy2wm")
+
+[node name="elevator8" parent="." instance=ExtResource("1_fto52")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.6082, 0, 0)
+
+[node name="fuseBox" parent="elevator8" instance=ExtResource("2_lpmwh")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
+
+[node name="elevatorButtons" type="Node3D" parent="elevator8"]
+transform = Transform3D(1, -3.96248e-12, 1.74846e-07, -2.37594e-11, 1, 0, -1.74846e-07, -1.73206e-19, 1, 1.502, 0, 1.343)
+
+[node name="button" parent="elevator8/elevatorButtons" instance=ExtResource("3_7xanx")]
+
+[node name="button2" parent="elevator8/elevatorButtons" instance=ExtResource("4_xmdq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="elevator8/elevatorButtons" instance=ExtResource("5_ugq4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="elevator8/elevatorButtons" instance=ExtResource("6_0ie3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="elevator8/elevatorButtons" instance=ExtResource("7_3a6s7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="elevator8/elevatorButtons" instance=ExtResource("8_kb376")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="elevator8/elevatorButtons" instance=ExtResource("9_6jf1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="elevator8/elevatorButtons" instance=ExtResource("10_044wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="elevator8/elevatorButtons" instance=ExtResource("11_b4d66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="elevator8/elevatorButtons" instance=ExtResource("12_4gupg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="elevator8/elevatorButtons" instance=ExtResource("13_yf80o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="elevator8/elevatorButtons" instance=ExtResource("14_4niuy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="EmptyBox" parent="elevator8" instance=ExtResource("15_66vf8")]
+transform = Transform3D(-0.999993, 0.00349067, 8.74214e-08, 0.0034906, 0.999985, 0.00523595, 1.81895e-05, 0.00523596, -0.999984, 0.223737, -0.381397, 2.81061)
+
+[node name="Driver1" parent="elevator8/EmptyBox" instance=ExtResource("16_buat0")]
+
+[node name="elevatorPart" parent="elevator8" instance=ExtResource("18_mdorr")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.04254, 0.0107985, 1.32993e-07)
+knock_count = 3
+
+[node name="hallwayButtons" type="Node3D" parent="elevator8"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.02653, -0.240684, -1.34193)
+
+[node name="hallwayButtonPanel2" parent="elevator8/hallwayButtons" instance=ExtResource("19_ppn6c")]
+
+[node name="button" parent="elevator8/hallwayButtons" node_paths=PackedStringArray("linked_elevator") instance=ExtResource("20_504hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.00611782, 0)
+linked_elevator = NodePath("../../../elevator6")
+
+[node name="button2" parent="elevator8/hallwayButtons" instance=ExtResource("21_66jp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+visible = false
+
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
+script = ExtResource("22_bab10")
+
+[node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator8/CloseDoorTrigger"]
+shape = SubResource("BoxShape3D_i1ehs")
+disabled = true
+
+[node name="BackInElevator" type="Area3D" parent="elevator8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
+script = ExtResource("23_p5dp7")
+
+[node name="BackInsideCollision" type="CollisionShape3D" parent="elevator8/BackInElevator"]
+shape = SubResource("BoxShape3D_jy2wm")
 
 [node name="hallway2" parent="." instance=ExtResource("19_ethsl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62751, 0, -3.03891)
 
+[node name="hallway" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60918, 0, -3.03891)
+
+[node name="hallway3" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8764, 0, -3.039)
+
+[node name="hallway4" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8658, 0, -3.039)
+
+[node name="hallway5" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1229, 0, -3.039)
+
+[node name="hallway11" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.008, 0, -3.039)
+
+[node name="hallway12" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.6424, 0, -3.039)
+
+[node name="hallway13" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.8647, 0, -3.039)
+
+[node name="hallway14" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.2443, 0, -3.039)
+
+[node name="hallway6" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.109, 0, -3.039)
+
+[node name="hallway7" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3449, 0, -3.039)
+
+[node name="WarpArea" type="Area3D" parent="hallway7" node_paths=PackedStringArray("linked_warp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31485, -1.11617, 0)
+script = ExtResource("25_454bl")
+linked_warp = NodePath("../../hallway9/WarpMarker1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hallway7/WarpArea"]
+shape = SubResource("BoxShape3D_6q38f")
+
+[node name="WarpMarker2" type="Marker3D" parent="hallway7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48187, -1.00647, 0.0437365)
+
+[node name="hallway8" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.9778, 0, -3.039)
+
+[node name="hallway9" parent="." instance=ExtResource("19_ethsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7573, 0, -3.039)
+
+[node name="WarpArea" type="Area3D" parent="hallway9" node_paths=PackedStringArray("linked_warp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31485, -1.11617, 0)
+script = ExtResource("25_454bl")
+linked_warp = NodePath("../../hallway7/WarpMarker2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hallway9/WarpArea"]
+shape = SubResource("BoxShape3D_6q38f")
+
+[node name="WarpMarker1" type="Marker3D" parent="hallway9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09166, -1.39669, -0.0863428)
+
 [connection signal="body_entered" from="elevator1/CloseDoorTrigger" to="elevator1/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator1/BackInElevator" to="elevator1/BackInElevator" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator2/CloseDoorTrigger" to="elevator2/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator2/BackInElevator" to="elevator2/BackInElevator" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator3/CloseDoorTrigger" to="elevator3/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator3/BackInElevator" to="elevator3/BackInElevator" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator4/CloseDoorTrigger" to="elevator4/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator4/BackInElevator" to="elevator4/BackInElevator" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator5/CloseDoorTrigger" to="elevator5/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator5/BackInElevator" to="elevator5/BackInElevator" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator7/CloseDoorTrigger" to="elevator7/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator7/BackInElevator" to="elevator7/BackInElevator" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator6/CloseDoorTrigger" to="elevator6/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator6/BackInElevator" to="elevator6/BackInElevator" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator8/CloseDoorTrigger" to="elevator8/CloseDoorTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="elevator8/BackInElevator" to="elevator8/BackInElevator" method="_on_body_entered"]
+[connection signal="body_exited" from="hallway7/WarpArea" to="hallway7/WarpArea" method="_on_body_exited"]
+[connection signal="body_exited" from="hallway9/WarpArea" to="hallway9/WarpArea" method="_on_body_exited"]
 
 [editable path="elevator1/elevatorButtons/button"]
+[editable path="elevator2/elevatorButtons/button"]
+[editable path="elevator3/elevatorButtons/button"]
+[editable path="elevator4/elevatorButtons/button"]
+[editable path="elevator5/elevatorButtons/button"]
+[editable path="elevator7/elevatorButtons/button"]
+[editable path="elevator6/elevatorButtons/button"]
+[editable path="elevator8/elevatorButtons/button"]

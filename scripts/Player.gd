@@ -74,6 +74,8 @@ var t_bob = 0.0
 var lean_amount = 1.5
 var lean_weight = 0.05
 
+var can_warp: bool = true
+
 #end head wobble settings
 
 func _ready():
@@ -81,6 +83,7 @@ func _ready():
 	Signals.hand_item.connect(_set_hand_item)
 	Signals.remove_item.connect(_remove_item)
 	Signals.update_call_step.connect(_update_call_step)
+	Signals.player_warp.connect(_player_warp)
 	#camera.current = false
 	use_cursor = false
 	if test_mode:
@@ -494,6 +497,18 @@ func get_saved_inventory():
 	if SaveState.card_is_in_slot == true:
 		_remove_item("Card")
 		Signals.emit_signal("card_in_slot", SaveState.card_is_in_slot)
+
+
+func _player_warp(location):
+	print ("did warp")
+	global_position.x = location.x
+	#if can_warp:
+		#print ("warp now")
+		#can_warp = false
+		#global_position.x = location.x
+	#else:
+		#print ("warp off")
+		#can_warp = true
 
 
 

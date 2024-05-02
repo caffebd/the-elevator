@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://1nb7r21viq8a"]
+[gd_scene load_steps=4 format=3 uid="uid://dld8gf5kn7j38"]
 
 [ext_resource type="PackedScene" uid="uid://birv6lmkmu4m" path="res://assets/elevatorNew/flatHead.glb" id="1_hxwa8"]
 [ext_resource type="Material" uid="uid://yx3kfmdf4omb" path="res://assets/materials/red_wire.tres" id="2_all7j"]

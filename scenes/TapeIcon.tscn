@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://dy6ovqiumpovq"]
 
-[ext_resource type="Texture2D" uid="uid://ticoqwwhl4os" path="res://assets/UI/tape_icon.png" id="1_7s6w7"]
+[ext_resource type="Texture2D" uid="uid://cssckuucdhh04" path="res://assets/UI/inventoryIcons/tape.png" id="1_o7pc2"]
 
 [node name="TapeIcon" type="ColorRect"]
 custom_minimum_size = Vector2(52, 52)
 offset_right = 52.0
 offset_bottom = 52.0
-color = Color(1, 1, 1, 0.137255)
+color = Color(1, 1, 1, 0.607843)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -14,5 +14,5 @@ offset_left = 6.0
 offset_top = 5.0
 offset_right = 56.0
 offset_bottom = 55.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_7s6w7")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_o7pc2")

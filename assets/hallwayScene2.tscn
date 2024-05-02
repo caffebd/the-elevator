@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ccky6fld3avk1"]
+[gd_scene load_steps=52 format=3 uid="uid://ccky6fld3avk1"]
 
 [ext_resource type="Script" path="res://scripts/HallwayArea.gd" id="1_70hd2"]
 [ext_resource type="PackedScene" uid="uid://cffgdsansmwm" path="res://assets/elevatorNew/hallway.tscn" id="1_oqa06"]
@@ -42,6 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://cinfh5ooeost4" path="res://assets/elevatorNew/crowbar.tscn" id="36_2akp3"]
 [ext_resource type="PackedScene" uid="uid://dim2evhnbmhlj" path="res://scenes/rope.tscn" id="39_qqgci"]
 [ext_resource type="PackedScene" uid="uid://bpyv7f1m7g5h2" path="res://scenes/Driver2.tscn" id="41_fjnda"]
+[ext_resource type="PackedScene" uid="uid://bt2eko40rxesl" path="res://scenes/Tape.tscn" id="43_2th7l"]
+[ext_resource type="PackedScene" uid="uid://bwj5pktrcil1y" path="res://scenes/fuse.tscn" id="44_trrcy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwnmw"]
 shader = ExtResource("2_5k4af")
@@ -86,6 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_70hd2")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_mwnmw")
 offset_left = -81.0
 offset_top = -81.0
@@ -299,7 +302,7 @@ stream = ExtResource("30_i4asb")
 volume_db = -5.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") instance=ExtResource("6_a8yqa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54069, -0.158993, 4.69584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94521, -0.342958, 3.32698)
 attack_marker = NodePath("Head/PlayerCam/AttackMarker")
 rotate_marker = NodePath("RotateMarker")
 lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
@@ -349,7 +352,7 @@ unique_name_in_owner = true
 transform = Transform3D(-0.0199304, 0.999801, 0, -0.999801, -0.0199304, 0, 0, 0, 1, -1.62612, -0.331084, 2.96158)
 
 [node name="Rope" parent="." instance=ExtResource("39_qqgci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42734, -0.120509, 4.02808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.42734, -0.519001, 4.02808)
 
 [node name="Props" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.617, 0.00600004, 3.042)
@@ -359,6 +362,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24511, -0.215318, -0.49266
 
 [node name="elevator2" parent="." instance=ExtResource("4_8f3o6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.617, 0.006, 3.042)
+
+[node name="Tape" parent="." instance=ExtResource("43_2th7l")]
+transform = Transform3D(-0.0159931, -0.986853, 0.160828, 0.597611, 0.119523, 0.792827, -0.801627, 0.108793, 0.587843, -2.20463, -1.06317, 3.51593)
+
+[node name="Fuse" parent="." instance=ExtResource("44_trrcy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51122, -1.15112, 4.32807)
 
 [connection signal="body_entered" from="Reset" to="." method="_on_reset_body_entered"]
 [connection signal="body_entered" from="ElevatorTrigger" to="." method="_on_elevator_trigger_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bahjwtcrxl8ug"]
+[gd_scene load_steps=3 format=3 uid="uid://c1o81vvnyk5lb"]
 
 [ext_resource type="PackedScene" uid="uid://du0gkgbnmnivg" path="res://assets/elevatorNew/chainLink.glb" id="1_r7ogo"]
 [ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="2_1bdm7"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://cffgdsansmwm"]
+[gd_scene load_steps=38 format=3 uid="uid://cffgdsansmwm"]
 
 [ext_resource type="PackedScene" uid="uid://svhwpftkaspk" path="res://assets/elevatorNew/hallway.glb" id="1_bdt2w"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_8jhnm"]
+[ext_resource type="Script" path="res://scripts/hallway.gd" id="2_l1pta"]
 [ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="3_3jsjh"]
 [ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="4_oa3lj"]
 [ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall.tres" id="5_3ht7l"]
@@ -328,6 +329,7 @@ shadow_mesh = SubResource("ArrayMesh_tygeq")
 size = Vector3(5.205, 0.065, 1.91)
 
 [node name="hallway" instance=ExtResource("1_bdt2w")]
+script = ExtResource("2_l1pta")
 
 [node name="light" parent="." index="0"]
 mesh = SubResource("ArrayMesh_yrtxs")
@@ -378,8 +380,9 @@ light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.1
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
+distance_fade_begin = 9.0
+distance_fade_shadow = 8.0
+distance_fade_length = 8.0
 omni_range = 3.71582
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="." index="12"]
@@ -389,8 +392,9 @@ light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.2
 shadow_enabled = true
 distance_fade_enabled = true
-distance_fade_begin = 10.0
-distance_fade_shadow = 10.0
+distance_fade_begin = 9.0
+distance_fade_shadow = 8.0
+distance_fade_length = 8.0
 omni_range = 1.00343
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="13"]

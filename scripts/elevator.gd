@@ -8,12 +8,20 @@ var doors_moving: bool = false
 
 @onready var main_floor: MeshInstance3D = %Cube_039
 
+var correct_elevator: bool = false
+
+@export var start_elevator_floor: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.panel_drop.connect(_trap_door)
-	Signals.floor_open.connect(_floor_open)
-	#left_door.position.z = 0.948
-	#right_door.position.z = -0.948
+	Signals.floor_open.connect(floor_open)
+	left_door.position.z = 0.948
+	right_door.position.z = -0.948
+	
+	if start_elevator_floor:
+		await get_tree().create_timer(2).timeout
+		operate_door(true)
 	
 	#await get_tree().create_timer(4).timeout
 	#Signals.emit_signal("floor_open")
@@ -54,7 +62,8 @@ func _on_elevator_trigger_body_entered(body: Node3D) -> void:
 		operate_door(false)
 
 
-func _floor_open():
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(main_floor, "position:z", 6.0, 5.0)
-	tween.tween_property($Cube_032, "position:z", 6.0, 5.0)
+func floor_open():
+	if not correct_elevator:
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(main_floor, "position:z", 6.0, 5.0)
+		tween.tween_property($Cube_032, "position:z", 6.0, 5.0)

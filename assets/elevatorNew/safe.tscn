@@ -159,12 +159,14 @@ font_size = 12
 outline_size = 3
 
 [node name="flathead" type="MeshInstance3D" parent="." index="2"]
+unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, -0.145394, -0.138638)
 visible = false
 mesh = SubResource("PlaneMesh_p4nfq")
 surface_material_override/0 = SubResource("StandardMaterial3D_jy7pi")
 
 [node name="phillipsHead" type="MeshInstance3D" parent="." index="3"]
+unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, -0.145394, -0.138638)
 visible = false
 mesh = SubResource("PlaneMesh_p4nfq")
