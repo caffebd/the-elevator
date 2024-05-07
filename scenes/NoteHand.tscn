@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwwapdthyfkoy"]
+[gd_scene load_steps=8 format=3 uid="uid://dwwapdthyfkoy"]
+
+[ext_resource type="Shader" uid="uid://utg7xosws85h" path="res://assets/materials/shaders/tornPaper.tres" id="1_wd6rv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qonhg"]
 albedo_color = Color(1, 1, 0.764706, 1)
@@ -6,11 +8,55 @@ albedo_color = Color(1, 1, 0.764706, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ifujt"]
 material = SubResource("StandardMaterial3D_qonhg")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go4pb"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kor7y"]
+_surfaces = [{
+"aabb": AABB(-0.0563325, -0.0350505, -1.0425e-08, 0.112675, 0.070101, 1.00208e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(249, 255, 101, 255, 136, 0, 0, 0, 189, 255, 0, 0, 19, 0, 0, 0, 59, 0, 255, 255, 116, 0, 0, 0, 0, 0, 153, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uqf8f"]
+resource_name = "tornPaper_Cube_078"
+_surfaces = [{
+"aabb": AABB(-0.0563325, -0.0350505, -1.0425e-08, 0.112675, 0.070101, 1.00208e-05),
+"attribute_data": PackedByteArray(202, 24, 255, 96, 202, 24, 134, 136, 105, 88, 255, 96, 105, 88, 134, 136),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_go4pb"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(249, 255, 101, 255, 136, 0, 255, 255, 189, 255, 0, 0, 19, 0, 255, 255, 59, 0, 255, 255, 116, 0, 255, 255, 0, 0, 153, 0, 0, 0, 255, 255, 23, 128, 231, 255, 23, 128, 231, 255, 23, 128, 231, 255, 23, 128, 231, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kor7y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60pdv"]
+render_priority = 0
+shader = ExtResource("1_wd6rv")
+
 [node name="NoteHand" type="Node3D"]
 transform = Transform3D(0.709759, 0.359745, 0.605662, -0.70203, 0.290096, 0.650383, 0.0582714, -0.886808, 0.45845, 0, 0.183838, 0.146539)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.192379, 8.14907e-10, 1.46683e-08, -1.11759e-08, 0.0204571, -2.23517e-08, -5.30854e-08, 9.31323e-10, 0.116017, 0.0574666, -0.423636, 0.0950478)
+visible = false
 layers = 524288
 mesh = SubResource("BoxMesh_ifujt")
 skeleton = NodePath("")
+
+[node name="paper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.97654, 0.00639202, -1.64516, -1.17124, 1.81139, -1.40012, 1.15533, 1.82541, 1.39514, 0.0304835, -0.42334, 0.0973009)
+layers = 524288
+mesh = SubResource("ArrayMesh_uqf8f")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_60pdv")

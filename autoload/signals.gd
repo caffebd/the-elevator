@@ -53,7 +53,15 @@ signal panel_drop(state)
 signal top_down_arm()
 
 signal card_click()
+signal key_click()
 
 signal player_warp(location)
 
 signal elevator_floor()
+
+signal roof_open()
+signal rope_drop()
+
+signal camera_shake()
+
+signal elevator_sequence_one()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://epi7w15jdewb"]
 
-[ext_resource type="PackedScene" uid="uid://cku2qg447xuae" path="res://assets/elevatorNew/elevator.glb" id="1_0emim"]
+[ext_resource type="PackedScene" uid="uid://dhmfx6u1dmewx" path="res://assets/elevatorNew/elevator.glb" id="1_0emim"]
 [ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="2_stceh"]
 
 [node name="elevator" instance=ExtResource("1_0emim")]

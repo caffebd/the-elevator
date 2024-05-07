@@ -4,11 +4,11 @@ var door_open = false
 
 var hinge: MeshInstance3D
 
-var locked: bool = false
-var tool_needed: String = "Driver1"
+var locked: bool = true
+var tool_needed: String = "Key"
 
 
-var swing_dir = 95
+var swing_dir = 180
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

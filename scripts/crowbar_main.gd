@@ -14,4 +14,5 @@ func _set_crowbar():
 	if not SaveState.saved_inventory.has("Crowbar"):
 		await get_tree().create_timer(2.0).timeout
 		visible = true
-		global_position.x = -2.4
+		print ("crowbar moved")
+		position.z = 2.83

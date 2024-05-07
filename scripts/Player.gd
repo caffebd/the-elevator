@@ -41,6 +41,7 @@ var tape_hand = preload("res://scenes/TapeHand.tscn")
 var note_hand = preload("res://scenes/NoteHand.tscn")
 var crowbar_hand = preload("res://scenes/CrowbarHand.tscn")
 var card_hand = preload("res://scenes/CardHand.tscn")
+var key_hand = preload("res://scenes/KeyHand.tscn")
 
 var code_collection:Array[String]=[
 	"4835",
@@ -145,7 +146,11 @@ func _set_hand_item(item:String):
 			var in_hand_item = card_hand.instantiate()
 			player_hand.add_child(in_hand_item)
 			in_hand = item
-							
+		"Key":
+			var in_hand_item = key_hand.instantiate()
+			player_hand.add_child(in_hand_item)
+			in_hand = item
+				
 func _input(event):
 	if event is InputEventMouseMotion:
 		if use_cursor:
@@ -413,7 +418,15 @@ func _physics_process(delta):
 				collider.apply_central_impulse(-result["normal"])
 				Signals.emit_signal("card_click")
 
-		
+	if collider != null and collider.is_in_group("push_key"):
+		hud.target.modulate = Color(1,1,1,1)
+		if result and Input.is_action_just_pressed("use"):
+			if collider.can_pick_up:
+				hud.add_to_inventory("Key")
+				collider.queue_free()
+			else:
+				collider.apply_central_impulse(-result["normal"])
+				Signals.emit_signal("key_click")	
 			
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

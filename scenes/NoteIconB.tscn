@@ -1,18 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://80fvnw2ynvct"]
+[gd_scene load_steps=3 format=3 uid="uid://80fvnw2ynvct"]
 
-[ext_resource type="Texture2D" uid="uid://dln04nmfljre0" path="res://assets/UI/note_b_icon.png" id="1_vs6ba"]
+[ext_resource type="Texture2D" uid="uid://dxdxilhng7a3o" path="res://assets/UI/inventoryIcons/tornPaper.png" id="1_o3tnj"]
+[ext_resource type="FontFile" uid="uid://cft24oeqwxs75" path="res://assets/fonts/alagard.ttf" id="2_6uovb"]
 
 [node name="NoteIconB" type="ColorRect"]
 custom_minimum_size = Vector2(52, 52)
 offset_right = 52.0
 offset_bottom = 52.0
-color = Color(1, 1, 1, 0.137255)
+color = Color(1, 1, 1, 0.607843)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
+auto_translate_mode = 1
 layout_mode = 0
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 53.0
-offset_bottom = 55.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_vs6ba")
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 123.0
+offset_bottom = 124.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_o3tnj")
+
+[node name="Label" type="Label" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 17.0
+offset_right = 52.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_6uovb")
+text = "You"

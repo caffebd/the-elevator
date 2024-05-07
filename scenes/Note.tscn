@@ -1,26 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw3gt6y1nu1le"]
+[gd_scene load_steps=8 format=3 uid="uid://cw3gt6y1nu1le"]
 
 [ext_resource type="Script" path="res://scripts/Note.gd" id="1_pu56c"]
+[ext_resource type="Shader" uid="uid://utg7xosws85h" path="res://assets/materials/shaders/tornPaper.tres" id="2_7c640"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gh8pt"]
-size = Vector3(0.19, 0.03, 0.11)
+size = Vector3(0.17, 0.02, 0.09)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qonhg"]
-albedo_color = Color(1, 1, 0.764706, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go4pb"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ifujt"]
-material = SubResource("StandardMaterial3D_qonhg")
+[sub_resource type="ArrayMesh" id="ArrayMesh_4f4lj"]
+_surfaces = [{
+"aabb": AABB(-0.0563325, -0.0350505, -1.0425e-08, 0.112675, 0.070101, 1.00208e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(249, 255, 101, 255, 136, 0, 0, 0, 189, 255, 0, 0, 19, 0, 0, 0, 59, 0, 255, 255, 116, 0, 0, 0, 0, 0, 153, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cckj4"]
+resource_name = "tornPaper_Cube_078"
+_surfaces = [{
+"aabb": AABB(-0.0563325, -0.0350505, -1.0425e-08, 0.112675, 0.070101, 1.00208e-05),
+"attribute_data": PackedByteArray(202, 24, 255, 96, 202, 24, 134, 136, 105, 88, 255, 96, 105, 88, 134, 136),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_go4pb"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(249, 255, 101, 255, 136, 0, 255, 255, 189, 255, 0, 0, 19, 0, 255, 255, 59, 0, 255, 255, 116, 0, 255, 255, 0, 0, 153, 0, 0, 0, 255, 255, 23, 128, 231, 255, 23, 128, 231, 255, 23, 128, 231, 255, 23, 128, 231, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4f4lj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d0fp5"]
+render_priority = 0
+shader = ExtResource("2_7c640")
 
 [node name="Note" type="Node3D"]
 
-[node name="NoteBody" type="StaticBody3D" parent="." groups=["collectible"]]
+[node name="NoteBody" type="StaticBody3D" parent="." groups=["collectible", "show_hud"]]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_pu56c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NoteBody"]
+transform = Transform3D(1, 0, 0, 0, 0.0139098, -0.999903, 0, 0.999903, 0.0139098, 0.0195704, 0.00337925, 0.000113904)
 shape = SubResource("BoxShape3D_gh8pt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NoteBody"]
-transform = Transform3D(0.192379, 0, 0, 0, 0.0204571, 0, 0, 0, 0.116017, 0, 0, 0)
-mesh = SubResource("BoxMesh_ifujt")
+[node name="paper" type="MeshInstance3D" parent="NoteBody"]
+transform = Transform3D(2.20758, 0, 0, 0, 2.20758, 0, 0, 0, 2.20758, 0, 0, 0)
+mesh = SubResource("ArrayMesh_cckj4")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_d0fp5")

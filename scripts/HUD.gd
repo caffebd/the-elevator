@@ -12,6 +12,7 @@ var note_icon_a = preload("res://scenes/NoteIconA.tscn")
 var note_icon_b = preload("res://scenes/NoteIconB.tscn")
 var crowbar_icon = preload("res://scenes/CrowbarIcon.tscn")
 var card_icon = preload("res://scenes/CardIcon.tscn")
+var key_icon = preload("res://scenes/KeyIcon.tscn")
 
 var inventory_index: int = 0
 
@@ -74,6 +75,10 @@ func add_to_inventory(item:String):
 				SaveState.saved_inventory.append(item)
 				Signals.emit_signal("update_call_step",22)
 				#Signals.emit_signal("tray_out", false)
+			"Key":
+				var icon_scene = key_icon.instantiate()
+				inventory_grid.add_child(icon_scene)
+				SaveState.saved_inventory.append(item)
 
 func add_to_inventory_from_load(item: String):
 	match item:
@@ -102,7 +107,9 @@ func add_to_inventory_from_load(item: String):
 		"Card":
 			var icon_scene = card_icon.instantiate()
 			inventory_grid.add_child(icon_scene)
-
+		"Key":
+			var icon_scene = key_icon.instantiate()
+			inventory_grid.add_child(icon_scene)
 
 
 func set_target_mode(mode:String):
@@ -149,9 +156,11 @@ func _set_inventory_color(index:int):
 
 func note_display(note:String):
 	if note=="":
+		%NoteTexture.visible = false
 		%NoteText.visible = false
 		return
 	%NoteText.text = note
+	%NoteTexture.visible = true
 	%NoteText.visible = true
 
 func update_dialogue(sentence:String, player_speak:bool):

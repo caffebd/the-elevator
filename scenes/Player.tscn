@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpucufodphld5"]
+[gd_scene load_steps=10 format=3 uid="uid://cpucufodphld5"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gf72i"]
+[ext_resource type="Script" path="res://scripts/player_cam.gd" id="2_6tvod"]
 [ext_resource type="PackedScene" uid="uid://cm3d1u3ihuwtd" path="res://scenes/HUD.tscn" id="2_i2rul"]
 [ext_resource type="Script" path="res://scripts/HandCam.gd" id="3_pseo8"]
 [ext_resource type="AudioStream" uid="uid://bf0ul40bfgc3f" path="res://assets/audio/WilhelmScream.mp3" id="4_ee3qm"]
@@ -40,6 +41,7 @@ unique_name_in_owner = true
 cull_mask = 524287
 current = true
 far = 1000.0
+script = ExtResource("2_6tvod")
 
 [node name="PlayerRay" type="RayCast3D" parent="Head/PlayerCam"]
 unique_name_in_owner = true

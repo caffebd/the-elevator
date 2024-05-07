@@ -296,54 +296,54 @@ material = SubResource("StandardMaterial3D_na5rv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvnr5"]
 size = Vector3(0.065, 0.285, 0.055)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj60s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bvxi"]
 albedo_color = Color(0.65098, 1, 0.0313726, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0mw5o"]
-material = SubResource("StandardMaterial3D_uj60s")
+material = SubResource("StandardMaterial3D_6bvxi")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_javff"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf7wr"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ulah0"]
-material = SubResource("StandardMaterial3D_javff")
+material = SubResource("StandardMaterial3D_lf7wr")
 
 [sub_resource type="BoxMesh" id="BoxMesh_10afx"]
-material = SubResource("StandardMaterial3D_javff")
+material = SubResource("StandardMaterial3D_lf7wr")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7d7b"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrjhu"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_twi17"]
-material = SubResource("StandardMaterial3D_x7d7b")
+material = SubResource("StandardMaterial3D_vrjhu")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ugv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ya5ef"]
 albedo_color = Color(0, 0.486275, 0.0313726, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ukn1p"]
-material = SubResource("StandardMaterial3D_01ugv")
+material = SubResource("StandardMaterial3D_ya5ef")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw4kh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gcvu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u23bu"]
-material = SubResource("StandardMaterial3D_uw4kh")
+material = SubResource("StandardMaterial3D_1gcvu")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o0qv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwijf"]
 albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ws6ge"]
-material = SubResource("StandardMaterial3D_7o0qv")
+material = SubResource("StandardMaterial3D_rwijf")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkw50"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrb0q"]
 albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_77x8t"]
-material = SubResource("StandardMaterial3D_kkw50")
+material = SubResource("StandardMaterial3D_lrb0q")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjqcq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_humjb"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_yn6xq"]
-material = SubResource("StandardMaterial3D_sjqcq")
+material = SubResource("StandardMaterial3D_humjb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_teegx"]
 size = Vector3(0.215, 3.975, 3.505)
@@ -1188,7 +1188,7 @@ unique_name_in_owner = true
 shape = SubResource("BoxShape3D_bq2hu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/ElecPanel/ElecPanelDoor"]
-transform = Transform3D(0.463258, 0, 0, 0, 0.931851, 0, 0, 0, 0.0949144, 0, -0.0150849, 0)
+transform = Transform3D(0.463258, 0, -1.16415e-10, 0, 0.931851, 0, 0, 0, 0.0949144, -0.643693, -0.0150849, -0.0130787)
 mesh = SubResource("BoxMesh_agdi8")
 
 [node name="Driver1Need" type="MeshInstance3D" parent="Walls/ElecPanel/ElecPanelDoor/MeshInstance3D"]
@@ -1293,168 +1293,148 @@ outline_size = 8
 
 [node name="Boxes" type="Node3D" parent="."]
 
-[node name="Box1" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box1" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.59557, 1.56125, -2.56624)
 box_number = "1"
 locked = true
 tool_needed = "Driver1"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box2" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box2" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, -1.48497)
 box_number = "2"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box3" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box3" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, -0.385098)
 box_number = "3"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box4" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box4" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 1.56258, 0.683628)
 box_number = "4"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box5" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box5" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52387, 1.56173, 1.75215)
 box_number = "5"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box6" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box6" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.422702, 1.56173, 1.75215)
 box_number = "6"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box7" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box7" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.661411, 1.56173, 1.75215)
 box_number = "7"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box8" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box8" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74185, 1.56173, 1.75215)
 box_number = "8"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box9" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box9" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.83514, 1.56173, 1.75215)
 box_number = "9"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box10" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box10" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.89476, 1.56173, 1.75215)
 box_number = "10"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box11" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box11" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.59557, 0.524554, -2.56624)
 box_number = "11"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box12" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box12" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, -1.48497)
 box_number = "12"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
 [node name="Tape" parent="Boxes/Box12/Hinge/DoorPanel" index="5" instance=ExtResource("12_yjs62")]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -0.262588, 0.360434, -0.0434551)
 
-[node name="Box13" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box13" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, -0.385098)
 box_number = "13"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box14" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box14" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.61891, 0.525886, 0.683628)
 box_number = "14"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box15" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box15" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52387, 0.525886, 1.75215)
 box_number = "15"
 locked = true
 tool_needed = "Driver1"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box16" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box16" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.422702, 0.525886, 1.75215)
 box_number = "16"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box17" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box17" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.661411, 0.525886, 1.75215)
 box_number = "17"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box18" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box18" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74185, 0.525886, 1.75215)
 box_number = "18"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box19" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box19" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.83514, 0.525886, 1.75215)
 box_number = "19"
 locked = true
 tool_needed = "Driver2"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
-[node name="Box20" parent="Boxes" node_paths=PackedStringArray("door_panel") instance=ExtResource("2_3ssxh")]
+[node name="Box20" parent="Boxes" instance=ExtResource("2_3ssxh")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.89476, 0.525886, 1.75215)
 box_number = "20"
 locked = true
 tool_needed = "Crowbar"
 swing_neg = true
-door_panel = NodePath("Hinge/DoorPanel")
 
 [node name="Doors" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1348, 1.11624, -3.9426)
@@ -1580,9 +1560,11 @@ shape = SubResource("BoxShape3D_7qxj7")
 transform = Transform3D(1, 0, 0, 0, 0.0439838, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_eg0gs")
 
-[node name="Player" parent="." node_paths=PackedStringArray("attack_marker") groups=["player"] instance=ExtResource("1_7maqf")]
+[node name="Player" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") groups=["player"] instance=ExtResource("1_7maqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06598, 0.918181, -0.253332)
-attack_marker = NodePath("AttackMarker")
+attack_marker = NodePath("Head/PlayerCam/AttackMarker")
+rotate_marker = NodePath("RotateMarker")
+lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
 
 [node name="RookPanelAdim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

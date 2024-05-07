@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ffgnjsjw0adp"]
+
+[ext_resource type="Texture2D" uid="uid://dha0u810jx7s1" path="res://assets/UI/key_icon.png" id="1_pxwd2"]
+
+[node name="KeyIcon" type="ColorRect"]
+custom_minimum_size = Vector2(52, 52)
+offset_right = 52.0
+offset_bottom = 52.0
+color = Color(1, 1, 1, 0.607843)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 129.0
+offset_bottom = 129.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_pxwd2")

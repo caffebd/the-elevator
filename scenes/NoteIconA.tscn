@@ -1,18 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://drbfpbm11lp0n"]
+[gd_scene load_steps=3 format=3 uid="uid://drbfpbm11lp0n"]
 
-[ext_resource type="Texture2D" uid="uid://cdc74gcpcx1um" path="res://assets/UI/note_a_icon.png" id="1_r6fpv"]
+[ext_resource type="Texture2D" uid="uid://dxdxilhng7a3o" path="res://assets/UI/inventoryIcons/tornPaper.png" id="1_xg5le"]
+[ext_resource type="FontFile" uid="uid://cft24oeqwxs75" path="res://assets/fonts/alagard.ttf" id="2_tss23"]
 
 [node name="NoteIconA" type="ColorRect"]
 custom_minimum_size = Vector2(52, 52)
 offset_right = 52.0
 offset_bottom = 52.0
-color = Color(1, 1, 1, 0.137255)
+color = Color(1, 1, 1, 0.607843)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 53.0
-offset_bottom = 55.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_r6fpv")
+offset_left = -6.0
+offset_top = -5.0
+offset_right = 123.0
+offset_bottom = 124.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xg5le")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 18.0
+offset_right = 50.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("2_tss23")
+text = "[?] 8"

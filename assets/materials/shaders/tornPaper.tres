@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bsv4qiuqd6ccj"]
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://utg7xosws85h"]
 
 [ext_resource type="Texture2D" uid="uid://b6y0bqec5x6vm" path="res://assets/textures/papers/papers_norm.jpg" id="1_u6v1m"]
 [ext_resource type="Texture2D" uid="uid://o3paeuqobqhf" path="res://assets/textures/papers/papers_alpha.jpg" id="2_oply2"]

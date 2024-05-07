@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm3d1u3ihuwtd"]
+[gd_scene load_steps=9 format=3 uid="uid://cm3d1u3ihuwtd"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_ccfj4"]
 [ext_resource type="Texture2D" uid="uid://rafx06oxl8x6" path="res://assets/UI/target.png" id="2_4bb86"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cnv2p7n8e175w" path="res://assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="4_qs75q"]
 [ext_resource type="Texture2D" uid="uid://d715bvsj07qp" path="res://assets/UI/player_avatar.png" id="5_xc650"]
 [ext_resource type="Texture2D" uid="uid://du0pn0jhq3thd" path="res://assets/UI/call_avatar_b.png" id="6_myuvd"]
+[ext_resource type="Texture2D" uid="uid://dmuixxrgae50y" path="res://assets/UI/paper_background.jpg" id="7_8xgsd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4kd3"]
 bg_color = Color(0.929412, 0.886275, 0.788235, 1)
@@ -100,6 +101,17 @@ offset_right = -5.5
 offset_bottom = 105.0
 texture = ExtResource("6_myuvd")
 
+[node name="NoteTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 108.0
+offset_top = 732.0
+offset_right = 408.0
+offset_bottom = 932.0
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("7_8xgsd")
+
 [node name="NoteText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -109,10 +121,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -870.0
-offset_top = -270.0
-offset_right = -389.0
-offset_bottom = -19.0
+offset_left = -818.0
+offset_top = -304.0
+offset_right = -372.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -120,7 +132,6 @@ theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_s4kd3")
 bbcode_enabled = true
 text = "You should have taken the stairs my friend."
 autowrap_mode = 2
