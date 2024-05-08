@@ -29,11 +29,11 @@ material = SubResource("StandardMaterial3D_t8rs6")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jl3a0"]
 size = Vector3(0.28, 0.03, 0.275)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tk1w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ck0g"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xbftn"]
-material = SubResource("StandardMaterial3D_4tk1w")
+material = SubResource("StandardMaterial3D_2ck0g")
 
 [node name="Keypad" type="Node3D"]
 script = ExtResource("1_1mi7q")
@@ -265,10 +265,10 @@ unique_name_in_owner = true
 transform = Transform3D(0.999852, 0.0142354, 0.00968491, -0.0146051, 0.999123, 0.03925, -0.00911767, -0.0393857, 0.999182, -0.0584553, -0.513884, 0.0853403)
 visible = false
 
-[node name="MeshInstance3D" parent="CardSlot/CardInSlot" index="0"]
+[node name="MeshInstance3D" parent="CardSlot/CardInSlot" index="1"]
 layers = 524287
 
-[node name="Label3D" parent="CardSlot/CardInSlot" index="1"]
+[node name="Label3D" parent="CardSlot/CardInSlot" index="2"]
 layers = 524287
 
 [node name="CardReader" type="Label3D" parent="CardSlot"]

@@ -12,6 +12,7 @@ func _key_click():
 	if click_count == 3:
 		$KeyPin.queue_free()
 		%KeyPart.can_pick_up = true
+		%KeyGlow.play("glow")
 		
 
 

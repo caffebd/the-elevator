@@ -459,7 +459,7 @@ height = 1.0
 radius = 2.4
 
 [node name="MonsterArm" type="Node3D"]
-transform = Transform3D(-1.48473, -0.213477, -1.31036e-07, -0.211546, 1.4713, 0.201291, -0.0286471, 0.199242, -1.48643, 0, 0, 0)
+transform = Transform3D(-1.97964, -0.284636, -2.9926e-07, -0.282062, 1.96174, 0.268388, -0.0381962, 0.265656, -1.98191, 0, 0, 0)
 script = ExtResource("1_idtyh")
 
 [node name="armtest" type="Node3D" parent="."]

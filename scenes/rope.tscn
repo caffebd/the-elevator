@@ -214,6 +214,7 @@ node_b = NodePath("../CardPart")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.782853, 0)
 collision_layer = 130
+collision_mask = 129
 script = ExtResource("2_7uen0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CardPart"]

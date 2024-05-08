@@ -10,6 +10,7 @@ func _ready() -> void:
 func _card_click():
 	click_count += 1
 	if click_count == 3:
+		Signals.emit_signal("top_down_arm")
 		$CardPin.queue_free()
 		%CardPart.can_pick_up = true
 		

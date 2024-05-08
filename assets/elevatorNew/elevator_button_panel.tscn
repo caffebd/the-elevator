@@ -1,13 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://bci101o8cculh"]
+[gd_scene load_steps=9 format=3 uid="uid://bci101o8cculh"]
 
 [ext_resource type="PackedScene" uid="uid://c8fjva6amvvmh" path="res://assets/elevatorNew/elevatorButtonPanel.glb" id="1_db4ir"]
 [ext_resource type="Material" uid="uid://dhogo85gbco2b" path="res://assets/materials/red_light.tres" id="2_5t5t4"]
 [ext_resource type="Material" uid="uid://ciw25665oi43k" path="res://assets/materials/button_panel.tres" id="2_soh1g"]
+[ext_resource type="Script" path="res://scripts/elevator_button_panel.gd" id="2_stgb1"]
 [ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="4_jjh1o"]
+[ext_resource type="PackedScene" uid="uid://d12lq0bg2fcya" path="res://assets/keycard.tscn" id="6_4wm38"]
+[ext_resource type="AudioStream" uid="uid://be0ta6j7h15lx" path="res://assets/audio/scifi_ui_beep_button_01.wav" id="7_513mp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owjcm"]
+size = Vector3(0.02, 0.03, 0.12)
 
 [node name="elevatorButtonPanel2" instance=ExtResource("1_db4ir")]
+script = ExtResource("2_stgb1")
 
 [node name="Cylinder" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_5t5t4")
 surface_material_override/1 = ExtResource("2_soh1g")
 surface_material_override/2 = ExtResource("4_jjh1o")
+
+[node name="keycard" parent="." index="1" instance=ExtResource("6_4wm38")]
+unique_name_in_owner = true
+transform = Transform3D(-0.170403, 0, 1.48971e-08, 0, 0.170403, 0, -1.48971e-08, 0, -0.170403, 0.133497, -0.204493, 0)
+visible = false
+
+[node name="CardSlot" type="StaticBody3D" parent="." index="2" groups=["card_slot", "show_hud"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CardSlot" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00826347, -0.205043, 0.00741072)
+shape = SubResource("BoxShape3D_owjcm")
+
+[node name="CardReader" type="Label3D" parent="CardSlot" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(0.352348, 0, 0.935869, 0, 1, 0, -0.935869, 0, 0.352348, 0.0724437, -0.191105, -0.245209)
+visible = false
+text = "Card Reader"
+font_size = 10
+outline_size = 8
+
+[node name="KeyBeep" type="AudioStreamPlayer" parent="." index="3"]
+unique_name_in_owner = true
+stream = ExtResource("7_513mp")

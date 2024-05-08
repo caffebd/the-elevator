@@ -40,9 +40,9 @@ func _ready() -> void:
 func _trap_door(state):
 	if state:
 		var tween = create_tween()
-		tween.tween_property(self, "global_position:y", 0.0, 5)
-		await tween.finished
-		print ("tween done")
+		tween.tween_property(self, "global_position:y", 0.0, 3)
+		#await tween.finished
+		await get_tree().create_timer(2.8).timeout
 		attack_mode = true
 		follow = true
 	else:

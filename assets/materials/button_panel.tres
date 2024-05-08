@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c2fnoj6181i7s" path="res://assets/textures/elevator/sb3qfhmp_2K_Roughness.jpg" id="1_uvwxm"]
 
 [resource]
-albedo_color = Color(0.869422, 0.790588, 0.761482, 1)
+albedo_color = Color(0.870588, 0.792157, 0.760784, 1)
 metallic = 0.7
 roughness_texture = ExtResource("1_uvwxm")
 uv1_scale = Vector3(3, 3, 3)

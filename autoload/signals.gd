@@ -65,3 +65,9 @@ signal rope_drop()
 signal camera_shake()
 
 signal elevator_sequence_one()
+signal elevator_sequence_two()
+
+signal hallway_lights_out()
+signal hallway_lights_on()
+
+

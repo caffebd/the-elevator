@@ -28,7 +28,7 @@ var constant_wobble:bool = false
 @onready var player_hand = %Hand
 @onready var head = %Head
 
-var door_opening_a: bool = false
+var door_opening_a: bool = true
 
 var use_cursor: bool = false
 
@@ -77,6 +77,7 @@ var lean_weight = 0.05
 
 var can_warp: bool = true
 
+
 #end head wobble settings
 
 func _ready():
@@ -94,6 +95,8 @@ func _ready():
 	
 	get_saved_inventory()
 	initial_box_states()
+
+
 
 func _remove_item(item:String):
 	_set_hand_item("Hand")
@@ -170,7 +173,8 @@ func _input(event):
 		if not in_call:
 			_take_action()
 		else:
-			start_call()
+			if SaveState.call_ready:
+				start_call()
 	
 	if Input.is_action_just_released("inventory_up"):
 		hud.inventory_up()
@@ -220,9 +224,11 @@ func _take_action():
 				var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
 				btn_anim.play("buttonPress")
 				_update_call_step(19)
-				Signals.emit_signal("eyes_glow", false)
-				Signals.emit_signal("door_close")
-				Signals.emit_signal("light_up",3)
+				Signals.emit_signal("panel_drop", false)
+				Signals.emit_signal("roof_open")
+				#Signals.emit_signal("eyes_glow", false)
+				#Signals.emit_signal("door_close")
+				#Signals.emit_signal("light_up",3)
 			else:
 				var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
 				btn_anim.play("buttonPress")
@@ -250,7 +256,8 @@ func _take_action():
 				btn_anim.play("buttonPress")
 				in_call = true
 				call_pos = -1
-				start_call()
+				if SaveState.call_ready:
+					start_call()
 
 func code_entering(numb:String):
 	print ("entered "+str(numb) +"at check pos "+str(code_check_pos))
@@ -266,7 +273,7 @@ func code_entering(numb:String):
 				SaveState.code_waiting = 1
 				_update_call_step(12)
 			elif SaveState.code_waiting == 1:
-				Signals.emit_signal("door_open","a")
+				Signals.emit_signal("elevator_sequence_two")
 				door_opening_a = true
 			elif SaveState.code_waiting == 2:
 				if SaveState.card_is_in_slot:

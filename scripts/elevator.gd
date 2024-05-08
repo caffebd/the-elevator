@@ -12,21 +12,33 @@ var correct_elevator: bool = false
 
 @export var start_elevator_floor: bool = false
 
+var left_closed: float = 0.948
+var right_closed: float = -0.948
+
+
+var door_changing: Array[float] = [0.15, 0.0, 0.2, 0.0, 0.1, 0.0, 0.2, 0.0, 0.3, 0.0]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.panel_drop.connect(_trap_door)
 	Signals.floor_open.connect(floor_open)
 	Signals.roof_open.connect(_roof_open)
 	Signals.elevator_sequence_one.connect(_elevator_sequence_one)
-	#left_door.position.z = 0.948
-	#right_door.position.z = -0.948
+	Signals.elevator_sequence_two.connect(_elevator_sequence_two)
+	left_door.position.z = 0.948
+	right_door.position.z = -0.948
 	
 	if start_elevator_floor:
 		await get_tree().create_timer(2).timeout
 		operate_door(true)
 	
-	#await get_tree().create_timer(2).timeout
-	#_elevator_sequence_one()
+	
+	
+	await get_tree().create_timer(3).timeout
+	_door_slow_open()
+	#Signals.emit_signal("hallway_lights_out")
+	#_door_banging()
+	#_elevator_sequence_two()
 	#Signals.emit_signal("roof_open")
 	#operate_door(true)
 
@@ -53,11 +65,13 @@ func operate_door(state):
 
 func _trap_door(state):
 	if state:
-		var tween = create_tween()
-		tween.tween_property(%Cube_032, "position:y", -3.0, 0.5)
+		%Cube_032.visible = false
+		#var tween = create_tween()
+		#tween.tween_property(%Cube_032, "position:y", -3.0, 0.5)
 	else:
-		var tween = create_tween()
-		tween.tween_property(%Cube_032, "position:y", -1.584, 0.5)
+		%Cube_032.visible = true
+		#var tween = create_tween()
+		#tween.tween_property(%Cube_032, "position:y", -1.533, 0.5)
 
 func _on_elevator_trigger_body_entered(body: Node3D) -> void:
 	if not doors_open:
@@ -88,6 +102,43 @@ func _elevator_sequence_one():
 	
 	Signals.emit_signal("camera_shake", 3.0, 0.07)
 	_arrow_flash()
+
+func _elevator_sequence_two():
+	SaveState.call_ready = false
+	%ElevatorMoving.play()
+	_up_arrow(true)
+	await get_tree().create_timer(5).timeout
+	Signals.emit_signal("camera_shake", 8.0, 0.03)
+	_arrow_flash()
+	
+	await get_tree().create_timer(2).timeout
+	_door_slow_open()
+	#Signals.emit_signal("panel_drop", true)
+
+func _door_slow_open():
+	Signals.emit_signal("hallway_lights_out")
+	_arrow_flash()
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(left_door, "position:z", left_closed + 0.2, 6.0)
+	tween.tween_property(right_door, "position:z", right_closed - 0.2, 6.0)
+	await tween.finished
+	var tween_close = create_tween().set_parallel(true)
+	tween_close.tween_property(left_door, "position:z", left_closed, 0.2)
+	tween_close.tween_property(right_door, "position:z", right_closed, 0.2)	
+
+func _door_banging():
+	Signals.emit_signal("hallway_lights_out")
+	_arrow_flash()
+	for i in 10:
+		print (i)
+		$Ding.play()
+		#await get_tree().create_timer(0.25).timeout
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(left_door, "position:z", left_closed + door_changing[i], 0.5)
+		tween.tween_property(right_door, "position:z", right_closed - door_changing[i], 0.5)
+		await tween.finished
+
+	
 	
 func _arrow_flash():
 	var show_state = true
@@ -98,6 +149,7 @@ func _arrow_flash():
 		show_state = !show_state
 	_down_arrow(false)
 	_up_arrow(false)
+	SaveState.call_ready = true
 	
 func _down_arrow(state):
 	%Cube_038.get_surface_override_material(0).emission_enabled = state
