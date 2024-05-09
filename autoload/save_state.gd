@@ -3,10 +3,10 @@ extends Node
 var fuse_inserted: bool = true
 var wire_fixed: bool = true
 
-var card_is_in_slot: bool = false
+var card_is_in_slot: bool = true
 
 
-var code_waiting: int = 1
+var code_waiting: int = 2
 
 var call_step: int = 0
 

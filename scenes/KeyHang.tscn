@@ -274,7 +274,6 @@ mesh = SubResource("BoxMesh_75j3m")
 
 [node name="Key" type="MeshInstance3D" parent="KeyPart"]
 transform = Transform3D(0.000931363, 0.0308665, -0.00271932, 0.0309379, -0.00107774, -0.00163712, -0.00172458, -0.0026647, -0.0308371, 0, 0.034221, 0.00712147)
-layers = 524288
 mesh = SubResource("ArrayMesh_1nkyk")
 surface_material_override/0 = ExtResource("4_gielh")
 

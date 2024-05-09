@@ -5,6 +5,7 @@ extends Camera3D
 
 func _ready() -> void:
 	Signals.camera_shake.connect(_camera_shake)
+	print (self.transform)
 
 func _camera_shake(period:float = 0.3, magnitude:float =0.4):
 	var initial_transform = self.transform 
@@ -21,4 +22,5 @@ func _camera_shake(period:float = 0.3, magnitude:float =0.4):
 		elapsed_time += get_process_delta_time()
 		await get_tree().process_frame
 
-	self.transform = initial_transform
+	#self.transform = lerp(transform, initial_transform, 0.4)
+

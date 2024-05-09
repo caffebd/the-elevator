@@ -18,7 +18,9 @@ var driver_mat = preload("res://assets/UI/driver1_icon.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for n in all_numbers.get_children():
+	print ("BOX NUMBER SAFE" +str(box_number))
+
+	for n in %Numbers.get_children():
 		if n.name == box_number:
 			n.visible = true
 	#%BoxLabel.text = "["+box_number+"]"

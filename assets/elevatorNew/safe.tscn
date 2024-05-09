@@ -152,6 +152,7 @@ shape = SubResource("BoxShape3D_03kk1")
 [node name="BoxLabel" type="Label3D" parent="door" index="1"]
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.018257, 0.14793, 0.0625953)
+visible = false
 modulate = Color(0.439216, 0.439216, 0.439216, 1)
 outline_modulate = Color(0.811765, 0.811765, 0.811765, 1)
 text = "[1]"
@@ -173,9 +174,11 @@ mesh = SubResource("PlaneMesh_p4nfq")
 surface_material_override/0 = SubResource("StandardMaterial3D_pd0q4")
 
 [node name="Numbers" type="Node3D" parent="." index="4"]
+unique_name_in_owner = true
 
 [node name="1" type="MeshInstance3D" parent="Numbers" index="0"]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.220127, 0.0470072, -0.0501021)
+visible = false
 mesh = SubResource("PlaneMesh_mcoll")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_lq6tq")

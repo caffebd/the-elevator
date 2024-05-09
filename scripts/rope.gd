@@ -12,7 +12,11 @@ func _card_click():
 	if click_count == 3:
 		Signals.emit_signal("top_down_arm")
 		$CardPin.queue_free()
+		%CardPart.axis_lock_angular_x = true
+		%CardPart.axis_lock_angular_y = true
+		%CardPart.axis_lock_angular_z = true
 		%CardPart.can_pick_up = true
+		%CardPart.reparent(get_parent())
 		
 
 

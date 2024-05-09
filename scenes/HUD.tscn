@@ -135,3 +135,14 @@ theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
 text = "You should have taken the stairs my friend."
 autowrap_mode = 2
+
+[node name="BlackCover" type="ColorRect" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+modulate = Color(1, 1, 1, 0)
+offset_left = -220.0
+offset_top = -104.0
+offset_right = 2127.0
+offset_bottom = 1154.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)

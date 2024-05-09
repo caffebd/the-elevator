@@ -60,14 +60,18 @@ signal player_warp(location)
 signal elevator_floor()
 
 signal roof_open()
+signal roof_close()
 signal rope_drop()
+signal key_drop()
 
 signal camera_shake()
 
 signal elevator_sequence_one()
 signal elevator_sequence_two()
+signal elevator_sequence_three()
 
 signal hallway_lights_out()
 signal hallway_lights_on()
 
 
+signal fade_to_black()

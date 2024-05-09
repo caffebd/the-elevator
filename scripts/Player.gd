@@ -28,7 +28,7 @@ var constant_wobble:bool = false
 @onready var player_hand = %Hand
 @onready var head = %Head
 
-var door_opening_a: bool = true
+var door_opening_a: bool = false
 
 var use_cursor: bool = false
 
@@ -275,21 +275,23 @@ func code_entering(numb:String):
 			elif SaveState.code_waiting == 1:
 				Signals.emit_signal("elevator_sequence_two")
 				door_opening_a = true
+				SaveState.code_waiting = 2
 			elif SaveState.code_waiting == 2:
 				if SaveState.card_is_in_slot:
 					SaveState.code_waiting = 100
 					Signals.lift_moving = true
-					Signals.emit_signal("lift_up")
-					Signals.emit_signal("elevator_move_sound", true)
-					var yield_timer_moving = Timer.new()
-					add_child(yield_timer_moving)
-					yield_timer_moving.start(5);
-					await yield_timer_moving.timeout
-					Signals.lift_moving = false
-					Signals.emit_signal("lift_light_gone")
-					yield_timer_moving.queue_free()
-					code_check_pos = 0
-					Signals.emit_signal("door_open","b")
+					Signals.emit_signal("elevator_sequence_three")
+					#Signals.emit_signal("lift_up")
+					#Signals.emit_signal("elevator_move_sound", true)
+					#var yield_timer_moving = Timer.new()
+					#add_child(yield_timer_moving)
+					#yield_timer_moving.start(5);
+					#await yield_timer_moving.timeout
+					#Signals.lift_moving = false
+					#Signals.emit_signal("lift_light_gone")
+					#yield_timer_moving.queue_free()
+					#code_check_pos = 0
+					#Signals.emit_signal("door_open","b")
 					_update_call_step(24)
 				else:
 					Signals.emit_signal("floor_open")

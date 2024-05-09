@@ -23,6 +23,7 @@ var inventory_index: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_set_inventory_color(0)
+	Signals.fade_to_black.connect(_fade_to_black)
 
 func remove_from_inventory(item:String):
 	if SaveState.saved_inventory.has(item):
@@ -177,3 +178,8 @@ func update_dialogue(sentence:String, player_speak:bool):
 		%Dialogue.visible = false
 		%PlayerAvatar.visible = false
 		%CallAvatar.visible = false
+
+
+func _fade_to_black():
+	var tween = create_tween()
+	tween.tween_property(%BlackCover, "modulate:a", 1.0, 3.0)

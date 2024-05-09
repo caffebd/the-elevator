@@ -56,6 +56,7 @@ skeleton = NodePath("")
 
 [node name="paper" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.97654, 0.00639202, -1.64516, -1.17124, 1.81139, -1.40012, 1.15533, 1.82541, 1.39514, 0.0304835, -0.42334, 0.0973009)
+visible = false
 layers = 524288
 mesh = SubResource("ArrayMesh_uqf8f")
 skeleton = NodePath("")

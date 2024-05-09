@@ -23,8 +23,10 @@ func _ready() -> void:
 	Signals.panel_drop.connect(_trap_door)
 	Signals.floor_open.connect(floor_open)
 	Signals.roof_open.connect(_roof_open)
+	Signals.roof_close.connect(_roof_close)
 	Signals.elevator_sequence_one.connect(_elevator_sequence_one)
 	Signals.elevator_sequence_two.connect(_elevator_sequence_two)
+	Signals.elevator_sequence_three.connect(_elevator_sequence_three)
 	left_door.position.z = 0.948
 	right_door.position.z = -0.948
 	
@@ -34,8 +36,8 @@ func _ready() -> void:
 	
 	
 	
-	await get_tree().create_timer(3).timeout
-	_door_slow_open()
+	#await get_tree().create_timer(3).timeout
+	#_door_slow_open()
 	#Signals.emit_signal("hallway_lights_out")
 	#_door_banging()
 	#_elevator_sequence_two()
@@ -91,7 +93,10 @@ func _roof_open():
 	var tween = create_tween()
 	tween.tween_property(%Cube_034, "rotation:z", deg_to_rad(90.0), 1.0)
 
-
+func _roof_close():
+	var tween = create_tween()
+	tween.tween_property(%Cube_034, "rotation:z", deg_to_rad(0.0), 1.0)
+	
 func _elevator_sequence_one():
 	%ElevatorMoving.play()
 	_down_arrow(true)
@@ -99,7 +104,8 @@ func _elevator_sequence_one():
 	_down_arrow(false)
 	%ElevatorMoving.stop()
 	%ElevatorCrash.play()
-	
+	_roof_open()
+	Signals.emit_signal("key_drop")
 	Signals.emit_signal("camera_shake", 3.0, 0.07)
 	_arrow_flash()
 
@@ -114,6 +120,14 @@ func _elevator_sequence_two():
 	await get_tree().create_timer(2).timeout
 	_door_slow_open()
 	#Signals.emit_signal("panel_drop", true)
+
+func _elevator_sequence_three():
+	%ElevatorMoving.play()
+	_up_arrow(true)
+	await get_tree().create_timer(5).timeout
+	Signals.emit_signal("fade_to_black")
+	await get_tree().create_timer(3).timeout
+	get_tree().change_scene_to_file("res://scenes/ElevatorFloor.tscn")
 
 func _door_slow_open():
 	Signals.emit_signal("hallway_lights_out")
