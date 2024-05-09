@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bci101o8cculh"]
+[gd_scene load_steps=8 format=3 uid="uid://bci101o8cculh"]
 
 [ext_resource type="PackedScene" uid="uid://c8fjva6amvvmh" path="res://assets/elevatorNew/elevatorButtonPanel.glb" id="1_db4ir"]
 [ext_resource type="Material" uid="uid://dhogo85gbco2b" path="res://assets/materials/red_light.tres" id="2_5t5t4"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/elevator_button_panel.gd" id="2_stgb1"]
 [ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="4_jjh1o"]
 [ext_resource type="PackedScene" uid="uid://d12lq0bg2fcya" path="res://assets/keycard.tscn" id="6_4wm38"]
-[ext_resource type="AudioStream" uid="uid://be0ta6j7h15lx" path="res://assets/audio/scifi_ui_beep_button_01.wav" id="7_513mp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_owjcm"]
 size = Vector3(0.02, 0.03, 0.12)
@@ -39,7 +38,3 @@ visible = false
 text = "Card Reader"
 font_size = 10
 outline_size = 8
-
-[node name="KeyBeep" type="AudioStreamPlayer" parent="." index="3"]
-unique_name_in_owner = true
-stream = ExtResource("7_513mp")

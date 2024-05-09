@@ -58,6 +58,7 @@ signal key_click()
 signal player_warp(location)
 
 signal elevator_floor()
+signal main_floor()
 
 signal roof_open()
 signal roof_close()

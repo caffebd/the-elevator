@@ -5,7 +5,7 @@ extends Node3D
 func _ready() -> void:
 	Signals.card_in_slot.connect(_card_in_slot)
 	Signals.card_slot_label.connect(_card_slot_label)
-	Signals.key_beep.connect(_key_beep)
+
 	
 
 
@@ -21,6 +21,5 @@ func _card_in_slot(state):
 func _card_slot_label(state):
 	%CardReader.visible = state
 
-func _key_beep():
-	%KeyBeep.play()
+
 

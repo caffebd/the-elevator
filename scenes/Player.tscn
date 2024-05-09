@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpucufodphld5"]
+[gd_scene load_steps=11 format=3 uid="uid://cpucufodphld5"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_gf72i"]
 [ext_resource type="Script" path="res://scripts/player_cam.gd" id="2_6tvod"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/HandCam.gd" id="3_pseo8"]
 [ext_resource type="AudioStream" uid="uid://bf0ul40bfgc3f" path="res://assets/audio/WilhelmScream.mp3" id="4_ee3qm"]
 [ext_resource type="AudioStream" uid="uid://cfoagjn7ylhw8" path="res://assets/audio/hallway_sounds/footsteps_carpet_walk.mp3" id="5_xqya4"]
+[ext_resource type="AudioStream" uid="uid://be0ta6j7h15lx" path="res://assets/audio/scifi_ui_beep_button_01.wav" id="7_4oxgo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pdoig"]
 
@@ -119,6 +120,10 @@ disabled = true
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_xqya4")
+
+[node name="KeyBeep" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_4oxgo")
 
 [connection signal="area_entered" from="LightArea" to="." method="_on_light_area_area_entered"]
 [connection signal="area_exited" from="LightArea" to="." method="_on_light_area_area_exited"]

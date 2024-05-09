@@ -86,6 +86,9 @@ func _ready():
 	Signals.remove_item.connect(_remove_item)
 	Signals.update_call_step.connect(_update_call_step)
 	Signals.player_warp.connect(_player_warp)
+	Signals.elevator_floor.connect(_elevator_floor)
+	Signals.main_floor.connect(_main_floor)
+	Signals.key_beep.connect(_key_beep)
 	#camera.current = false
 	use_cursor = false
 	if test_mode:
@@ -96,13 +99,21 @@ func _ready():
 	get_saved_inventory()
 	initial_box_states()
 
+func _elevator_floor():
+	print ("moved to elevator")
+	position = Vector3(-4.802, 12.395, 3.327)
 
+func _main_floor():
+	position = Vector3(-4.802, -0.44, 3.327)
 
 func _remove_item(item:String):
 	_set_hand_item("Hand")
 	hud.highlight_hand()
 	hud.remove_from_inventory(item)
 
+
+func _key_beep():
+	%KeyBeep.play()
 
 func _set_hand_item(item:String):
 	print ("hand item "+item)

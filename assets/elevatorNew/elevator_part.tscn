@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://6krwobwixs8l"]
+[gd_scene load_steps=8 format=3 uid="uid://6krwobwixs8l"]
 
 [ext_resource type="PackedScene" uid="uid://brioq7772l0bl" path="res://assets/elevatorNew/elevatorPart.glb" id="1_8yiox"]
 [ext_resource type="Script" path="res://scripts/elevator_part.gd" id="2_1wdle"]
+[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall.tres" id="3_rkowk"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="4_mntqp"]
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="5_rmynh"]
+[ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="6_vdv4n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2t6dj"]
 size = Vector3(4.61, 0.11, 1.955)
@@ -11,12 +15,31 @@ script = ExtResource("2_1wdle")
 
 [node name="light_007" parent="." index="0"]
 unique_name_in_owner = true
-visible = false
+
+[node name="roof_005" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_rkowk")
+
+[node name="roofMoulding_003" parent="." index="2"]
+surface_material_override/0 = ExtResource("4_mntqp")
+
+[node name="refwall_002" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_rkowk")
+
+[node name="refwall_005" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_rkowk")
+
+[node name="floorMoulding_003" parent="." index="5"]
+surface_material_override/0 = ExtResource("4_mntqp")
+
+[node name="refwall_007" parent="." index="6"]
+surface_material_override/0 = ExtResource("5_rmynh")
+
+[node name="floor_007" parent="." index="7"]
+surface_material_override/0 = ExtResource("6_vdv4n")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="." index="8"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716229, 0)
-visible = false
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.1
 shadow_enabled = true
@@ -28,7 +51,6 @@ omni_range = 3.71582
 [node name="OmniLight3D4" type="OmniLight3D" parent="." index="9"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93538, 0)
-visible = false
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
 light_energy = 0.2
 shadow_enabled = true

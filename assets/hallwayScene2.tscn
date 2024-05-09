@@ -44,14 +44,8 @@
 [ext_resource type="PackedScene" uid="uid://bpyv7f1m7g5h2" path="res://scenes/Driver2.tscn" id="41_fjnda"]
 [ext_resource type="PackedScene" uid="uid://bwj5pktrcil1y" path="res://scenes/fuse.tscn" id="44_trrcy"]
 [ext_resource type="PackedScene" uid="uid://cw3gt6y1nu1le" path="res://scenes/Note.tscn" id="44_x86kr"]
-[ext_resource type="PackedScene" uid="uid://dxw10l60qolnw" path="res://scenes/key.tscn" id="45_3agun"]
 [ext_resource type="PackedScene" uid="uid://dorx67iooagt0" path="res://scenes/KeyHang.tscn" id="46_t2mbe"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwnmw"]
-shader = ExtResource("2_5k4af")
-shader_parameter/blur_amount = 3.0
-shader_parameter/signal_quality = 0.0
-shader_parameter/bottom_strenth = 3.0
+[ext_resource type="PackedScene" uid="uid://pi3djdqgum0l" path="res://scenes/ElevatorFloor.tscn" id="47_8xfm1"]
 
 [sub_resource type="Environment" id="Environment_5wx5y"]
 background_mode = 1
@@ -68,12 +62,6 @@ fog_density = 8.0
 fog_depth_begin = 0.0
 fog_depth_end = 83.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_erh00"]
-shader = ExtResource("1_vdys4")
-shader_parameter/r_displacement = Vector2(3, 0)
-shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(-3, 0)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_m6awe"]
 size = Vector3(0.075, 1, 2.89)
 
@@ -85,9 +73,308 @@ size = Vector3(13.455, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kracc"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwnmw"]
+shader = ExtResource("2_5k4af")
+shader_parameter/blur_amount = 3.0
+shader_parameter/signal_quality = 0.0
+shader_parameter/bottom_strenth = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_erh00"]
+shader = ExtResource("1_vdys4")
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
 [node name="MainHallway" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_70hd2")
+
+[node name="MainFloor" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="fuseBox" parent="MainFloor" instance=ExtResource("2_u0ixm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.47628, -0.172347, 2.77274)
+
+[node name="exitSign2" parent="MainFloor" instance=ExtResource("2_0enyf")]
+transform = Transform3D(-4.09449e-08, 0.93671, 0, -0.93671, -4.09449e-08, 0, 0, 0, 0.93671, -39.0334, 1.02526, 0)
+
+[node name="exitPart" parent="MainFloor" instance=ExtResource("2_nftua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8596, 0, 0)
+
+[node name="staircaseTop" parent="MainFloor" instance=ExtResource("5_o6f1b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -43.3709, 0.296122, -0.00459003)
+
+[node name="staircaseRepeat" parent="MainFloor" instance=ExtResource("6_sfjhb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -43.3625, -3.76393, 0.0193979)
+
+[node name="staircaseRepeat2" parent="MainFloor" instance=ExtResource("6_sfjhb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -43.3625, -7.81379, 0.0193979)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MainFloor"]
+environment = SubResource("Environment_5wx5y")
+
+[node name="Reset" type="Area3D" parent="MainFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4528, -0.636, 0.0586653)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainFloor/Reset"]
+shape = SubResource("BoxShape3D_m6awe")
+
+[node name="ResetPos" type="Marker3D" parent="MainFloor"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34077, -1.05787, -0.215217)
+
+[node name="ElevatorTrigger" type="Area3D" parent="MainFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26167, -0.599174, -0.097915)
+monitoring = false
+
+[node name="ElevatorTriggerCollision" type="CollisionShape3D" parent="MainFloor/ElevatorTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68923, 0, 0)
+shape = SubResource("BoxShape3D_lmq05")
+
+[node name="ElevatorEnterTrigger" type="Area3D" parent="MainFloor"]
+transform = Transform3D(0.00183256, 0, 0.999998, 0, 1, 0, -0.999998, 0, 0.00183256, -4.66138, 0.394296, 2.17385)
+
+[node name="ElevatorEnterTriggerCollision" type="CollisionShape3D" parent="MainFloor/ElevatorEnterTrigger"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48072, 0)
+shape = SubResource("BoxShape3D_lmq05")
+
+[node name="hallway2" parent="MainFloor" instance=ExtResource("1_oqa06")]
+
+[node name="hallway3" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.273, 0, 0)
+
+[node name="hallway4" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.864, 0, 0)
+
+[node name="hallway5" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4616, 0, 0)
+
+[node name="hallway6" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0526, 0, 0)
+
+[node name="hallway7" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6335, 0, 0)
+
+[node name="HideHallway2" type="Node3D" parent="MainFloor"]
+unique_name_in_owner = true
+
+[node name="hallway10" parent="MainFloor/HideHallway2" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7544, 0, 0)
+
+[node name="hallway11" parent="MainFloor/HideHallway2" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1634, 0, 0)
+
+[node name="hallway12" parent="MainFloor/HideHallway2" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5825, 0, 0)
+
+[node name="hallway13" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6541, 0, 0)
+visible = false
+
+[node name="hallway14" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0565, 0, 0)
+visible = false
+
+[node name="HideHallway" type="Node3D" parent="MainFloor"]
+unique_name_in_owner = true
+
+[node name="hallway15" parent="MainFloor/HideHallway" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4655, 0, 0)
+
+[node name="hallway16" parent="MainFloor/HideHallway" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8846, 0, 0)
+
+[node name="hallway17" parent="MainFloor/HideHallway" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.352, 0, 0)
+
+[node name="hallway8" parent="MainFloor" instance=ExtResource("1_oqa06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2246, 0, 0)
+
+[node name="elevatorPart" parent="MainFloor" instance=ExtResource("3_x8o7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.638, 0, 0)
+
+[node name="MonsterArm" parent="MainFloor" node_paths=PackedStringArray("player") instance=ExtResource("9_58uxp")]
+transform = Transform3D(-1.47374, -0.232999, 0.154239, -0.227728, 1.48132, 0.061814, -0.16192, 0.037315, -1.49077, -4.8, 30, 3.919)
+player = NodePath("../../Player")
+
+[node name="elevatorButtons" type="Node3D" parent="MainFloor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61704, -0.342518, 1.56464)
+
+[node name="button" parent="MainFloor/elevatorButtons" instance=ExtResource("13_4lhck")]
+
+[node name="button2" parent="MainFloor/elevatorButtons" instance=ExtResource("14_4g1e4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
+
+[node name="button3" parent="MainFloor/elevatorButtons" instance=ExtResource("15_3ymdl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
+
+[node name="button4" parent="MainFloor/elevatorButtons" instance=ExtResource("16_g0bw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
+
+[node name="button5" parent="MainFloor/elevatorButtons" instance=ExtResource("17_5k42q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
+
+[node name="button6" parent="MainFloor/elevatorButtons" instance=ExtResource("18_6je7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
+
+[node name="button7" parent="MainFloor/elevatorButtons" instance=ExtResource("19_t6omj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
+
+[node name="button8" parent="MainFloor/elevatorButtons" instance=ExtResource("20_h3le7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
+
+[node name="button10" parent="MainFloor/elevatorButtons" instance=ExtResource("21_5fpxg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
+
+[node name="button11" parent="MainFloor/elevatorButtons" instance=ExtResource("22_kow8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
+
+[node name="button13" parent="MainFloor/elevatorButtons" instance=ExtResource("24_y6tx0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
+
+[node name="elevatorButtonPanel2" parent="MainFloor/elevatorButtons" instance=ExtResource("24_y3b4p")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
+
+[node name="hallwayButtons" type="Node3D" parent="MainFloor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.07856, -0.530423, 1.0177)
+
+[node name="hallwayButtonPanel2" parent="MainFloor/hallwayButtons" instance=ExtResource("25_8mkdy")]
+
+[node name="button" parent="MainFloor/hallwayButtons" instance=ExtResource("26_sda5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, -0.0591901, 0)
+
+[node name="button2" parent="MainFloor/hallwayButtons" instance=ExtResource("27_qqtlc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
+
+[node name="ShakeArea" type="Area3D" parent="MainFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8731, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainFloor/ShakeArea"]
+shape = SubResource("BoxShape3D_u64pw")
+
+[node name="SpookSounds" type="Node3D" parent="MainFloor"]
+
+[node name="SoundArea" parent="MainFloor/SpookSounds" instance=ExtResource("26_611k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2272, -0.220984, -1.4097)
+stream = ExtResource("27_4p2mi")
+one_time = true
+
+[node name="PlaySound" parent="MainFloor/SpookSounds" instance=ExtResource("26_611k1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18.4669, 0, 1.61023)
+stream = ExtResource("28_wal2y")
+one_time = true
+
+[node name="PlaySound2" parent="MainFloor/SpookSounds" instance=ExtResource("26_611k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4078, 0.0875626, -1.37292)
+stream = ExtResource("29_et8ox")
+max_distance = 12.0
+parameters/looping = true
+
+[node name="PlaySound5" parent="MainFloor/SpookSounds" instance=ExtResource("26_611k1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0358, 0.0875626, -1.37292)
+stream = ExtResource("29_et8ox")
+max_distance = 12.0
+parameters/looping = true
+
+[node name="PlaySound3" parent="MainFloor/SpookSounds" instance=ExtResource("26_611k1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.7737, 0.0875626, 1.37072)
+stream = ExtResource("29_et8ox")
+max_distance = 12.0
+parameters/looping = true
+
+[node name="PlaySound4" parent="MainFloor/SpookSounds" instance=ExtResource("26_611k1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.9014, 0.0875626, 1.37072)
+stream = ExtResource("29_et8ox")
+max_distance = 12.0
+parameters/looping = true
+
+[node name="ChaseMusic" type="AudioStreamPlayer" parent="MainFloor"]
+unique_name_in_owner = true
+stream = ExtResource("30_i4asb")
+volume_db = -5.0
+
+[node name="EmptyBox" parent="MainFloor" instance=ExtResource("34_6ossa")]
+transform = Transform3D(1.82332e-05, 0.00523596, -0.999984, 0.0034906, 0.999985, 0.00523595, 0.999993, -0.00349067, -4.37107e-08, -1.79883, -0.381397, 2.82513)
+
+[node name="Driver1" parent="MainFloor/EmptyBox" instance=ExtResource("34_w0uny")]
+transform = Transform3D(-4.37722e-08, 9.31323e-10, 0.999999, -0.0174523, 0.999842, -9.31323e-10, -0.999849, -0.0174524, -4.35393e-08, -0.0743494, -0.127642, -0.0103437)
+
+[node name="MonsterTop" parent="MainFloor" node_paths=PackedStringArray("player") instance=ExtResource("32_m6fp2")]
+transform = Transform3D(-1.4996, -0.0234732, 0.0257544, -0.0193593, 1.483, 0.224409, -0.0289742, 0.224016, -1.48289, -4.1608, 2.81918, 2.91841)
+player = NodePath("../../Player")
+
+[node name="TopDown" type="CSGBox3D" parent="MainFloor"]
+transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -4.40452, 1.04749, 4.56003)
+
+[node name="TopDownBody" type="StaticBody3D" parent="MainFloor/TopDown"]
+collision_layer = 2
+script = ExtResource("33_yemr1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainFloor/TopDown/TopDownBody"]
+shape = SubResource("BoxShape3D_kracc")
+
+[node name="BottomUp" type="CSGBox3D" parent="MainFloor"]
+transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -1.49995, 4.56003)
+
+[node name="BittonUpBody" type="StaticBody3D" parent="MainFloor/BottomUp"]
+collision_layer = 2
+script = ExtResource("34_glybr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainFloor/BottomUp/BittonUpBody"]
+shape = SubResource("BoxShape3D_kracc")
+
+[node name="e_door" type="CSGBox3D" parent="MainFloor"]
+transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -1.49995, 1.72784)
+
+[node name="e_door_bpdy" type="StaticBody3D" parent="MainFloor/e_door"]
+collision_layer = 2
+script = ExtResource("35_30on6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainFloor/e_door/e_door_bpdy"]
+shape = SubResource("BoxShape3D_kracc")
+
+[node name="Rope" parent="MainFloor" instance=ExtResource("39_qqgci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61724, 1.41788, 3.91902)
+
+[node name="MainElevator" parent="MainFloor" instance=ExtResource("4_8f3o6")]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.617, 0.00600004, 3.042)
+
+[node name="Props" type="Node3D" parent="MainFloor"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.617, 0.00600004, 3.042)
+
+[node name="Driver2" parent="MainFloor/Props" instance=ExtResource("41_fjnda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24511, -0.215318, -0.492667)
+
+[node name="Fuse" parent="MainFloor/Props" instance=ExtResource("44_trrcy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.29376, -0.0619677, 0.407839)
+
+[node name="NoteA" parent="MainFloor/Props" instance=ExtResource("44_x86kr")]
+transform = Transform3D(0.0411828, 0.075292, -0.996311, -0.00310956, 0.997162, 0.0752278, 0.999147, 3.29112e-09, 0.0413, -3.21242, 0.377221, -0.48209)
+
+[node name="NoteBody" parent="MainFloor/Props/NoteA" index="0"]
+item_name = "NoteA"
+
+[node name="paper" parent="MainFloor/Props/NoteA/NoteBody" index="1"]
+surface_material_override/0 = null
+
+[node name="NoteB" parent="MainFloor/Props" instance=ExtResource("44_x86kr")]
+transform = Transform3D(-0.00364772, 0, -0.999993, 0, 1, 0, 0.999993, 0, -0.00364772, -2.74583, 0, -0.850739)
+
+[node name="NoteBody" parent="MainFloor/Props/NoteB" index="0"]
+transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, -0.0727744, 0.306319, 0.50317)
+item_name = "NoteB"
+
+[node name="paper" parent="MainFloor/Props/NoteB/NoteBody" index="1"]
+surface_material_override/0 = null
+
+[node name="crowbar" parent="MainFloor/Props" instance=ExtResource("36_2akp3")]
+unique_name_in_owner = true
+transform = Transform3D(8.71186e-10, -4.37027e-08, -1, -0.999801, -0.0199304, 0, -0.0199304, 0.999801, -4.37114e-08, 0.392, -0.421, 3.58372)
+
+[node name="KeyHang" parent="MainFloor" instance=ExtResource("46_t2mbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64756, 2.35003, 3.80385)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
@@ -96,27 +383,6 @@ offset_left = -81.0
 offset_top = -81.0
 offset_right = 2112.0
 offset_bottom = 1294.0
-
-[node name="fuseBox" parent="." instance=ExtResource("2_u0ixm")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.47628, -0.172347, 2.77274)
-
-[node name="exitSign2" parent="." instance=ExtResource("2_0enyf")]
-transform = Transform3D(-4.09449e-08, 0.93671, 0, -0.93671, -4.09449e-08, 0, 0, 0, 0.93671, -39.0334, 1.02526, 0)
-
-[node name="exitPart" parent="." instance=ExtResource("2_nftua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.8596, 0, 0)
-
-[node name="staircaseTop" parent="." instance=ExtResource("5_o6f1b")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -43.3709, 0.296122, -0.00459003)
-
-[node name="staircaseRepeat" parent="." instance=ExtResource("6_sfjhb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -43.3625, -3.76393, 0.0193979)
-
-[node name="staircaseRepeat2" parent="." instance=ExtResource("6_sfjhb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -43.3625, -7.81379, 0.0193979)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5wx5y")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -127,285 +393,24 @@ offset_right = 2240.0
 offset_bottom = 1192.0
 color = Color(0, 0, 0, 1)
 
-[node name="Reset" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4528, -0.636, 0.0586653)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Reset"]
-shape = SubResource("BoxShape3D_m6awe")
-
-[node name="ResetPos" type="Marker3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34077, -1.05787, -0.215217)
-
-[node name="ElevatorTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26167, -0.599174, -0.097915)
-monitoring = false
-
-[node name="ElevatorTriggerCollision" type="CollisionShape3D" parent="ElevatorTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68923, 0, 0)
-shape = SubResource("BoxShape3D_lmq05")
-
-[node name="ElevatorEnterTrigger" type="Area3D" parent="."]
-transform = Transform3D(0.00183256, 0, 0.999998, 0, 1, 0, -0.999998, 0, 0.00183256, -4.66138, -0.599174, 2.17385)
-
-[node name="ElevatorEnterTriggerCollision" type="CollisionShape3D" parent="ElevatorEnterTrigger"]
-unique_name_in_owner = true
-shape = SubResource("BoxShape3D_lmq05")
-
-[node name="hallway2" parent="." instance=ExtResource("1_oqa06")]
-
-[node name="hallway3" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.273, 0, 0)
-
-[node name="hallway4" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.864, 0, 0)
-
-[node name="hallway5" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4616, 0, 0)
-
-[node name="hallway6" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0526, 0, 0)
-
-[node name="hallway7" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6335, 0, 0)
-
-[node name="HideHallway2" type="Node3D" parent="."]
-unique_name_in_owner = true
-
-[node name="hallway10" parent="HideHallway2" instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7544, 0, 0)
-
-[node name="hallway11" parent="HideHallway2" instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.1634, 0, 0)
-
-[node name="hallway12" parent="HideHallway2" instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5825, 0, 0)
-
-[node name="hallway13" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.6541, 0, 0)
-visible = false
-
-[node name="hallway14" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0565, 0, 0)
-visible = false
-
-[node name="HideHallway" type="Node3D" parent="."]
-unique_name_in_owner = true
-
-[node name="hallway15" parent="HideHallway" instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4655, 0, 0)
-
-[node name="hallway16" parent="HideHallway" instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8846, 0, 0)
-
-[node name="hallway17" parent="HideHallway" instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.352, 0, 0)
-
-[node name="hallway8" parent="." instance=ExtResource("1_oqa06")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2246, 0, 0)
-
-[node name="elevatorPart" parent="." instance=ExtResource("3_x8o7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.638, 0, 0)
-
-[node name="MonsterArm" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_58uxp")]
-transform = Transform3D(-1.47374, -0.232999, 0.154239, -0.227728, 1.48132, 0.061814, -0.16192, 0.037315, -1.49077, -4.8, 30, 3.919)
-player = NodePath("../Player")
-
-[node name="elevatorButtons" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.61704, -0.342518, 1.56464)
-
-[node name="button" parent="elevatorButtons" instance=ExtResource("13_4lhck")]
-
-[node name="button2" parent="elevatorButtons" instance=ExtResource("14_4g1e4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.068984)
-
-[node name="button3" parent="elevatorButtons" instance=ExtResource("15_3ymdl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0698446, 0)
-
-[node name="button4" parent="elevatorButtons" instance=ExtResource("16_g0bw0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0702225, 0.068984)
-
-[node name="button5" parent="elevatorButtons" instance=ExtResource("17_5k42q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139575, 0)
-
-[node name="button6" parent="elevatorButtons" instance=ExtResource("18_6je7a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138888, 0.068984)
-
-[node name="button7" parent="elevatorButtons" instance=ExtResource("19_t6omj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.211301, 0)
-
-[node name="button8" parent="elevatorButtons" instance=ExtResource("20_h3le7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.213198, 0.068984)
-
-[node name="button10" parent="elevatorButtons" instance=ExtResource("21_5fpxg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127786, 0.037674)
-
-[node name="button11" parent="elevatorButtons" instance=ExtResource("22_kow8l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0.0730877)
-
-[node name="button13" parent="elevatorButtons" instance=ExtResource("24_y6tx0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0669701, 0)
-
-[node name="elevatorButtonPanel2" parent="elevatorButtons" instance=ExtResource("24_y3b4p")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.010304, 0.0365903)
-
-[node name="hallwayButtons" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.07856, -0.530423, 1.0177)
-
-[node name="hallwayButtonPanel2" parent="hallwayButtons" instance=ExtResource("25_8mkdy")]
-
-[node name="button" parent="hallwayButtons" instance=ExtResource("26_sda5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, -0.0591901, 0)
-
-[node name="button2" parent="hallwayButtons" instance=ExtResource("27_qqtlc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
-
-[node name="ShakeArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8731, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ShakeArea"]
-shape = SubResource("BoxShape3D_u64pw")
-
-[node name="SpookSounds" type="Node3D" parent="."]
-
-[node name="SoundArea" parent="SpookSounds" instance=ExtResource("26_611k1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2272, -0.220984, -1.4097)
-stream = ExtResource("27_4p2mi")
-one_time = true
-
-[node name="PlaySound" parent="SpookSounds" instance=ExtResource("26_611k1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -18.4669, 0, 1.61023)
-stream = ExtResource("28_wal2y")
-one_time = true
-
-[node name="PlaySound2" parent="SpookSounds" instance=ExtResource("26_611k1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4078, 0.0875626, -1.37292)
-stream = ExtResource("29_et8ox")
-max_distance = 12.0
-parameters/looping = true
-
-[node name="PlaySound5" parent="SpookSounds" instance=ExtResource("26_611k1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0358, 0.0875626, -1.37292)
-stream = ExtResource("29_et8ox")
-max_distance = 12.0
-parameters/looping = true
-
-[node name="PlaySound3" parent="SpookSounds" instance=ExtResource("26_611k1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.7737, 0.0875626, 1.37072)
-stream = ExtResource("29_et8ox")
-max_distance = 12.0
-parameters/looping = true
-
-[node name="PlaySound4" parent="SpookSounds" instance=ExtResource("26_611k1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.9014, 0.0875626, 1.37072)
-stream = ExtResource("29_et8ox")
-max_distance = 12.0
-parameters/looping = true
-
-[node name="ChaseMusic" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("30_i4asb")
-volume_db = -5.0
-
 [node name="Player" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") instance=ExtResource("6_a8yqa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94521, -0.342958, 3.32698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.802, -0.427511, 3.327)
 attack_marker = NodePath("Head/PlayerCam/AttackMarker")
 rotate_marker = NodePath("RotateMarker")
 lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
 
-[node name="EmptyBox" parent="." instance=ExtResource("34_6ossa")]
-transform = Transform3D(1.82332e-05, 0.00523596, -0.999984, 0.0034906, 0.999985, 0.00523595, 0.999993, -0.00349067, -4.37107e-08, -1.79883, -0.381397, 2.82513)
+[node name="ElevatorsFloor" parent="." instance=ExtResource("47_8xfm1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71275, 12.8661, 2.95453)
+visible = false
 
-[node name="Driver1" parent="EmptyBox" instance=ExtResource("34_w0uny")]
-transform = Transform3D(-4.37722e-08, 9.31323e-10, 0.999999, -0.0174523, 0.999842, -9.31323e-10, -0.999849, -0.0174524, -4.35393e-08, -0.0743494, -0.127642, -0.0103437)
+[connection signal="body_entered" from="MainFloor/Reset" to="." method="_on_reset_body_entered"]
+[connection signal="body_entered" from="MainFloor/ElevatorTrigger" to="." method="_on_elevator_trigger_body_entered"]
+[connection signal="body_entered" from="MainFloor/ElevatorTrigger" to="Player" method="_on_elevator_trigger_body_entered"]
+[connection signal="body_entered" from="MainFloor/ElevatorEnterTrigger" to="." method="_on_elevator_enter_trigger_body_entered"]
+[connection signal="body_entered" from="MainFloor/ShakeArea" to="Player" method="_on_shake_area_body_entered"]
+[connection signal="body_exited" from="MainFloor/ShakeArea" to="." method="_on_shake_area_body_exited"]
+[connection signal="body_exited" from="MainFloor/ShakeArea" to="Player" method="_on_shake_area_body_exited"]
 
-[node name="MonsterTop" parent="." node_paths=PackedStringArray("player") instance=ExtResource("32_m6fp2")]
-transform = Transform3D(-1.4996, -0.0234732, 0.0257544, -0.0193593, 1.483, 0.224409, -0.0289742, 0.224016, -1.48289, -4.1608, 2.81918, 2.91841)
-player = NodePath("../Player")
-
-[node name="TopDown" type="CSGBox3D" parent="."]
-transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -4.40452, 1.04749, 4.56003)
-
-[node name="TopDownBody" type="StaticBody3D" parent="TopDown"]
-collision_layer = 2
-script = ExtResource("33_yemr1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TopDown/TopDownBody"]
-shape = SubResource("BoxShape3D_kracc")
-
-[node name="BottomUp" type="CSGBox3D" parent="."]
-transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -1.49995, 4.56003)
-
-[node name="BittonUpBody" type="StaticBody3D" parent="BottomUp"]
-collision_layer = 2
-script = ExtResource("34_glybr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomUp/BittonUpBody"]
-shape = SubResource("BoxShape3D_kracc")
-
-[node name="e_door" type="CSGBox3D" parent="."]
-transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -1.49995, 1.72784)
-
-[node name="e_door_bpdy" type="StaticBody3D" parent="e_door"]
-collision_layer = 2
-script = ExtResource("35_30on6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="e_door/e_door_bpdy"]
-shape = SubResource("BoxShape3D_kracc")
-
-[node name="Rope" parent="." instance=ExtResource("39_qqgci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.61724, 1.41788, 3.91902)
-
-[node name="MainElevator" parent="." instance=ExtResource("4_8f3o6")]
-unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.617, 0.006, 3.042)
-
-[node name="Props" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.617, 0.00600004, 3.042)
-
-[node name="Driver2" parent="Props" instance=ExtResource("41_fjnda")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24511, -0.215318, -0.492667)
-
-[node name="Fuse" parent="Props" instance=ExtResource("44_trrcy")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.29376, -0.0619677, 0.407839)
-
-[node name="NoteA" parent="Props" instance=ExtResource("44_x86kr")]
-transform = Transform3D(0.0411828, 0.075292, -0.996311, -0.00310956, 0.997162, 0.0752278, 0.999147, 3.29112e-09, 0.0413, -3.21242, 0.377221, -0.48209)
-
-[node name="NoteBody" parent="Props/NoteA" index="0"]
-item_name = "NoteA"
-
-[node name="paper" parent="Props/NoteA/NoteBody" index="1"]
-surface_material_override/0 = null
-
-[node name="NoteB" parent="Props" instance=ExtResource("44_x86kr")]
-transform = Transform3D(-0.00364772, 0, -0.999993, 0, 1, 0, 0.999993, 0, -0.00364772, -2.74583, 0, -0.850739)
-
-[node name="NoteBody" parent="Props/NoteB" index="0"]
-transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, -0.0727744, 0.306319, 0.50317)
-item_name = "NoteB"
-
-[node name="paper" parent="Props/NoteB/NoteBody" index="1"]
-surface_material_override/0 = null
-
-[node name="key" parent="Props" instance=ExtResource("45_3agun")]
-transform = Transform3D(-0.00140199, 0.964456, 0.26424, 0.00511724, 0.264243, -0.964442, -0.999986, 4.22925e-08, -0.00530582, -3.19022, -0.644176, -0.0211263)
-
-[node name="crowbar" parent="Props" instance=ExtResource("36_2akp3")]
-unique_name_in_owner = true
-transform = Transform3D(8.71186e-10, -4.37027e-08, -1, -0.999801, -0.0199304, 0, -0.0199304, 0.999801, -4.37114e-08, 0.392, -0.421, 3.58372)
-
-[node name="KeyHang" parent="." instance=ExtResource("46_t2mbe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64756, 2.35003, 3.80385)
-
-[connection signal="body_entered" from="Reset" to="." method="_on_reset_body_entered"]
-[connection signal="body_entered" from="ElevatorTrigger" to="." method="_on_elevator_trigger_body_entered"]
-[connection signal="body_entered" from="ElevatorTrigger" to="Player" method="_on_elevator_trigger_body_entered"]
-[connection signal="body_entered" from="ElevatorEnterTrigger" to="." method="_on_elevator_enter_trigger_body_entered"]
-[connection signal="body_entered" from="ShakeArea" to="Player" method="_on_shake_area_body_entered"]
-[connection signal="body_exited" from="ShakeArea" to="." method="_on_shake_area_body_exited"]
-[connection signal="body_exited" from="ShakeArea" to="Player" method="_on_shake_area_body_exited"]
-
-[editable path="elevatorButtons/button"]
-[editable path="Props/NoteA"]
-[editable path="Props/NoteB"]
+[editable path="MainFloor/elevatorButtons/button"]
+[editable path="MainFloor/Props/NoteA"]
+[editable path="MainFloor/Props/NoteB"]

@@ -156,6 +156,7 @@ func _set_inventory_color(index:int):
 
 
 func note_display(note:String):
+	print ("show note "+note)
 	if note=="":
 		%NoteTexture.visible = false
 		%NoteText.visible = false
@@ -183,3 +184,14 @@ func update_dialogue(sentence:String, player_speak:bool):
 func _fade_to_black():
 	var tween = create_tween()
 	tween.tween_property(%BlackCover, "modulate:a", 1.0, 3.0)
+	await get_tree().create_timer(4.0).timeout
+	_fade_to_clear()
+
+func _fade_to_clear():
+	var tween = create_tween()
+	tween.tween_property(%BlackCover, "modulate:a", 0.0, 2.0)
+	print ("faded cear")
+
+func _process(delta: float) -> void:
+	var fps = Engine.get_frames_per_second() 
+	$fps.text = str(fps)

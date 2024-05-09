@@ -1,12 +1,12 @@
 extends Node
 
-var fuse_inserted: bool = true
-var wire_fixed: bool = true
+var fuse_inserted: bool = false
+var wire_fixed: bool = false
 
-var card_is_in_slot: bool = true
+var card_is_in_slot: bool = false
 
 
-var code_waiting: int = 2
+var code_waiting: int = 0
 
 var call_step: int = 0
 

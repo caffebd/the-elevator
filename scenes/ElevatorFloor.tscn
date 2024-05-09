@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://pi3djdqgum0l"]
+[gd_scene load_steps=29 format=3 uid="uid://pi3djdqgum0l"]
 
 [ext_resource type="PackedScene" uid="uid://dgrtvp0jbijme" path="res://assets/UpdatedElevator/elevator.tscn" id="1_fto52"]
 [ext_resource type="Script" path="res://scripts/elevator_floor.gd" id="1_sgj25"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bci101o8cculh" path="res://assets/elevatorNew/elevator_button_panel.tscn" id="14_4niuy"]
 [ext_resource type="PackedScene" uid="uid://dkfgp5xrpg8ll" path="res://assets/elevatorNew/empty_box.tscn" id="15_66vf8"]
 [ext_resource type="PackedScene" uid="uid://dq3ocurr25m0t" path="res://scenes/Driver1.tscn" id="16_buat0"]
-[ext_resource type="PackedScene" uid="uid://cpucufodphld5" path="res://scenes/Player.tscn" id="17_uv2x0"]
 [ext_resource type="PackedScene" uid="uid://ddqdfu8rw4wxq" path="res://assets/elevatorNew/elevator_part_w_door.tscn" id="18_mdorr"]
 [ext_resource type="PackedScene" uid="uid://cffgdsansmwm" path="res://assets/elevatorNew/hallway.tscn" id="19_ethsl"]
 [ext_resource type="PackedScene" uid="uid://lsdkxs60ecih" path="res://assets/elevatorNew/hallway_button_panel.tscn" id="19_ppn6c"]
@@ -26,21 +25,6 @@
 [ext_resource type="Script" path="res://scripts/close_door_trigger.gd" id="22_bab10"]
 [ext_resource type="Script" path="res://scripts/back_in_elevator.gd" id="23_p5dp7"]
 [ext_resource type="Script" path="res://scripts/warp_area.gd" id="25_454bl"]
-
-[sub_resource type="Environment" id="Environment_i5xx2"]
-background_mode = 1
-ambient_light_source = 2
-ambient_light_color = Color(0.0475577, 0.0475576, 0.0475576, 1)
-tonemap_mode = 3
-glow_intensity = 0.21
-glow_strength = 1.55
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0, 0, 0, 1)
-fog_light_energy = 0.0
-fog_density = 8.0
-fog_depth_begin = 0.0
-fog_depth_end = 83.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i1ehs"]
 size = Vector3(0.18, 1, 1.955)
@@ -54,18 +38,10 @@ size = Vector3(0.505, 0.86, 1.835)
 [node name="ElevatorsFloor" type="Node3D"]
 script = ExtResource("1_sgj25")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_i5xx2")
-
-[node name="Player" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") instance=ExtResource("17_uv2x0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.299746, 0, 1.04892)
-attack_marker = NodePath("Head/PlayerCam/AttackMarker")
-rotate_marker = NodePath("RotateMarker")
-lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
-
 [node name="elevator1" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 start_elevator_floor = true
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator1" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -150,6 +126,7 @@ disabled = true
 
 [node name="elevator2" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.24147, 0, 0)
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator2" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -230,6 +207,7 @@ shape = SubResource("BoxShape3D_jy2wm")
 
 [node name="elevator3" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.24538, 0, 0)
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator3" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -311,6 +289,7 @@ shape = SubResource("BoxShape3D_jy2wm")
 
 [node name="elevator4" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.4876, 0, 0)
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator4" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -392,6 +371,7 @@ shape = SubResource("BoxShape3D_jy2wm")
 
 [node name="elevator5" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.4942, 0, 0)
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator5" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -473,6 +453,7 @@ shape = SubResource("BoxShape3D_jy2wm")
 
 [node name="elevator7" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 32.3827, 0, 0)
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator7" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -554,6 +535,7 @@ shape = SubResource("BoxShape3D_jy2wm")
 
 [node name="elevator6" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.7215, 0, 0)
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator6" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)
@@ -635,6 +617,7 @@ shape = SubResource("BoxShape3D_jy2wm")
 
 [node name="elevator8" parent="." instance=ExtResource("1_fto52")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.6082, 0, 0)
+elevator_floor = true
 
 [node name="fuseBox" parent="elevator8" instance=ExtResource("2_lpmwh")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0.268062, -0.179424, -2.84942)

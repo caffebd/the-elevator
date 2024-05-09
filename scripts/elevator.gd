@@ -11,6 +11,7 @@ var doors_moving: bool = false
 var correct_elevator: bool = false
 
 @export var start_elevator_floor: bool = false
+@export var elevator_floor: bool = false
 
 var left_closed: float = 0.948
 var right_closed: float = -0.948
@@ -24,18 +25,23 @@ func _ready() -> void:
 	Signals.floor_open.connect(floor_open)
 	Signals.roof_open.connect(_roof_open)
 	Signals.roof_close.connect(_roof_close)
+	Signals.elevator_floor.connect(_elevator_floor)
+	Signals.main_floor.connect(_main_floor)
 	Signals.elevator_sequence_one.connect(_elevator_sequence_one)
 	Signals.elevator_sequence_two.connect(_elevator_sequence_two)
 	Signals.elevator_sequence_three.connect(_elevator_sequence_three)
 	left_door.position.z = 0.948
 	right_door.position.z = -0.948
+
 	
+func _elevator_floor():
 	if start_elevator_floor:
 		await get_tree().create_timer(2).timeout
 		operate_door(true)
-	
-	
-	
+
+func _main_floor():
+	if not elevator_floor:
+		operate_door(true)
 	#await get_tree().create_timer(3).timeout
 	#_door_slow_open()
 	#Signals.emit_signal("hallway_lights_out")
@@ -87,6 +93,13 @@ func floor_open():
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(main_floor, "position:z", 6.0, 5.0)
 		tween.tween_property($Cube_032, "position:z", 6.0, 5.0)
+	else:
+		%ElevatorMoving.play()
+		_up_arrow(true)
+		await get_tree().create_timer(5).timeout
+		Signals.emit_signal("fade_to_black")
+		await get_tree().create_timer(3).timeout
+		Signals.emit_signal("main_floor")	
 
 
 func _roof_open():
@@ -98,72 +111,79 @@ func _roof_close():
 	tween.tween_property(%Cube_034, "rotation:z", deg_to_rad(0.0), 1.0)
 	
 func _elevator_sequence_one():
-	%ElevatorMoving.play()
-	_down_arrow(true)
-	await get_tree().create_timer(8).timeout
-	_down_arrow(false)
-	%ElevatorMoving.stop()
-	%ElevatorCrash.play()
-	_roof_open()
-	Signals.emit_signal("key_drop")
-	Signals.emit_signal("camera_shake", 3.0, 0.07)
-	_arrow_flash()
+	if not elevator_floor:
+		%ElevatorMoving.play()
+		_down_arrow(true)
+		await get_tree().create_timer(8).timeout
+		_down_arrow(false)
+		%ElevatorMoving.stop()
+		%ElevatorCrash.play()
+		_roof_open()
+		Signals.emit_signal("key_drop")
+		Signals.emit_signal("camera_shake", 3.0, 0.07)
+		_arrow_flash()
 
 func _elevator_sequence_two():
-	SaveState.call_ready = false
-	%ElevatorMoving.play()
-	_up_arrow(true)
-	await get_tree().create_timer(5).timeout
-	Signals.emit_signal("camera_shake", 8.0, 0.03)
-	_arrow_flash()
+	if not elevator_floor:
+		SaveState.call_ready = false
+		%ElevatorMoving.play()
+		_up_arrow(true)
+		await get_tree().create_timer(5).timeout
+		Signals.emit_signal("camera_shake", 8.0, 0.03)
+		_arrow_flash()
 	
 	await get_tree().create_timer(2).timeout
 	_door_slow_open()
 	#Signals.emit_signal("panel_drop", true)
 
 func _elevator_sequence_three():
-	%ElevatorMoving.play()
-	_up_arrow(true)
-	await get_tree().create_timer(5).timeout
-	Signals.emit_signal("fade_to_black")
-	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://scenes/ElevatorFloor.tscn")
+	if not elevator_floor:
+		%ElevatorMoving.play()
+		_up_arrow(true)
+		await get_tree().create_timer(5).timeout
+		Signals.emit_signal("fade_to_black")
+		await get_tree().create_timer(3).timeout
+		Signals.emit_signal("elevator_floor")
+		#get_tree().change_scene_to_file("res://scenes/ElevatorFloor.tscn")
 
 func _door_slow_open():
-	Signals.emit_signal("hallway_lights_out")
-	_arrow_flash()
-	var tween = create_tween().set_parallel(true)
-	tween.tween_property(left_door, "position:z", left_closed + 0.2, 6.0)
-	tween.tween_property(right_door, "position:z", right_closed - 0.2, 6.0)
-	await tween.finished
-	var tween_close = create_tween().set_parallel(true)
-	tween_close.tween_property(left_door, "position:z", left_closed, 0.2)
-	tween_close.tween_property(right_door, "position:z", right_closed, 0.2)	
+	if not elevator_floor:
+		Signals.emit_signal("hallway_lights_out")
+		_arrow_flash()
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(left_door, "position:z", left_closed + 0.2, 6.0)
+		tween.tween_property(right_door, "position:z", right_closed - 0.2, 6.0)
+		await tween.finished
+		var tween_close = create_tween().set_parallel(true)
+		tween_close.tween_property(left_door, "position:z", left_closed, 0.2)
+		tween_close.tween_property(right_door, "position:z", right_closed, 0.2)	
 
 func _door_banging():
-	Signals.emit_signal("hallway_lights_out")
-	_arrow_flash()
-	for i in 10:
-		print (i)
-		$Ding.play()
-		#await get_tree().create_timer(0.25).timeout
-		var tween = create_tween().set_parallel(true)
-		tween.tween_property(left_door, "position:z", left_closed + door_changing[i], 0.5)
-		tween.tween_property(right_door, "position:z", right_closed - door_changing[i], 0.5)
-		await tween.finished
+	if not elevator_floor:
+		Signals.emit_signal("hallway_lights_out")
+		_arrow_flash()
+		for i in 10:
+			print (i)
+			$Ding.play()
+			#await get_tree().create_timer(0.25).timeout
+			var tween = create_tween().set_parallel(true)
+			tween.tween_property(left_door, "position:z", left_closed + door_changing[i], 0.5)
+			tween.tween_property(right_door, "position:z", right_closed - door_changing[i], 0.5)
+			await tween.finished
 
 	
 	
 func _arrow_flash():
-	var show_state = true
-	for i in 20:
-		_down_arrow(show_state)
-		_up_arrow(!show_state)
-		await get_tree().create_timer(0.05).timeout
-		show_state = !show_state
-	_down_arrow(false)
-	_up_arrow(false)
-	SaveState.call_ready = true
+	if not elevator_floor:
+		var show_state = true
+		for i in 20:
+			_down_arrow(show_state)
+			_up_arrow(!show_state)
+			await get_tree().create_timer(0.05).timeout
+			show_state = !show_state
+		_down_arrow(false)
+		_up_arrow(false)
+		SaveState.call_ready = true
 	
 func _down_arrow(state):
 	%Cube_038.get_surface_override_material(0).emission_enabled = state

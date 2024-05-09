@@ -101,7 +101,6 @@ surface_material_override/0 = ExtResource("4_go61b")
 surface_material_override/0 = ExtResource("5_8deqo")
 
 [node name="refwall_002" parent="." index="3"]
-visible = false
 surface_material_override/0 = ExtResource("4_go61b")
 
 [node name="refwall_005" parent="." index="4"]
