@@ -24,6 +24,10 @@ var inventory_index: int = 0
 func _ready():
 	_set_inventory_color(0)
 	Signals.fade_to_black.connect(_fade_to_black)
+	Signals.dead_cover.connect(_dead_cover)
+
+func _dead_cover():
+	$DeadCover.visible = true
 
 func remove_from_inventory(item:String):
 	if SaveState.saved_inventory.has(item):

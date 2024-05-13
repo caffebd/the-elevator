@@ -13,6 +13,7 @@ var follow: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.panel_drop.connect(_trap_door)
+	Signals.monster_grab.connect(_grab)
 	%SkeletonIK3D.start()
 	global_position.y = -30.0
 	#$AnimationPlayer.play_backwards("searching")
@@ -34,7 +35,7 @@ func _ready() -> void:
 	#$AnimationPlayer.play("attack")
 	attack_mode = false
 	follow = false
-	#grab()
+
 
 
 func _trap_door(state):
@@ -105,17 +106,18 @@ func search(state):
 		$AnimationPlayer.play("attack")	
 		global_position = lerp(global_position,Vector3(player.global_position.x, 3.0, player.global_position.z), 0.4)
 
-func grab():
-	var arm_grab_timer = Timer.new()
-	add_child(arm_grab_timer)
-	arm_grab_timer.start(4.0);
-	await arm_grab_timer.timeout
+func _grab():
 	grabbing = true
 	player.player_freeze = true
-	var grab_to:Vector3 =  player.grab_marker.global_position
+	await get_tree().create_timer(0.25).timeout
+	var grab_to:Vector3 =  player.lunge_marker.global_position
 	#%armTip.global_position = lerp(%armTip.global_position,Vector3(grab_to.x, grab_to.y, grab_to.z), 0.30)
 	var tween = create_tween()
-	tween.tween_property(%armTip, "global_position", Vector3(grab_to.x, grab_to.y, grab_to.z), 0.2)
+	tween.tween_property(%ArmHinge, "global_position", Vector3(grab_to.x, grab_to.y, grab_to.z), 0.15)
+	await get_tree().create_timer(0.25).timeout
+	Signals.emit_signal("dead_cover")
+	player.player_freeze = false
+	
 	#$AnimationPlayer.play("attack")
 	#var direction = global_position.direction_to(Vector3(player.position.x,global_position.y, global_position.z ))
 	#_faceDirection(direction)

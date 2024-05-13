@@ -6,6 +6,7 @@ var click_count: int = 0
 func _ready() -> void:
 	Signals.key_click.connect(_key_click)
 	Signals.key_drop.connect(_key_drop)
+	
 
 func get_all_children(in_node,arr:=[]):
 	arr.push_back(in_node)
@@ -13,6 +14,8 @@ func get_all_children(in_node,arr:=[]):
 		arr = get_all_children(child,arr)
 	return arr
 
+
+	
 
 func _key_click():
 	click_count += 1

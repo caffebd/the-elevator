@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ccky6fld3avk1"]
+[gd_scene load_steps=57 format=3 uid="uid://ccky6fld3avk1"]
 
 [ext_resource type="Script" path="res://scripts/HallwayArea.gd" id="1_70hd2"]
 [ext_resource type="PackedScene" uid="uid://cffgdsansmwm" path="res://assets/elevatorNew/hallway.tscn" id="1_oqa06"]
@@ -42,10 +42,12 @@
 [ext_resource type="PackedScene" uid="uid://cinfh5ooeost4" path="res://assets/elevatorNew/crowbar.tscn" id="36_2akp3"]
 [ext_resource type="PackedScene" uid="uid://dim2evhnbmhlj" path="res://scenes/rope.tscn" id="39_qqgci"]
 [ext_resource type="PackedScene" uid="uid://bpyv7f1m7g5h2" path="res://scenes/Driver2.tscn" id="41_fjnda"]
+[ext_resource type="PackedScene" uid="uid://bjc22jmcadtjb" path="res://assets/armHall.tscn" id="43_2t8qx"]
 [ext_resource type="PackedScene" uid="uid://bwj5pktrcil1y" path="res://scenes/fuse.tscn" id="44_trrcy"]
 [ext_resource type="PackedScene" uid="uid://cw3gt6y1nu1le" path="res://scenes/Note.tscn" id="44_x86kr"]
 [ext_resource type="PackedScene" uid="uid://dorx67iooagt0" path="res://scenes/KeyHang.tscn" id="46_t2mbe"]
 [ext_resource type="PackedScene" uid="uid://pi3djdqgum0l" path="res://scenes/ElevatorFloor.tscn" id="47_8xfm1"]
+[ext_resource type="AudioStream" uid="uid://wnor8aeb3svm" path="res://assets/audio/music/monster_sting.mp3" id="47_v7ny2"]
 
 [sub_resource type="Environment" id="Environment_5wx5y"]
 background_mode = 1
@@ -84,6 +86,9 @@ shader = ExtResource("1_vdys4")
 shader_parameter/r_displacement = Vector2(3, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4hy0"]
+size = Vector3(2.255, 1, 1)
 
 [node name="MainHallway" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -132,11 +137,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68923, 0, 0)
 shape = SubResource("BoxShape3D_lmq05")
 
 [node name="ElevatorEnterTrigger" type="Area3D" parent="MainFloor"]
-transform = Transform3D(0.00183256, 0, 0.999998, 0, 1, 0, -0.999998, 0, 0.00183256, -4.66138, 0.394296, 2.17385)
+transform = Transform3D(0.00183256, 0, 0.999998, 0, 1, 0, -0.999998, 0, 0.00183256, -4.66138, -1.04812, 2.17385)
+monitoring = false
 
 [node name="ElevatorEnterTriggerCollision" type="CollisionShape3D" parent="MainFloor/ElevatorEnterTrigger"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48072, 0)
 shape = SubResource("BoxShape3D_lmq05")
 
 [node name="hallway2" parent="MainFloor" instance=ExtResource("1_oqa06")]
@@ -315,7 +320,8 @@ script = ExtResource("33_yemr1")
 shape = SubResource("BoxShape3D_kracc")
 
 [node name="BottomUp" type="CSGBox3D" parent="MainFloor"]
-transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -1.49995, 4.56003)
+transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -2.02222, 4.56003)
+visible = false
 
 [node name="BittonUpBody" type="StaticBody3D" parent="MainFloor/BottomUp"]
 collision_layer = 2
@@ -325,7 +331,8 @@ script = ExtResource("34_glybr")
 shape = SubResource("BoxShape3D_kracc")
 
 [node name="e_door" type="CSGBox3D" parent="MainFloor"]
-transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -1.49995, 1.72784)
+transform = Transform3D(0.127111, 0, 0, 0, 0.0409431, 0, 0, 0, 0.127111, -5.72931, -2.09342, 1.72784)
+visible = false
 
 [node name="e_door_bpdy" type="StaticBody3D" parent="MainFloor/e_door"]
 collision_layer = 2
@@ -376,6 +383,11 @@ transform = Transform3D(8.71186e-10, -4.37027e-08, -1, -0.999801, -0.0199304, 0,
 [node name="KeyHang" parent="MainFloor" instance=ExtResource("46_t2mbe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64756, 2.35003, 3.80385)
 
+[node name="MonsterHall" parent="MainFloor" instance=ExtResource("43_2t8qx")]
+unique_name_in_owner = true
+transform = Transform3D(0.0265222, -0.199547, 1.48643, -0.211546, 1.4713, 0.201291, -1.48477, -0.213192, -0.00212748, 15.9959, -2.34608, 0.18135)
+visible = false
+
 [node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_mwnmw")
@@ -394,7 +406,7 @@ offset_bottom = 1192.0
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." node_paths=PackedStringArray("attack_marker", "rotate_marker", "lunge_marker") instance=ExtResource("6_a8yqa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.802, -0.427511, 3.327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70405, -0.427511, 0.227117)
 attack_marker = NodePath("Head/PlayerCam/AttackMarker")
 rotate_marker = NodePath("RotateMarker")
 lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
@@ -403,6 +415,18 @@ lunge_marker = NodePath("Head/PlayerCam/LungeMarker")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71275, 12.8661, 2.95453)
 visible = false
 
+[node name="MonsterSting" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("47_v7ny2")
+
+[node name="ChaseTrigger" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5163, -0.706598, 0)
+monitoring = false
+
+[node name="ChaseCollision" type="CollisionShape3D" parent="ChaseTrigger"]
+shape = SubResource("BoxShape3D_j4hy0")
+
 [connection signal="body_entered" from="MainFloor/Reset" to="." method="_on_reset_body_entered"]
 [connection signal="body_entered" from="MainFloor/ElevatorTrigger" to="." method="_on_elevator_trigger_body_entered"]
 [connection signal="body_entered" from="MainFloor/ElevatorTrigger" to="Player" method="_on_elevator_trigger_body_entered"]
@@ -410,6 +434,7 @@ visible = false
 [connection signal="body_entered" from="MainFloor/ShakeArea" to="Player" method="_on_shake_area_body_entered"]
 [connection signal="body_exited" from="MainFloor/ShakeArea" to="." method="_on_shake_area_body_exited"]
 [connection signal="body_exited" from="MainFloor/ShakeArea" to="Player" method="_on_shake_area_body_exited"]
+[connection signal="body_entered" from="ChaseTrigger" to="." method="_on_chase_trigger_body_entered"]
 
 [editable path="MainFloor/elevatorButtons/button"]
 [editable path="MainFloor/Props/NoteA"]

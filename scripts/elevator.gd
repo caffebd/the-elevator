@@ -53,6 +53,7 @@ func _main_floor():
 
 
 func operate_door(state):
+	print ("operate door")
 	doors_open = state
 	if doors_open:
 		$Ding.play()
@@ -74,6 +75,7 @@ func operate_door(state):
 func _trap_door(state):
 	if state:
 		%Cube_032.visible = false
+		
 		#var tween = create_tween()
 		#tween.tween_property(%Cube_032, "position:y", -3.0, 0.5)
 	else:

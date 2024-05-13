@@ -154,6 +154,7 @@ mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="fps" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1798.0
 offset_top = 27.0
@@ -162,3 +163,32 @@ offset_bottom = 75.0
 theme_override_fonts/font = ExtResource("8_3yyd4")
 theme_override_font_sizes/font_size = 50
 text = "123"
+
+[node name="DeadCover" type="ColorRect" parent="."]
+auto_translate_mode = 1
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.399267, 0.0154334, 0, 1)
+
+[node name="Label" type="Label" parent="DeadCover"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -645.0
+offset_top = -37.5
+offset_right = 645.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_3yyd4")
+theme_override_font_sizes/font_size = 80
+text = "You didn't make it to work on time"

@@ -57,6 +57,7 @@ var in_call: bool = false
 var note_a_text = "\n         [?] 8 3 5"
 var note_b_text = "[u][b][i]You[/i][/b][/u] should [u][b][i]have[/i][/b][/u] taken the stairs [u][b][i]my[/i][/b][/u] [u][b][i]friend[/i][/b][/u]"
 
+var player_freeze: bool = false
 
 @export var test_mode: bool = false
 
@@ -166,6 +167,7 @@ func _set_hand_item(item:String):
 			in_hand = item
 				
 func _input(event):
+	if player_freeze: return
 	if event is InputEventMouseMotion:
 		if use_cursor:
 			return
@@ -385,6 +387,7 @@ func number_highlight(numb):
 
 func _physics_process(delta):
 	# Add the gravity.
+	if player_freeze: return
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 

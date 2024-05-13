@@ -74,5 +74,10 @@ signal elevator_sequence_three()
 signal hallway_lights_out()
 signal hallway_lights_on()
 
+signal monster_grab()
 
 signal fade_to_black()
+
+signal dead_cover()
+
+signal escape_monster()

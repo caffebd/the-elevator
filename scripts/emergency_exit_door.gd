@@ -21,7 +21,7 @@ func operate_door():
 	if door_moving:
 		return
 	door_moving = true
-	
+	Signals.emit_signal("escape_monster")
 	print (door_open)
 	door_open = !door_open
 	#$DoorCollision.disabled = true

@@ -14,3 +14,10 @@ func _elevator_floor():
 
 func _main_floor():
 	visible = false
+
+
+func _on_fall_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		Signals.emit_signal("fade_to_black")
+		await get_tree().create_timer(4.0).timeout
+		Signals.emit_signal("elevator_floor")
