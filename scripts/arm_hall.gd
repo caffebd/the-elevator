@@ -4,7 +4,7 @@ extends Node3D
 
 var attack_mode: bool = false
 
-var speed = 2.35
+var speed = 3.8
 const SMOOTH_SPEED = 2.75
 
 var tip_start_pos: Vector3
@@ -13,14 +13,16 @@ var tip_start_pos: Vector3
 func _ready() -> void:
 	%SkeletonIK3D.start()
 	#attack_mode = true
-	tip_start_pos = %armTip.global_position
-	Signals.top_down_arm.connect(_arm_drop)
+	#tip_start_pos = %armTip.global_position
 	Signals.escape_monster.connect(_escape)
-	#await get_tree().create_timer(4).timeout
+	Signals.escape_apartment.connect(_escape_apartment)
+	visible = false
 	#attack_mode = true
 
 func _escape():
-	speed = -5
+	$AnimationPlayer.play("chase")
+	attack_mode = true
+
 	
 func _arm_fall():
 	var tween = create_tween()
@@ -52,9 +54,15 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_kill_area_body_entered(body: Node3D) -> void:
+	if not attack_mode: return
 	if body.is_in_group("Player"):
 		Signals.emit_signal("dead_cover")
 
 		#Signals.emit_signal("fade_to_black")
 		#await get_tree().create_timer(4.0).timeout
 		#Signals.emit_signal("main_floor")
+
+func _escape_apartment():
+	speed = -5.0
+	await get_tree().create_timer(10.0).timeout
+	attack_mode = false

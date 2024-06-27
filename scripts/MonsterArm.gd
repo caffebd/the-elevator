@@ -14,6 +14,7 @@ var follow: bool = false
 func _ready() -> void:
 	Signals.panel_drop.connect(_trap_door)
 	Signals.monster_grab.connect(_grab)
+	Signals.arm_respawn.connect(_arm_respawn)
 	%SkeletonIK3D.start()
 	global_position.y = -30.0
 	#$AnimationPlayer.play_backwards("searching")
@@ -36,6 +37,10 @@ func _ready() -> void:
 	attack_mode = false
 	follow = false
 
+func _arm_respawn():
+	attack_mode = false
+	global_position.y = -20.0
+	grabbing = false
 
 
 func _trap_door(state):

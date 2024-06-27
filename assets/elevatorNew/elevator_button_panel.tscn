@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bci101o8cculh"]
+[gd_scene load_steps=12 format=3 uid="uid://bci101o8cculh"]
 
 [ext_resource type="PackedScene" uid="uid://c8fjva6amvvmh" path="res://assets/elevatorNew/elevatorButtonPanel.glb" id="1_db4ir"]
 [ext_resource type="Material" uid="uid://dhogo85gbco2b" path="res://assets/materials/red_light.tres" id="2_5t5t4"]
@@ -6,9 +6,19 @@
 [ext_resource type="Script" path="res://scripts/elevator_button_panel.gd" id="2_stgb1"]
 [ext_resource type="Material" uid="uid://nfa308tkqdd3" path="res://assets/materials/black.tres" id="4_jjh1o"]
 [ext_resource type="PackedScene" uid="uid://d12lq0bg2fcya" path="res://assets/keycard.tscn" id="6_4wm38"]
+[ext_resource type="AudioStream" uid="uid://clwqorquqkfkj" path="res://assets/audio/elevator_audio/electrical_buzz.mp3" id="7_v04qv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_owjcm"]
 size = Vector3(0.02, 0.03, 0.12)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o6haw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_l84la"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eibde"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(0, 0.715509, 3.85046e-07, 1)
 
 [node name="elevatorButtonPanel2" instance=ExtResource("1_db4ir")]
 script = ExtResource("2_stgb1")
@@ -38,3 +48,64 @@ visible = false
 text = "Card Reader"
 font_size = 10
 outline_size = 8
+
+[node name="RedLights" type="Node3D" parent="." index="3"]
+unique_name_in_owner = true
+visible = false
+
+[node name="RedLight" type="MeshInstance3D" parent="RedLights" index="0"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, 0.265545, 0.102011)
+mesh = SubResource("SphereMesh_o6haw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5t5t4")
+
+[node name="RedLight2" type="MeshInstance3D" parent="RedLights" index="1"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, 0.265545, -0.103866)
+mesh = SubResource("SphereMesh_o6haw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5t5t4")
+
+[node name="RedLight3" type="MeshInstance3D" parent="RedLights" index="2"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, -0.245506, 0.102011)
+mesh = SubResource("SphereMesh_o6haw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5t5t4")
+
+[node name="RedLight4" type="MeshInstance3D" parent="RedLights" index="3"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, -0.245506, -0.103866)
+mesh = SubResource("SphereMesh_o6haw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_5t5t4")
+
+[node name="GreenLights" type="Node3D" parent="." index="4"]
+unique_name_in_owner = true
+visible = false
+
+[node name="GreenLight" type="MeshInstance3D" parent="GreenLights" index="0"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, 0.265545, 0.102011)
+mesh = SubResource("SphereMesh_l84la")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_eibde")
+
+[node name="GreenLight2" type="MeshInstance3D" parent="GreenLights" index="1"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, 0.266, -0.104)
+mesh = SubResource("SphereMesh_l84la")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_eibde")
+
+[node name="GreenLight3" type="MeshInstance3D" parent="GreenLights" index="2"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, -0.245475, 0.102011)
+mesh = SubResource("SphereMesh_l84la")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_eibde")
+
+[node name="GreenLight4" type="MeshInstance3D" parent="GreenLights" index="3"]
+transform = Transform3D(0.0278067, 0, 0, 0, 0.0278067, 0, 0, 0, 0.0278067, 0, -0.245021, -0.104)
+mesh = SubResource("SphereMesh_l84la")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_eibde")
+
+[node name="BuzzSound" type="AudioStreamPlayer3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022476, 0, 0)
+stream = ExtResource("7_v04qv")
+volume_db = -25.0

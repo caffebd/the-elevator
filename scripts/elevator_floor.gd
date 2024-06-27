@@ -19,5 +19,8 @@ func _main_floor():
 func _on_fall_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		Signals.emit_signal("fade_to_black")
+		Signals.emit_signal("replace_elevator_floor")
 		await get_tree().create_timer(4.0).timeout
+		Signals.emit_signal("replace_elevator_floor")
 		Signals.emit_signal("elevator_floor")
+		SaveState.game_tries += 1

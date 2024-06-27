@@ -32,5 +32,3 @@ func _ready():
 	if swing_neg:
 		door_panel.swing_dir = -80
 	door_panel.setup_box()
-
-

@@ -76,26 +76,32 @@ var call_nine = [
 ]
 
 var call_ten = [
-	"I found this code. ? 8 3 5",
+	"I found this paper with boxes and numbers.",
 	"Congratulations.",
-	"Do you know the missing number?",
+	"Is it some kind of puzzle?",
 	"Yes, of course.",
-	"Can you tell me please?",
+	"Can you help me solve it?",
 	"Oh no... I can't do that."
 ]
 
 var call_eleven = [
-	"Come on, please tell me the number.",
-	"It's not that hard to find out.",
-	"Where do I find it?",
-	"Well, in the elevator of course.",
-	"Where?",
-	"You could guess but it's risky."
+	"Come on, please help me with this.",
+	"It's not that hard to solve. I even made it easier for you.",
+	"Has it got something to do with those boxes and numbers?",
+	"That would be a good place to start.",
+	"But I don't know what I am looking for.",
+	"Well what you have to do is... 'CRACKLE, CRACKLE, STATIC'",
+	"You just made that noise yourself. Are you messing with me?",
+	"What gave you that idea?",
 ]
 
 var call_twelve = [
-	"Why is guessing risky?",
-	"Tick, tock, tick tock..."
+	"I can't figure this out.",
+	"You want the answer?",
+	"Kind of...",
+	"Ok, well FIRST I am going TWO help you.",
+	"Is that a clue?",
+	"Just W8 a SECOND."
 ]
 
 var call_thirteen = [
@@ -127,22 +133,22 @@ var call_sixteen = [
 	"I'm not here for fun.",
 	"Ouch, that hurts.",
 	"So you're not going to help me?",
-	"Of course I will. You can count on me."
+	"Of course I will, but you go first."
 ]
 
 var call_seventeen = [
 	"Are you going to help me solve this puzzle?",
-	"Yes. You can count on me."
+	"Yes but YOU go first!"
 ]
 
 var call_eighteen = [
 	"HELP!",
-	"Oh... you didn't want to open the door now."
+	"Oh... but I thought you wanted the door open?"
 ]
 
 var call_nineteen = [
 	"HELP ME!",
-	"I wouldn't let that in if I were you!"
+	"I'd close the door if I were you."
 ]
 
 var call_twenty = [
@@ -150,8 +156,8 @@ var call_twenty = [
 	"You are so close.",
 	"Open the door!",
 	"Oh you don't want to open the door without using the code.",
-	"Well what's the code.",
-	"It's definitely NOT 3333",
+	"Why not?",
+	"Hang around and find out"
 	
 ]
 
@@ -169,7 +175,9 @@ var call_twenty_three = [
 	"I found this card and it says 3333",
 	"Congratulations",
 	"So should I type 3333?",
-	"NEVER type 3333... without the card"
+	"NEVER type 3333...",
+	"Never?",
+	"Well not without the card."
 ]
 
 var call_twenty_four = [

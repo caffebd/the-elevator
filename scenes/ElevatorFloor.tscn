@@ -132,9 +132,10 @@ back_inside = NodePath("../BackInElevator/BackInsideCollision")
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_i1ehs")
 
-[node name="BackInElevator" type="Area3D" parent="elevator1"]
+[node name="BackInElevator" type="Area3D" parent="elevator1" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator1/BackInElevator"]
 unique_name_in_owner = true
@@ -207,17 +208,19 @@ linked_elevator = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator2"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator2" node_paths=PackedStringArray("back_inside")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
 
 [node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator2/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
 disabled = true
 
-[node name="BackInElevator" type="Area3D" parent="elevator2"]
+[node name="BackInElevator" type="Area3D" parent="elevator2" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator2/BackInElevator"]
 shape = SubResource("BoxShape3D_jy2wm")
@@ -289,17 +292,19 @@ linked_elevator = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator3"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator3" node_paths=PackedStringArray("back_inside")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
 
 [node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator3/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
 disabled = true
 
-[node name="BackInElevator" type="Area3D" parent="elevator3"]
+[node name="BackInElevator" type="Area3D" parent="elevator3" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator3/BackInElevator"]
 shape = SubResource("BoxShape3D_jy2wm")
@@ -371,17 +376,19 @@ linked_elevator = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator4"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator4" node_paths=PackedStringArray("back_inside")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
 
 [node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator4/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
 disabled = true
 
-[node name="BackInElevator" type="Area3D" parent="elevator4"]
+[node name="BackInElevator" type="Area3D" parent="elevator4" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator4/BackInElevator"]
 shape = SubResource("BoxShape3D_jy2wm")
@@ -453,17 +460,19 @@ linked_elevator = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator5"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator5" node_paths=PackedStringArray("back_inside")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
 
 [node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator5/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
 disabled = true
 
-[node name="BackInElevator" type="Area3D" parent="elevator5"]
+[node name="BackInElevator" type="Area3D" parent="elevator5" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator5/BackInElevator"]
 shape = SubResource("BoxShape3D_jy2wm")
@@ -535,17 +544,19 @@ linked_elevator = NodePath("../../../elevator5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator7"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator7" node_paths=PackedStringArray("back_inside")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
 
 [node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator7/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
 disabled = true
 
-[node name="BackInElevator" type="Area3D" parent="elevator7"]
+[node name="BackInElevator" type="Area3D" parent="elevator7" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator7/BackInElevator"]
 shape = SubResource("BoxShape3D_jy2wm")
@@ -617,17 +628,19 @@ linked_elevator = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator6"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator6" node_paths=PackedStringArray("back_inside")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
 
 [node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator6/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
 disabled = true
 
-[node name="BackInElevator" type="Area3D" parent="elevator6"]
+[node name="BackInElevator" type="Area3D" parent="elevator6" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator6/BackInElevator"]
 shape = SubResource("BoxShape3D_jy2wm")
@@ -699,17 +712,19 @@ linked_elevator = NodePath("../../../elevator6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00418139, 0.067605, 0)
 visible = false
 
-[node name="CloseDoorTrigger" type="Area3D" parent="elevator8"]
+[node name="CloseDoorTrigger" type="Area3D" parent="elevator8" node_paths=PackedStringArray("back_inside")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21187, -0.812687, -0.0262463)
 script = ExtResource("22_bab10")
+back_inside = NodePath("../BackInElevator/BackInsideCollision")
 
 [node name="CloseTriggerCollision" type="CollisionShape3D" parent="elevator8/CloseDoorTrigger"]
 shape = SubResource("BoxShape3D_i1ehs")
 disabled = true
 
-[node name="BackInElevator" type="Area3D" parent="elevator8"]
+[node name="BackInElevator" type="Area3D" parent="elevator8" node_paths=PackedStringArray("outside_trigger")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907761, -0.538314, -0.0486439)
 script = ExtResource("23_p5dp7")
+outside_trigger = NodePath("../CloseDoorTrigger/CloseTriggerCollision")
 
 [node name="BackInsideCollision" type="CollisionShape3D" parent="elevator8/BackInElevator"]
 shape = SubResource("BoxShape3D_jy2wm")

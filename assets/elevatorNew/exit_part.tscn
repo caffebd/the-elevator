@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbiu0qbb5wcxi"]
+[gd_scene load_steps=17 format=3 uid="uid://dbiu0qbb5wcxi"]
 
 [ext_resource type="PackedScene" uid="uid://cdxqgbdfauxgr" path="res://assets/elevatorNew/exitPart.glb" id="1_nrpfe"]
 [ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_bdjie"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="6_vv6ei"]
 [ext_resource type="Material" uid="uid://c7ut6p0ko7wed" path="res://assets/materials/red_metal.tres" id="7_dfw48"]
 [ext_resource type="PackedScene" uid="uid://ciapfc1sdnapk" path="res://assets/elevatorNew/emergency_exit.tscn" id="8_3ab31"]
+[ext_resource type="Script" path="res://scripts/exit_light_trigger.gd" id="9_n6abq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gu6r4"]
 size = Vector3(4.52, 0.025, 1.945)
@@ -15,9 +16,194 @@ size = Vector3(4.52, 0.025, 1.945)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8km7k"]
 size = Vector3(4.455, 2.305, 0.055)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0kqg"]
+size = Vector3(0.18, 1, 1.59)
+
+[sub_resource type="Animation" id="Animation_cit3b"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("light_006:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.42329e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("light_006:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.54341, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("light_006:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D3:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D4:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_fqaar"]
+resource_name = "light_off"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("light_006:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("light_006:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.4, -0.25, 0, 0.25, 0, 1.543, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("light_006:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D3:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D4:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ra867"]
+resource_name = "light_on"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("light_006:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1.42329e-05, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("light_006:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.54341, -0.25, 0, 0.25, 0, 1.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("light_006:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D3:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D4:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hj0g"]
+_data = {
+"RESET": SubResource("Animation_cit3b"),
+"light_off": SubResource("Animation_fqaar"),
+"light_on": SubResource("Animation_ra867")
+}
+
 [node name="exitPart" instance=ExtResource("1_nrpfe")]
 
 [node name="light_006" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42329e-05, 1.54341, 0)
 surface_material_override/0 = ExtResource("2_bdjie")
 surface_material_override/1 = ExtResource("3_03cwj")
 
@@ -52,7 +238,7 @@ surface_material_override/0 = ExtResource("5_ckdyd")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716229, 0)
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
-light_energy = 0.1
+light_energy = 0.0
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 15.0
@@ -63,7 +249,7 @@ omni_range = 3.71582
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93538, 0)
 light_color = Color(0.932671, 0.919864, 0.713045, 1)
-light_energy = 0.2
+light_energy = 0.0
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 15.0
@@ -90,3 +276,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.05896)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" index="0"]
 shape = SubResource("BoxShape3D_8km7k")
+
+[node name="LightTrigger" type="Area3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75135, -1.02816, 0)
+script = ExtResource("9_n6abq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightTrigger" index="0"]
+shape = SubResource("BoxShape3D_t0kqg")
+
+[node name="LightAnim" type="AnimationPlayer" parent="." index="18"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_3hj0g")
+}
+
+[connection signal="body_entered" from="LightTrigger" to="LightTrigger" method="_on_body_entered"]

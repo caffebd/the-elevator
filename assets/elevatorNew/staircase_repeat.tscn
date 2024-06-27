@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5kvfh6sadcyi"]
+[gd_scene load_steps=16 format=3 uid="uid://c5kvfh6sadcyi"]
 
 [ext_resource type="PackedScene" uid="uid://bky7innyvrd5x" path="res://assets/elevatorNew/staircaseRepeat.glb" id="1_ow43k"]
 [ext_resource type="Material" uid="uid://ljva6rwrrncc" path="res://assets/materials/stairs.tres" id="2_a2f10"]
 [ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="2_m5xxj"]
+[ext_resource type="Script" path="res://scripts/apartment_exit_door.gd" id="4_2xpjv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cte6w"]
+size = Vector3(0.885, 1.975, 0.095)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yrfad"]
-size = Vector3(1.95, 0.085, 3.645)
+size = Vector3(1.99, 0.085, 4.035)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jen6v"]
 size = Vector3(4.13, 0.04, 2.17)
@@ -15,6 +19,93 @@ size = Vector3(0.1, 0.505, 3.86)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8cric"]
 size = Vector3(0.455, 1, 0.155)
+
+[sub_resource type="Animation" id="Animation_gmchx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doors_004:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("doors_004:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-3.14159, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("doors_004:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_qfylw"]
+resource_name = "open"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doors_004:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("doors_004:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3.14159, -0.25, 0, 0.25, 0, -1.28721, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("doors_004:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqbyw"]
+_data = {
+"RESET": SubResource("Animation_gmchx"),
+"open": SubResource("Animation_qfylw")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8ayx"]
+size = Vector3(1.62, 1.995, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kosr7"]
+size = Vector3(0.09, 4.115, 8.345)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kuwfj"]
+size = Vector3(4.28, 3.77, 0.065)
 
 [node name="staircaseRepeat" instance=ExtResource("1_ow43k")]
 
@@ -75,6 +166,17 @@ light_energy = 0.05
 shadow_blur = 4.79
 omni_range = 5.55737
 
+[node name="doors_004" parent="." index="19"]
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 0.537898, -0.789178, 4.23579)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="doors_004" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533844, 0.0316107, 0)
+collision_layer = 3
+script = ExtResource("4_2xpjv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="doors_004/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_cte6w")
+
 [node name="TopStairs" type="StaticBody3D" parent="." index="20"]
 transform = Transform3D(1, 0, 0, 0, 0.998917, -0.0465311, 0, 0.0465311, 0.998917, -1.21418, 1.17752, -0.150952)
 
@@ -83,7 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 0.839421, 0.543482, 0, -0.543482, 0.839421, 
 shape = SubResource("BoxShape3D_yrfad")
 
 [node name="BottomStairs" type="StaticBody3D" parent="." index="21"]
-transform = Transform3D(1, 0, 0, 0, 0.480315, -0.877096, 0, 0.877096, 0.480315, 1.17644, -0.859906, 0.0064047)
+transform = Transform3D(1, 0, 0, 0, 0.480315, -0.877096, 0, 0.877096, 0.480315, 1.29176, -0.859906, 0.0064047)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottomStairs" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.839421, 0.543482, 0, -0.543482, 0.839421, 0, 0, 0)
@@ -124,3 +226,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0170523, 0.606485, -2.05506
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4" index="0"]
 shape = SubResource("BoxShape3D_8cric")
+
+[node name="DoorOpen" type="AnimationPlayer" parent="." index="28"]
+libraries = {
+"": SubResource("AnimationLibrary_tqbyw")
+}
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="." index="29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39026, -0.590899, 4.23501)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5" index="0"]
+shape = SubResource("BoxShape3D_y8ayx")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="." index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43774, -0.590899, 4.23501)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6" index="0"]
+shape = SubResource("BoxShape3D_y8ayx")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="." index="31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24731, -0.00347507, -0.000496626)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7" index="0"]
+shape = SubResource("BoxShape3D_kosr7")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="." index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22328, -0.00347507, -0.000496626)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D8" index="0"]
+shape = SubResource("BoxShape3D_kosr7")
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="." index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0444112, 0.201196, -4.23682)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D9" index="0"]
+shape = SubResource("BoxShape3D_kuwfj")

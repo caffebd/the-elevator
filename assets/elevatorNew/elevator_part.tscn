@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6krwobwixs8l"]
+[gd_scene load_steps=9 format=3 uid="uid://6krwobwixs8l"]
 
 [ext_resource type="PackedScene" uid="uid://brioq7772l0bl" path="res://assets/elevatorNew/elevatorPart.glb" id="1_8yiox"]
 [ext_resource type="Script" path="res://scripts/elevator_part.gd" id="2_1wdle"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2t6dj"]
 size = Vector3(4.61, 0.11, 1.955)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vsoie"]
+size = Vector3(4.49, 2.315, 0.045)
 
 [node name="elevatorPart" instance=ExtResource("1_8yiox")]
 script = ExtResource("2_1wdle")
@@ -72,3 +75,9 @@ light_energy = 1.625
 light_indirect_energy = 7.625
 light_cull_mask = 4293918721
 omni_range = 5.336
+
+[node name="Wall" type="StaticBody3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.959825)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" index="0"]
+shape = SubResource("BoxShape3D_vsoie")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckkc3020b4ttd"]
+[gd_scene load_steps=12 format=3 uid="uid://ckkc3020b4ttd"]
 
 [ext_resource type="PackedScene" uid="uid://de02sbxuffjx8" path="res://assets/elevatorNew/button.glb" id="1_lmvfj"]
+[ext_resource type="Script" path="res://scripts/elevator_button.gd" id="2_46wug"]
 [ext_resource type="Shader" uid="uid://dt6hmr5u1rtp7" path="res://assets/materials/shaders/buttons/alarm.tres" id="2_bv7sn"]
 [ext_resource type="Material" uid="uid://bpwoijo7kyryk" path="res://assets/materials/button_ring.tres" id="2_qhkgy"]
 
@@ -35,10 +36,28 @@ tracks/0/keys = {
 "values": [Color(0.399428, 0.399428, 0.399428, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.4, 0.4, 0.4, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_60w4p"]
+resource_name = "button_flash"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cylinder_001:surface_material_override/1:shader_parameter/ColorParameter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.399428, 0.399428, 0.399428, 1), Color(1, 1, 1, 1), Color(0.4, 0.4, 0.4, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t666n"]
 _data = {
 "RESET": SubResource("Animation_abh7t"),
-"buttonPress": SubResource("Animation_8n2he")
+"buttonPress": SubResource("Animation_8n2he"),
+"button_flash": SubResource("Animation_60w4p")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8e4xw"]
@@ -53,6 +72,7 @@ height = 0.005
 radius = 0.028
 
 [node name="button" instance=ExtResource("1_lmvfj")]
+script = ExtResource("2_46wug")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 libraries = {

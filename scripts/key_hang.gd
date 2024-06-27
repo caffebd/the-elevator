@@ -2,6 +2,8 @@ extends Node3D
 
 var click_count: int = 0
 
+var falling = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.key_click.connect(_key_click)
@@ -15,6 +17,9 @@ func get_all_children(in_node,arr:=[]):
 	return arr
 
 
+func _process(delta: float) -> void:
+	if falling:
+		print (%KeyPart.linear_velocity.y)
 	
 
 func _key_click():
@@ -26,7 +31,13 @@ func _key_click():
 		%KeyPart.axis_lock_angular_y = true
 		%KeyPart.axis_lock_angular_z = true
 		%KeyGlow.play("glow")
+		#falling = true
+		await get_tree().create_timer(1).timeout
+		
+		%KeyPart.linear_velocity = Vector3(0,-6,0)
 		%KeyPart.reparent(get_parent())
+		
+		
 		await get_tree().create_timer(2.0).timeout
 		_key_rise()
 		Signals.emit_signal("roof_close")

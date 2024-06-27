@@ -19,6 +19,8 @@ var my_number: String
 func _ready():
 	hinge = get_parent()
 	#my_number = get_parent().get_parent().box_number
+	#setup_box()
+	
 	
 	
 
@@ -82,8 +84,7 @@ func update_box(number:String, is_locked: bool, is_open: bool):
 
 
 func setup_box():
-	for check in SaveState.box_states:
-
+	for check in SaveState.box_states:	
 		if check["number"] == my_number:
 			locked = check["locked"]
 			door_open = check["open"]

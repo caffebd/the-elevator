@@ -35,11 +35,13 @@ func operate_door():
 		tween.tween_property(hinge, "rotation_degrees:y", swing_dir, 1.0)
 		await tween.finished
 		%PanelCol.disabled = false
+		%FuseBoxSound.play()
 	else:
 		var tween = create_tween()
 		tween.tween_property(hinge, "rotation_degrees:y", 0.0, 1.0)	
 		await tween.finished
 		%PanelCol.disabled = false
+		%FuseBoxSound.play()
 	SaveState.elec_panel_state = {"locked": locked, "open": door_open}
 	
 	
@@ -56,5 +58,3 @@ func setup_panel():
 	door_open = SaveState.elec_panel_state["open"]
 	if door_open:
 		hinge.rotation_degrees.y = swing_dir
-
-

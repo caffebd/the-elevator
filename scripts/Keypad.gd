@@ -9,6 +9,7 @@ func _ready():
 	Signals.number_out_of_order.connect(_number_out_of_order)
 	Signals.key_beep.connect(_key_beep)
 
+
 func _insert_card(state):
 	card_in_slot.visible = state
 

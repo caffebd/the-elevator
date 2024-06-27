@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cm3d1u3ihuwtd"]
+[gd_scene load_steps=14 format=3 uid="uid://cm3d1u3ihuwtd"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_ccfj4"]
 [ext_resource type="Texture2D" uid="uid://rafx06oxl8x6" path="res://assets/UI/target.png" id="2_4bb86"]
@@ -6,11 +6,26 @@
 [ext_resource type="FontFile" uid="uid://cnv2p7n8e175w" path="res://assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="4_qs75q"]
 [ext_resource type="Texture2D" uid="uid://d715bvsj07qp" path="res://assets/UI/player_avatar.png" id="5_xc650"]
 [ext_resource type="Texture2D" uid="uid://du0pn0jhq3thd" path="res://assets/UI/call_avatar_b.png" id="6_myuvd"]
+[ext_resource type="Texture2D" uid="uid://dal5mcueuwa14" path="res://assets/UI/locker_puzzle_new.png" id="6_x4xva"]
+[ext_resource type="Texture2D" uid="uid://wphstwi7ccls" path="res://assets/UI/knock_hud_icon_temp.png" id="7_3g717"]
 [ext_resource type="Texture2D" uid="uid://dmuixxrgae50y" path="res://assets/UI/paper_background.jpg" id="7_8xgsd"]
 [ext_resource type="FontFile" uid="uid://cft24oeqwxs75" path="res://assets/fonts/alagard.ttf" id="8_3yyd4"]
+[ext_resource type="FontFile" uid="uid://bs5t4chqd6rde" path="res://assets/fonts/Comfortaa/static/Comfortaa-Regular.ttf" id="11_jga8m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4kd3"]
-bg_color = Color(0.929412, 0.886275, 0.788235, 1)
+bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ij1ck"]
+bg_color = Color(0.861656, 0.869795, 0.786475, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7944, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -53,10 +68,79 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/h_separation = 5
-columns = 7
+columns = 8
 
 [node name="HandIcon" parent="Inventory" instance=ExtResource("3_yk4eq")]
 layout_mode = 2
+
+[node name="KnockIcon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 10.0
+offset_right = 55.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(49.7858, 56.9285)
+texture = ExtResource("7_3g717")
+
+[node name="NoteTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -307.0
+offset_right = 326.0
+offset_bottom = -107.0
+grow_vertical = 0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("7_8xgsd")
+
+[node name="NoteText" type="RichTextLabel" parent="NoteTexture"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -109.286
+offset_top = -192.143
+offset_right = 119.714
+offset_bottom = -9.14336
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "You should have taken the stairs my friend."
+autowrap_mode = 2
+
+[node name="LockerPuzzle" type="TextureRect" parent="NoteTexture"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -6.42857
+offset_top = -3.57144
+offset_right = 661.571
+offset_bottom = 375.429
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_x4xva")
 
 [node name="Dialogue" type="Label" parent="."]
 unique_name_in_owner = true
@@ -67,13 +151,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -319.5
-offset_top = -270.0
-offset_right = 319.5
-offset_bottom = -160.0
+offset_left = -960.0
+offset_top = -218.0
+offset_right = 960.0
+offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_qs75q")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_s4kd3")
@@ -86,60 +170,21 @@ autowrap_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = -53.5
-offset_top = 1.0
-offset_right = -3.5
-offset_bottom = 51.0
+offset_left = 67.0
+offset_top = 11.0
+offset_right = 156.0
+offset_bottom = 100.0
 texture = ExtResource("5_xc650")
 
 [node name="CallAvatar" type="TextureRect" parent="Dialogue"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
-offset_left = -68.5
-offset_top = 55.0
-offset_right = -5.5
-offset_bottom = 105.0
+offset_left = 80.0
+offset_top = 22.0
+offset_right = 154.0
+offset_bottom = 89.0
 texture = ExtResource("6_myuvd")
-
-[node name="NoteTexture" type="TextureRect" parent="."]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 35.0
-offset_top = -368.0
-offset_right = 335.0
-offset_bottom = -168.0
-grow_vertical = 0
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("7_8xgsd")
-
-[node name="NoteText" type="RichTextLabel" parent="NoteTexture"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -191.176
-offset_right = 109.0
-offset_bottom = -8.17648
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/bold_italics_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-bbcode_enabled = true
-text = "You should have taken the stairs my friend."
-autowrap_mode = 2
 
 [node name="BlackCover" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -173,7 +218,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.399267, 0.0154334, 0, 1)
+color = Color(0.212759, 0.00434022, 0, 1)
 
 [node name="Label" type="Label" parent="DeadCover"]
 auto_translate_mode = 1
@@ -183,12 +228,213 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -645.0
-offset_top = -37.5
-offset_right = 645.0
-offset_bottom = 37.5
+offset_left = -641.0
+offset_top = -160.0
+offset_right = 649.0
+offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("8_3yyd4")
 theme_override_font_sizes/font_size = 80
 text = "You didn't make it to work on time"
+
+[node name="NextDayBtn" type="Button" parent="DeadCover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = 200.0
+offset_right = 152.0
+offset_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_jga8m")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij1ck")
+text = "Next Day"
+
+[node name="QuitJobBtn" type="Button" parent="DeadCover"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -133.0
+offset_right = 93.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_jga8m")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij1ck")
+text = "Quit Job"
+
+[node name="FallDeadCover" type="ColorRect" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.212759, 0.00434022, 0, 1)
+
+[node name="Label" type="Label" parent="FallDeadCover"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -641.0
+offset_top = -160.0
+offset_right = 649.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_3yyd4")
+theme_override_font_sizes/font_size = 80
+text = "You didn't make it to work on time"
+
+[node name="FallNextDayBtn" type="Button" parent="FallDeadCover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = 200.0
+offset_right = 152.0
+offset_bottom = 285.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_jga8m")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij1ck")
+text = "Next Day"
+
+[node name="QuitJobBtn" type="Button" parent="FallDeadCover"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -133.0
+offset_right = 93.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_jga8m")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij1ck")
+text = "Quit Job"
+
+[node name="WinCover" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121196, 0.292374, 0.686541, 1)
+
+[node name="WinMessage" type="Label" parent="WinCover"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -393.0
+offset_top = -296.5
+offset_right = 393.0
+offset_bottom = -221.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_3yyd4")
+theme_override_font_sizes/font_size = 80
+text = "You made it to work..."
+horizontal_alignment = 1
+
+[node name="LateCount" type="Label" parent="WinCover"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -166.0
+offset_right = 457.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_3yyd4")
+theme_override_font_sizes/font_size = 80
+text = "...but you were 1 day late"
+horizontal_alignment = 1
+
+[node name="LetsHope" type="Label" parent="WinCover"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -487.0
+offset_top = 93.0
+offset_right = 493.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_3yyd4")
+theme_override_font_sizes/font_size = 80
+text = "Let's hope you have a good 
+shift with no problems..."
+horizontal_alignment = 1
+
+[node name="MenuBtn" type="Button" parent="WinCover"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.5
+offset_top = -182.0
+offset_right = 256.5
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_jga8m")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_ij1ck")
+text = "Break Time"
+
+[connection signal="pressed" from="DeadCover/NextDayBtn" to="." method="_on_next_day_btn_pressed"]
+[connection signal="pressed" from="DeadCover/QuitJobBtn" to="." method="_on_quit_job_btn_pressed"]
+[connection signal="pressed" from="FallDeadCover/FallNextDayBtn" to="." method="_on_fall_next_day_btn_pressed"]
+[connection signal="pressed" from="FallDeadCover/QuitJobBtn" to="." method="_on_quit_job_btn_pressed"]
+[connection signal="pressed" from="WinCover/MenuBtn" to="." method="_on_menu_btn_pressed"]

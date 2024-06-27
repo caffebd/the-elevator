@@ -23,12 +23,34 @@ var inventory_index: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_set_inventory_color(0)
+	Signals.player_knock.connect(_player_knock)
 	Signals.fade_to_black.connect(_fade_to_black)
 	Signals.dead_cover.connect(_dead_cover)
+	Signals.win_game.connect(_win_screen)
+	Signals.start_from_black.connect(_start_from_black)
+	Signals.fall_dead_cover.connect(_fall_dead_cover)
+	#%Dialogue.add_theme_color_override("font_color", Color("ffff00"))
 
 func _dead_cover():
 	$DeadCover.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+func _fall_dead_cover():
+	%FallDeadCover.visible = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func knock_icon(state):
+	%KnockIcon.visible = state
+
+func _player_knock():
+	%KnockIcon.scale = Vector2(0.5, 0.5)
+	await get_tree().create_timer(0.3).timeout
+	%KnockIcon.scale = Vector2(0.7, 0.7)
+	await get_tree().create_timer(0.3).timeout
+	%KnockIcon.scale = Vector2(0.5, 0.5)
+	await get_tree().create_timer(0.3).timeout
+	%KnockIcon.scale = Vector2(0.7, 0.7)
+	
 func remove_from_inventory(item:String):
 	if SaveState.saved_inventory.has(item):
 		for child in inventory_grid.get_children():
@@ -148,6 +170,75 @@ func inventory_down():
 	_set_inventory_color(inventory_index)
 	Signals.emit_signal("hand_item", SaveState.saved_inventory[inventory_index])	
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory_1"):
+		var size = inventory_grid.get_child_count()
+		if 0 > size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 0
+			_inventory_keyboard_update()
+		
+	if event.is_action_pressed("inventory_2"):
+		var size = inventory_grid.get_child_count()
+		if 1 > size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 1
+			_inventory_keyboard_update()
+		
+	if event.is_action_pressed("inventory_3"):
+		var size = inventory_grid.get_child_count()
+		if 2 > size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 2
+			_inventory_keyboard_update()
+
+	if event.is_action_pressed("inventory_4"):
+		var size = inventory_grid.get_child_count()
+		if 3 > size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 3
+			_inventory_keyboard_update()
+
+	if event.is_action_pressed("inventory_5"):
+		var size = inventory_grid.get_child_count()
+		if 4 > size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 4
+			_inventory_keyboard_update()
+
+	if event.is_action_pressed("inventory_6"):
+		var size = inventory_grid.get_child_count()
+		if 5 > size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 5
+			_inventory_keyboard_update()
+
+	if event.is_action_pressed("inventory_7"):
+		var size = inventory_grid.get_child_count()
+		if 6> size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 6
+			_inventory_keyboard_update()
+
+	if event.is_action_pressed("inventory_8"):
+		var size = inventory_grid.get_child_count()
+		if 7 > size-1:
+			print ("nothing in inventory")
+		else:
+			inventory_index = 7
+			_inventory_keyboard_update()
+
+func _inventory_keyboard_update():
+	print ("HUD INPUT")
+	_set_inventory_color(inventory_index)
+	Signals.emit_signal("hand_item", SaveState.saved_inventory[inventory_index])	
 
 func highlight_hand():
 	inventory_index = 0
@@ -164,10 +255,16 @@ func note_display(note:String):
 	if note=="":
 		%NoteTexture.visible = false
 		%NoteText.visible = false
+		%LockerPuzzle.visible = false
+		return
+	if note=="locker":
+		%NoteTexture.visible = true
+		%LockerPuzzle.visible = true
 		return
 	%NoteText.text = note
 	%NoteTexture.visible = true
 	%NoteText.visible = true
+	%LockerPuzzle.visible = false
 
 func update_dialogue(sentence:String, player_speak:bool):
 	if sentence != "":
@@ -175,9 +272,11 @@ func update_dialogue(sentence:String, player_speak:bool):
 		%Dialogue.visible = true
 		if player_speak:
 			%PlayerAvatar.visible = true
+			%Dialogue.add_theme_color_override("font_color", Color("ffffff"))
 			%CallAvatar.visible = false
 		else:
 			%CallAvatar.visible = true
+			%Dialogue.add_theme_color_override("font_color", Color("ffff00"))
 			%PlayerAvatar.visible = false
 	else:
 		%Dialogue.visible = false
@@ -191,6 +290,11 @@ func _fade_to_black():
 	await get_tree().create_timer(4.0).timeout
 	_fade_to_clear()
 
+func _start_from_black():
+	%BlackCover.modulate.a = 1
+	await get_tree().create_timer(1.0).timeout
+	_fade_to_clear()
+
 func _fade_to_clear():
 	var tween = create_tween()
 	tween.tween_property(%BlackCover, "modulate:a", 0.0, 2.0)
@@ -199,3 +303,41 @@ func _fade_to_clear():
 func _process(delta: float) -> void:
 	var fps = Engine.get_frames_per_second() 
 	$fps.text = str(fps)
+
+func _win_screen():
+	SaveState.reset_values()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	%WinCover.visible = true
+	if SaveState.game_tries == 0:
+		%LateCount.text = "You were not even late!"
+	elif SaveState.game_tries == 1:
+		%LateCount.text = "...but you were 1 day late."
+	else:
+		%LateCount.text = "...but you were "+str(SaveState.game_tries)+ " days late."
+		
+
+
+func _on_next_day_btn_pressed() -> void:
+	SaveState.game_tries += 1
+	if SaveState.arm_respawn:
+		get_tree().change_scene_to_file("res://assets/hallwayScene2.tscn")
+	elif SaveState.end_respawn:
+		get_tree().change_scene_to_file("res://assets/hallwayScene2.tscn")
+	else:
+		SaveState.reset_values()
+		get_tree().change_scene_to_file("res://assets/hallwayScene2.tscn")
+
+
+func _on_quit_job_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_menu_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_fall_next_day_btn_pressed() -> void:
+	%FallDeadCover.visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	await get_tree().create_timer(0.5).timeout
+	Signals.emit_signal("get_to_work")

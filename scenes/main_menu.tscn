@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://detjmlr15sj4n"]
+
+[ext_resource type="Texture2D" uid="uid://umy8giyufylc" path="res://assets/UI/main_menu_bg.png" id="1_0wc7n"]
+[ext_resource type="FontFile" uid="uid://bs5t4chqd6rde" path="res://assets/fonts/Comfortaa/static/Comfortaa-Regular.ttf" id="1_cvmv0"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_s7s8n"]
+[ext_resource type="FontFile" uid="uid://cft24oeqwxs75" path="res://assets/fonts/alagard.ttf" id="3_unnm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lx6g"]
+bg_color = Color(0.137255, 0.133333, 0.0862745, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.951719, 0.85514, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s7s8n")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -984.0
+offset_top = -554.0
+offset_right = 981.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0wc7n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.215686, 0.203922, 0.12549, 0.364706)
+
+[node name="NextDayBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 378.0
+offset_top = 206.0
+offset_right = 738.0
+offset_bottom = 307.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cvmv0")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_5lx6g")
+text = "Go to work"
+
+[node name="StayHomeBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 529.0
+offset_top = 379.0
+offset_right = 735.0
+offset_bottom = 446.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cvmv0")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_5lx6g")
+text = "Stay Home"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1187.0
+offset_top = 334.0
+offset_right = 1693.0
+offset_bottom = 652.0
+theme_override_fonts/font = ExtResource("3_unnm5")
+theme_override_font_sizes/font_size = 110
+text = "The
+Elevator
+Drill"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="NextDayBtn" to="." method="_on_next_day_btn_pressed"]
+[connection signal="pressed" from="StayHomeBtn" to="." method="_on_stay_home_btn_pressed"]

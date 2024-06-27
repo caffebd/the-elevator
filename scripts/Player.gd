@@ -12,9 +12,14 @@ var code_check_pos: int = 0
 @export var attack_marker: Marker3D
 @export var rotate_marker: Marker3D
 @export var lunge_marker: Marker3D
+
+@export var arm_respawn_point: Marker3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var speed = 2.0
+var speed: float = 2.0
+
+var run_speed: float = 3.6
+var walk_speed: float = 2.0
 
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
@@ -44,7 +49,7 @@ var card_hand = preload("res://scenes/CardHand.tscn")
 var key_hand = preload("res://scenes/KeyHand.tscn")
 
 var code_collection:Array[String]=[
-	"4835",
+	"2837",
 	"1378",
 	"3333"
 ]
@@ -61,7 +66,7 @@ var player_freeze: bool = false
 
 @export var test_mode: bool = false
 
-@export var wobble_head:bool = false
+@export var wobble_head:bool = true
 
 
 #head wobble settings here
@@ -77,7 +82,7 @@ var lean_amount = 1.5
 var lean_weight = 0.05
 
 var can_warp: bool = true
-
+var can_run: bool = false
 
 #end head wobble settings
 
@@ -90,6 +95,11 @@ func _ready():
 	Signals.elevator_floor.connect(_elevator_floor)
 	Signals.main_floor.connect(_main_floor)
 	Signals.key_beep.connect(_key_beep)
+	Signals.get_to_work.connect(_get_to_work)
+	Signals.arm_respawn.connect(_arm_respawn)
+	Signals.end_respawn.connect(_end_respawn)
+	Signals.fall_main_elevator_respawn.connect(_fall_main_elevator_respawn)
+	Signals.run_active.connect(_run_active)
 	#camera.current = false
 	use_cursor = false
 	if test_mode:
@@ -100,11 +110,29 @@ func _ready():
 	get_saved_inventory()
 	initial_box_states()
 
+func _get_to_work():
+	var sentence = "I must get to work on time."
+	if SaveState.game_tries == 1:
+		sentence = "I must get to work on time. I was late yesterday."
+	if SaveState.game_tries == 2:
+		sentence = "I must get to work on time. I keep being late."
+	if SaveState.game_tries == 3:
+		sentence = "I must get to work on time. My boss if furious."
+	if SaveState.game_tries == 4:
+		sentence = "I must get to work on time. I'm going to be fired if I am late again."
+	if SaveState.game_tries == 5:
+		sentence = "I need to get to work and beg for my job back."
+	hud.update_dialogue(sentence, true)
+	await get_tree().create_timer(8.0).timeout
+	hud.update_dialogue("", true)
+
 func _elevator_floor():
 	print ("moved to elevator")
 	position = Vector3(-4.802, 12.395, 3.327)
 
 func _main_floor():
+	#position = Vector3(-4.802, 12.395, 3.327)
+	_update_call_step(24)
 	position = Vector3(-4.802, -0.44, 3.327)
 
 func _remove_item(item:String):
@@ -112,9 +140,30 @@ func _remove_item(item:String):
 	hud.highlight_hand()
 	hud.remove_from_inventory(item)
 
+func _fall_main_elevator_respawn():
+	global_position = arm_respawn_point.global_position
+	
+
+func _arm_respawn():
+	global_position = arm_respawn_point.global_position
+	_update_call_step(18)
+	Signals.emit_signal("elevator_sequence_two")
+	door_opening_a = true
+	SaveState.code_waiting = 2
+	SaveState.arm_respawn = true
+	_remove_item("Card")
+
+func _end_respawn():
+	_update_call_step(24)
 
 func _key_beep():
 	%KeyBeep.play()
+
+func _run_active(state):
+	can_run = state
+	hud.update_dialogue("SHIFT to RUN!!!", false)
+	await get_tree().create_timer(4.0).timeout
+	hud.update_dialogue("", true)
 
 func _set_hand_item(item:String):
 	print ("hand item "+item)
@@ -147,7 +196,7 @@ func _set_hand_item(item:String):
 			var in_hand_item = note_hand.instantiate()
 			player_hand.add_child(in_hand_item)
 			in_hand = item
-			hud.note_display(note_a_text)
+			hud.note_display("locker")
 		"NoteB":
 			var in_hand_item = note_hand.instantiate()
 			player_hand.add_child(in_hand_item)
@@ -205,7 +254,9 @@ func _input(event):
 		#Signals.emit_signal("lift_stop")
 	
 	if Input.is_action_just_pressed("to_menu"):
-		_to_menu()
+		SaveState.end_respawn = true
+		Signals.emit_signal("dead_cover")
+		#_to_menu()
 
 	if Input.is_action_just_pressed("test_arm"):
 		Signals.emit_signal("door_open","a")
@@ -221,13 +272,16 @@ func _take_action():
 			collider.get_parent().queue_free()
 			hud.add_to_inventory(collider.item_name)
 		elif collider.is_in_group("number"):
-			if not SaveState.wire_fixed and not SaveState.fuse_inserted:
-				print ("keypad out of order")
-				return
-			Signals.emit_signal("key_beep")
-			code_entering(collider.name)
-			var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
-			btn_anim.play("buttonPress")
+			if SaveState.wire_fixed and SaveState.fuse_inserted:
+				Signals.emit_signal("key_beep")
+				code_entering(collider.name)
+				var btn_anim: AnimationPlayer = collider.get_parent().get_child(0)
+				btn_anim.play("buttonPress")
+			else:
+				hud.update_dialogue("The numbers are not working", true)
+				await get_tree().create_timer(5.0).timeout
+				hud.update_dialogue("", true)
+
 			
 			#number_highlight(collider.get_child(0))
 		elif collider.is_in_group("close"):
@@ -270,6 +324,7 @@ func _take_action():
 				in_call = true
 				call_pos = -1
 				if SaveState.call_ready:
+					Signals.emit_signal("call_btn_flash", false)
 					start_call()
 
 func code_entering(numb:String):
@@ -289,11 +344,15 @@ func code_entering(numb:String):
 				Signals.emit_signal("elevator_sequence_two")
 				door_opening_a = true
 				SaveState.code_waiting = 2
+				SaveState.arm_respawn = true
+				_update_call_step(18)
 			elif SaveState.code_waiting == 2:
 				if SaveState.card_is_in_slot:
+					SaveState.arm_respawn = false
 					SaveState.code_waiting = 100
 					Signals.lift_moving = true
 					Signals.emit_signal("elevator_sequence_three")
+					
 					#Signals.emit_signal("lift_up")
 					#Signals.emit_signal("elevator_move_sound", true)
 					#var yield_timer_moving = Timer.new()
@@ -307,12 +366,16 @@ func code_entering(numb:String):
 					#Signals.emit_signal("door_open","b")
 					_update_call_step(24)
 				else:
-					Signals.emit_signal("floor_open")
+					Signals.emit_signal("main_elevator_floor_open")
+					Signals.emit_signal("card_freeze", true)
 					code_check_pos = 0
 
 			code_check_pos = 0
+
 	elif numb != code_collection[SaveState.code_waiting][code_check_pos-1]:
 		code_check_pos = 0
+		print ("wrong code")
+		#Signals.emit_signal("floor_open")
 
 func start_call():
 	call_pos += 1
@@ -372,6 +435,7 @@ func start_call():
 			SaveState.call_step = 30	
 #call stop
 	else:
+		print ("call pos "+str(call_pos))
 		var sentence = Call.all_calls[SaveState.call_step][call_pos]
 		#print (sentence)
 		hud.update_dialogue(sentence, call_pos%2==0)
@@ -391,6 +455,11 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	if Input.is_action_pressed("run"):
+		if can_run:
+			speed = run_speed
+	else:
+		speed = walk_speed
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
@@ -412,6 +481,7 @@ func _physics_process(delta):
 	Signals.emit_signal("fix_wire", false)
 	Signals.emit_signal("card_slot_label", false)
 	Signals.emit_signal("number_out_of_order", false)
+	hud.knock_icon(false)
 	%PlayerInfoLabel.visible = false
 	if collider != null and collider is StaticBody3D:
 		if collider.has_method("use_action") or collider.is_in_group("show_hud"):
@@ -430,6 +500,8 @@ func _physics_process(delta):
 		if collider.is_in_group("number"):
 			if not SaveState.fuse_inserted or not SaveState.wire_fixed:
 				Signals.emit_signal("number_out_of_order", true)
+		if collider.is_in_group("door_knock"):
+			hud.knock_icon(true)
 	
 	if collider != null and collider.is_in_group("push_card"):
 		hud.target.modulate = Color(1,1,1,1)
@@ -530,9 +602,17 @@ func get_saved_inventory():
 		if SaveState.saved_inventory.has(node.item_name):
 			print ("removeig "+node.item_name)
 			node.get_parent().queue_free()
+		if SaveState.fuse_inserted and node.item_name == "Fuse":
+			print ("remove fuse was insterted")
+			node.get_parent().queue_free()
+		if SaveState.wire_fixed and node.item_name == "Tape":
+			print ("remove tape was insterted")	
+			node.get_parent().queue_free()	
 	if SaveState.card_is_in_slot == true:
 		_remove_item("Card")
 		Signals.emit_signal("card_in_slot", SaveState.card_is_in_slot)
+	
+		
 
 
 func _player_warp(location):
@@ -576,11 +656,15 @@ func _on_shake_area_body_entered(body: Node3D) -> void:
 	BOB_FREQ = 150.0
 	BOB_AMP = 0.09
 	constant_wobble = true
+	%MainElevator.operate_door(true)
+	$"../MainFloor/hallwayButtons/DownButton".disabled = true
+	
 
 
 func _on_shake_area_body_exited(body: Node3D) -> void:
-	BOB_FREQ = 3.0
-	BOB_AMP = 0.05
+	#BOB_FREQ = lerp(BOB_FREQ, 50, 0.5)
+	BOB_FREQ = 100.0
+	BOB_AMP = 0.07
 
 
 

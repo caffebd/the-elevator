@@ -23,4 +23,3 @@ func _camera_shake(period:float = 0.3, magnitude:float =0.4):
 		await get_tree().process_frame
 
 	#self.transform = lerp(transform, initial_transform, 0.4)
-

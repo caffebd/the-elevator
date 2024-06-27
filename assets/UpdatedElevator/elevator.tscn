@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgrtvp0jbijme"]
+[gd_scene load_steps=23 format=3 uid="uid://dgrtvp0jbijme"]
 
 [ext_resource type="PackedScene" uid="uid://dhmfx6u1dmewx" path="res://assets/elevatorNew/elevator.glb" id="1_t1rw0"]
 [ext_resource type="Script" path="res://scripts/elevator.gd" id="2_pjlic"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bt2eko40rxesl" path="res://scenes/Tape.tscn" id="9_tpb32"]
 [ext_resource type="AudioStream" uid="uid://dypjjlrcgdy27" path="res://assets/audio/elevator_moving.mp3" id="10_4bcx3"]
 [ext_resource type="AudioStream" uid="uid://d2pji6f40wolc" path="res://assets/audio/elevator_short_crash.mp3" id="11_0gxrl"]
+[ext_resource type="AudioStream" uid="uid://lxwp4fulmutl" path="res://assets/audio/elevator_audio/door_slam.mp3" id="12_frl4x"]
+[ext_resource type="AudioStream" uid="uid://blu8axd0evdhg" path="res://assets/audio/elevator_audio/moving_floor.mp3" id="13_5jj54"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lsyrn"]
 data = PackedVector3Array(0.0588, -1.3082, -0.9469, 0.0025, 1.3082, -0.9469, 0.0025, -1.3082, -0.9469, 0.0588, -1.3082, -0.9469, 0.0588, 1.3082, -0.9469, 0.0025, 1.3082, -0.9469, 0.0005, -1.3082, -0.9449, 0.0005, 1.3082, 0.9448, 0.0005, -1.3082, 0.9448, 0.0005, -1.3082, -0.9449, 0.0005, 1.3082, -0.9449, 0.0005, 1.3082, 0.9448, 0.0025, 1.3082, 0.9469, 0.0588, -1.3082, 0.9469, 0.0025, -1.3082, 0.9469, 0.0025, 1.3082, 0.9469, 0.0588, 1.3082, 0.9469, 0.0588, -1.3082, 0.9469, -0.0588, -1.3102, 0.9448, -0.0025, -1.3102, -0.9449, -0.0588, -1.3102, -0.9449, -0.0588, -1.3102, 0.9448, -0.0025, -1.3102, 0.9448, -0.0025, -1.3102, -0.9449, 0.0588, 1.3102, 0.9448, 0.0025, 1.3102, -0.9449, 0.0588, 1.3102, -0.9449, 0.0588, 1.3102, 0.9448, 0.0025, 1.3102, 0.9448, 0.0025, 1.3102, -0.9449, 0.0608, -1.3082, 0.9448, 0.0608, 1.3082, -0.9449, 0.0608, -1.3082, -0.9449, 0.0608, -1.3082, 0.9448, 0.0608, 1.3082, 0.9448, 0.0608, 1.3082, -0.9449, -0.0025, -1.3082, -0.9469, -0.0588, 1.3082, -0.9469, -0.0588, -1.3082, -0.9469, -0.0025, -1.3082, -0.9469, -0.0025, 1.3082, -0.9469, -0.0588, 1.3082, -0.9469, -0.0608, -1.3082, -0.9449, -0.0608, 1.3082, 0.9448, -0.0608, -1.3082, 0.9448, -0.0608, -1.3082, -0.9449, -0.0608, 1.3082, -0.9449, -0.0608, 1.3082, 0.9448, -0.0588, 1.3082, 0.9469, -0.0025, -1.3082, 0.9469, -0.0588, -1.3082, 0.9469, -0.0588, 1.3082, 0.9469, -0.0025, 1.3082, 0.9469, -0.0025, -1.3082, 0.9469, -0.0025, 1.3102, 0.9448, -0.0588, 1.3102, -0.9449, -0.0025, 1.3102, -0.9449, -0.0025, 1.3102, 0.9448, -0.0588, 1.3102, 0.9448, -0.0588, 1.3102, -0.9449, -0.0005, -1.3082, 0.9448, -0.0005, 1.3082, -0.9449, -0.0005, -1.3082, -0.9449, -0.0005, -1.3082, 0.9448, -0.0005, 1.3082, 0.9448, -0.0005, 1.3082, -0.9449, 0.0025, -1.3102, -0.9449, 0.0025, -1.3082, -0.9469, 0.0005, -1.3082, -0.9449, 0.0005, -1.3082, 0.9448, 0.0025, -1.3082, 0.9469, 0.0025, -1.3102, 0.9448, 0.0025, 1.3082, -0.9469, 0.0025, 1.3102, -0.9449, 0.0005, 1.3082, -0.9449, 0.0588, -1.3102, -0.9449, 0.0608, -1.3082, -0.9449, 0.0588, -1.3082, -0.9469, 0.0588, 1.3082, -0.9469, 0.0608, 1.3082, -0.9449, 0.0588, 1.3102, -0.9449, 0.0608, -1.3082, 0.9448, 0.0588, -1.3102, 0.9448, 0.0588, -1.3082, 0.9469, 0.0588, 1.3082, 0.9469, 0.0588, 1.3102, 0.9448, 0.0608, 1.3082, 0.9448, 0.0025, 1.3082, 0.9469, 0.0005, 1.3082, 0.9448, 0.0025, 1.3102, 0.9448, -0.0588, -1.3102, -0.9449, -0.0588, -1.3082, -0.9469, -0.0608, -1.3082, -0.9449, -0.0608, -1.3082, 0.9448, -0.0588, -1.3082, 0.9469, -0.0588, -1.3102, 0.9448, -0.0588, 1.3082, -0.9469, -0.0588, 1.3102, -0.9449, -0.0608, 1.3082, -0.9449, -0.0025, -1.3102, -0.9449, -0.0005, -1.3082, -0.9449, -0.0025, -1.3082, -0.9469, -0.0025, 1.3082, -0.9469, -0.0005, 1.3082, -0.9449, -0.0025, 1.3102, -0.9449, -0.0005, -1.3082, 0.9448, -0.0025, -1.3102, 0.9448, -0.0025, -1.3082, 0.9469, -0.0025, 1.3082, 0.9469, -0.0025, 1.3102, 0.9448, -0.0005, 1.3082, 0.9448, -0.0588, 1.3082, 0.9469, -0.0608, 1.3082, 0.9448, -0.0588, 1.3102, 0.9448, 0.0005, -1.3082, 0.9448, 0.0025, -1.3102, -0.9449, 0.0005, -1.3082, -0.9449, 0.0005, -1.3082, 0.9448, 0.0025, -1.3102, 0.9448, 0.0025, -1.3102, -0.9449, 0.0005, -1.3082, -0.9449, 0.0025, 1.3082, -0.9469, 0.0005, 1.3082, -0.9449, 0.0005, -1.3082, -0.9449, 0.0025, -1.3082, -0.9469, 0.0025, 1.3082, -0.9469, 0.0025, -1.3082, -0.9469, 0.0588, -1.3102, -0.9449, 0.0588, -1.3082, -0.9469, 0.0025, -1.3082, -0.9469, 0.0025, -1.3102, -0.9449, 0.0588, -1.3102, -0.9449, 0.0608, 1.3082, -0.9449, 0.0588, -1.3082, -0.9469, 0.0608, -1.3082, -0.9449, 0.0608, 1.3082, -0.9449, 0.0588, 1.3082, -0.9469, 0.0588, -1.3082, -0.9469, 0.0608, -1.3082, -0.9449, 0.0588, -1.3102, 0.9448, 0.0608, -1.3082, 0.9448, 0.0608, -1.3082, -0.9449, 0.0588, -1.3102, -0.9449, 0.0588, -1.3102, 0.9448, 0.0588, -1.3082, 0.9469, 0.0025, -1.3102, 0.9448, 0.0025, -1.3082, 0.9469, 0.0588, -1.3082, 0.9469, 0.0588, -1.3102, 0.9448, 0.0025, -1.3102, 0.9448, 0.0588, 1.3082, 0.9469, 0.0608, -1.3082, 0.9448, 0.0588, -1.3082, 0.9469, 0.0588, 1.3082, 0.9469, 0.0608, 1.3082, 0.9448, 0.0608, -1.3082, 0.9448, 0.0608, 1.3082, 0.9448, 0.0588, 1.3102, -0.9449, 0.0608, 1.3082, -0.9449, 0.0608, 1.3082, 0.9448, 0.0588, 1.3102, 0.9448, 0.0588, 1.3102, -0.9449, 0.0025, 1.3082, 0.9469, 0.0588, 1.3102, 0.9448, 0.0588, 1.3082, 0.9469, 0.0025, 1.3082, 0.9469, 0.0025, 1.3102, 0.9448, 0.0588, 1.3102, 0.9448, 0.0005, 1.3082, -0.9449, 0.0025, 1.3102, 0.9448, 0.0005, 1.3082, 0.9448, 0.0005, 1.3082, -0.9449, 0.0025, 1.3102, -0.9449, 0.0025, 1.3102, 0.9448, 0.0005, 1.3082, 0.9448, 0.0025, -1.3082, 0.9469, 0.0005, -1.3082, 0.9448, 0.0005, 1.3082, 0.9448, 0.0025, 1.3082, 0.9469, 0.0025, -1.3082, 0.9469, 0.0588, 1.3082, -0.9469, 0.0025, 1.3102, -0.9449, 0.0025, 1.3082, -0.9469, 0.0588, 1.3082, -0.9469, 0.0588, 1.3102, -0.9449, 0.0025, 1.3102, -0.9449, -0.0608, -1.3082, 0.9448, -0.0588, -1.3102, -0.9449, -0.0608, -1.3082, -0.9449, -0.0608, -1.3082, 0.9448, -0.0588, -1.3102, 0.9448, -0.0588, -1.3102, -0.9449, -0.0608, -1.3082, -0.9449, -0.0588, 1.3082, -0.9469, -0.0608, 1.3082, -0.9449, -0.0608, -1.3082, -0.9449, -0.0588, -1.3082, -0.9469, -0.0588, 1.3082, -0.9469, -0.0588, -1.3082, -0.9469, -0.0025, -1.3102, -0.9449, -0.0025, -1.3082, -0.9469, -0.0588, -1.3082, -0.9469, -0.0588, -1.3102, -0.9449, -0.0025, -1.3102, -0.9449, -0.0005, 1.3082, -0.9449, -0.0025, -1.3082, -0.9469, -0.0005, -1.3082, -0.9449, -0.0005, 1.3082, -0.9449, -0.0025, 1.3082, -0.9469, -0.0025, -1.3082, -0.9469, -0.0005, -1.3082, -0.9449, -0.0025, -1.3102, 0.9448, -0.0005, -1.3082, 0.9448, -0.0005, -1.3082, -0.9449, -0.0025, -1.3102, -0.9449, -0.0025, -1.3102, 0.9448, -0.0025, -1.3082, 0.9469, -0.0588, -1.3102, 0.9448, -0.0588, -1.3082, 0.9469, -0.0025, -1.3082, 0.9469, -0.0025, -1.3102, 0.9448, -0.0588, -1.3102, 0.9448, -0.0025, 1.3082, 0.9469, -0.0005, -1.3082, 0.9448, -0.0025, -1.3082, 0.9469, -0.0025, 1.3082, 0.9469, -0.0005, 1.3082, 0.9448, -0.0005, -1.3082, 0.9448, -0.0005, 1.3082, 0.9448, -0.0025, 1.3102, -0.9449, -0.0005, 1.3082, -0.9449, -0.0005, 1.3082, 0.9448, -0.0025, 1.3102, 0.9448, -0.0025, 1.3102, -0.9449, -0.0588, 1.3082, 0.9469, -0.0025, 1.3102, 0.9448, -0.0025, 1.3082, 0.9469, -0.0588, 1.3082, 0.9469, -0.0588, 1.3102, 0.9448, -0.0025, 1.3102, 0.9448, -0.0608, 1.3082, -0.9449, -0.0588, 1.3102, 0.9448, -0.0608, 1.3082, 0.9448, -0.0608, 1.3082, -0.9449, -0.0588, 1.3102, -0.9449, -0.0588, 1.3102, 0.9448, -0.0608, 1.3082, 0.9448, -0.0588, -1.3082, 0.9469, -0.0608, -1.3082, 0.9448, -0.0608, 1.3082, 0.9448, -0.0588, 1.3082, 0.9469, -0.0588, -1.3082, 0.9469, -0.0025, 1.3082, -0.9469, -0.0588, 1.3102, -0.9449, -0.0588, 1.3082, -0.9469, -0.0025, 1.3082, -0.9469, -0.0025, 1.3102, -0.9449, -0.0588, 1.3102, -0.9449, 0.0025, -1.3102, 0.9448, 0.0588, -1.3102, -0.9449, 0.0025, -1.3102, -0.9449, 0.0025, -1.3102, 0.9448, 0.0588, -1.3102, 0.9448, 0.0588, -1.3102, -0.9449)
@@ -50,6 +52,7 @@ unique_name_in_owner = true
 surface_material_override/0 = ExtResource("2_r01k5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_002" index="0"]
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_002/StaticBody3D" index="0"]
@@ -60,6 +63,7 @@ unique_name_in_owner = true
 surface_material_override/0 = ExtResource("2_r01k5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_029" index="0"]
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_029/StaticBody3D" index="0"]
@@ -94,6 +98,7 @@ surface_material_override/1 = ExtResource("3_vpre5")
 
 [node name="FloorBody1" type="StaticBody3D" parent="Cube_039" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5796, 0.0670791, 1.84633)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_039/FloorBody1" index="0"]
@@ -101,6 +106,7 @@ shape = SubResource("BoxShape3D_1vqll")
 
 [node name="FloorBody2" type="StaticBody3D" parent="Cube_039" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5796, -0.0402609, -1.84864)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_039/FloorBody2" index="0"]
@@ -108,6 +114,7 @@ shape = SubResource("BoxShape3D_1vqll")
 
 [node name="FloorBody4" type="StaticBody3D" parent="Cube_039" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.988396, -0.0228109, 0.0137513)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_039/FloorBody4" index="0"]
@@ -115,6 +122,7 @@ shape = SubResource("BoxShape3D_uvj32")
 
 [node name="FloorBody5" type="StaticBody3D" parent="Cube_039" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3212, -0.0238509, 0.0137513)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_039/FloorBody5" index="0"]
@@ -126,6 +134,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.821583, -1.53298, 0.003982
 surface_material_override/0 = ExtResource("2_r01k5")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_032" index="0"]
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_032/StaticBody3D" index="0"]
@@ -208,6 +217,7 @@ omni_range = 3.38748
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="." index="29"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.18132, 0, -0.0800989)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5" index="0"]
@@ -215,6 +225,7 @@ shape = SubResource("BoxShape3D_4bxtd")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="." index="30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.768949, 0, 2.8369)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6" index="0"]
@@ -222,6 +233,7 @@ shape = SubResource("BoxShape3D_vaift")
 
 [node name="StaticBody3D7" type="StaticBody3D" parent="." index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.768949, 0, -2.84433)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7" index="0"]
@@ -229,6 +241,7 @@ shape = SubResource("BoxShape3D_vaift")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="." index="32"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55325, 0, 1.88352)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D8" index="0"]
@@ -236,6 +249,7 @@ shape = SubResource("BoxShape3D_mk2cc")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="." index="33"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51487, 0, -1.89363)
+collision_layer = 129
 collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D9" index="0"]
@@ -244,7 +258,6 @@ shape = SubResource("BoxShape3D_mk2cc")
 [node name="Ding" type="AudioStreamPlayer3D" parent="." index="34"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543023, 0, 0)
 stream = ExtResource("9_ekif5")
-volume_db = -10.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="35"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11073, 0.263304, 0.11417)
@@ -257,82 +270,71 @@ omni_range = 4.847
 [node name="SafesWall" type="Node3D" parent="." index="36"]
 transform = Transform3D(0.00260059, 0, -0.999997, 0, 1, 0, 0.999997, 0, 0.00260059, 2.643, 0.397, 4.686)
 
-[node name="safe1" parent="SafesWall" index="0" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe1" parent="SafesWall" index="0" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.86499e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.86499e-08, -3.80388, -0.0373314, 5.98747)
 box_number = "1"
 locked = true
 tool_needed = "Driver1"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe2" parent="SafesWall" index="1" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe2" parent="SafesWall" index="1" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.91155e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.91155e-08, -4.26391, -0.0367144, 5.97916)
 box_number = "2"
 locked = true
 tool_needed = "Driver2"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe3" parent="SafesWall" index="2" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe3" parent="SafesWall" index="2" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -4.7253, -0.0365379, 5.98139)
 box_number = "3"
 locked = true
 tool_needed = "Driver2"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe4" parent="SafesWall" index="3" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe4" parent="SafesWall" index="3" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -5.18594, -0.0346649, 5.983)
 box_number = "4"
 locked = true
 tool_needed = "Driver2"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe5" parent="SafesWall" index="4" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe5" parent="SafesWall" index="4" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.9814e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -3.9814e-08, -5.6451, -0.035242, 5.98454)
 box_number = "5"
 locked = true
 tool_needed = "Crowbar"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe6" parent="SafesWall" index="5" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe6" parent="SafesWall" index="5" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.86499e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.86499e-08, -3.80235, -0.495998, 5.98274)
 box_number = "6"
 locked = true
 tool_needed = "Crowbar"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe7" parent="SafesWall" index="6" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe7" parent="SafesWall" index="6" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.00469e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.00469e-08, -4.26342, -0.489157, 5.97918)
 box_number = "7"
 locked = true
 tool_needed = "Driver2"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe8" parent="SafesWall" index="7" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe8" parent="SafesWall" index="7" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.09782e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.09782e-08, -4.72544, -0.488619, 5.97781)
 box_number = "8"
 locked = true
 tool_needed = "Crowbar"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe9" parent="SafesWall" index="8" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe9" parent="SafesWall" index="8" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.09782e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.09782e-08, -5.18486, -0.488619, 5.98049)
 box_number = "9"
 locked = true
 tool_needed = "Driver1"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe10" parent="SafesWall" index="9" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe10" parent="SafesWall" index="9" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.02797e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.02797e-08, -5.64027, -0.489, 5.97937)
 box_number = "10"
 locked = true
 tool_needed = "Crowbar"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe11" parent="SafesWall" index="10" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe11" parent="SafesWall" index="10" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.95812e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.95812e-08, -3.80148, -0.953034, 5.98158)
 box_number = "11"
 locked = true
 tool_needed = "Driver2"
-all_numbers = NodePath("door/Numbers")
 
 [node name="door" parent="SafesWall/safe11" index="1"]
 transform = Transform3D(1.06582, 0, 1.07102e-08, 0, 1.06582, 0, -1.07102e-08, 0, 1.06582, 0.220505, -0.00264716, -0.21113)
@@ -340,33 +342,29 @@ transform = Transform3D(1.06582, 0, 1.07102e-08, 0, 1.06582, 0, -1.07102e-08, 0,
 [node name="Tape" parent="SafesWall/safe11/door" index="5" instance=ExtResource("9_tpb32")]
 transform = Transform3D(0.0284864, -0.999267, -0.0256225, 0.522324, -0.00697449, 0.852719, -0.852272, -0.0376734, 0.521742, -0.026634, 0.0896363, 0.243976)
 
-[node name="safe12" parent="SafesWall" index="11" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe12" parent="SafesWall" index="11" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.9814e-08, 0, 0.951431, 0, 0.951432, 0, -0.951431, 0, -3.9814e-08, -4.26336, -0.952027, 5.98422)
 box_number = "12"
 locked = true
 tool_needed = "Crowbar"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe13" parent="SafesWall" index="12" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe13" parent="SafesWall" index="12" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.05125e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.05125e-08, -4.72503, -0.95291, 5.98579)
 box_number = "13"
 locked = true
 tool_needed = "Driver1"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe14" parent="SafesWall" index="13" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe14" parent="SafesWall" index="13" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-4.05125e-08, 0, 0.951432, 0, 0.951432, 0, -0.951432, 0, -4.05125e-08, -5.18369, -0.951149, 5.98517)
 box_number = "14"
 locked = true
 tool_needed = "Crowbar"
-all_numbers = NodePath("door/Numbers")
 
-[node name="safe15" parent="SafesWall" index="14" node_paths=PackedStringArray("all_numbers") instance=ExtResource("7_hmeek")]
+[node name="safe15" parent="SafesWall" index="14" instance=ExtResource("7_hmeek")]
 transform = Transform3D(-3.81842e-08, 0, 0.95143, 0, 0.951432, 0, -0.95143, 0, -3.81842e-08, -5.64222, -0.951301, 5.98358)
 box_number = "15"
 locked = true
 tool_needed = "Driver2"
-all_numbers = NodePath("door/Numbers")
 
 [node name="ElevatorMoving" type="AudioStreamPlayer" parent="." index="37"]
 unique_name_in_owner = true
@@ -375,5 +373,15 @@ stream = ExtResource("10_4bcx3")
 [node name="ElevatorCrash" type="AudioStreamPlayer" parent="." index="38"]
 unique_name_in_owner = true
 stream = ExtResource("11_0gxrl")
+
+[node name="Slam" type="AudioStreamPlayer3D" parent="." index="39"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81989, 0, 0)
+stream = ExtResource("12_frl4x")
+
+[node name="FloorMoving" type="AudioStreamPlayer" parent="." index="40"]
+unique_name_in_owner = true
+stream = ExtResource("13_5jj54")
+volume_db = -5.0
 
 [editable path="SafesWall/safe11"]

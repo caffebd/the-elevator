@@ -9,7 +9,7 @@ var locked: bool = false
 
 var crowbar_collected: bool = false
 
-var swing_dir = 95
+var swing_dir = 180.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,14 +25,13 @@ func _tray_move(state):
 	if door_open:
 		var tween = create_tween()
 		print (swing_dir)
-		tween.tween_property(hinge, "rotation_degrees:y", swing_dir, 1.0)
+		tween.tween_property(hinge, "rotation_degrees:y", swing_dir, 0.7)
+		%SecretDoorOpenSound.play()
 		await tween.finished
 		%PanelCol.disabled = false
+		
 	else:
 		var tween = create_tween()
 		tween.tween_property(hinge, "rotation_degrees:y", 0.0, 1.0)	
 		await tween.finished
 		%PanelCol.disabled = false
-
-
-

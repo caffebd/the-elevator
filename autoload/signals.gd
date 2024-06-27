@@ -2,6 +2,7 @@ extends Node
 
 var lift_moving: bool = false
 
+signal get_to_work()
 
 signal hand_item(item)
 signal tray_out(state)
@@ -18,6 +19,8 @@ signal remove_item(item)
 
 signal door_open(phase)
 signal door_close()
+
+signal win_game()
 
 signal floor_open()
 
@@ -67,6 +70,9 @@ signal key_drop()
 
 signal camera_shake()
 
+signal arm_respawn()
+signal end_respawn()
+
 signal elevator_sequence_one()
 signal elevator_sequence_two()
 signal elevator_sequence_three()
@@ -74,10 +80,30 @@ signal elevator_sequence_three()
 signal hallway_lights_out()
 signal hallway_lights_on()
 
+signal replace_elevator_floor()
+
+signal player_knock()
+
 signal monster_grab()
 
 signal fade_to_black()
+signal start_from_black()
+
+signal fall_main_elevator_respawn()
+signal fall_dead_cover()
+
+signal main_elevator_floor_open()
+
+signal call_btn_flash(state)
+
+signal run_active(state)
+
+signal escape_apartment()
+
+signal slam_door()
 
 signal dead_cover()
+
+signal card_freeze(state)
 
 signal escape_monster()

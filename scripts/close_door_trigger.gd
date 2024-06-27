@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print ("lose doors")
+		print ("close doors")
 		get_parent().operate_door(false)
 		if back_inside:
 			back_inside.set_deferred("disabled", false)
