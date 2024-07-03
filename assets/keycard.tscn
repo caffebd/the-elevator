@@ -5,6 +5,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuxnp"]
 albedo_texture = ExtResource("2_ecps5")
+emission_enabled = true
+emission_energy_multiplier = 0.06
+emission_texture = ExtResource("2_ecps5")
 
 [node name="keycard" instance=ExtResource("1_lmu0w")]
 

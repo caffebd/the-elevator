@@ -24,5 +24,5 @@ func operate_door():
 		return
 	door_moving = true
 	$"../../DoorOpen".play("open")
-	await get_tree().create_timer(2.0).timeout
-	Signals.emit_signal("win_game")
+	#await get_tree().create_timer(2.0).timeout
+	#Signals.emit_signal("win_game")

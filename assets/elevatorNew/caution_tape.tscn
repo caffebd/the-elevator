@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq638wxv6wu7l"]
+
+[ext_resource type="PackedScene" uid="uid://kpldligys6ve" path="res://assets/elevatorNew/cautionTape.glb" id="1_fo75r"]
+[ext_resource type="Material" uid="uid://busq1e543p3mp" path="res://assets/materials/cautionTape.tres" id="2_foedu"]
+
+[node name="cautionTape" instance=ExtResource("1_fo75r")]
+
+[node name="tape2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_foedu")

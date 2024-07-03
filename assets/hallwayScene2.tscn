@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://ccky6fld3avk1"]
+[gd_scene load_steps=73 format=3 uid="uid://ccky6fld3avk1"]
 
 [ext_resource type="Script" path="res://scripts/HallwayArea.gd" id="1_70hd2"]
 [ext_resource type="PackedScene" uid="uid://cffgdsansmwm" path="res://assets/elevatorNew/hallway.tscn" id="1_oqa06"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://f5dbi5rm6a2l" path="res://assets/elevatorNew/exit_sign.tscn" id="2_0enyf"]
 [ext_resource type="Shader" path="res://assets/materials/shaders/screenEffect.gdshader" id="2_5k4af"]
 [ext_resource type="PackedScene" uid="uid://dbiu0qbb5wcxi" path="res://assets/elevatorNew/exit_part.tscn" id="2_nftua"]
-[ext_resource type="PackedScene" uid="uid://bw713rlnd42xs" path="res://assets/elevatorNew/fuse_box.tscn" id="2_u0ixm"]
+[ext_resource type="PackedScene" uid="uid://suw7y03bn41c" path="res://assets/elevatorNew/fuse_box2.tscn" id="2_tgj6n"]
 [ext_resource type="PackedScene" uid="uid://6krwobwixs8l" path="res://assets/elevatorNew/elevator_part.tscn" id="3_x8o7b"]
 [ext_resource type="PackedScene" uid="uid://dgrtvp0jbijme" path="res://assets/UpdatedElevator/elevator.tscn" id="4_8f3o6"]
 [ext_resource type="PackedScene" uid="uid://de8gpi6hyb06k" path="res://assets/staircase_top.tscn" id="5_o6f1b"]
@@ -54,6 +54,8 @@
 [ext_resource type="AudioStream" uid="uid://wnor8aeb3svm" path="res://assets/audio/music/monster_sting.mp3" id="47_v7ny2"]
 [ext_resource type="Texture2D" uid="uid://dvwqwy46pf0y2" path="res://assets/UI/exit_right.png" id="51_amugn"]
 [ext_resource type="Texture2D" uid="uid://cmc1xhtuwj0oe" path="res://assets/UI/exit_left.png" id="52_w1cdy"]
+[ext_resource type="PackedScene" uid="uid://cq638wxv6wu7l" path="res://assets/elevatorNew/caution_tape.tscn" id="55_wup8f"]
+[ext_resource type="PackedScene" uid="uid://b6msoq3tdi107" path="res://assets/elevatorNew/street.tscn" id="56_uqmtp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vrvxm"]
 size = Vector3(3.25085, 1, 1)
@@ -128,8 +130,8 @@ call_btn = NodePath("MainFloor/elevatorButtons/button10")
 [node name="MainFloor" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="fuseBox" parent="MainFloor" instance=ExtResource("2_u0ixm")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.47628, -0.172347, 2.77274)
+[node name="fuseBox" parent="MainFloor" instance=ExtResource("2_tgj6n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.47395, -0.175751, 2.77207)
 
 [node name="exitSign2" parent="MainFloor" instance=ExtResource("2_0enyf")]
 transform = Transform3D(-4.09449e-08, 0.93671, 0, -0.93671, -4.09449e-08, 0, 0, 0, 0.93671, -39.0334, 1.02526, 0)
@@ -526,7 +528,7 @@ offset_bottom = 1192.0
 color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." node_paths=PackedStringArray("arm_respawn_point") instance=ExtResource("6_a8yqa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.78146, -0.505355, 0.356212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.6298, -28.8885, -0.172123)
 arm_respawn_point = NodePath("../MainFloor/MainElevator/ArmCheckpoint")
 
 [node name="ElevatorsFloor" parent="." instance=ExtResource("47_8xfm1")]
@@ -555,6 +557,12 @@ unique_name_in_owner = true
 transform = Transform3D(0.535579, 0, 0, 0, 0.00191623, -0.283794, 0, 0.535576, 0.00101539, -4.78541, 0.18272, -1.00994)
 visible = false
 mesh = SubResource("PlaneMesh_r4j5g")
+
+[node name="cautionTape" parent="." instance=ExtResource("55_wup8f")]
+transform = Transform3D(0.0542573, 0.292026, -0.808559, -0.0195521, 0.810378, 0.29137, 0.859456, 0, 0.0576727, -6.07553, -0.463912, 1.00521)
+
+[node name="street" parent="." instance=ExtResource("56_uqmtp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.0042, -30.0056, 11.0495)
 
 [connection signal="body_entered" from="MainFloor/staircaseTop/SlamDoor" to="MainFloor/staircaseTop/SlamDoor" method="_on_body_entered"]
 [connection signal="body_entered" from="MainFloor/Reset" to="." method="_on_reset_body_entered"]

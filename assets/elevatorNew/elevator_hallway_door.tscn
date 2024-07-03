@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://x70fqgysxwpq"]
+
+[ext_resource type="PackedScene" uid="uid://bap8ugjo8mf8t" path="res://assets/elevatorNew/elevatorHallwayDoor.glb" id="1_8xyc7"]
+[ext_resource type="Material" uid="uid://lfs0j28pqnkq" path="res://assets/materials/lightCase.tres" id="2_5gm3s"]
+[ext_resource type="Material" uid="uid://crg6qf2xf3i4n" path="res://assets/materials/light.tres" id="3_fs7fv"]
+[ext_resource type="Material" uid="uid://dnob6cfui7es8" path="res://assets/materials/wall.tres" id="4_yhtm7"]
+[ext_resource type="Material" uid="uid://b5gw0xwi7px1f" path="res://assets/materials/moulding.tres" id="5_y57p7"]
+[ext_resource type="Material" uid="uid://cr23c5iaojmsl" path="res://assets/materials/elevator.tres" id="6_x2t0n"]
+[ext_resource type="Material" uid="uid://biiplfhpgepdr" path="res://assets/materials/floor.tres" id="7_bitks"]
+[ext_resource type="Material" uid="uid://c3oala0y185ek" path="res://assets/materials/door.tres" id="8_3c8eo"]
+
+[node name="elevatorHallwayDoor" instance=ExtResource("1_8xyc7")]
+
+[node name="light_017" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5gm3s")
+surface_material_override/1 = ExtResource("3_fs7fv")
+
+[node name="roof_006" parent="." index="1"]
+surface_material_override/0 = ExtResource("4_yhtm7")
+
+[node name="roofMoulding_004" parent="." index="2"]
+surface_material_override/0 = ExtResource("5_y57p7")
+
+[node name="refwall_009" parent="." index="3"]
+surface_material_override/0 = ExtResource("4_yhtm7")
+
+[node name="floorMoulding_004" parent="." index="4"]
+surface_material_override/0 = ExtResource("5_y57p7")
+
+[node name="refwall_010" parent="." index="5"]
+surface_material_override/0 = ExtResource("6_x2t0n")
+
+[node name="floor_006" parent="." index="6"]
+surface_material_override/0 = ExtResource("7_bitks")
+
+[node name="wall_031" parent="." index="7"]
+surface_material_override/0 = ExtResource("4_yhtm7")
+
+[node name="wall_032" parent="." index="8"]
+surface_material_override/0 = ExtResource("8_3c8eo")
+
+[node name="wall_033" parent="." index="9"]
+surface_material_override/0 = ExtResource("5_y57p7")
+
+[node name="wall_035" parent="." index="10"]
+surface_material_override/0 = ExtResource("5_y57p7")
+
+[node name="wall_036" parent="." index="11"]
+surface_material_override/0 = ExtResource("5_y57p7")

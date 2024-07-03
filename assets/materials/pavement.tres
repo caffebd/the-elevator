@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dw2oonbs233tm"]
+
+[ext_resource type="Texture2D" uid="uid://dvcevsub8r1ch" path="res://assets/textures/street/TexturesCom_Brick_StoneCladding_1K_albedo.jpg" id="1_0b75b"]
+[ext_resource type="Texture2D" uid="uid://7jglu0vh120m" path="res://assets/textures/street/TexturesCom_Brick_StoneCladding_1K_normal.jpg" id="2_wkj5w"]
+
+[resource]
+albedo_texture = ExtResource("1_0b75b")
+normal_enabled = true
+normal_texture = ExtResource("2_wkj5w")

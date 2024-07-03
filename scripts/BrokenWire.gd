@@ -1,8 +1,8 @@
 extends StaticBody3D
 
 @onready var wire_label = %BrokenWire
-@onready var taped_wire = %"wire fixed"
-@export var the_tape: Node3D
+@onready var taped_wire = %yellowTape
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.fix_wire.connect(_wire_label)

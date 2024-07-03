@@ -16,6 +16,8 @@ var key_icon = preload("res://scenes/KeyIcon.tscn")
 
 var inventory_index: int = 0
 
+var knocking: bool = false
+
 @onready var inventory_grid = %Inventory
 
 #var SaveState.saved_inventory:Array[String]
@@ -40,16 +42,27 @@ func _fall_dead_cover():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func knock_icon(state):
-	%KnockIcon.visible = state
+	if not knocking:
+		%KnockIcon.visible = state
 
 func _player_knock():
-	%KnockIcon.scale = Vector2(0.5, 0.5)
+	knocking = true
+	%KnockIcon.visible = true
+	%KnockIcon2.visible = false
 	await get_tree().create_timer(0.3).timeout
-	%KnockIcon.scale = Vector2(0.7, 0.7)
+	%KnockIcon.visible = false
+	%KnockIcon2.visible = true	
 	await get_tree().create_timer(0.3).timeout
-	%KnockIcon.scale = Vector2(0.5, 0.5)
+	
+	%KnockIcon.visible = true
+	%KnockIcon2.visible = false
 	await get_tree().create_timer(0.3).timeout
-	%KnockIcon.scale = Vector2(0.7, 0.7)
+	%KnockIcon.visible = false
+	%KnockIcon2.visible = true	
+	await get_tree().create_timer(0.3).timeout
+	knocking = false
+	
+	
 	
 func remove_from_inventory(item:String):
 	if SaveState.saved_inventory.has(item):

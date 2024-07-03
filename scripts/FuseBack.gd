@@ -2,8 +2,8 @@ extends StaticBody3D
 
 
 @onready var fuse_label = %MissingFuse
-@onready var fuse_inserted = %Cube_030
-@export var the_fuse: Node3D
+@onready var fuse_inserted = %Cube_069
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Signals.need_fuse.connect(_fuse_label)

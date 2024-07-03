@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c8n227rrnltii"]
+
+[ext_resource type="Texture2D" uid="uid://di8dgf17upxsj" path="res://assets/textures/pinHint.png" id="1_nt6mv"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_nt6mv")
