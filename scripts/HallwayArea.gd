@@ -9,6 +9,7 @@ func _ready():
 	Signals.main_floor.connect(_main_floor)
 	Signals.panel_drop.connect(_monster_appear)
 	Signals.call_btn_flash.connect(_call_btn_flash)
+	Signals.fog_state.connect(_fog_state)
 	#await get_tree().create_timer(1).timeout
 	#Signals.emit_signal("panel_drop", true)
 	#await get_tree().create_timer(3.0).timeout
@@ -31,7 +32,10 @@ func _ready():
 	
 	await get_tree().create_timer(0.5).timeout
 	Signals.emit_signal("get_to_work")
+	
 
+func _fog_state(state):
+	%WorldEnvironment.environment.fog_enabled = state
 
 func _elevator_floor():
 	%MainFloor.visible = false

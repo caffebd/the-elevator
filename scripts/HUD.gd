@@ -46,21 +46,24 @@ func knock_icon(state):
 		%KnockIcon.visible = state
 
 func _player_knock():
+	var wait_time: float = 0.15
 	knocking = true
 	%KnockIcon.visible = true
 	%KnockIcon2.visible = false
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(wait_time).timeout
 	%KnockIcon.visible = false
 	%KnockIcon2.visible = true	
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(wait_time).timeout
 	
 	%KnockIcon.visible = true
 	%KnockIcon2.visible = false
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(wait_time).timeout
 	%KnockIcon.visible = false
 	%KnockIcon2.visible = true	
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(wait_time).timeout
 	knocking = false
+	%KnockIcon.visible = false
+	%KnockIcon2.visible = false	
 	
 	
 	
@@ -266,14 +269,16 @@ func _set_inventory_color(index:int):
 func note_display(note:String):
 	print ("show note "+note)
 	if note=="":
+		%Notes.visible = false
 		%NoteTexture.visible = false
 		%NoteText.visible = false
 		%LockerPuzzle.visible = false
 		return
 	if note=="locker":
-		%NoteTexture.visible = true
+		%Notes.visible = true
 		%LockerPuzzle.visible = true
 		return
+	%Notes.visible = true
 	%NoteText.text = note
 	%NoteTexture.visible = true
 	%NoteText.visible = true

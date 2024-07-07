@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyodvhgd5ouqt"]
+
+[ext_resource type="PackedScene" uid="uid://d17xigjrek56x" path="res://assets/elevatorNew/2+3.glb" id="1_g65mo"]
+[ext_resource type="Material" uid="uid://ckkbeb5jctxhw" path="res://assets/materials/2+3tres.tres" id="2_nquyr"]
+
+[node name="2+3" instance=ExtResource("1_g65mo")]
+
+[node name="2+3" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_nquyr")

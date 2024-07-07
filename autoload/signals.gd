@@ -107,3 +107,5 @@ signal dead_cover()
 signal card_freeze(state)
 
 signal escape_monster()
+
+signal fog_state(state)

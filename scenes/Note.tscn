@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://utg7xosws85h" path="res://assets/materials/shaders/tornPaper.tres" id="2_7c640"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gh8pt"]
-size = Vector3(0.17, 0.02, 0.09)
+size = Vector3(0.160684, 0.02, 0.09)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go4pb"]
 
@@ -54,7 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 0.0139098, -0.999903, 0, 0.999903, 0.0139098
 shape = SubResource("BoxShape3D_gh8pt")
 
 [node name="paper" type="MeshInstance3D" parent="NoteBody"]
-transform = Transform3D(2.20758, 0, 0, 0, 2.20758, 0, 0, 0, 2.20758, 0, 0, 0)
+transform = Transform3D(2.20758, 0, 0, 0, 2.20758, 0, 0, 0, 2.20758, 0, 0, 0.00332496)
 mesh = SubResource("ArrayMesh_cckj4")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_d0fp5")

@@ -16,3 +16,4 @@ func _on_body_entered(body: Node3D) -> void:
 		Signals.emit_signal("slam_door")
 		set_deferred("monitoring", false)
 		%DoorSlamAudio.play()
+		Signals.emit_signal("fog_state", false)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvavlmdbx67qp"]
 
-[ext_resource type="PackedScene" uid="uid://dgl72dahq32bo" path="res://assets/elevatorNew/pinHint.glb" id="1_lpugv"]
+[ext_resource type="PackedScene" uid="uid://wlsbshliypmo" path="res://assets/elevatorNew/pinHint.glb" id="1_lpugv"]
 [ext_resource type="Material" uid="uid://c8n227rrnltii" path="res://assets/materials/pinHint.tres" id="2_svor3"]
 
 [node name="pinHint" instance=ExtResource("1_lpugv")]

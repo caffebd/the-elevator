@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cm3d1u3ihuwtd"]
+[gd_scene load_steps=16 format=3 uid="uid://cm3d1u3ihuwtd"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_ccfj4"]
 [ext_resource type="Texture2D" uid="uid://rafx06oxl8x6" path="res://assets/UI/target.png" id="2_4bb86"]
@@ -7,11 +7,12 @@
 [ext_resource type="FontFile" uid="uid://cnv2p7n8e175w" path="res://assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="4_qs75q"]
 [ext_resource type="Texture2D" uid="uid://61ygdas2nx1u" path="res://assets/UI/knocking2.png" id="5_jcnyo"]
 [ext_resource type="Texture2D" uid="uid://d715bvsj07qp" path="res://assets/UI/player_avatar.png" id="5_xc650"]
+[ext_resource type="Texture2D" uid="uid://ck35khsc433u5" path="res://assets/UI/pinHint.png" id="6_1vb3h"]
 [ext_resource type="Texture2D" uid="uid://du0pn0jhq3thd" path="res://assets/UI/call_avatar_b.png" id="6_myuvd"]
-[ext_resource type="Texture2D" uid="uid://dal5mcueuwa14" path="res://assets/UI/locker_puzzle_new.png" id="6_x4xva"]
 [ext_resource type="Texture2D" uid="uid://dmuixxrgae50y" path="res://assets/UI/paper_background.jpg" id="7_8xgsd"]
 [ext_resource type="FontFile" uid="uid://cft24oeqwxs75" path="res://assets/fonts/alagard.ttf" id="8_3yyd4"]
 [ext_resource type="FontFile" uid="uid://bs5t4chqd6rde" path="res://assets/fonts/Comfortaa/static/Comfortaa-Regular.ttf" id="11_jga8m"]
+[ext_resource type="Texture2D" uid="uid://bh88yb5u47fbh" path="res://assets/UI/OutsideShot.png" id="13_wv5kk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4kd3"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -112,7 +113,25 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(156.214, 167.072)
 texture = ExtResource("5_jcnyo")
 
-[node name="NoteTexture" type="TextureRect" parent="."]
+[node name="Notes" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LockerPuzzle" type="TextureRect" parent="Notes"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 20.0
+offset_top = 809.0
+offset_right = 2136.0
+offset_bottom = 1881.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_1vb3h")
+
+[node name="NoteTexture" type="TextureRect" parent="Notes"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -120,16 +139,15 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 26.0
-offset_top = -307.0
+offset_top = 733.0
 offset_right = 326.0
-offset_bottom = -107.0
+offset_bottom = 933.0
 grow_vertical = 0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("7_8xgsd")
 
-[node name="NoteText" type="RichTextLabel" parent="NoteTexture"]
+[node name="NoteText" type="RichTextLabel" parent="Notes/NoteTexture"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -139,7 +157,7 @@ anchor_bottom = 1.0
 offset_left = -109.286
 offset_top = -192.143
 offset_right = 119.714
-offset_bottom = -9.14336
+offset_bottom = -9.14331
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -150,17 +168,6 @@ theme_override_font_sizes/bold_font_size = 32
 bbcode_enabled = true
 text = "You should have taken the stairs my friend."
 autowrap_mode = 2
-
-[node name="LockerPuzzle" type="TextureRect" parent="NoteTexture"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 0
-offset_left = -6.42857
-offset_top = -3.57144
-offset_right = 661.571
-offset_bottom = 375.429
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("6_x4xva")
 
 [node name="Dialogue" type="Label" parent="."]
 unique_name_in_owner = true
@@ -211,15 +218,14 @@ unique_name_in_owner = true
 auto_translate_mode = 1
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -220.0
-offset_top = -104.0
-offset_right = 2127.0
-offset_bottom = 1154.0
+offset_left = -222.0
+offset_top = -4.0
+offset_right = 2125.0
+offset_bottom = 1254.0
 mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="fps" type="Label" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 1798.0
 offset_top = 27.0
@@ -364,7 +370,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ij1ck")
 text = "Quit Job"
 
-[node name="WinCover" type="ColorRect" parent="."]
+[node name="WinCover" type="TextureRect" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -373,7 +379,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.121196, 0.292374, 0.686541, 1)
+texture = ExtResource("13_wv5kk")
+
+[node name="TextureRect" type="ColorRect" parent="WinCover"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.415686)
 
 [node name="WinMessage" type="Label" parent="WinCover"]
 auto_translate_mode = 1

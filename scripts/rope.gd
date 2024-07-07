@@ -33,6 +33,7 @@ func _card_click():
 
 
 func _rope_drop():
+	visible = true
 	var tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", -0.52, 0.55)
 	

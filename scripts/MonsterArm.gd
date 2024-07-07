@@ -56,6 +56,7 @@ func _trap_door(state):
 		follow = false
 		var tween = create_tween()
 		tween.tween_property(self, "global_position:y", 30.0, 0.5)
+		visible = false
 		
 
 func _physics_process(delta: float) -> void:

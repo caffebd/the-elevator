@@ -24,6 +24,8 @@ var walk_speed: float = 2.0
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+var card_blocked: bool = false
+
 var constant_wobble:bool = false
 
 #@onready var head = %Head
@@ -306,6 +308,7 @@ func _take_action():
 			
 			#Signals.emit_signal("roof_eye_sequence", true)
 		elif collider.is_in_group("card_slot"):
+			if card_blocked: return
 			if in_hand == "Card" and !SaveState.card_is_in_slot:
 				SaveState.card_is_in_slot = true
 				_remove_item("Card")
@@ -351,6 +354,7 @@ func code_entering(numb:String):
 					SaveState.arm_respawn = false
 					SaveState.code_waiting = 100
 					Signals.lift_moving = true
+					card_blocked = true
 					Signals.emit_signal("elevator_sequence_three")
 					
 					#Signals.emit_signal("lift_up")
